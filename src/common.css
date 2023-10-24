@@ -351,6 +351,7 @@ span.tag.hit {
   font-size: 12px;
   font-weight: 700;
   color: #A7A7A7;
+  margin-bottom: 0;
 }
 
 .like-comment {
@@ -406,13 +407,13 @@ span.tag.hit {
   width: 100%;
 }
 
-.acc-info .acc-id {
+.acc-id {
   display: block;
   font-size: 24px;
   font-weight: 700;
 }
 
-.acc-info .acc-email {
+.acc-email {
   display: block;
   font-size: 18px;
   font-weight: 400;
@@ -420,30 +421,18 @@ span.tag.hit {
   margin-bottom: 21px;
 }
 
-.acc-info .acc-counter {
+.acc-counter {
   font-size: 18px;
 }
 
-.acc-info .f-counter {
-  display: flex;
-  justify-content: space-between;
-  flex-wrap: nowrap;
-}
-
-.acc-info .acc-counter .num {
+.acc-counter .num {
   font-weight: 700;
 }
 
-.acc-info .acc-counter:hover {
+.acc-counter:hover {
   color: #E87C3E;
 }
 
-.acc-btn-wrap button {
-  display: block;
-  width: 100%;
-  margin-bottom: 15px;
-
-}
 
 /*=================icon css=================*/
 .icon {

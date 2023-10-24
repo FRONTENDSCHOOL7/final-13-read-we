@@ -215,39 +215,30 @@ function ComponentEx() {
             </li>
           </ul>
 
-          <p>----마이페이지-프로필 카드</p>
-          <article className="acc-card">
-            <a href="#" className="acc-setting">
-              <i className="icon icon-setting"></i>
-              <strong>프로필 수정</strong>
-            </a>
-            <div className="acc-info">
-              <div className="acc-img">
-                <img
-                  alt="프로필 이미지"
-                  src={process.env.PUBLIC_URL + '/images/icon/testProfile.png'}
-                />
-              </div>
-              <strong className="acc-id">mewmew</strong>
-              <span className="acc-email">testID.test.com</span>
-              <div className="f-counter">
-                <a href="#" className="acc-counter">
-                  팔로워 | <strong className="num">225</strong>
-                </a>
-                <a href="#" className="acc-counter">
-                  팔로잉 | <strong className="num">225</strong>
-                </a>
-              </div>
+          <p>----프로필 수정 버튼</p>
+          <a href="#" className="acc-setting">
+            <i className="icon icon-setting"></i>
+            <strong>프로필 수정</strong>
+          </a>
+          <p>----프로필 정보</p>
+          <div className="acc-info">
+            <div className="acc-img">
+              <img
+                alt="프로필 이미지"
+                src={process.env.PUBLIC_URL + '/images/icon/testProfile.png'}
+              />
             </div>
-            <div className="acc-btn-wrap">
-              <button type="button" className="basic">
-                내 서제
-              </button>
-              <button type="button" className="basic">
-                도움말
-              </button>
-            </div>
-          </article>
+            <strong className="acc-id">mewmew</strong>
+            <span className="acc-email">testID.test.com</span>
+          </div>
+
+          <p>----팔로워 / 팔로잉</p>
+          <a href="#" className="acc-counter">
+            팔로워 | <strong className="num">225</strong>
+          </a>
+          <a href="#" className="acc-counter">
+            팔로잉 | <strong className="num">225</strong>
+          </a>
         </div>
       </div>
     </div>
