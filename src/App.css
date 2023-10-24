@@ -24,7 +24,7 @@
   height: 26px;
   border-radius: 50%;
   border:2px solid rgba(255, 255, 255, 0.2);
-  padding: 12px;
+  padding: 20px;
 
 }
 
@@ -34,7 +34,7 @@
   height: 26px;
   border-radius: 50%;
   border:2px solid rgba(255, 255, 255, 0.2);
-  padding: 12px;
+  padding: 20px;
 }
 
 .share-Icon {
@@ -43,7 +43,7 @@
   height: 26px;
   border-radius: 50%;
   border:2px solid rgba(255, 255, 255, 0.2);
-  padding: 12px;
+  padding: 20px;
 
 }
 
@@ -69,7 +69,7 @@
 }
 .container-Box {
   position: relative;
-  left:1783px;
+  left:1763px;
   top: 485px;
 }
 
