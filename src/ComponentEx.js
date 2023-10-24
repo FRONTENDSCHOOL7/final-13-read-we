@@ -332,6 +332,82 @@ function ComponentEx() {
             팔로잉 | <strong className="num">225</strong>
           </a>
         </div>
+
+        {/*================== 모달 팝업 ==================*/}
+        <div className="ex-content full modal-area">
+          {/* 모달 팝업 영역 */}
+          <div className="modal-wrap">
+            <h3 className="modal-title">도서 상세 정보</h3>
+            <div className="modal-content row-2">
+              <div className="row-2">
+                <div className="book-info-obj">
+                  <img
+                    alt="책 이미지"
+                    src={process.env.PUBLIC_URL + '/images/testBook.png'}
+                  />
+                  <button
+                    type="button"
+                    className="basic w-100 round-full line md"
+                  >
+                    <i className="icon icon-star"></i> 책 찜하기
+                  </button>
+                  {/* 이미 찜한 책일 경우 */}
+                  {/* <button
+                    type="button"
+                    className="basic w-100 round-full line md"
+                  >
+                    <i className="icon icon-star-active"></i> 찜한 책
+                  </button> */}
+                </div>
+                <div className="book-info-text">
+                  <strong className="book-public">
+                    <span>출판사 |</span> BJPUBLIC
+                  </strong>
+                  <h3 className="book-title">
+                    누구나 쉽게 배우는 자바스크립트
+                  </h3>
+                  <div>
+                    <span className="tag orange">지은이 / 옮긴이</span>
+                    <strong class="book-author">닉 모건 / 김태곤,이미령</strong>
+                  </div>
+                  <p class="book-content scrollArea">
+                    제1항의 탄핵소추는 국회재적의원 3분의 1 이상의 발의가 있어야
+                    하며, 그 의결은 국회재적의원 과반수의 찬성이 있어야 한다.
+                    제1항의 탄핵소추는 국회재적의원 3분의 1 이상의 발의가 있어야
+                    하며, 그 의결은 국회재적의원 과반수의 찬성이 있어야 한다.
+                    제1항의 탄핵소추는 국회재적의원 3분의 1 이상의 발의가 있어야
+                    하며, 그 의결은 국회재적의원 과반수의 찬성이 있어야 한다.
+                    다만, 대통령에 대한 탄핵소추는 국회재적의원 과반수의 발의와
+                    국회재적의원 3분의 2 이상의 찬성이 있어야 한다.제1항의
+                    탄핵소추는 국회재적의원 3분의 1 이상의 발의가 있어야하며, 그
+                    의결은 국회재적의원 과반수의 찬성이 있어야 한다.다만,
+                    대통령에 대한 탄핵소추는 국회재적의원 과반수의 발의와
+                    국회재적의원3분의 2 이상의 찬성이 있어야 한다.제1항의
+                    탄핵소추는국회재적의원 3분의 1 이상의 발의가 있어야하며,그
+                    의결은 국회재적의원 과반수의 찬성이 있어야 한다.다만,
+                    대통령에 대한 탄핵소추는 국회재적의원 과반수
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div className="modal-footer">
+              <div className="row-2">
+                <p className="notice-text">
+                  찜한 목록은 [마이페이지]에서 볼 수 있어요!
+                </p>
+                <button type="button" className="basic sm round-full">
+                  구매하기
+                </button>
+              </div>
+            </div>
+            <button
+              type="button"
+              className="basic orange basic shadow-none round-none w-100"
+            >
+              확인
+            </button>
+          </div>
+        </div>
       </div>
     </div>
   );
