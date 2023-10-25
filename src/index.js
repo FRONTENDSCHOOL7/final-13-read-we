@@ -12,9 +12,12 @@ import Login from './Login';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <App />
     <Login></Login>
     <Join></Join>
+    <br></br>
+    <br></br>
+    <br></br>
+    <br></br>
     <ComponentEx />
     <Header></Header>
     <Footer></Footer>
