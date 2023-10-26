@@ -1,6 +1,7 @@
 import React from 'react';
+import { CounterBtn } from '../button/BtnStyleEtc';
 // 게시물 카드섹션
-const MainCard = () => {
+const MainCard = (props) => {
   return (
     <ul className="home-post">
       <li>
@@ -8,38 +9,26 @@ const MainCard = () => {
           <div className="post-info">
             <div className="user">
               <div className="img-wrap">
-                <img
-                  alt="프로필 이미지"
-                  src={process.env.PUBLIC_URL + '/images/icon/testProfile.png'}
-                />
+                <img alt="프로필 이미지" src={`/images/${props.imgSrc}`} />
               </div>
               <span>
                 by
-                <strong>username</strong>
+                <strong>{props.userName}</strong>
               </span>
             </div>
             <div className="ect">
               <div className="like-comment">
-                <button className="like-counter">
-                  <i className="icon icon-like"></i>
-                  <strong>250</strong>
-                </button>
-                <button className="comment-counter">
-                  <i className="icon icon-comment"></i>
-                  <strong>250</strong>
-                </button>
-                <i className="icon icon-share"></i>
-                <span>Oct.10.2023</span>
+                {/* <CounterBtn type="comment" count={props.cmt} />
+                <CounterBtn type="like" count={props.like} /> */}
+                <i className="icon icon-share" />
+                <span>{props.date}</span>
               </div>
             </div>
           </div>
           <div className="post-content">
             <div className="book-search-bth">
               <button type="button">
-                <img
-                  alt="프로필 이미지"
-                  src={process.env.PUBLIC_URL + '/images/icon/testProfile.png'}
-                />
+                <img alt="프로필 이미지" src={`/images/${props.imgSrc}`} />
                 <p>
                   책 정보 보기
                   <i className="icon icon-search-btn"></i>
@@ -48,8 +37,8 @@ const MainCard = () => {
             </div>
             <div className="book-info">
               <h3 className="book-info-title">
-                누구나 쉽게 배우는 자바스크립트
-                <span className="tag hit">HIT</span>
+                {props.title}
+                {props.hit ? <span className="tag hit">HIT</span> : ''}
               </h3>
               <div className="book-score">
                 <i className="icon icon-star-active"></i>
@@ -61,20 +50,15 @@ const MainCard = () => {
               </div>
               <div className="book-author">
                 <p>
-                  농담곰이
+                  {props.author}
                   <span>저</span>
                 </p>
                 <p>
-                  dalgomi
+                  {props.public}
                   <span>출판</span>
                 </p>
               </div>
-              <p className="book-content">
-                제1항의 탄핵소추는 국회재적의원 3분의 1 이상의 발의가 있어야
-                하며, 그 의결은 국회재적의원 과반수의 찬성이 있어야 한다. 다만,
-                대통령에 대한 탄핵소추는 국회재적의원 과반수의 발의와
-                국회재적의원 3분의 2 이상의 찬성이 있어야 한다.
-              </p>
+              <p className="book-content">{props.content}</p>
               <div className="tag-wrap">
                 <span className="tag gray">에세이</span>
                 <span className="tag gray">고양이</span>
@@ -84,14 +68,14 @@ const MainCard = () => {
           </div>
           <div className="post-footer">
             <div className="like-comment">
-              <button className="like-counter">
-                <i className="icon icon-like"></i>
-                <strong>250</strong>
-              </button>
-              <button className="comment-counter">
-                <i className="icon icon-comment"></i>
-                <strong>250</strong>
-              </button>
+              <CounterBtn
+                type="comment"
+                count={props.cmt ? props.cmt : '첫번째 댓글을 남겨보세요!'}
+              />
+              <CounterBtn
+                type="like"
+                count={props.like ? props.like : '첫번째 좋아요를 눌러보세요!'}
+              />
             </div>
           </div>
         </a>

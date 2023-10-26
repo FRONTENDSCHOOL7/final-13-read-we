@@ -98,6 +98,7 @@ ul {
 .ex-content.row {
   flex-direction: row;
   align-items: center;
+  flex-wrap: wrap;
 }
 
 .ex-content>h2 {
@@ -576,7 +577,7 @@ span.tag.hit {
 }
 
 .acc-info .acc-img {
-  margin: 0 auto;
+  margin: 12px auto;
   width: 146px;
   height: 146px;
   background-color: #D9D9D9;
@@ -590,6 +591,7 @@ span.tag.hit {
 }
 
 .acc-id {
+  padding-top: 8px;
   display: block;
   font-size: 24px;
   font-weight: 700;
@@ -629,7 +631,11 @@ span.tag.hit {
 
 /*modal*/
 .modal-wrap {
+  width: calc(100% - 50px);
+  max-width: 633px;
   position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
   padding-top: 40px;
   background-color: #fff;
   border-radius: 15px;
