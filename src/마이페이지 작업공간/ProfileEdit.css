@@ -1,0 +1,38 @@
+
+.edit-profile {
+  position: absolute;
+  top: 20%;
+  left: 50%;
+  margin-bottom: 100px;
+  transform: translate(-50%, -50%);
+  font-weight: bold;
+  font-size: 24px;
+}
+
+.parent {
+  display: flex;
+  justify-content: center;
+}
+
+.xsm {
+  position: absolute;
+  top: 55%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  margin-top: 10px;
+}
+
+.gray {
+  margin-top: 40px;
+  margin-bottom: 10px;
+}
+
+.btn-parent {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.wroung-num {
+  color: red;
+}
