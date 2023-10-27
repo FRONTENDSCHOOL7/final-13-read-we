@@ -1,0 +1,67 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+.MainContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 12px;
+  position: relative;
+}
+
+.MProFloat{
+  position: fixed;
+  bottom: 36px;
+  left: 20%;
+}
+
+.outerContainer {
+  display: flex;
+  justify-content: center;
+  position: relative; /* 수정됨 */
+  max-width: 1180px; /* 전체 너비를 1180px로 제한 */
+  width: 100%;
+}
+
+.MainPostContainer {
+  display: flex;
+  height: 100%;
+  flex-direction: column;
+  border: 1px solid var(--disable-gray-3, #C7C7C7);
+  width: 681px;
+}
+
+.MainLeftContainer {
+  width: 230px;
+  padding-right: 20px;
+  padding-top: 89px;
+  display: flex;
+  flex-direction: column;
+  gap: 70px;
+}
+
+
+.MainRightContainer {
+}
+
+.PostSection{
+  width: 100%; 
+}
+
+.HomeButton{
+  height: 68px;
+  border-bottom: 1px solid var(--disable-gray-3, #C7C7C7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.HomeButton button{
+  color: black;
+  font-size: 18px;
+  font-weight: 700;
+  font-family: 'WorkSans';
+}
