@@ -506,7 +506,7 @@ span.tag.hit {
   display: flex;
   align-items: center;
   flex-wrap: nowrap;
-  gap: 47px;
+  gap: 30px;
 }
 
 .acc-bar .acc-img {
@@ -847,4 +847,10 @@ span.tag.hit {
   width: 15px;
   height: 15px;
   background-image: url(/public/images/icon/star-active.svg);
+}
+
+.icon-remove {
+  width: 28px;
+  height: 28px;
+  background-image: url(/public/images/icon/remove.svg);
 }
