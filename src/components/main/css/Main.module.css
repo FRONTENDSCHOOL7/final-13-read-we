@@ -12,17 +12,20 @@
   position: relative;
 }
 
-.MProFloat{
+.MProFloat {
   position: fixed;
   bottom: 36px;
-  left: 20%;
+  left: calc((100% - 1180px) / 2);
+  transform: translateX(50%);
 }
 
 .outerContainer {
   display: flex;
   justify-content: center;
-  position: relative; /* 수정됨 */
-  max-width: 1180px; /* 전체 너비를 1180px로 제한 */
+  position: relative;
+  /* 수정됨 */
+  max-width: 1180px;
+  /* 전체 너비를 1180px로 제한 */
   width: 100%;
 }
 
@@ -45,13 +48,18 @@
 
 
 .MainRightContainer {
+  width: 220px;
+  margin-left: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
 }
 
-.PostSection{
-  width: 100%; 
+.PostSection {
+  width: 100%;
 }
 
-.HomeButton{
+.HomeButton {
   height: 68px;
   border-bottom: 1px solid var(--disable-gray-3, #C7C7C7);
   display: flex;
@@ -59,9 +67,94 @@
   align-items: center;
 }
 
-.HomeButton button{
+.HomeButton button {
   color: black;
   font-size: 18px;
   font-weight: 700;
   font-family: 'WorkSans';
+}
+
+/* MainPostCard */
+
+.PostCardBox {
+  padding-top: 40px;
+
+}
+
+.Postbar {
+  width: 100%;
+  display: flex;
+  align-items: flex-start;
+  flex-wrap: nowrap;
+  gap: 47px;
+  padding: 0 38px;
+  margin-bottom: 55px;
+}
+
+.Postbar .PostProfileImg {
+  width: 66px;
+  height: 66px;
+  background-color: #A7A7A7;
+  border-radius: 100%;
+  border: 1px solid #f1f1f1;
+  overflow: hidden;
+}
+
+.Postbar .PostProfileImg>img {
+  width: 100%;
+}
+
+.PostBar input {
+  color: black;
+  top: 0;
+}
+
+.PostBoxIconButton {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 38px;
+  margin-bottom: 55px;
+}
+
+.ShowPost {
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-top: 1px solid var(--disable-gray-3, #C7C7C7);
+  border-bottom: 1px solid var(--disable-gray-3, #C7C7C7);
+}
+
+.ShowPost div {
+  color: #E87C3E;
+  font-family: Work Sans;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 700;
+}
+
+/* Trend */
+
+.TrendContainer {
+  /* display: flex;
+  justify-content: center;
+  flex-direction: column; */
+  border: 1px solid var(--disable-gray-3, #C7C7C7);
+  border-radius: 10px;
+  background: #FBFBFB;
+}
+
+.TrendTitle {
+  display: flex;
+  justify-content: center;
+  font-size: 14px;
+  font-weight: 700;
+  padding-top: 25px;
+  padding-bottom: 43px;
+}
+
+.TrendContainer .TrendUnits {
+  padding-left: 27px;
+
 }

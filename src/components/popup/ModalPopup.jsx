@@ -2,6 +2,9 @@ import React from 'react';
 import { BasicBtn } from '../button/BtnStyle';
 
 const ModalPopup = (props) => {
+  const closePopup = () => {
+    props.closePopup();
+  };
   return (
     <div className="modal-wrap">
       <h3 className="modal-title">도서 상세 정보</h3>
@@ -46,7 +49,13 @@ const ModalPopup = (props) => {
           </BasicBtn>
         </div>
       </div>
-      <BasicBtn round="0px" bgcolor="#E87C3E" shadow="none" wid="100%">
+      <BasicBtn
+        round="0px"
+        bgcolor="#E87C3E"
+        shadow="none"
+        wid="100%"
+        onClick={closePopup}
+      >
         확인
       </BasicBtn>
     </div>

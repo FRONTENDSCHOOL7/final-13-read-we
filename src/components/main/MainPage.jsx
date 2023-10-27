@@ -1,10 +1,15 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Header from '../../Header';
 import styles from './css/Main.module.css';
 import PostSection from './PostSection';
 import MainNavBtn from '../button/MainNavBtn';
 import { BasicBtn } from '../button/BtnStyle';
 import MainProfileCard from './MainProfileCard';
+import MainPostCard from './MainPostCard';
+import { IconIpt } from '../input/IptStyleEtc';
+import { BasicIpt } from '../input/IptStyle';
+import Trend from './Trend';
+import Recent from './RecentSection';
 
 const MainPage = () => {
   return (
@@ -29,6 +34,7 @@ const MainPage = () => {
             <div className={styles.HomeButton}>
               <button>Home</button>
             </div>
+            <MainPostCard imgSrc="icon/testProfile.png"></MainPostCard>
             <PostSection
               date="2023.10.26"
               imgSrc="icon/testProfile.png"
@@ -45,7 +51,14 @@ const MainPage = () => {
             <PostSection className={styles.PostSection}></PostSection>
             <PostSection className={styles.PostSection}></PostSection>
             <PostSection className={styles.PostSection}></PostSection>
-            <div className={styles.MainRightContainer}></div>
+          </div>
+          <div className={styles.MainRightContainer}>
+            <IconIpt>
+              <BasicIpt sm="true" placeholder="검색" />
+              <i class="icon icon-search" />
+            </IconIpt>
+            {/* <Recent></Recent> */}
+            <Trend></Trend>
           </div>
         </div>
       </div>

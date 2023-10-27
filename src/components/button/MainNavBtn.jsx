@@ -1,8 +1,8 @@
 import React from 'react';
 // 메인페이지 좌측 네비게이션 버튼
-const MainNavBtn = () => {
+const MainNavBtn = ({ className }) => {
   return (
-    <ul className="home-nav">
+    <ul className={`home-nav ${className}`}>
       <li>
         <a href="#" className="home-nav-list active">
           <i className="icon icon-home"></i>
