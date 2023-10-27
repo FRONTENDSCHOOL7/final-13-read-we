@@ -1,32 +1,42 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Header from '../Header';
 import './ProfileEdit.css';
 import ProfileInfoSetting from '../components/mypage/ProfileInfoSetting';
 
-const ProfileEdit001 = () => {
-  //코파일럿이 알려준 비밀번호가 일치하지 않을때 '비밀번호가 일치하지 않습니다!' 라는 메세지를 띄우는 코드
+const ProfileEdit = () => {
+  //비밀번호가 일치하지 않을때 '비밀번호가 일치하지 않습니다!' 라는 메세지를 띄우는 코드
 
-  // const [password, setPassword] = useState('');
-  // const [confirmPassword, setConfirmPassword] = useState('');
-  // const [showError, setShowError] = useState(false);
+  const [nickname, setNickname] = useState('');
+  const [password, setPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
+  const [passwordMessage, setPasswordMessage] = useState('');
 
-  // const handlePasswordChange = (event) => {
-  //   setPassword(event.target.value);
-  // };
+  const handleNicknameChange = (event) => {
+    setNickname(event.target.value);
+  };
 
-  // const handleConfirmPasswordChange = (event) => {
-  //   setConfirmPassword(event.target.value);
-  // };
+  const handlePasswordChange = (event) => {
+    setPassword(event.target.value);
+  };
 
-  // const handleSubmit = (event) => {
-  //   event.preventDefault();
-  //   if (password !== confirmPassword) {
-  //     setShowError(true);
-  //   } else {
-  //     setShowError(false);
-  //     // 비밀번호가 일치할 때의 처리
-  //   }
-  // };
+  const handleConfirmPasswordChange = (event) => {
+    setConfirmPassword(event.target.value);
+    if (event.target.value !== password) {
+      setPasswordMessage('비밀번호가 다릅니다!');
+    } else {
+      setPasswordMessage('비밀번호가 일치합니다.');
+    }
+  };
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    if (password !== confirmPassword) {
+      setPasswordMessage('비밀번호가 다릅니다!');
+    } else {
+      setPasswordMessage('비밀번호가 일치합니다.');
+    }
+  };
+
   return (
     <div>
       <Header />
@@ -39,9 +49,15 @@ const ProfileEdit001 = () => {
         }
       </div>
 
+      {/* 닉네임도 usestate가 필요함  */}
       {
         /* 닉네임 인풋창 삽입 */
-        <input type="text" placeholder="닉네임" className="basic gray" />
+        <input
+          type="text"
+          placeholder="닉네임"
+          className="basic gray"
+          onChange={handleNicknameChange}
+        />
       }
       <p>7자 이내로 입력하세요</p>
 
@@ -51,8 +67,9 @@ const ProfileEdit001 = () => {
           <i className="icon icon-lock-w"></i>
           <input
             type="text"
-            placeholder="비밀번호 입력"
+            placeholder="비밀번호를 입력하세요"
             className="basic gray"
+            onChange={handlePasswordChange}
           />
         </div>
       }
@@ -66,15 +83,16 @@ const ProfileEdit001 = () => {
             type="text"
             placeholder="비밀번호 2차 확인"
             className="basic gray"
+            onChange={handleConfirmPasswordChange}
           />
         </div>
       }
-      <p className="wroung-num">비밀번호가 다릅니다!</p>
+      <p className="wroung-num">{passwordMessage}</p>
 
       <div className="btn-parent">
         {
           /* 확인 버튼 삽입 */
-          <button type="button" className="basic md">
+          <button type="button" className="basic md" onClick={handleSubmit}>
             확인
           </button>
         }
@@ -83,4 +101,4 @@ const ProfileEdit001 = () => {
   );
 };
 
-export default ProfileEdit001;
+export default ProfileEdit;
