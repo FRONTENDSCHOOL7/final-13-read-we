@@ -40,6 +40,8 @@ export default function LoginPage() {
       const json = await res.json();
       const token = json.user.token;
       console.log('로그인 성공!!!!');
+      //4. 토큰값 로컬 스토리지에 저장하기
+      localStorage.setItem('token', token);
     } catch (error) {
       console.error('로그인 요청 오류:', error);
       alert('로그인 요청에 오류가 발생했습니다.');
