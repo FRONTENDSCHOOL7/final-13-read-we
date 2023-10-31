@@ -1,16 +1,44 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import styles from './css/myPage.module.css';
 import { BasicBtn } from '../components/button/BtnStyle';
+import Header from '../Header';
 
 const MyLibrary = () => {
+  const token = localStorage.getItem('token');
+  const baseUrl = 'https://api.mandarin.weniv.co.kr';
+
+  const [myInfo, setMyInfo] = useState();
+  const [isProfileLoading, setIsProfileLoading] = useState(true);
+
+  useEffect(() => {
+    const getMyInfo = async () => {
+      const reqUrl = baseUrl + '/user/myinfo';
+      const res = await fetch(reqUrl, {
+        method: 'GET',
+        headers: {
+          Authorization: `Bearer ${token}`
+        },
+      });
+      const json = await res.json();
+      setMyInfo(json);
+      setIsProfileLoading(false);
+      console.log(myInfo); 
+    };
+    getMyInfo();
+  },[]);
+
   const [tab, setTab] = useState(0);
 
   return (
+    <>
+    {isProfileLoading == false ?
+    <>
+    <Header />
     <div className={styles.pageWrap}>
       <section className={styles.contentArea}>
         <h2 className={styles.pageTitle}>내 서재</h2>
         <h3 className={styles.myLibraryTopBanner}>
-          <strong>mewmew님의 서재에요</strong>
+          <strong>{myInfo.user.username}님의 서재에요</strong>
           <p>지금까지 읽은 책과 내 독서 현황을 알수 있는 공간입니다!</p>
           <img src={process.env.PUBLIC_URL + '/images/StackUpBooks_2.png'} />
         </h3>
@@ -182,6 +210,9 @@ const MyLibrary = () => {
         </article>
       </section>
     </div>
+    </>
+    : <p>now loading</p>}
+    </>
   );
 };
 

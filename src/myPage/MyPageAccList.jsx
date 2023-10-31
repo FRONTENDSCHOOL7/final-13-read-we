@@ -1,12 +1,39 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import styles from './css/myPage.module.css';
 import { BasicBtn } from '../components/button/BtnStyle';
 import FollowerList from './FollowerList';
 import FollowingList from './FollowingList';
+import Header from '../Header';
 
 const MyPageAccList = () => {
+  const token = localStorage.getItem('token');
+  const baseUrl = 'https://api.mandarin.weniv.co.kr';
+
+  const [myInfo, setMyInfo] = useState();
+  const [isProfileLoading, setIsProfileLoading] = useState(true);
+
+  useEffect(() => {
+    const getMyInfo = async () => {
+      const reqUrl = baseUrl + '/user/myinfo';
+      const res = await fetch(reqUrl, {
+        method: 'GET',
+        headers: {
+          Authorization: `Bearer ${token}`
+        },
+      });
+      const json = await res.json();
+      setMyInfo(json);
+      setIsProfileLoading(false);
+    };
+    getMyInfo();
+  },[]);
+
   const [tab, setTab] = useState(0);
   return (
+    <>
+    {isProfileLoading == false ?
+    <>
+    <Header />
     <div className={styles.pageWrap}>
       <section className={styles.contentArea}>
         <h2 className="a11y-hidden">팔로워/팔로잉 리스트</h2>
@@ -35,17 +62,20 @@ const MyPageAccList = () => {
         <div className={styles.accSum}>
           <p>
             <i className="icon icon-like" />
-            {tab == 0 ? 345 : 12}
+            {tab == 0 ? myInfo.user.followerCount : myInfo.user.followingCount}
             <span>명</span>
           </p>
         </div>
         <div>
           <ul className={`scrollArea ${styles.userList}`}>
-            {tab == 0 ? <FollowerList /> : <FollowingList />}
+            {tab == 0 ? <FollowerList myInfo = {myInfo}/> : <FollowingList myInfo= {myInfo} />}
           </ul>
         </div>
       </section>
     </div>
+    </>
+    : <p>now loading</p>}
+    </>
   );
 };
 

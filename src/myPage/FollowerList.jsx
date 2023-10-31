@@ -1,41 +1,58 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import ProfileList from '../components/mypage/ProfileList';
+import { useNavigate } from 'react-router-dom';
 
-const FollowerList = () => {
-  const exData = [
-    {
-      imgSrc: 'icon/testProfile.png',
-      userName: '팔로워 리스트 입니다용',
-      userEmail: 'test@test.com',
-    },
-    {
-      imgSrc: 'StackUpBooks.png',
-      userName: '집에 있지만 집에 가고 싶습니다',
-      userEmail: 'iwantgohome@test.com',
-    },
-    {
-      imgSrc: 'testBook.png',
-      userName: '저도...',
-      userEmail: 'yanadoo..@test.com',
-    },
-    {
-      imgSrc: 'icon/testProfile.png',
-      userName: '팔로워 리스트 입니다용',
-      userEmail: 'test@test.com',
-    },
-  ];
+const FollowerList = ( {myInfo} ) => {
+  const [followerList, setFollowerList] = useState('');
+  const [isLoading, setIsLoading] = useState(true);
+  
+  const baseUrl = 'https://api.mandarin.weniv.co.kr';
+  const accName = myInfo.user.accountname;
+  const token = localStorage.getItem('token');
+  const navigate= useNavigate();
 
-  return exData.map((e, index) => {
-    return (
-      <ProfileList
-        key={index}
-        imgSrc={e.imgSrc}
-        userName={e.userName}
-        userEmail={e.userEmail}
-        type="dot"
-      />
-    );
-  });
+  useEffect(() => {
+    const getFollower = async () => {
+      const reqUrl = `${baseUrl}/profile/${accName}/follower`;
+      const res = await fetch(reqUrl, {
+        method: 'GET',
+        headers: {
+          "Authorization" : `Bearer ${token}`,
+          "Content-type" : "application/json"
+        }
+      });
+      const json = await res.json();
+      setFollowerList(json);
+      setIsLoading(false);
+    };
+    getFollower();
+  },[]);
+
+  return(
+    <>
+      {isLoading ||
+        followerList.map((e, index) => {
+          return (
+            <ProfileList
+              key={index}
+              imgSrc={baseUrl + '/' + e.image.replace(/^.*\//, '')}
+              userName={e.username}
+              userEmail="email"
+              type="dot"
+              pageEvent = {(event) => {
+                event.preventDefault
+                navigate('/yourpage', {
+                  state: {
+                    id: e.accountname
+                  }
+                });
+              }}
+            />
+          );
+        })
+      }
+    </>
+  )
 };
 
 export default FollowerList;
