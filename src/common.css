@@ -306,8 +306,8 @@ span.tag.hit {
   position: relative;
   color: #000;
 }
-
-.home-nav-list.active::after {
+.home-nav-list.active::after,
+.home-nav-list:hover::after {
   content: '';
   position: absolute;
   left: 25px;
@@ -337,6 +337,7 @@ span.tag.hit {
 }
 
 .home-post li .home-post-list {
+  width: 100%;
   display: block;
   padding: 26px 37px;
   border-radius: 28px;
