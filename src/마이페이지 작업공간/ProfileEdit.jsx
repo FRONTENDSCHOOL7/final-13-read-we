@@ -7,6 +7,23 @@ const ProfileEdit = () => {
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
   const [passwordMessage, setPasswordMessage] = useState('');
+  //상태 변수 추가
+  const [accountName, setAccountName] = useState('');
+  const [intro, setIntro] = useState('');
+  const [image, setImage] = useState('');
+
+  //입력 핸들러 추가
+  const handleAccountNameChange = (event) => {
+    setAccountName(event.target.value);
+  };
+
+  const handleIntroChange = (event) => {
+    setIntro(event.target.value);
+  };
+
+  const handleImageChange = (event) => {
+    setImage(event.target.value);
+  };
 
   const handleNicknameChange = (event) => {
     setNickname(event.target.value);
@@ -37,9 +54,9 @@ const ProfileEdit = () => {
         body: JSON.stringify({
           user: {
             username: nickname,
-            accountname: '', // 사용자가 입력한 계정 이름으로 교체해야 합니다.
-            intro: '', // 사용자가 입력한 소개로 교체해야 합니다.
-            image: '', // 사용자가 입력한 이미지 URL로 교체해야 합니다.
+            accountname: accountName, // 사용자가 입력한 계정 이름으로 교체해야 합니다.
+            intro: intro, // 사용자가 입력한 소개로 교체해야 합니다.
+            image: image, // 사용자가 입력한 이미지 URL로 교체해야 합니다.
           },
         }),
       })
@@ -65,9 +82,35 @@ const ProfileEdit = () => {
       <h1 className="edit-profile">프로필 수정</h1>
 
       <div className="parent">
+        {/* 유저 프로필 사진 삽입 + 닉네임 노출 */}
         <ProfileInfoSetting />
       </div>
 
+      {/* 계정 이름 입력 필드 */}
+      <input
+        type="text"
+        placeholder="계정 이름"
+        className="basic gray"
+        onChange={handleAccountNameChange}
+      />
+
+      {/* 소개 입력 필드 */}
+      <input
+        type="text"
+        placeholder="소개"
+        className="basic gray"
+        onChange={handleIntroChange}
+      />
+
+      {/* 이미지 URL 입력 필드 */}
+      <input
+        type="text"
+        placeholder="이미지 URL"
+        className="basic gray"
+        onChange={handleImageChange}
+      />
+
+      {/* 닉네임 입력 필드 */}
       <input
         type="text"
         placeholder="닉네임"
