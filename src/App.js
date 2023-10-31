@@ -1,5 +1,9 @@
 import { useState } from 'react';
 import LoginPage from './login-Page/LoginPage';
+import MainPage from './components/main/MainPage';
+import { Routes, Route, Link } from 'react-router-dom';
+import CmtList from './main-page/CmtList';
+import MyPageNote from './마이페이지 작업공간/MyPageNote';
 
 function App() {
   //myInfo - 로그인한 유저의 정보(토큰)값 저장
@@ -20,11 +24,12 @@ function App() {
   };
 
   return (
-    <div>
-      <h1>App Initialization</h1>
-      <LoginPage />
-      <button onClick={getMyInfo}>내정보 확인</button>
-    </div>
+    <Routes>
+      <Route path="/main" element={<MainPage />} />
+      {/* <Route path="/comment" element={<CmtList />} /> */}
+      <Route path="/mypage" element={<MyPageNote />} />
+    </Routes>
+    // <MainPage />
   );
 }
 

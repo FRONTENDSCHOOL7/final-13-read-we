@@ -1,7 +1,7 @@
 import React from 'react';
 import { BasicBtn } from '../button/BtnStyle';
 
-const ModalPopup = (props) => {
+const BookDetailModal = (props) => {
   const closePopup = () => {
     props.closePopup();
   };
@@ -62,4 +62,4 @@ const ModalPopup = (props) => {
   );
 };
 
-export default ModalPopup;
+export default BookDetailModal;
