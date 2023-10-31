@@ -30,7 +30,7 @@ const MainNavBtn = ({ className }) => {
           className="home-nav-list"
           onClick={(e) => {
             e.preventDefault(); // 기본 링크 동작을 막습니다.
-            navigate('/bookmark');
+            navigate('/mypage/library');
           }}
         >
           <i className="icon icon-book"></i>

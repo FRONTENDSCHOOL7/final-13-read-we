@@ -3,6 +3,7 @@ import styled from 'styled-components';
 
 const EmptyListStyle = styled.div`
   margin: 0 auto;
+  padding-top: 100px;
   height: 100%;
   display: flex;
   flex-direction: column;
