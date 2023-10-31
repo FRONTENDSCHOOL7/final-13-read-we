@@ -1,42 +1,42 @@
-li {
+.cmtList {
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
-li .cmtImgText {
+.cmtList .cmtImgText {
   display: flex;
   gap: 33px;
 }
 
-li .cmtImgText .cmtImg {
+.cmtList .cmtImgText .cmtImg {
   width: 134px;
   height: 134px;
   border-radius: 70%;
   overflow: hidden;
 }
 
-li .cmtImgText .cmtImg img {
+.cmtList .cmtImgText .cmtImg img {
   width: 100%;
   height: 100%;
   object-fit: cover;
 }
 
-li .cmtImgText .cmtText {
+.cmtList .cmtImgText .cmtText {
   display: flex;
   flex-direction: column;
   gap: 32px;
 }
 
-li .cmtImgText .cmtText strong {
+.cmtList .cmtImgText .cmtText strong {
   font-weight: 700;
 }
 
-li .cmtImgText .cmtText p {
+.cmtList .cmtImgText .cmtText p {
   font-size: 20px;
 }
 
-li .dateLike span {
+.cmtList .dateLike span {
   color: #a7a7a7;
   margin-right: 51px;
 }
