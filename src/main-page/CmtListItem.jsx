@@ -6,18 +6,15 @@ const CmtListItem = ({ cmtItem }) => {
     <li className={styles.cmtList}>
       <div className={styles.cmtImgText}>
         <div className={styles.cmtImg}>
-          <img
-            src={process.env.PUBLIC_URL + `/images/${cmtItem.imgSrc}`}
-            alt="프로필"
-          />
+          <img src={cmtItem.image} alt="프로필" />
         </div>
         <div className={styles.cmtText}>
-          <strong>{cmtItem.userName}</strong>
-          <p>{cmtItem.cmt}</p>
+          <strong>{cmtItem.author.username}</strong>
+          <p>{cmtItem.content}</p>
         </div>
       </div>
       <div className={styles.dateLike}>
-        <span>{cmtItem.date}</span>
+        <span>{new Date(cmtItem.createdAt).toLocaleDateString('ko-KR')}</span>
         <button className="like-counter">
           <i className="icon icon-like" />
         </button>

@@ -1,50 +1,94 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import styles from './PostDetails.module.css';
 import Header from '../Header';
 import MainCard from '../components/main/PostSection';
 import CmtList from './CmtList';
 
 const PostDetails = () => {
-  // 임시 Mock Data
-  const cmtList = [
-    {
-      imgSrc: 'icon/testProfile.png',
-      userName: '예리니최고양',
-      cmt: '퍼가요~♡',
-      date: 'Oct.10.2023',
-    },
-    {
-      imgSrc: 'icon/testProfile.png',
-      userName: '승미승미',
-      cmt: '좋은 글 잘 봤습니다.',
-      date: 'Oct.10.2023',
-    },
-  ];
+  const [cmt, setCmt] = useState('');
+  const [cmtList, setCmtList] = useState([]);
+
+  const leaveCmt = async (cmt) => {
+    const baseUrl = 'https://api.mandarin.weniv.co.kr';
+    const reqPath = '/post/653f653cb2cb205663908e4f/comments';
+    const reqUrl = baseUrl + reqPath;
+    const token = localStorage.getItem('token');
+
+    const cmtData = {
+      comment: {
+        content: cmt,
+      },
+    };
+
+    try {
+      await fetch(reqUrl, {
+        method: 'POST',
+        headers: {
+          Authorization: `Bearer ${token}`,
+          'Content-type': 'application/json',
+        },
+        body: JSON.stringify(cmtData),
+      });
+    } catch (error) {
+      alert('댓글 작성에 실패했습니다.');
+    }
+  };
+
+  const getCmtList = async () => {
+    const baseUrl = 'https://api.mandarin.weniv.co.kr';
+    const reqPath = '/post/653f653cb2cb205663908e4f/comments';
+    const reqUrl = baseUrl + reqPath;
+    const token = localStorage.getItem('token');
+
+    try {
+      const res = await fetch(reqUrl, {
+        method: 'GET',
+        headers: {
+          Authorization: `Bearer ${token}`,
+          'Content-type': 'application/json',
+        },
+      });
+
+      const json = await res.json();
+      const list = json.comments;
+      setCmtList(list);
+    } catch (error) {
+      console.error('존재하지 않는 게시글입니다.');
+    }
+  };
+
+  const handleCmtChange = (e) => {
+    setCmt(e.target.value);
+  };
+
+  const submitCmt = (e) => {
+    e.preventDefault();
+    leaveCmt(cmt);
+  };
+
+  useEffect(() => {
+    getCmtList();
+  }, [cmtList]);
 
   return (
     <div className={styles.container}>
       <Header />
       <div className={styles.innerContainer}>
         <h2 className="a11y-hidden">게시물 상세 페이지</h2>
-        <MainCard
-          imgSrc=""
-          userName="johndoe"
-          date="2023.10.16"
-          title="1984"
-          hit="true"
-          author="조지 오웰"
-          public="을유문화사"
-          content="조지 오웰의 대표작이자 생애 마지막 소설 『1984년』. 50년 만에 부활한 정통 세계문학 시리즈 「을유세계문학전집」의 48번째 책이다. 헉슬리의 <멋진 신세계>, 자미아틴의 <우리>와 함께 20세기 디스토피아 문학의 걸작으로 꼽히는 이 소설은 전체주의가 지배하는 미래 사회에 대한 암울한 상상을 보여준다."
-          cmt="5"
-          like="24"
-        />
+        <MainCard />
         <div className={styles.cmtContainer}>
           <h2 className="a11y-hidden">댓글 목록</h2>
           <CmtList cmtList={cmtList} />
         </div>
-        <form className="input-btn">
-          <input type="text" placeholder="댓글을 입력하세요." class="basic" />
-          <button type="submit" class="basic">
+        <form className="input-btn" onSubmit={submitCmt}>
+          <input
+            type="text"
+            placeholder="댓글을 입력하세요."
+            className="basic"
+            value={cmt}
+            onChange={handleCmtChange}
+          />
+          <button type="submit" className="basic" disabled={!cmt}>
             등록
           </button>
         </form>
