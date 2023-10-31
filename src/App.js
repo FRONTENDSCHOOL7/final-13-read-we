@@ -28,6 +28,7 @@ function App() {
 
   return (
     <Routes>
+      <Route path="/login" element={<LoginPage />} />
       <Route path="/main" element={<MainPage />} />
       {/* <Route path="/comment" element={<CmtList />} /> */}
       <Route path="/mypage" element={<MyPage />} />
