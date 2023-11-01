@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { CounterBtn } from '../button/BtnStyleEtc';
-import ModalPopup from '../popup/ModalPopup';
+import BookDetailModal from '../popup/BookDetailModal';
+import styles from './css/Main.module.css';
 
 // 게시물 카드섹션
 const MainCard = (props) => {
@@ -95,7 +96,7 @@ const MainCard = (props) => {
           </a>
         </li>
       </ul>
-      {showPopup && <ModalPopup closePopup={closePopup} {...props} />}
+      {showPopup && <BookDetailModal closePopup={closePopup} {...props} />}
     </>
   );
 };

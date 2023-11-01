@@ -306,8 +306,8 @@ span.tag.hit {
   position: relative;
   color: #000;
 }
-
-.home-nav-list.active::after {
+.home-nav-list.active::after,
+.home-nav-list:hover::after {
   content: '';
   position: absolute;
   left: 25px;
@@ -337,6 +337,7 @@ span.tag.hit {
 }
 
 .home-post li .home-post-list {
+  width: 100%;
   display: block;
   padding: 26px 37px;
   border-radius: 28px;
@@ -630,12 +631,24 @@ span.tag.hit {
 }
 
 /*modal*/
+.modal-area {
+  z-index: 500;
+}
+.modal-bg{
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.25);
+}
 .modal-wrap {
   width: calc(100% - 50px);
   max-width: 633px;
-  position: absolute;
+  position: fixed;
+  top: 50%;
   left: 50%;
-  transform: translateX(-50%);
+  transform: translate(-50%, -50%);
   padding-top: 40px;
   background-color: #fff;
   border-radius: 15px;

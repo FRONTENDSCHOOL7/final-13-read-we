@@ -11,7 +11,7 @@ const BasicBtn = styled.button`
   border-radius: ${(props) => props.round || `10px`};
   box-shadow: ${(props) =>
     props.shadow || `0px 0px 4px 0px rgba(0, 0, 0, 0.25)`};
-
+  font-weight: ${(props) => props.weight};
   ${(props) =>
     props.linestyle &&
     css`

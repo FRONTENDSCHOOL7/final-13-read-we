@@ -3,7 +3,7 @@ import styles from './CmtListItem.module.css';
 
 const CmtListItem = ({ cmtItem }) => {
   return (
-    <li>
+    <li className={styles.cmtList}>
       <div className={styles.cmtImgText}>
         <div className={styles.cmtImg}>
           <img

@@ -72,20 +72,23 @@
 
 /*내 서재*/
 .pageTitle {
+  display: inline-block;
   position: relative;
   font-size: 30px;
   font-weight: 700;
   margin-bottom: 40px;
 }
 .pageTitle::after {
-  position: absolute;
   content: '';
+  position: absolute;
+  left: 0;
+  bottom: -2px;
   height: 13px;
   background-color: #8DA3CD80;
-  width: 92px;
-  left: 0;
-  bottom: 5px;
+  width: 100%;
+
 }
+.myPageTopBanner,
 .myLibraryTopBanner {
   position: relative;
   width: 100%;
@@ -95,6 +98,13 @@
   color: #fff;
   margin-bottom: 40px;
 }
+
+.myPageTopBanner>img {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  width: 300px;
+}
 .myLibraryTopBanner>img {
   position: absolute;
   right: 0;
@@ -102,10 +112,12 @@
   width: 200px;
   transform: translateY(-50%);
 }
+.myPageTopBanner>strong,
 .myLibraryTopBanner>strong {
   font-size: 16px;
   font-weight: 700;
 }
+.myPageTopBanner>p,
 .myLibraryTopBanner>p {
   padding-top: 5px;
   font-size: 12px;
@@ -201,4 +213,81 @@
   display: -webkit-box;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 2;
+}
+
+/* 혜진님 코드 */
+
+.BL-box {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+  width: 100%;
+  height: 150px;
+  background-color: #000;
+  border-radius: 25px;
+  margin: 30px 0;
+  padding: 30px 400px 30px 30px;
+}
+
+.say-hi,
+.good-weather {
+  font-size: 20px;
+  width: 100%;
+  color: aliceblue;
+  padding-top: 10px;
+}
+
+.MP-Book {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  right: 0;
+  height: 200px;
+  bottom: 0px;
+}
+
+/* ------------------------------------------------------------ */
+.big-container {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 15px;
+}
+
+.profile-parent {
+  flex-shrink: 0;
+  width: 100%;
+  max-width: 280px;
+  height: 664px;
+}
+
+/* ------------------------------------------------------------ */
+
+.my-note {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  padding: 10px;
+  gap: 10px;
+  border-bottom: 1px solid #a7a7a7;
+}
+
+.left {
+  color: #A7A7A7;
+}
+
+.center {
+  font-weight: bold;
+  font-size: 24px;
+  padding-top: 10px;
+}
+
+.right {
+  font-weight: bold;
+}
+
+.list-parent {
+  width: 100%;
 }

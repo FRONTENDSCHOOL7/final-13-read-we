@@ -14,7 +14,7 @@ import Recent from './RecentSection';
 const MainPage = () => {
   return (
     <div className={styles.container}>
-      <Header></Header>
+      <Header />
       <div className={styles.MainContainer}>
         <div className={styles.outerContainer}>
           <div className={styles.MProFloat}>
@@ -25,8 +25,14 @@ const MainPage = () => {
             />
           </div>
           <div className={styles.MainLeftContainer}>
-            <MainNavBtn></MainNavBtn>
-            <BasicBtn md="true" bgcolor="#E87C3E" round="100px" wid="100%">
+            <MainNavBtn />
+            <BasicBtn
+              md="true"
+              bgcolor="#E87C3E"
+              round="100px"
+              wid="100%"
+              weight="600"
+            >
               POST
             </BasicBtn>
           </div>
@@ -34,7 +40,7 @@ const MainPage = () => {
             <div className={styles.HomeButton}>
               <button>Home</button>
             </div>
-            <MainPostCard imgSrc="icon/testProfile.png"></MainPostCard>
+            <MainPostCard imgSrc="icon/testProfile.png" />
             <PostSection
               date="2023.10.26"
               imgSrc="icon/testProfile.png"
@@ -47,10 +53,10 @@ const MainPage = () => {
               content="내요요요요용"
               like="11"
               cmt=""
-            ></PostSection>
-            <PostSection className={styles.PostSection}></PostSection>
-            <PostSection className={styles.PostSection}></PostSection>
-            <PostSection className={styles.PostSection}></PostSection>
+            />
+            <PostSection className={styles.PostSection} />
+            <PostSection className={styles.PostSection} />
+            <PostSection className={styles.PostSection} />
           </div>
           <div className={styles.MainRightContainer}>
             <IconIpt>
@@ -58,7 +64,7 @@ const MainPage = () => {
               <i class="icon icon-search" />
             </IconIpt>
             {/* <Recent></Recent> */}
-            <Trend></Trend>
+            <Trend />
           </div>
         </div>
       </div>

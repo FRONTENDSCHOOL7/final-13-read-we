@@ -1,50 +1,59 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import ProfileList from '../components/mypage/ProfileList';
+import { useNavigate } from 'react-router-dom';
 
-const FollowingList = () => {
-  const exData = [
-    {
-      imgSrc: 'StackUpBooks.png',
-      userName: '팔로잉 리스트 입니다용',
-      userEmail: 'test@test.com',
-    },
-    {
-      imgSrc: 'testBook.png',
-      userName: '집에 있지만 집에 가고 싶습니다',
-      userEmail: 'iwantgohome@test.com',
-    },
-    {
-      imgSrc: 'icon/testProfile.png',
-      userName: '저도...',
-      userEmail: 'yanadoo..@test.com',
-    },
-    {
-      imgSrc: 'StackUpBooks.png',
-      userName: '팔로잉 리스트 입니다용',
-      userEmail: 'test@test.com',
-    },
-    {
-      imgSrc: 'testBook.png',
-      userName: '집에 있지만 집에 가고 싶습니다',
-      userEmail: 'iwantgohome@test.com',
-    },
-    {
-      imgSrc: 'icon/testProfile.png',
-      userName: '저도...',
-      userEmail: 'yanadoo..@test.com',
-    },
-  ];
-  return exData.map((e, index) => {
-    return (
-      <ProfileList
-        key={index}
-        imgSrc={e.imgSrc}
-        userName={e.userName}
-        userEmail={e.userEmail}
-        type="remove"
-      />
-    );
-  });
+const FollowingList = ({myInfo}) => {
+  const [followingList, setFollowingList] = useState('');
+  const [isLoading, setIsLoading] = useState(true);
+  
+  const baseUrl = 'https://api.mandarin.weniv.co.kr';
+  const accName = myInfo.user.accountname;
+  const token = localStorage.getItem('token');
+  const navigate= useNavigate();
+
+  useEffect(() => {
+    const getFollowing = async () => {
+      const reqUrl = `${baseUrl}/profile/${accName}/following`;
+      const res = await fetch(reqUrl, {
+        method: 'GET',
+        headers: {
+          "Authorization" : `Bearer ${token}`,
+          "Content-type" : "application/json"
+        }
+      });
+      const json = await res.json();
+      setFollowingList(json);
+      setIsLoading(false);
+      console.log(followingList);
+    };
+    getFollowing();
+  },[]);
+
+  return(
+    <>
+      {isLoading ||
+        followingList.map((e, index) => {
+          return (
+            <ProfileList
+              key={index}
+              imgSrc={baseUrl + '/' + e.image.replace(/^.*\//, '')}
+              userName={e.username}
+              userEmail="email"
+              type="remove"
+              pageEvent = {(event) => {
+                event.preventDefault
+                navigate('/yourpage', {
+                  state: {
+                    id: e.accountname
+                  }
+                });
+              }}
+            />
+          );
+        })
+      }
+    </>
+  )
 };
 
 export default FollowingList;

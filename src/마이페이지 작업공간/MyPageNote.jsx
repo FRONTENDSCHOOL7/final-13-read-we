@@ -1,9 +1,12 @@
 import React from 'react';
-//import { Link } from 'react-router-dom';
 import Header from '../Header';
 import '../마이페이지 작업공간/MyPageNote.css';
 import ProfileCard from '../components/mypage/ProfileCard';
 
+//1. 프로필 수정 버튼 누르면 ProfileEdit.jsx로 이동
+//2. 내서재 버튼 누르면 내서재 페이지로 이동
+//3. 게시물에 글을 올리면 나의 독서 노트 리스트에 업데이트 됨
+//4. 만약 게시물을 올린게 하나도 없다면 나의 독서 노트 리스트는 비어있어야 함
 const MyPageNote = () => {
   return (
     <>

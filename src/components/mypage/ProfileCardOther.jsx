@@ -12,6 +12,7 @@ const ProfileCardOther = (props) => {
         userEmail={props.userEmail}
         follower={props.follower}
         following={props.following}
+        // page={() => {navigate('/mypage/acclist')}}
       />
       <div className="acc-btn-wrap">
         <BasicBtn>팔로잉</BasicBtn>
