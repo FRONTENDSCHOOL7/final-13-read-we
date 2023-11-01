@@ -1,15 +1,28 @@
 body {
-  font-family: 'Pretendard',sans-serif;
+  font-family: url(/public/font/Pretendard-Medium.ttf),sans-serif;
   font-size: 16px;
 
 }
 
+button,
+input {
+  background: none;
+  border: none;
+  color: inherit;
+}
+
+
+button:enabled {
+  cursor: pointer;
+}
+
+
 .login-container {
-  width: 300px;
+  width: 543px;
   margin: 0 auto;
   padding: 20px;
-  border: 1px solid rgb(0, 0, 0);
   border-radius: 10px;
+  margin-top:5%;
 
 }
 
@@ -20,24 +33,140 @@ label {
 
 .input-box {
   width: 100%;
+  height: 80px;
   padding: 10px;
   margin-top: 5px;
-  border: 1px solid #9b9b9b;
-  background-color: #dddddd; 
+  border: 1px solid #C7C7C7;
   border-radius: 10px;
+  background-color: #fcfcfc;
 }
 
-.input-box :focus {
-  border: 1px solid black; 
-  background-color: #f0f0f0;
+.input-box:focus {
+  outline-color:black;
+  background-color: #ffffff;
+}
+
+.id {
+  background-image: url('/public/images/icon/user.svg');
+  background-position: 24px center;
+  background-size: 15px;
+  background-repeat: no-repeat;
+  padding: 5px 20px;
+  text-indent: 30px;
+}
+
+
+.pw {
+  background-image: url('/public/images/icon/lock-g.svg');
+  background-position: 24px center;
+  background-size: 15px;
+  background-repeat: no-repeat;
+  padding: 5px 20px;
+  text-indent: 30px;
+
 }
 
 .Loginbutton {
-  margin-top: 20px;
+  margin-top: 80px;
   background-color: #000000;
   color: #fff;
-  border: none;
-  padding: 10px 20px;
   cursor: pointer;
-  border-radius: 40px;
+  width: 543px;
+  height: 80px;
+  box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.25);
+  max-width: 100%;
+  padding: 0 10px;
+  font-size: 22px;
+  border-radius: 10px;
+  text-align: center;
+  display: flex;
+  align-items:center;
+  justify-content: center;
+  font-family: 'Pretendard',sans-serif;
+}
+
+
+.login-container .Find-Id, .account-box  {
+  color: var(--disable-gray-2, #A7A7A7);
+  text-align: center;
+  font-family: Pretendard;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: 0.2px;
+  text-transform: capitalize;
+  margin-bottom: 10px;
+  letter-spacing: 1px;
+
+}
+.Find-Id {
+  margin-top:30px;
+}
+
+.account-box {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+}
+
+.login-Box {
+  width: 543px;
+}
+
+input#check_btn{
+
+  display:none;
+  }
+
+input#check_btn + label{
+  display: inline-block;
+  margin-top: 24px;
+  cursor:pointer;
+}
+
+input#check_btn + label > span{
+  vertical-align: middle;
+  padding-left: 5px;
+  color: #777;
+  text-align: center;
+  font-family: 'Pretendard',sans-serif;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: 0.2px;
+  text-transform: capitalize;
+}
+
+/* label:before에 체크하기 전 상태 CSS */
+input#check_btn + label:before{
+  content:"";
+  display:inline-block;
+  width:17px;
+  height:17px;
+  border:1px solid #A7A7A7;
+  border-radius: 50%;
+  vertical-align:middle;
+  background-image: url(/public/images/icon/disable-check.svg);
+  background-repeat: no-repeat;
+  background-position: 50%;
+  }
+  
+/* label:before에 체크 된 상태 CSS */  
+input#check_btn:checked + label:before{
+  content:"";
+  background-color:black;
+  border-color: black;
+  background-image: url(/public/images/icon/checkbox.svg);
+  background-repeat: no-repeat;
+  background-position: 50%;
+  }
+
+.login-Image {
+  background: no-repeat center url(/public/icon/READWE.svg);
+  width: 133px;
+  height: 22px;
+  margin: auto;
+  margin-bottom: 80px;
 }

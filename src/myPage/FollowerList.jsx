@@ -2,14 +2,14 @@ import React, { useEffect, useState } from 'react';
 import ProfileList from '../components/mypage/ProfileList';
 import { useNavigate } from 'react-router-dom';
 
-const FollowerList = ( {myInfo} ) => {
+const FollowerList = ({ myInfo }) => {
   const [followerList, setFollowerList] = useState('');
   const [isLoading, setIsLoading] = useState(true);
-  
+
   const baseUrl = 'https://api.mandarin.weniv.co.kr';
   const accName = myInfo.user.accountname;
   const token = localStorage.getItem('token');
-  const navigate= useNavigate();
+  const navigate = useNavigate();
 
   useEffect(() => {
     const getFollower = async () => {
@@ -17,18 +17,19 @@ const FollowerList = ( {myInfo} ) => {
       const res = await fetch(reqUrl, {
         method: 'GET',
         headers: {
-          "Authorization" : `Bearer ${token}`,
-          "Content-type" : "application/json"
-        }
+          Authorization: `Bearer ${token}`,
+          'Content-type': 'application/json',
+        },
       });
       const json = await res.json();
       setFollowerList(json);
       setIsLoading(false);
     };
     getFollower();
-  },[]);
+  }, []);
 
-  return(
+  return (
+    // eslint-disable-next-line react/jsx-no-useless-fragment
     <>
       {isLoading ||
         followerList.map((e, index) => {
@@ -37,22 +38,19 @@ const FollowerList = ( {myInfo} ) => {
               key={index}
               imgSrc={baseUrl + '/' + e.image.replace(/^.*\//, '')}
               userName={e.username}
+              userAccName={e.accountname}
               userEmail="email"
               type="dot"
-              pageEvent = {(event) => {
-                event.preventDefault
-                navigate('/yourpage', {
-                  state: {
-                    id: e.accountname
-                  }
-                });
+              pageEvent={(event) => {
+                // event.preventDefault;
+                localStorage.setItem('otherName', e.accountname);
+                navigate('/yourpage');
               }}
             />
           );
-        })
-      }
+        })}
     </>
-  )
+  );
 };
 
 export default FollowerList;
