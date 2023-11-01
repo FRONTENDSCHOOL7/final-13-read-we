@@ -10,6 +10,7 @@ const ProfileEdit = () => {
   //상태 변수 추가
   const [accountName, setAccountName] = useState('');
   const [intro, setIntro] = useState('');
+
   const [image, setImage] = useState('');
 
   //입력 핸들러 추가

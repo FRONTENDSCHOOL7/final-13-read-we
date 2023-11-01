@@ -9,7 +9,6 @@ const MainProfileCard = (props) => {
   useEffect(() => {
     const getMyinfo = async () => {
       const reqUrl = baseUrl + '/user/myinfo';
-
       const res = await fetch(reqUrl, {
         method: 'GET',
         headers: {
@@ -21,19 +20,17 @@ const MainProfileCard = (props) => {
     };
     getMyinfo();
   }, []);
-  console.log(profile);
-  console.log(profile.user.image);
   return (
     <div className="acc-bar">
       <div className="acc-img">
         <img
           alt="프로필 이미지"
-          src={baseUrl + '/' + profile.user.image.replace(/^.*\//, '')}
+          src={baseUrl + '/' + profile?.user.image.replace(/^.*\//, '')}
           // 이 정규식은 문자열에서 마지막 슬래시를 포함하여 그 이전의 모든 문자열을 제거함.
         />
       </div>
       <div className="acc-text">
-        <strong className="acc-id">{profile.user.username}</strong>
+        <strong className="acc-id">{profile?.user.username}</strong>
         <span className="acc-email">{props.userEmail}</span>
       </div>
       <button type="button">
