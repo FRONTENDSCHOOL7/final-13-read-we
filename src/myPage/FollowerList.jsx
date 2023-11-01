@@ -29,6 +29,7 @@ const FollowerList = ({ myInfo }) => {
   }, []);
 
   return (
+    // eslint-disable-next-line react/jsx-no-useless-fragment
     <>
       {isLoading ||
         followerList.map((e, index) => {
@@ -37,15 +38,13 @@ const FollowerList = ({ myInfo }) => {
               key={index}
               imgSrc={baseUrl + '/' + e.image.replace(/^.*\//, '')}
               userName={e.username}
+              userAccName={e.accountname}
               userEmail="email"
               type="dot"
               pageEvent={(event) => {
-                event.preventDefault();
-                navigate('/yourpage', {
-                  state: {
-                    id: e.accountname,
-                  },
-                });
+                // event.preventDefault;
+                localStorage.setItem('otherName', e.accountname);
+                navigate('/yourpage');
               }}
             />
           );

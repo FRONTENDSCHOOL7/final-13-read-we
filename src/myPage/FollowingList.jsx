@@ -24,7 +24,6 @@ const FollowingList = ({ myInfo }) => {
       const json = await res.json();
       setFollowingList(json);
       setIsLoading(false);
-      console.log(followingList);
     };
     getFollowing();
   }, []);
@@ -38,15 +37,13 @@ const FollowingList = ({ myInfo }) => {
               key={index}
               imgSrc={baseUrl + '/' + e.image.replace(/^.*\//, '')}
               userName={e.username}
+              userAccName={e.accountname}
               userEmail="email"
               type="remove"
               pageEvent={(event) => {
-                event.preventDefault();
-                navigate('/yourpage', {
-                  state: {
-                    id: e.accountname,
-                  },
-                });
+                localStorage.setItem('otherName', e.accountname);
+                // event.preventDefault;
+                navigate('/yourpage');
               }}
             />
           );

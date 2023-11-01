@@ -4,11 +4,8 @@ import PostSection from '../components/main/PostSection';
 import styles from './css/myPage.module.css';
 import EmptyList from '../components/mypage/EmptyList';
 import Header from '../Header';
-import { useLocation } from 'react-router-dom';
 
 const YourPage = () => {
-  const loaction = useLocation();
-
   const token = localStorage.getItem('token');
   const baseUrl = 'https://api.mandarin.weniv.co.kr';
 
@@ -18,9 +15,8 @@ const YourPage = () => {
   const [isPostLoading, setIsPostLoading] = useState(true);
 
   useEffect(() => {
-    const accName = loaction.state.id;
     const getMyInfo = async () => {
-      const reqUrl = baseUrl + `/profile/${accName}`;
+      const reqUrl = baseUrl + `/profile/${localStorage.getItem('otherName')}`;
       const res = await fetch(reqUrl, {
         method: 'GET',
         headers: {
@@ -33,7 +29,8 @@ const YourPage = () => {
       setIsProfileLoading(false);
     };
     const getPost = async () => {
-      const reqUrl = baseUrl + `/post/${accName}/userpost`;
+      const reqUrl =
+        baseUrl + `/post/${localStorage.getItem('otherName')}/userpost`;
       const res = await fetch(reqUrl, {
         method: 'GET',
         headers: {
@@ -72,9 +69,11 @@ const YourPage = () => {
                       baseUrl + '/' + myInfo.profile.image.replace(/^.*\//, '')
                     }
                     userName={myInfo.profile.username}
+                    userAccName={myInfo.profile.accountname}
                     userEmail="YourEmail"
                     follower={myInfo.profile.followerCount}
                     following={myInfo.profile.followingCount}
+                    isfollowing={myInfo.profile.isfollow}
                   />
                 </div>
                 <div className={styles['list-parent']}>
