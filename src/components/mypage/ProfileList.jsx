@@ -4,10 +4,7 @@ import styles from '../../myPage/css/myPage.module.css';
 const ProfileList = (props) => {
   return (
     <li>
-      <a href="#"
-        className={styles.userListObj}
-        onClick={props.pageEvent}
-      >
+      <a href="#" className={styles.userListObj} onClick={props.pageEvent}>
         <div className={styles.leftObj}>
           <div className={styles.accImg}>
             <img alt="프로필 이미지" src={props.imgSrc} />

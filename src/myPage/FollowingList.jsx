@@ -2,14 +2,14 @@ import React, { useEffect, useState } from 'react';
 import ProfileList from '../components/mypage/ProfileList';
 import { useNavigate } from 'react-router-dom';
 
-const FollowingList = ({myInfo}) => {
+const FollowingList = ({ myInfo }) => {
   const [followingList, setFollowingList] = useState('');
   const [isLoading, setIsLoading] = useState(true);
-  
+
   const baseUrl = 'https://api.mandarin.weniv.co.kr';
   const accName = myInfo.user.accountname;
   const token = localStorage.getItem('token');
-  const navigate= useNavigate();
+  const navigate = useNavigate();
 
   useEffect(() => {
     const getFollowing = async () => {
@@ -17,9 +17,9 @@ const FollowingList = ({myInfo}) => {
       const res = await fetch(reqUrl, {
         method: 'GET',
         headers: {
-          "Authorization" : `Bearer ${token}`,
-          "Content-type" : "application/json"
-        }
+          Authorization: `Bearer ${token}`,
+          'Content-type': 'application/json',
+        },
       });
       const json = await res.json();
       setFollowingList(json);
@@ -27,9 +27,9 @@ const FollowingList = ({myInfo}) => {
       console.log(followingList);
     };
     getFollowing();
-  },[]);
+  }, []);
 
-  return(
+  return (
     <>
       {isLoading ||
         followingList.map((e, index) => {
@@ -40,20 +40,19 @@ const FollowingList = ({myInfo}) => {
               userName={e.username}
               userEmail="email"
               type="remove"
-              pageEvent = {(event) => {
-                event.preventDefault
+              pageEvent={(event) => {
+                event.preventDefault();
                 navigate('/yourpage', {
                   state: {
-                    id: e.accountname
-                  }
+                    id: e.accountname,
+                  },
                 });
               }}
             />
           );
-        })
-      }
+        })}
     </>
-  )
+  );
 };
 
 export default FollowingList;
