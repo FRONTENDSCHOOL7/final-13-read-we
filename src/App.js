@@ -28,12 +28,13 @@ function App() {
 
   return (
     <Routes>
+      <Route path="/login" element={<LoginPage />} />
       <Route path="/main" element={<MainPage />} />
       {/* <Route path="/comment" element={<CmtList />} /> */}
       <Route path="/mypage" element={<MyPage />} />
-        <Route path="/mypage/acclist" element={<MyPageAccList />} />
-        <Route path="/mypage/library" element={<MyLibrary />} />
-        <Route path="/yourpage" element={<YourPage />} />
+      <Route path="/mypage/acclist" element={<MyPageAccList />} />
+      <Route path="/mypage/library" element={<MyLibrary />} />
+      <Route path="/yourpage" element={<YourPage />} />
     </Routes>
     // <MainPage />
   );
