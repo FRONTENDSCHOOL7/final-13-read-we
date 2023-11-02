@@ -5,7 +5,6 @@
   position: absolute;
   /* bottom: 0; */
   font-family: "WorkSans-VariableFont_wght.ttf",sans-serif;
-
 }
 
 .box p {
@@ -70,8 +69,9 @@
 }
 .container-Box {
   position: relative;
-  left: 83%;
+  left: 86%;
   top: 50%;
+  padding-top: 10%;
 }
 
 .box-1 {

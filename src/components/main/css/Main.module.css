@@ -1,7 +1,7 @@
 .container {
-  display: flex;
-  flex-direction: column;
-  height: 100vh;
+  width: calc(100% - 50px);
+  max-width: 1180px;
+  margin: 0 auto;
 }
 
 .MainContainer {
@@ -10,13 +10,23 @@
   align-items: center;
   margin-top: 12px;
   position: relative;
+  width: 100%;
+  padding: 35px;
 }
 
 .MProFloat {
   position: fixed;
   bottom: 36px;
-  left: calc((100% - 1180px) / 2);
-  transform: translateX(50%);
+  left: calc((100% - 1160px) / 2);
+}
+
+@media (max-width: 1244px) {
+  .MProFloat {
+    left: 30px;
+  }
+  .MProFloat div {
+    gap: 10px;
+  }
 }
 
 .outerContainer {
