@@ -7,7 +7,7 @@ import './JoinPage.css';
 export default function JoinPage() {
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
-  const [nickname, setNickname] = useState('');
+  const [accountname, setNickname] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
   const [isButtonDisabled, setIsButtonDisabled] = useState(true);
@@ -17,7 +17,7 @@ export default function JoinPage() {
   const saveRegistrationInfo = () => {
     // 회원가입 정보를 객체로 만들어서 로컬 스토리지에 저장
     const registrationInfo = {
-      nickname,
+      accountname,
       email,
       username,
       password,
@@ -46,7 +46,7 @@ export default function JoinPage() {
 
     // 입력 필드가 변경될 때마다 상태를 업데이트
     switch (field) {
-      case 'nickname':
+      case 'accountname':
         setNickname(value);
         break;
       case 'email':
@@ -66,7 +66,7 @@ export default function JoinPage() {
     }
 
     // 모든 필수 필드가 비어있지 않으면 가입 버튼을 활성화
-    if (nickname && email && username && password && confirmPassword) {
+    if (accountname && email && username && password && confirmPassword) {
       setIsButtonDisabled(false);
     } else {
       setIsButtonDisabled(true);
@@ -77,7 +77,7 @@ export default function JoinPage() {
     // 입력이 활성화되었는지 여부를 확인하고 CSS 클래스를 반환합니다.
     switch (field) {
       case 'nickname':
-        return !!nickname;
+        return !!accountname;
       case 'email':
         return !!email;
       case 'username':
@@ -116,7 +116,7 @@ export default function JoinPage() {
               type="nickname"
               placeholder="닉네임"
               className="basic gray"
-              value={nickname}
+              value={accountname}
               onChange={(e) => handleInputChange(e, 'nickname')}
             />
           </div>

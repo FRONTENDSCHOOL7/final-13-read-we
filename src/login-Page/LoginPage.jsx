@@ -2,12 +2,12 @@ import React, { useState } from 'react';
 import './Login.css';
 import Header from '../components/header/Header';
 import Footer from '../components/footer/Footer';
-import { json } from 'react-router-dom';
 
 export default function LoginPage() {
   // input 요소 상태
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  const [email, setEmail] = useState(''); // 새로운 상태 변수
 
   // 서버 전달값 셋팅
   const inputUsername = (e) => {
@@ -17,14 +17,19 @@ export default function LoginPage() {
     setPassword(e.target.value);
   };
 
+  // 이메일 입력 상태 업데이트
+  const inputEmail = (e) => {
+    setEmail(e.target.value);
+  };
+
   // 서버 제출
   const submitLogin = (e) => {
     // 새로 고침 막음
     e.preventDefault();
-    loginFn(username, password);
+    loginFn(username, password, email);
   };
 
-  const loginFn = async (username, password) => {
+  const loginFn = async (username, password, email) => {
     const reqUrl = 'https://api.mandarin.weniv.co.kr';
     const reqPath = '/user/login';
     const loginData = {
@@ -50,10 +55,11 @@ export default function LoginPage() {
         const token = json.user.token;
         console.log(token);
 
-        //토큰 로컬 스토리지에 저장
+        // 토큰 및 이메일 로컬 스토리지에 저장
         localStorage.setItem('token', token);
         localStorage.setItem('username', username);
-        console.log('로그인 성공! 토큰 저장됨:', token);
+        localStorage.setItem('email', email); // 이메일 저장
+        console.log('로그인 성공! 토큰 및 이메일 저장됨:', token);
       }
       // 에러 핸들링
       else {
@@ -65,9 +71,6 @@ export default function LoginPage() {
       console.error('로그인 요청 오류:', error);
       alert('로그인 요청에 오류가 발생했습니다.');
     }
-    // if (!json.user) {
-    //   return;
-    // }
   };
 
   return (
@@ -81,7 +84,7 @@ export default function LoginPage() {
             className="input-box id"
             type="text"
             placeholder="아이디"
-            value={username}
+            value={email}
             onChange={inputUsername}
             required
           />
@@ -97,6 +100,7 @@ export default function LoginPage() {
             required
           />
           <br />
+
           <input type="checkbox" id="check_btn" />
           <label for="check_btn">
             <span> 로그인 상태 유지</span>
