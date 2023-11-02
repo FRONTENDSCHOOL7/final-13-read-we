@@ -68,6 +68,7 @@ const MyPage = () => {
                   imgSrc={
                     baseUrl + '/' + myInfo.user.image.replace(/^.*\//, '')
                   }
+                  accName={myInfo.user.accountname}
                   userName={myInfo.user.username}
                   userEmail="myEmail"
                   follower={myInfo.user.followerCount}

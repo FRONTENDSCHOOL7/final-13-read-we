@@ -9,7 +9,15 @@ const ProfileCard = (props) => {
   const navigate = useNavigate();
   return (
     <article className="acc-card">
-      <IconBtn>
+      <IconBtn
+        onClick={() => {
+          navigate('/mypage/edit', {
+            state: {
+              id: props.accName,
+            },
+          });
+        }}
+      >
         <i className="icon icon-setting" />
         <strong>프로필 수정</strong>
       </IconBtn>

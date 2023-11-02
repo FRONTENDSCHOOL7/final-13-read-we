@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import Header from '../Header';
 import ProfileInfoSetting from '../components/mypage/ProfileInfoSetting';
+import { useLocation } from 'react-router-dom';
 // import { database } from '../join-Page/JoinPage';
 
 const ProfileEdit = () => {
@@ -49,6 +50,9 @@ const ProfileEdit = () => {
   // };
 
   // 비밀번호와 비밀번호 확인이 일치하는지 확인
+  const loaction = useLocation();
+  console.log(loaction.state.id);
+
   React.useEffect(() => {
     setIsPasswordMatching(password === confirmPassword && password !== '');
   }, [password, confirmPassword]);
@@ -57,7 +61,7 @@ const ProfileEdit = () => {
     event.preventDefault();
 
     const token = localStorage.getItem('token');
-    fetch('https://api.mandarin.weniv.co.kr', {
+    fetch('https://api.mandarin.weniv.co.kr/user', {
       method: 'PUT',
       headers: {
         Authorization: `Bearer ${token}`,
@@ -65,6 +69,7 @@ const ProfileEdit = () => {
       },
       body: JSON.stringify({
         user: {
+          accountname: loaction.state.id,
           username: nickname,
         },
       }),
@@ -73,7 +78,7 @@ const ProfileEdit = () => {
       .then((data) => {
         if (data.user) {
           alert('프로필이 성공적으로 업데이트 되었습니다');
-          window.location.href = '/MainPage'; // 메인 페이지로 이동
+          window.location.href = '/main'; // 메인 페이지로 이동
         } else {
           alert('이미 사용중인 계정 ID입니다.');
         }
