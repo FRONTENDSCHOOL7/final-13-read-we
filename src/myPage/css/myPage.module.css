@@ -29,7 +29,7 @@
 }
 
 .userList {
-  height: 250px;
+  height: calc(100vh - 400px);
   padding-right: 20px;
 }
 
