@@ -10,7 +10,6 @@ import { IconIpt } from '../input/IptStyleEtc';
 import { BasicIpt } from '../input/IptStyle';
 import Trend from './Trend';
 import Recent from './RecentSection';
-import NoPost from './NoPost';
 import EmptyList from '../mypage/EmptyList';
 
 const MainPage = () => {
