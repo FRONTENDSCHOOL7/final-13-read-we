@@ -1,9 +1,11 @@
 import React from 'react';
 import ProfileInfo from './ProfileInfo';
 import { BasicBtn } from '../button/BtnStyle';
+import { useNavigate } from 'react-router-dom';
 
 //다른 계정 마이페이지 프로필 카드
 const ProfileCardOther = (props) => {
+  const navigate = useNavigate();
   //1. API 요청 보내기
   const accName = props.userAccName;
   const token = localStorage.getItem('token');
@@ -20,7 +22,9 @@ const ProfileCardOther = (props) => {
           'Content-type': 'application/json',
         },
       });
-      alert('팔로우 성공!!!!');
+      alert(`${props.userName}님 팔로우가 완료 되었습니다 🥰`);
+      // eslint-disable-next-line no-restricted-globals
+      location.reload();
     } catch (error) {
       console.error('팔로우 실패:', error);
     }
@@ -42,7 +46,9 @@ const ProfileCardOther = (props) => {
           'Content-type': 'application/json',
         },
       });
-      alert('언팔로우 성공!!!!');
+      alert(`${props.userName}님 팔로우가 해제 되었습니다 🥲`);
+      // eslint-disable-next-line no-restricted-globals
+      location.reload();
     } catch (error) {
       console.error('팔로우 실패:', error);
     }
@@ -60,11 +66,13 @@ const ProfileCardOther = (props) => {
         userEmail={props.userEmail}
         follower={props.follower}
         following={props.following}
-        // page={() => {navigate('/mypage/acclist')}}
+        page={() => {
+          navigate('/yourpage/youracclist');
+        }}
       />
       <div className="acc-btn-wrap">
         {props.isfollowing ? (
-          <BasicBtn onClick={unfollowingEvent}>언팔로잉</BasicBtn>
+          <BasicBtn onClick={unfollowingEvent}>팔로잉 해제</BasicBtn>
         ) : (
           <BasicBtn onClick={followingEvent}>팔로잉</BasicBtn>
         )}

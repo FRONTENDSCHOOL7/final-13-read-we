@@ -3,7 +3,7 @@ import ProfileCard from '../components/mypage/ProfileCard';
 import PostSection from '../components/main/PostSection';
 import styles from './css/myPage.module.css';
 import EmptyList from '../components/mypage/EmptyList';
-import Header from '../Header';
+import Header from '../components/header/Header';
 
 const MyPage = () => {
   const token = localStorage.getItem('token');
@@ -99,11 +99,11 @@ const MyPage = () => {
                       text2="책을 읽고 기록을 남겨보세요!"
                     />
                   ) : (
-                    postList?.post?.map((e, index) => {
+                    postList?.post?.map((e) => {
                       return (
                         <PostSection
-                          key={index}
-                          date={e.createdAt}
+                          key={e.id}
+                          date={e.createdAt.replace(/T.*/, '')}
                           imgSrc={
                             baseUrl + '/' + e.author.image.replace(/^.*\//, '')
                           }

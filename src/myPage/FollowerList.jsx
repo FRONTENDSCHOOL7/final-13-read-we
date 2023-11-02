@@ -7,7 +7,7 @@ const FollowerList = ({ myInfo }) => {
   const [isLoading, setIsLoading] = useState(true);
 
   const baseUrl = 'https://api.mandarin.weniv.co.kr';
-  const accName = myInfo.user.accountname;
+  const accName = myInfo;
   const token = localStorage.getItem('token');
   const navigate = useNavigate();
 
@@ -29,7 +29,6 @@ const FollowerList = ({ myInfo }) => {
   }, []);
 
   return (
-    // eslint-disable-next-line react/jsx-no-useless-fragment
     <>
       {isLoading ||
         followerList.map((e, index) => {
@@ -42,7 +41,6 @@ const FollowerList = ({ myInfo }) => {
               userEmail="email"
               type="dot"
               pageEvent={(event) => {
-                // event.preventDefault;
                 localStorage.setItem('otherName', e.accountname);
                 navigate('/yourpage');
               }}

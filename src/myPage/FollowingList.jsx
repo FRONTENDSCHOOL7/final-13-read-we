@@ -7,7 +7,7 @@ const FollowingList = ({ myInfo }) => {
   const [isLoading, setIsLoading] = useState(true);
 
   const baseUrl = 'https://api.mandarin.weniv.co.kr';
-  const accName = myInfo.user.accountname;
+  const accName = myInfo;
   const token = localStorage.getItem('token');
   const navigate = useNavigate();
 

@@ -3,10 +3,11 @@ import styles from './css/myPage.module.css';
 import { BasicBtn } from '../components/button/BtnStyle';
 import FollowerList from './FollowerList';
 import FollowingList from './FollowingList';
-import Header from '../Header';
+import Header from '../components/header/Header';
 
-const MyPageAccList = () => {
+const YourPageAccList = () => {
   const token = localStorage.getItem('token');
+  const accName = localStorage.getItem('otherName');
   const baseUrl = 'https://api.mandarin.weniv.co.kr';
 
   const [myInfo, setMyInfo] = useState();
@@ -14,7 +15,7 @@ const MyPageAccList = () => {
 
   useEffect(() => {
     const getMyInfo = async () => {
-      const reqUrl = baseUrl + '/user/myinfo';
+      const reqUrl = baseUrl + `/profile/${accName}`;
       const res = await fetch(reqUrl, {
         method: 'GET',
         headers: {
@@ -31,7 +32,7 @@ const MyPageAccList = () => {
   const [tab, setTab] = useState(0);
   return (
     <>
-      {isProfileLoading == false ? (
+      {isProfileLoading === false ? (
         <>
           <Header />
           <div className={styles.pageWrap}>
@@ -40,7 +41,7 @@ const MyPageAccList = () => {
               <div className={styles.tabBtn}>
                 <BasicBtn
                   md="true"
-                  bgcolor={tab == 0 ? '#000000' : '#a7a7a7'}
+                  bgcolor={tab === 0 ? '#000000' : '#a7a7a7'}
                   wid="120px"
                   onClick={() => {
                     setTab(0);
@@ -50,7 +51,7 @@ const MyPageAccList = () => {
                 </BasicBtn>
                 <BasicBtn
                   md="true"
-                  bgcolor={tab == 0 ? '#a7a7a7' : '#000000'}
+                  bgcolor={tab === 0 ? '#a7a7a7' : '#000000'}
                   wid="120px"
                   onClick={() => {
                     setTab(1);
@@ -62,18 +63,18 @@ const MyPageAccList = () => {
               <div className={styles.accSum}>
                 <p>
                   <i className="icon icon-like" />
-                  {tab == 0
-                    ? myInfo.user.followerCount
-                    : myInfo.user.followingCount}
+                  {tab === 0
+                    ? myInfo.profile.followerCount
+                    : myInfo.profile.followingCount}
                   <span>명</span>
                 </p>
               </div>
               <div>
                 <ul className={`scrollArea ${styles.userList}`}>
-                  {tab == 0 ? (
-                    <FollowerList myInfo={myInfo} />
+                  {tab === 0 ? (
+                    <FollowerList myInfo={accName} />
                   ) : (
-                    <FollowingList myInfo={myInfo} />
+                    <FollowingList myInfo={accName} />
                   )}
                 </ul>
               </div>
@@ -87,4 +88,4 @@ const MyPageAccList = () => {
   );
 };
 
-export default MyPageAccList;
+export default YourPageAccList;
