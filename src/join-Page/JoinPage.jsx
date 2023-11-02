@@ -1,82 +1,121 @@
 import React, { useState } from 'react';
 import Header from '../components/header/Header';
 import Footer from '../components/footer/Footer';
-import SuccessPopup from './SuccessPopup'; // 팝업 컴포넌트를 불러옵니다.
+import SuccessPopup from './SuccessPopup'; // 팝업 컴포넌트
 import './JoinPage.css';
+import { useNavigate } from 'react-router-dom';
 
 export default function JoinPage() {
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
-  const [accountname, setNickname] = useState('');
+  const [accountname, setAccountname] = useState('');
   const [password, setPassword] = useState('');
-  const [confirmPassword, setConfirmPassword] = useState('');
-  const [isButtonDisabled, setIsButtonDisabled] = useState(true);
-  const [showSuccessPopup, setShowSuccessPopup] = useState(false); // 팝업 상태를 추가
+  const [imgSrc, serImgsrc] = useState(
+    'http://api.mandarin.weniv.co.kr/Ellipse.png',
+  );
 
-  // 회원가입 정보를 로컬 스토리지에 저장하는 함수
-  const saveRegistrationInfo = () => {
-    // 회원가입 정보를 객체로 만들어서 로컬 스토리지에 저장
-    const registrationInfo = {
-      accountname,
-      email,
-      username,
-      password,
-      // 다른 필요한 정보도 여기에 추가 가능
+  // const [confirmPassword, setConfirmPassword] = useState('');
+
+  // const [isButtonDisabled, setIsButtonDisabled] = useState(true);
+  // const [showSuccessPopup, setShowSuccessPopup] = useState(false); // 팝업 상태를 추가
+  const navigate = useNavigate();
+  // 회원가입 함수
+  const join = async (joinData) => {
+    const reqUrl = 'https://api.mandarin.weniv.co.kr/user';
+    const res = await fetch(reqUrl, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(joinData),
+    });
+    const json = await res.json();
+    console.log(json);
+  };
+
+  const inputUsername = (e) => {
+    setUsername(e.target.value);
+  };
+  const inputEmail = (e) => {
+    setEmail(e.target.value);
+  };
+  const inputPassword = (e) => {
+    setPassword(e.target.value);
+  };
+
+  const inputAccountname = (e) => {
+    setAccountname(e.target.value);
+  };
+
+  const onChangeImage = (e) => {};
+  const submitJoin = (e) => {
+    // e.preventDefault();
+    const joinData = {
+      user: {
+        username: username,
+        email: email,
+        password: password,
+        accountname: accountname,
+      },
     };
-
-    // JSON 형태로 로컬 스토리지에 저장
-    localStorage.setItem('registrationInfo', JSON.stringify(registrationInfo));
-    console.log('가입 정보:', registrationInfo); // 정보를 콘솔에 출력
+    join(joinData);
   };
 
-  const handleJoin = () => {
-    // 회원가입 로직을 구현하고 상태를 업데이트합니다.
-    // 예를 들어, 서버로 요청을 보내고 응답을 처리하는 코드를 작성합니다.
+  // // 회원가입 정보를 로컬 스토리지에 저장
+  // const saveRegistrationInfo = () => {
+  //   // 회원가입 정보를 객체로 만들어서 로컬 스토리지에 저장
+  //   const registrationInfo = {
+  //     accountname,
+  //     email,
+  //     username,
+  //     password,
+  //   };
 
-    // 서버로 회원가입 요청을 보낸 후, 응답에서 사용자 정보를 받아온다고 가정
-    // 이후 회원가입 정보를 로컬 스토리지에 저장
-    saveRegistrationInfo();
+  //   // JSON 형태로 로컬 스토리지에 저장
+  //   localStorage.setItem('registrationInfo', JSON.stringify(registrationInfo));
+  //   console.log('가입 정보:', registrationInfo); // 정보를 콘솔에 출력
+  // };
 
-    // 가입 완료 팝업 표시
-    setShowSuccessPopup(true);
-  };
+  // const handleJoin = () => {
+  //   saveRegistrationInfo();
 
-  const handleInputChange = (event, field) => {
-    const value = event.target.value;
+  //   // 가입 완료 팝업 표시
+  //   setShowSuccessPopup(true);
+  // };
 
-    // 입력 필드가 변경될 때마다 상태를 업데이트
-    switch (field) {
-      case 'accountname':
-        setNickname(value);
-        break;
-      case 'email':
-        setEmail(value);
-        break;
-      case 'username':
-        setUsername(value);
-        break;
-      case 'password':
-        setPassword(value);
-        break;
-      case 'confirmPassword':
-        setConfirmPassword(value);
-        break;
-      default:
-        break;
-    }
+  // const handleInputChange = (event, field) => {
+  //   const value = event.target.value;
 
-    // 모든 필수 필드가 비어있지 않으면 가입 버튼을 활성화
-    if (accountname && email && username && password && confirmPassword) {
-      setIsButtonDisabled(false);
-    } else {
-      setIsButtonDisabled(true);
-    }
-  };
+  //   // 입력 필드가 변경될 때마다 상태를 업데이트
+  //   switch (field) {
+  //     case 'accountname':
+  //       setAccountname(value);
+  //       break;
+  //     case 'email':
+  //       setEmail(value);
+  //       break;
+  //     case 'username':
+  //       setUsername(value);
+  //       break;
+  //     case 'password':
+  //       setPassword(value);
+  //       break;
+  //     default:
+  //       break;
+  //   }
+
+  // 모든 필수 필드가 비어있지 않으면 가입 버튼을 활성화 && confirmPassword
+  //   if (accountname && email && username && password) {
+  //     setIsButtonDisabled(false);
+  //   } else {
+  //     setIsButtonDisabled(true);
+  //   }
+  // };
 
   const isCompleted = (field) => {
-    // 입력이 활성화되었는지 여부를 확인하고 CSS 클래스를 반환합니다.
+    // 입력이 활성화되었는지 여부를 확인하고 CSS 클래스를 반환
     switch (field) {
-      case 'nickname':
+      case 'accountname':
         return !!accountname;
       case 'email':
         return !!email;
@@ -84,19 +123,19 @@ export default function JoinPage() {
         return !!username;
       case 'password':
         return !!password;
-      case 'confirmPassword':
-        return !!confirmPassword;
+      // case 'confirmPassword':
+      //   return !!confirmPassword;
       default:
         return false;
     }
   };
 
-  const closePopup = () => {
-    // 팝업 닫기
-    setShowSuccessPopup(false);
-  };
+  // const closePopup = () => {
+  //   // 팝업 닫기
+  //   setShowSuccessPopup(false);
+  // };
 
-  console.log(`'showSuccessPopup:'`, showSuccessPopup);
+  // console.log(`'showSuccessPopup:'`, showSuccessPopup);
 
   return (
     <>
@@ -107,19 +146,10 @@ export default function JoinPage() {
           <h3 className="join-ment">
             아이디와 이메일로 간편하게 리드위를 시작하세요!
           </h3>
-          <div
-            className={`input-icon 
-            ${isCompleted('nickname') ? 'active-input' : ''}`}
-          >
-            <i className="icon icon-user-w"></i>
-            <input
-              type="nickname"
-              placeholder="닉네임"
-              className="basic gray"
-              value={accountname}
-              onChange={(e) => handleInputChange(e, 'nickname')}
-            />
-          </div>
+          <label>
+            <img src={imgSrc} alt="" id="imagePre" />
+          </label>
+          <input type="file" id="profileImg" name="image" accept="image/*" />
           <div
             className={`input-icon 
             ${isCompleted('email') ? 'active-input' : ''}`}
@@ -130,20 +160,7 @@ export default function JoinPage() {
               placeholder="이메일"
               className="basic gray"
               value={email}
-              onChange={(e) => handleInputChange(e, 'email')}
-            />
-          </div>
-          <div
-            className={`input-icon 
-            ${isCompleted('username') ? 'active-input' : ''}`}
-          >
-            <i className="icon icon-user-w"></i>
-            <input
-              type="text"
-              placeholder="아이디"
-              className="basic gray"
-              value={username}
-              onChange={(e) => handleInputChange(e, 'username')}
+              onChange={inputEmail}
             />
           </div>
           <div
@@ -156,10 +173,36 @@ export default function JoinPage() {
               placeholder="비밀번호"
               className="basic gray"
               value={password}
-              onChange={(e) => handleInputChange(e, 'password')}
+              onChange={inputPassword}
             />
           </div>
           <div
+            className={`input-icon 
+            ${isCompleted('accountname') ? 'active-input' : ''}`}
+          >
+            <i className="icon icon-user-w"></i>
+            <input
+              type="text"
+              placeholder="아이디"
+              className="basic gray"
+              value={accountname}
+              onChange={inputAccountname}
+            />
+          </div>
+          <div
+            className={`input-icon 
+            ${isCompleted('username') ? 'active-input' : ''}`}
+          >
+            <i className="icon icon-user-w"></i>
+            <input
+              type="text"
+              placeholder="사용자 이름"
+              className="basic gray"
+              value={username}
+              onChange={inputUsername}
+            />
+          </div>
+          {/* <div
             className={`input-icon 
             ${isCompleted('confirmPassword') ? 'active-input' : ''}`}
           >
@@ -171,20 +214,19 @@ export default function JoinPage() {
               value={confirmPassword}
               onChange={(e) => handleInputChange(e, 'confirmPassword')}
             />
-          </div>
+          </div> */}
           <button
             type="submit"
             className="join-basic"
-            disabled={isButtonDisabled}
-            onClick={handleJoin}
+            // disabled={isButtonDisabled}
+            onClick={submitJoin}
           >
             가입하기
           </button>
         </div>
       </section>
       <Footer></Footer>
-      {showSuccessPopup && <SuccessPopup onClose={closePopup} />}
-      {/* 팝업 표시 */}
+      {/* {showSuccessPopup && <SuccessPopup onClose={closePopup} />} */}
     </>
   );
 }

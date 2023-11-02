@@ -65,13 +65,16 @@
   letter-spacing: 0.2px;
   text-transform: capitalize;
   margin-top: 50px;
+  transition: background-color 0.3s;
+  background-color: black;
 
 }
 .join-basic:active {
-  background-color: black;
+  background-color: #E87C3E; 
 }
 .join-basic:hover {
-  background-color: black;
+  background-color: #E87C3E; 
+  
 }
 
 .input-icon {
@@ -84,4 +87,9 @@
   background-color: rgb(147, 147, 147);
   border-radius: 10px;
   border: 1px solid rgb(106, 106, 106);
+}
+
+
+.imagePre {
+  margin: auto 0;
 }
