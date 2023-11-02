@@ -9,6 +9,13 @@
   font-size: 24px;
 }
 
+/* ProfileEdit.css */
+.h1-profile {
+  text-align: center;
+  font-weight: bolder;
+  font-size: 2em;
+}
+
 .parent {
   display: flex;
   justify-content: center;

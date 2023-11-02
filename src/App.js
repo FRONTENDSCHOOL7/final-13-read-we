@@ -9,7 +9,7 @@ import MyPageAccList from './myPage/MyPageAccList';
 import MyLibrary from './myPage/MyLibrary';
 import JoinPage from './join-Page/JoinPage';
 import Emailsignup from './login-Page/Emailsignup';
-import ProfileEdit from './마이페이지 작업공간/ProfileEdit';
+import ProfileEdit from './myPage/ProfileEdit';
 
 function App() {
   return (
@@ -24,6 +24,7 @@ function App() {
       <Route path="/mypage/acclist" element={<MyPageAccList />} />
       <Route path="/mypage/library" element={<MyLibrary />} />
       <Route path="/yourpage" element={<YourPage />} />
+      <Route path="/profile-edit" element={<ProfileEdit />} />
     </Routes>
     // <MainPage />
   );
