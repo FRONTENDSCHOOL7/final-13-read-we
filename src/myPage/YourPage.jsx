@@ -3,7 +3,7 @@ import ProfileCardOther from '../components/mypage/ProfileCardOther';
 import PostSection from '../components/main/PostSection';
 import styles from './css/myPage.module.css';
 import EmptyList from '../components/mypage/EmptyList';
-import Header from '../Header';
+import Header from '../components/header/Header';
 
 const YourPage = () => {
   const token = localStorage.getItem('token');

@@ -7,6 +7,7 @@ import MyPage from './myPage/MyPage';
 import YourPage from './myPage/YourPage';
 import MyPageAccList from './myPage/MyPageAccList';
 import MyLibrary from './myPage/MyLibrary';
+import YourPageAccList from './myPage/YourPageAccList';
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
       <Route path="/mypage/acclist" element={<MyPageAccList />} />
       <Route path="/mypage/library" element={<MyLibrary />} />
       <Route path="/yourpage" element={<YourPage />} />
+      <Route path="/yourpage/youracclist" element={<YourPageAccList />} />
     </Routes>
     // <MainPage />
   );

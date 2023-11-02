@@ -16,9 +16,9 @@ const ProfileList = (props) => {
           'Content-type': 'application/json',
         },
       });
-      //화면 새로 고침
-      // location.reload();
-      alert('언팔로우 성공!!!!');
+      alert(`${props.userName}님 팔로우가 해제 되었습니다 🥲`);
+      // eslint-disable-next-line no-restricted-globals
+      location.reload();
     } catch (error) {
       console.error('팔로우 실패:', error);
     }
@@ -27,10 +27,14 @@ const ProfileList = (props) => {
   const unfollowingEvent = () => {
     unfollowingFn(accName);
   };
+  //a 태그 클릭 이벤트 방지
+  const aClick = (e) => {
+    e.preventDefault();
+  };
 
   return (
     <li>
-      <a href="#" className={styles.userListObj}>
+      <a href="#" className={styles.userListObj} onClick={aClick}>
         <div className={styles.leftObj} onClick={props.pageEvent}>
           <div className={styles.accImg}>
             <img alt="프로필 이미지" src={props.imgSrc} />
