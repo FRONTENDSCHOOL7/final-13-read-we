@@ -10,8 +10,11 @@ import { IconIpt } from '../input/IptStyleEtc';
 import { BasicIpt } from '../input/IptStyle';
 import Trend from './Trend';
 import Recent from './RecentSection';
+import NoPost from './NoPost';
+import EmptyList from '../mypage/EmptyList';
 
 const MainPage = () => {
+  const posts = []; //post 갯수
   return (
     <div className={styles.container}>
       <Header />
@@ -41,22 +44,23 @@ const MainPage = () => {
               <button>Home</button>
             </div>
             <MainPostCard imgSrc="icon/testProfile.png" />
-            <PostSection
-              date="2023.10.26"
-              imgSrc="icon/testProfile.png"
-              userName="mewmew"
-              userEmail="testID.test.com"
-              public="출판사 명"
-              title="책 제목"
-              hit="true"
-              author="작가"
-              content="내요요요요용"
-              like="11"
-              cmt=""
-            />
-            <PostSection className={styles.PostSection} />
-            <PostSection className={styles.PostSection} />
-            <PostSection className={styles.PostSection} />
+            {posts.length === 0 ? (
+              <EmptyList />
+            ) : (
+              <PostSection
+                date="2023.10.26"
+                imgSrc="icon/testProfile.png"
+                userName="mewmew"
+                userEmail="testID.test.com"
+                public="출판사 명"
+                title="책 제목"
+                hit="true"
+                author="작가"
+                content="내요요요요용"
+                like="11"
+                cmt=""
+              />
+            )}
           </div>
           <div className={styles.MainRightContainer}>
             <IconIpt>

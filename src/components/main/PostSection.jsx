@@ -6,13 +6,16 @@ import styles from './css/Main.module.css';
 // 게시물 카드섹션
 const MainCard = (props) => {
   const [showPopup, setShowPopup] = useState(false);
+  const [postDetail, setpostDetail] = useState(false);
 
   const handleImageClick = () => {
     setShowPopup(true);
   };
-
   const closePopup = () => {
     setShowPopup(false);
+  };
+  const handlePostClick = () => {
+    setpostDetail(true);
   };
   return (
     <>

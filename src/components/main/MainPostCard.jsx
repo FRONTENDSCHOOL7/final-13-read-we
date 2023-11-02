@@ -17,14 +17,11 @@ const MainPostCard = (props) => {
           md="true"
           bgcolor="#E87C3E"
           round="100px"
-          wid="66px"
+          wid="70px"
           hei="34px"
         >
           POST
         </BasicBtn>
-      </div>
-      <div className={styles.ShowPost}>
-        <div>show 20 post</div>
       </div>
     </div>
   );

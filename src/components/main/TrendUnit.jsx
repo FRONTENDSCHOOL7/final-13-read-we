@@ -29,8 +29,10 @@ const TrendUnit = (props) => {
   );
 };
 
-const ShowBtn = () => {
-  return <StyledShowBtn>Show More</StyledShowBtn>;
+const ShowBtn = (props) => {
+  return (
+    <StyledShowBtn onClick={props.onClick}>{props.children}</StyledShowBtn>
+  );
 };
 
 export { TrendUnit, ShowBtn };

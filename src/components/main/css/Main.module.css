@@ -88,7 +88,7 @@
 
 .PostCardBox {
   padding-top: 40px;
-
+  border-bottom: 1px solid var(--disable-gray-3, #C7C7C7);
 }
 
 .Postbar {
