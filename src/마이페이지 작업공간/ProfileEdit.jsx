@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import Header from '../Header';
 import ProfileInfoSetting from '../components/mypage/ProfileInfoSetting';
+// import { database } from '../join-Page/JoinPage';
 
 const ProfileEdit = () => {
   const [nickname, setNickname] = useState('');
@@ -10,6 +11,9 @@ const ProfileEdit = () => {
 
   //입력 핸들러 추가
   const handleNicknameChange = (event) => {
+    if (event.target.value.length > 7) {
+      return;
+    }
     setNickname(event.target.value);
   };
 
@@ -21,6 +25,29 @@ const ProfileEdit = () => {
     setConfirmPassword(event.target.value);
   };
 
+  // // 사용자 ID 검사 함수 추가
+  // const checkUserId = async (userId) => {
+  //   // 데이터베이스에서 사용자 ID를 검색
+  //   const user = await database.findUserById(userId);
+
+  //   // 사용자 ID가 이미 존재하면 알림 표시
+  //   if (user) {
+  //     alert('사용중인 ID입니다.');
+  //     return;
+  //   }
+
+  //   // 사용자 ID가 존재하지 않으면 계속 진행
+  //   if (!user) {
+  //     // 사용자 정보를 데이터베이스에 저장
+  //     await database.saveUser({
+  //       id: userId,
+  //       nickname: nickname,
+  //       password: password,
+  //     });
+  //     alert('회원가입이 완료되었습니다.');
+  //   }
+  // };
+
   // 비밀번호와 비밀번호 확인이 일치하는지 확인
   React.useEffect(() => {
     setIsPasswordMatching(password === confirmPassword && password !== '');
@@ -30,7 +57,7 @@ const ProfileEdit = () => {
     event.preventDefault();
 
     const token = localStorage.getItem('token');
-    fetch('https://api.example.com/user', {
+    fetch('https://api.mandarin.weniv.co.kr', {
       method: 'PUT',
       headers: {
         Authorization: `Bearer ${token}`,
@@ -77,6 +104,7 @@ const ProfileEdit = () => {
         type="text"
         placeholder="닉네임"
         className="basic gray"
+        value={nickname}
         onChange={handleNicknameChange}
         style={{ marginBottom: '10px' }}
       />

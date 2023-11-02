@@ -5,20 +5,21 @@ import styled from 'styled-components';
 const ProfileInfoSetting = (props) => {
   //상태 변수 추가
   const [selectedFile, setSelectedFile] = useState(null);
-  const [file, setFile] = useState(null); // 추가
+  const [preview, setPreview] = useState(null); // 추가
 
   // 파일 선택 핸들러 추가
   const handleFileChange = (event) => {
     const file = event.target.files[0];
-    setFile(file);
+    setSelectedFile(file);
+    setPreview(URL.createObjectURL(file)); // 추가
   };
 
   // 제출 핸들러에서 파일 업로드 로직 추가
   const handleUpload = () => {
     const formData = new FormData();
-    formData.append('file', file);
+    formData.append('file', selectedFile);
 
-    fetch('https://api.example.com/upload', {
+    fetch('https://api.mandarin.weniv.co.kr', {
       method: 'POST',
       body: formData,
     })
@@ -30,6 +31,13 @@ const ProfileInfoSetting = (props) => {
         console.error('Error:', error);
       });
   };
+
+  // 이미지 스타일 추가
+  const ImagePreview = styled.img`
+    border-radius: 40%;
+    width: 200px;
+    height: 200px;
+  `;
 
   // 사진변경 버튼에 스타일을 입히고 싶은 간절한 코드
   const FileInput = styled.input`
@@ -72,6 +80,7 @@ const ProfileInfoSetting = (props) => {
 
   const Container = styled.div`
     display: flex;
+    flex-direction: column; //상하로
     justify-content: center;
     align-items: center;
   `;
@@ -80,7 +89,10 @@ const ProfileInfoSetting = (props) => {
   return (
     <div className="acc-info">
       <div className="acc-img">
-        <img alt="프로필 이미지" src={`/images/${props.imgSrc}`} />
+        <ImagePreview
+          alt="프로필 이미지"
+          src={preview ? preview : `/images/${props.imgSrc}`}
+        />
       </div>
       <Container>
         <FileInput
@@ -91,6 +103,7 @@ const ProfileInfoSetting = (props) => {
             handleUpload();
           }}
         />
+        {selectedFile && <p>선택된 파일: {selectedFile.name}</p>}
         <FileInputLabel htmlFor="file">파일 선택</FileInputLabel>
       </Container>
       <strong className="acc-id">{props.userName}</strong>
