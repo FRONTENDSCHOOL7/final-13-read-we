@@ -10,22 +10,28 @@ import MyLibrary from './myPage/MyLibrary';
 import JoinPage from './join-Page/JoinPage';
 import Emailsignup from './login-Page/Emailsignup';
 import ProfileEdit from './myPage/ProfileEdit';
+import Header from './components/header/Header';
+import Footer from './components/footer/Footer';
 
 function App() {
   return (
-    <Routes>
-      <Route path="/login" element={<LoginPage />} />
-      <Route path="/join" element={<JoinPage />} />
-      <Route path="/email-signup" element={<Emailsignup />} />
-      <Route path="/main" element={<MainPage />} />
-      {/* <Route path="/comment" element={<CmtList />} /> */}
-      <Route path="/mypage" element={<MyPage />} />
-      <Route path="/mypage/edit" element={<ProfileEdit />} />
-      <Route path="/mypage/acclist" element={<MyPageAccList />} />
-      <Route path="/mypage/library" element={<MyLibrary />} />
-      <Route path="/yourpage" element={<YourPage />} />
-      <Route path="/profile-edit" element={<ProfileEdit />} />
-    </Routes>
+    <>
+      <Header />
+      <Routes>
+        <Route path="/login" element={<LoginPage />} />
+        <Route path="/join" element={<JoinPage />} />
+        <Route path="/email-signup" element={<Emailsignup />} />
+        <Route path="/main" element={<MainPage />} />
+        {/* <Route path="/comment" element={<CmtList />} /> */}
+        <Route path="/mypage" element={<MyPage />} />
+        <Route path="/mypage/edit" element={<ProfileEdit />} />
+        <Route path="/mypage/acclist" element={<MyPageAccList />} />
+        <Route path="/mypage/library" element={<MyLibrary />} />
+        <Route path="/yourpage" element={<YourPage />} />
+        <Route path="/profile-edit" element={<ProfileEdit />} />
+      </Routes>
+      <Footer />
+    </>
     // <MainPage />
   );
 }

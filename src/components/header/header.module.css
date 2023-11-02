@@ -1,43 +1,24 @@
-/* header */
-body {
-  background-color: white;
-}
-
-
 header {
-  top: 0;
-	left: 0;
 	width: 100%;
-	padding: 30px;
-	/* z-index: 3; */
-  /* position: absolute; */
-  margin-top: 10px;
-}
-
-header h1 {
-	position: relative;
-	height: 40px;
-	margin:0;
-	float: left;
-	z-index: 3;
-  /* top: 25px; */
+	padding-top: 30px;
+  padding-bottom: 15px;
+  margin-bottom: 10px;
+  position: sticky;
+  background-color: white;
+  top: 0;
+  z-index: 90;
+  box-shadow: #000;
+  box-shadow: 0px 1px 20px 0px #0000000d;
 }
 
 .header-Container {
-  position: relative;
-  width: 100%;
-  max-width: 1920px;
-  padding: 0 30px;
-  margin: auto 0;
+  width: calc(100% - 100px);
+  max-width: 1280px;
+  margin: 0 auto;
   background-color: white;
   display: flex;
+  justify-content: space-between;
   align-items: center;
-}
-
-
-header h1 img{
-	display: block;
-	position: relative;
 }
 
 .container-Link a {
@@ -46,28 +27,20 @@ header h1 img{
   font-size: 16px;
   font-weight: 500;
   letter-spacing: 0.2px;
-  text-decoration: none; 
-  outline: none;
-  position: relative;
 }
 
 .container-Link {
   display: flex;
   gap: 40px;
   align-items: center;
-  position: relative;
-  left: 20%;
 }
 
 .container-Link :nth-child(1) {
   color: var(--main-black, #000);
   font-family: "Gotham-Book.ttf",sans-serif;
   font-size: 20px;
-  font-style: normal;
   font-weight: 400;
-  line-height: normal;
   letter-spacing: 0.2px;
-  
 }
 .container-Link a:hover {
   color: #E87C3E;
@@ -80,7 +53,6 @@ header h1 img{
 }
 
 /* 햄버거 버튼 */
-
 .a11y-hidden {
   clip: rect(1px, 1px, 1px, 1px);
   clip-path: inset(50%);
@@ -95,10 +67,8 @@ header h1 img{
 .btn-allmenu {
   background: none;
   border: 0;
-  position: relative;
-  left: 58%;
-  width: 4.8rem;
-  height: 4.8rem;
+  width: 60px;
+  height: 60px;
   overflow: hidden;
   padding: 1.2rem;
   background-color: #000;
@@ -123,7 +93,7 @@ header h1 img{
 }
 
 .btn-allmenu .line span:nth-child(1) {
-  top: 15%;
+  top: 0;
   left: 0;
 
 }
@@ -136,7 +106,7 @@ header h1 img{
 }
 
 .btn-allmenu .line span:nth-child(3) {
-  bottom: 15%;
+  bottom: 0;
   left: 0;
 }
 

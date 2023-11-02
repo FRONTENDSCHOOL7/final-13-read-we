@@ -1,24 +1,25 @@
 import React from 'react';
-import '../footer/footer.css';
+import styles from './footer.module.css';
 
 export default function Footer() {
   return (
-    <div className="box">
-      <div className="footer-content">
-        <div className="container-1">
-          <p className="readwe-Info">
+    <div className={styles['box']}>
+      <div className={styles['footer-content']}>
+        <div className={styles['top-container']}>
+          <div className={styles['box-1']} />
+          <div className={styles['box-2']} />
+        </div>
+        <div className={styles['bottom-container']}>
+          <p className={styles['readwe-Info']}>
             Read We | Terms | Privacy | Cookies | Instagram
+            <br />
+            ©️ Read We. All rights reserved.
           </p>
-          <p className="readwe-Right">©️ Read We. All rights reserved.</p>
-        </div>
-        <div className="container-Box">
-          <div className="box-1"></div>
-          <div className="box-2"></div>
-        </div>
-        <div className="container-2">
-          <div className="linkedin-Icon"></div>
-          <div className="facebook-Icon"></div>
-          <div className="share-Icon"></div>
+          <div className={styles['icon-box']}>
+            <div className={styles['linkedin-Icon']} />
+            <div className={styles['facebook-Icon']} />
+            <div className={styles['share-Icon']} />
+          </div>
         </div>
       </div>
     </div>

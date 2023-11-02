@@ -641,6 +641,7 @@ span.tag.hit {
   top: 0;
   left: 0;
   background-color: rgba(0, 0, 0, 0.25);
+  z-index: 99;
 }
 .modal-wrap {
   width: calc(100% - 50px);
@@ -654,6 +655,7 @@ span.tag.hit {
   border-radius: 15px;
   overflow: hidden;
   box-shadow: 4px 4px 20px 0px rgba(0, 0, 0, 0.25);
+  z-index: 100;
 }
 
 .modal-wrap .modal-title {
