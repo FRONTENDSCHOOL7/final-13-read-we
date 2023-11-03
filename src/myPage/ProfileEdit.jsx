@@ -1,15 +1,22 @@
-import React, { useState } from 'react';
-import Header from '../Header';
+import React, { useState, useEffect } from 'react';
 import ProfileInfoSetting from '../components/mypage/ProfileInfoSetting';
 import { useLocation } from 'react-router-dom';
 import styles from './css/myPage.module.css';
 import '../myPage/ProfileEdit.css';
 
 const ProfileEdit = () => {
-  const [nickname, setNickname] = useState('');
+  const location = useLocation();
+  console.log(location.state);
+  const [nickname, setNickname] = useState(location.state.beforeNickname);
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
   const [isPasswordMatching, setIsPasswordMatching] = useState(false);
+
+  const [selectedFile, setSelectedFile] = useState(null);
+  const [preview, setPreview] = useState('');
+  const [id, setId] = useState('account_test93');
+
+  const [uploadedFileName, setUploadedFileName] = useState(null);
 
   //입력 핸들러 추가
   const handleNicknameChange = (event) => {
@@ -27,10 +34,47 @@ const ProfileEdit = () => {
     setConfirmPassword(event.target.value);
   };
 
-  // 비밀번호와 비밀번호 확인이 일치하는지 확인
-  const loacation = useLocation();
-  console.log(loacation.state.id);
+  const handleFileChange = (event) => {
+    const file = event.target.files[0];
+    setSelectedFile(file);
+    console.log(file);
+    setPreview(URL.createObjectURL(file));
+  };
 
+  const handleUpload = async () => {
+    console.log(id);
+    const formData = new FormData();
+    formData.append('file', selectedFile);
+    formData.append('id', id);
+
+    const url = 'https://api.mandarin.weniv.co.kr/Ellipse.png';
+    const fileNames = [];
+
+    try {
+      const response = await fetch(url + '/image/uploadfiles', {
+        method: 'POST',
+        body: formData,
+      });
+
+      const data = await response.json();
+
+      for (let i of data) {
+        fileNames.push(i['filename']);
+      }
+
+      if (fileNames.length > 1) {
+        return fileNames.join(',');
+      } else {
+        return fileNames[0];
+      }
+    } catch (err) {
+      console.error(err);
+    }
+
+    return true;
+  };
+
+  // 비밀번호와 비밀번호 확인이 일치하는지 확인
   React.useEffect(() => {
     setIsPasswordMatching(password === confirmPassword && password !== '');
   }, [password, confirmPassword]);
@@ -52,7 +96,7 @@ const ProfileEdit = () => {
       },
       body: JSON.stringify({
         user: {
-          accountname: loacation.state.id,
+          accountname: location.state.id,
           username: nickname,
         },
       }),
@@ -74,7 +118,6 @@ const ProfileEdit = () => {
 
   return (
     <div className={styles.pageWrap}>
-      <Header />
       <div className={styles.contentArea}>
         <h1 style={styles['h1-profile']} className="edit-profile">
           프로필 수정
