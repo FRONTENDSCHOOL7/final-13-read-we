@@ -1,0 +1,8 @@
+.searchWrap {
+  margin: 40px;
+}
+
+.scrollArea {
+  height: 270px;
+  overflow-y: scroll;
+}
