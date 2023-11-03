@@ -14,6 +14,8 @@ const ProfileCard = (props) => {
           navigate('/mypage/edit', {
             state: {
               id: props.accName,
+              beforeImg: props.imgSrc,
+              beforeNickname: props.userName,
             },
           });
         }}
