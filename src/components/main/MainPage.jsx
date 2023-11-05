@@ -103,7 +103,10 @@ const MainPage = () => {
             <div className={styles.HomeButton}>
               <button>Home</button>
             </div>
-            <MainPostCard imgSrc="icon/testProfile.png" />
+            <MainPostCard
+              imgSrc="icon/testProfile.png"
+              onClick={handlePostBtn}
+            />
             {posts.length === 0 ? (
               <EmptyList />
             ) : (

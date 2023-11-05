@@ -4,7 +4,7 @@ import { BasicBtn } from '../button/BtnStyle';
 
 const MainPostCard = (props) => {
   return (
-    <div className={styles.PostCardBox}>
+    <div className={styles.PostCardBox} onClick={props.onClick}>
       <div className={styles.Postbar}>
         <div className={styles.PostProfileImg}>
           <img alt="프로필 이미지" src={`/images/${props.imgSrc}`} />
