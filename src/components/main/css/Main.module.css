@@ -168,3 +168,10 @@
   padding-left: 27px;
 
 }
+
+/* user검색 ipt */
+.searchUser {
+  max-height: 100px;
+  overflow: auto;
+  border: 1px solid var(--disable-gray-3, #C7C7C7);
+}

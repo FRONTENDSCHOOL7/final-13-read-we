@@ -12,16 +12,18 @@ import Emailsignup from './login-Page/Emailsignup';
 import ProfileEdit from './myPage/ProfileEdit';
 import Header from './components/header/Header';
 import Footer from './components/footer/Footer';
+import PostUpload from './main-page/PostUpload';
 
 function App() {
   return (
     <>
       <Header />
       <Routes>
-        <Route path="/login" element={<LoginPage />} />
+        <Route path="/" element={<LoginPage />} />
         <Route path="/join" element={<JoinPage />} />
         <Route path="/email-signup" element={<Emailsignup />} />
         <Route path="/main" element={<MainPage />} />
+        <Route path="/postupload" element={<PostUpload />} />
         {/* <Route path="/comment" element={<CmtList />} /> */}
         <Route path="/mypage" element={<MyPage />} />
         <Route path="/mypage/edit" element={<ProfileEdit />} />
@@ -29,6 +31,7 @@ function App() {
         <Route path="/mypage/library" element={<MyLibrary />} />
         <Route path="/yourpage" element={<YourPage />} />
         <Route path="/profile-edit" element={<ProfileEdit />} />
+        <Route path="*" element={<div>404 Page</div>} /> {/*  404page */}
       </Routes>
       <Footer />
     </>
