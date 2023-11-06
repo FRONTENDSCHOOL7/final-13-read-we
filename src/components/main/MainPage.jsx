@@ -109,22 +109,33 @@ const MainPage = () => {
             {posts.length === 0 ? (
               <EmptyList />
             ) : (
-              posts.map((post) => (
-                // eslint-disable-next-line react/jsx-key
-                <PostSection
-                  date={post.createdAt}
-                  imgSrc={post.image}
-                  userName={post.author.username}
-                  userEmail={post.author.accountname}
-                  public="출판사 명"
-                  title="책 제목"
-                  hit="true"
-                  author="작가"
-                  content={post.content}
-                  like={post.heartCount}
-                  cmt=""
-                />
-              ))
+              posts.map((e) => {
+                const bookInfo = JSON.parse(e.content);
+                return (
+                  <PostSection
+                    key={e.id}
+                    date={e.createdAt.replace(/T.*/, '')}
+                    imgSrc={baseUrl + '/' + e.author.image.replace(/^.*\//, '')}
+                    bookImgSrc={e.image}
+                    //게시물 id
+                    postId={e.id}
+                    //게시물 클릭 시 해당 유저 프로필 페이지 이동용
+                    accName={e.author.accountname}
+                    userName={e.author.username}
+                    userEmail="testID.test.com"
+                    public={bookInfo.publisher}
+                    title={bookInfo.title}
+                    hit="true"
+                    author={bookInfo.author}
+                    content={bookInfo.contentText}
+                    description={bookInfo.description}
+                    like={e.heartCount}
+                    //좋아요 여부 체크용
+                    isLike={e.hearted}
+                    cmt={e.commentCount}
+                  />
+                );
+              })
             )}
           </div>
           <div className={styles.MainRightContainer}>
