@@ -12,13 +12,17 @@ import Trend from './Trend';
 import EmptyList from '../mypage/EmptyList';
 import HandlePost from '../../util/postUtil';
 import SearchModal from '../../main-page/SearchModal';
+import { Navigate, useNavigate } from 'react-router-dom';
 
-const MainPage = () => {
+const MainPage = ({ image }) => {
   const [posts, setPosts] = useState([]);
   const [userName, setUserName] = useState('');
+  const [profile, setProfile] = useState(null);
   const [showBookSearchModal, setShowBookSearchModal] = useState(false);
   const [searchUserRes, setSearchUserRes] = useState([]); // 유저검색 결과
+  const accName = localStorage.getItem('accname'); // 로컬스토리지에서 accname 받아오기
   const handlePostBtn = HandlePost(); // postUtil 함수불러오기.
+  const navigate = useNavigate();
   const token = localStorage.getItem('token');
   const baseUrl = 'https://api.mandarin.weniv.co.kr';
 
@@ -28,6 +32,21 @@ const MainPage = () => {
   const hideModal = () => {
     setShowBookSearchModal(false);
   };
+  //유저정보 불러오기
+  useEffect(() => {
+    const getMyinfo = async () => {
+      const reqUrl = baseUrl + '/user/myinfo';
+      const res = await fetch(reqUrl, {
+        method: 'GET',
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      const json = await res.json();
+      setProfile(json);
+    };
+    getMyinfo();
+  }, []);
 
   useEffect(() => {
     const fetchPosts = async () => {
@@ -66,30 +85,20 @@ const MainPage = () => {
       setSearchUserRes([]); // 키워드가 비었을 때는 검색 결과를 비웁니다
     }
   }, [userName]);
-
+  console.log(localStorage.getItem('email'));
   return (
     <div className={styles.container}>
       <div className={styles.MainContainer}>
         <div className={styles.outerContainer}>
           <div className={styles.MProFloat}>
             <MainProfileCard
-              imgSrc="icon/testProfile.png"
-              userName="mewmew"
-              userEmail="testID.test.com"
+              img={baseUrl + '/' + profile?.user.image.replace(/^.*\//, '')}
+              userName={profile?.user.username}
+              userEmail={localStorage.getItem('email')}
             />
           </div>
           <div className={styles.MainLeftContainer}>
             <MainNavBtn />
-            {/* <BasicBtn
-              md="true"
-              bgcolor="#E87C3E"
-              round="100px"
-              wid="100%"
-              weight="600"
-              onClick={handlePostBtn}
-            >
-              POST
-            </BasicBtn> */}
             <IconIpt>
               <BasicIpt
                 sm="true"
@@ -101,7 +110,15 @@ const MainPage = () => {
             </IconIpt>
             <div className={styles.searchUser}>
               {searchUserRes.map((user) => (
-                <div key={user._id}>
+                <div
+                  key={user._id}
+                  onClick={() => {
+                    localStorage.setItem('otherName', user.accountname);
+                    navigate(
+                      user.accountname !== accName ? '/yourpage' : '/mypage',
+                    );
+                  }}
+                >
                   {user.username} ({user.accountname})
                 </div>
               ))}
@@ -112,7 +129,7 @@ const MainPage = () => {
               <button>Home</button>
             </div>
             <MainPostCard
-              imgSrc="icon/testProfile.png"
+              img={baseUrl + '/' + profile?.user.image.replace(/^.*\//, '')}
               onClick={handlePostBtn}
             />
             {posts.length === 0 ? (
