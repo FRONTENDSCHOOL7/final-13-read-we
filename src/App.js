@@ -12,6 +12,9 @@ import Emailsignup from './login-Page/Emailsignup';
 import ProfileEdit from './myPage/ProfileEdit';
 import Header from './components/header/Header';
 import Footer from './components/footer/Footer';
+import Chatting from './chat/Chatting';
+import LoginJoinSelect from './login-join-select/LoginJoinSelect';
+import LoginFinish from './login-Page/JoinFinish';
 
 function App() {
   return (
@@ -20,19 +23,22 @@ function App() {
       <Routes>
         <Route path="/login" element={<LoginPage />} />
         <Route path="/join" element={<JoinPage />} />
+        <Route path="/join-success" element={<LoginFinish />} />
         <Route path="/email-signup" element={<Emailsignup />} />
         <Route path="/main" element={<MainPage />} />
         {/* <Route path="/comment" element={<CmtList />} /> */}
+        <Route path="/chat" element={<Chatting />} />
         <Route path="/mypage" element={<MyPage />} />
         <Route path="/mypage/edit" element={<ProfileEdit />} />
         <Route path="/mypage/acclist" element={<MyPageAccList />} />
         <Route path="/mypage/library" element={<MyLibrary />} />
         <Route path="/yourpage" element={<YourPage />} />
         <Route path="/profile-edit" element={<ProfileEdit />} />
+        <Route path="/select" element={<LoginJoinSelect />} />
       </Routes>
       <Footer />
+      {/* <MainPage /> */}
     </>
-    // <MainPage />
   );
 }
 

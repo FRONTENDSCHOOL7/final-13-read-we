@@ -7,14 +7,13 @@ import { useNavigate } from 'react-router-dom';
 
 export default function LoginPage() {
   // input 요소 상태
-  const [username, setUsername] = useState('');
+  const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  // const [email, setEmail] = useState('');
   const navigate = useNavigate();
 
   // 서버 전달값 셋팅
-  const inputUsername = (e) => {
-    setUsername(e.target.value);
+  const inputEmail = (e) => {
+    setEmail(e.target.value);
   };
   const inputPassword = (e) => {
     setPassword(e.target.value);
@@ -28,15 +27,15 @@ export default function LoginPage() {
   const submitLogin = (e) => {
     // 새로 고침 막음
     e.preventDefault();
-    loginFn(username, password);
+    loginFn(email, password);
   };
 
-  const loginFn = async (username, password) => {
+  const loginFn = async (email, password) => {
     const reqUrl = 'https://api.mandarin.weniv.co.kr';
     const reqPath = '/user/login';
     const loginData = {
       user: {
-        username: username,
+        email: email,
         password: password,
       },
     };
@@ -57,16 +56,16 @@ export default function LoginPage() {
         const token = json.user.token;
         console.log(token);
 
-        const username = json.user.username;
+        const email = json.user.email;
 
         // 토큰 및 이메일 로컬 스토리지에 저장
         localStorage.setItem('token', token);
-        localStorage.setItem('username', username);
+        localStorage.setItem('username', email);
         // localStorage.setItem('email', email);
         localStorage.setItem('password', password);
         console.log('로그인 성공! 토큰 및 이메일 아이디 저장됨:', token);
 
-        navigate('/loginfinsh', { state: { username } });
+        navigate('/main', { state: { email } });
       }
       // 에러 핸들링
       else {
@@ -82,7 +81,6 @@ export default function LoginPage() {
 
   return (
     <>
-      <Header></Header>
       <div className="login-container">
         <div className="login-Image"></div>
         <form onSubmit={submitLogin}>
@@ -91,8 +89,8 @@ export default function LoginPage() {
             className="input-box id"
             type="text"
             placeholder="아이디"
-            value={username}
-            onChange={inputUsername}
+            value={email}
+            onChange={inputEmail}
             required
           />
           <br />
@@ -119,7 +117,10 @@ export default function LoginPage() {
         <p className="Find-Id">아이디 찾기 | 비밀번호 찾기</p>
         <div className="joinment-box">
           아직 계정이 없으신가요?
-          <Link to="/join">회원가입하기</Link> {/* 회원가입 페이지로 이동 */}
+          <Link to="/join" className="logintojoin">
+            회원가입하기
+          </Link>
+          {/* 회원가입 페이지로 이동 */}
         </div>
         <div className="line-container">
           <span className="login-line"></span>
@@ -137,9 +138,7 @@ export default function LoginPage() {
           </span>
         </div>
       </div>
-      <div className="Footer" style={{ marginTop: '50%' }}>
-        <Footer></Footer>
-      </div>
+      <div className="Footer" style={{ marginTop: '50%' }}></div>
     </>
   );
 }

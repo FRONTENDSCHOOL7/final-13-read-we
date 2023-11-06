@@ -16,7 +16,6 @@ const MainPage = () => {
   const posts = []; //post 갯수
   return (
     <div className={styles.container}>
-      <Header />
       <div className={styles.MainContainer}>
         <div className={styles.outerContainer}>
           <div className={styles.MProFloat}>

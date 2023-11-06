@@ -4,8 +4,16 @@
   margin: auto;
   font-family: 'Pretendard',sans-serif;
   margin-bottom: 40%;
-  margin-top: 10%;
+  margin-top: 5%;
 }
+
+button,
+input {
+  background: none;
+  border: none;
+  color: inherit;
+}
+
 
 .join-ment {
   color: #777;
@@ -18,9 +26,6 @@
   margin: 20px 0;
 }
 
-.join-PW {
-  margin-bottom: 20px;
-}
 
 .join-Box h1 {
   color: var(--main-black, #000);
@@ -45,7 +50,7 @@
   line-height: normal;
   letter-spacing: 0.2px;
   text-transform: capitalize;
-  margin: 0 0 40px 0;
+  margin: 0 0 80px 0;
   
 }
 
@@ -76,20 +81,49 @@
   background-color: #E87C3E; 
   
 }
-
+/* 
 .input-icon {
   margin-top: 20px;
   width: 100%;
 
-}
-
-.active-input {
-  background-color: rgb(147, 147, 147);
-  border-radius: 10px;
-  border: 1px solid rgb(106, 106, 106);
-}
+} */
 
 
 .imagePre {
-  margin: auto 0;
+  /* margin: auto 0; */
+}
+
+input {
+  /* margin: 0; */
+}
+
+/* .input-icon {
+  margin-top: 20px;
+  width: 100%;
+  display: flex; 
+  align-items: center; 
+} */
+
+.imagePre {
+  margin: auto; /* 수정: 가운데 정렬 */
+}
+
+
+.input-icon {
+  position: relative;
+  display: flex; /* 수직 정렬을 위해 flex 사용 */
+  align-items: center; /* 아이콘과 입력란을 세로 중앙 정렬 */
+}
+
+.input-icon .icon {
+  position: absolute;
+  left: 20px;
+  top: 60%;
+  transform: translateY(-50%);
+}
+
+
+.join-Box .gray {
+  margin: 0;
+  margin-top: 20px;
 }

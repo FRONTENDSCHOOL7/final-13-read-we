@@ -1,12 +1,18 @@
 body {
   font-family: url(/public/font/Pretendard-Medium.ttf),sans-serif;
-  font-size: 16px;
+  /* font-size: 16px; */
 
 }
+.jf-container {
+  height: 900px;
+  
+}
+
 
 * {
   word-break: break-all;
   word-wrap: break-word;
+  font-family: url(/public/font/Pretendard-Medium.ttf),sans-serif;
 }
 
 button,
@@ -29,6 +35,7 @@ button:enabled {
   border-radius: 10px;
   margin-top:5%;
   overflow: hidden;
+  z-index: 1;
 }
 
 label {
@@ -239,8 +246,8 @@ input#check_btn:checked + label:before{
   display: block;
   font-weight: 600;
   color: #535353;
-  margin-top: 50px;
-  font-size: 18px;
+  margin-top: 40px;
+  font-size: 15px;
   line-height: 28px;
 }
 
@@ -248,6 +255,9 @@ input#check_btn:checked + label:before{
   margin-top: 20px;
 }
 
+.logintojoin:hover {
+  color: #E87C3E; 
+}
 
 .id-login {
   font-size: 14px;
@@ -279,7 +289,7 @@ input#check_btn:checked + label:before{
   margin-top: 40px;
   display: inline-block;
   width: 80%; /* 원하는 길이로 설정 */
-  border-bottom: 1px solid #000; /* 선의 두께와 색상을 설정 */
+  border-bottom: 1px solid rgb(191, 191, 191); /* 선의 두께와 색상을 설정 */
 }
 
 .line-container{
@@ -298,7 +308,7 @@ input#check_btn:checked + label:before{
   position: relative;
   padding-left: 12px;
   margin-top: 20px;
-  font-size: 14px;
+  font-size: 12px;
   line-height: 22px;
   color: #A7A7A7;
 
@@ -354,6 +364,10 @@ input#check_btn:checked + label:before{
   margin: 26px 0;
 }
 
+.lgn-link:hover {
+  background: #d7e7fa; 
+}
+
 .lgn-icon,.lgn-icon-1 {
   background-image: url('/public/icon/3dicons.png');
   background-position: center;
@@ -394,42 +408,31 @@ input#check_btn:checked + label:before{
 
   /* 꼬불이 */
   .lgn-img1 {
-    position: relative;
-    top: 1312px;
-    left: 187px;
     background-position: center;
-    background-size: 500px;
-    width: 290px;
-    height: 444px;
     background: url(/public/images/Image.png);
     background-position: center;
-    background-size: 500px;
-    width: 290px;
-    height: 444px;
+    background-size: 300px;
+    width: 190px;
+    height: 344px;
     background-repeat: no-repeat;
   }
 
   /* 물결 */
   .lgn-img2 {
-    position: relative;
-    top: 1547px;
-    right: -1400px;
     background: url(/public/images/Image-1.png);
     background-position: center;
     width: 400px;
     height: 400px;
-    transform: rotate(0deg);
-    background-size: 200px;
+    background-size: 150px;
     background-repeat: no-repeat;
+    transform: rotate(-20deg);
   }
 
   /* 도넛 */
   .lgn-img3 {
-    position: relative;
-    top: -500px;
-    left: -145px;
-    background-size: 500px;
-    background: url(/public/images/Image-2.png);
+
+    background-size: 250px;
+    /* background: url(/public/images/Image-2.png); */
     background-position: contain;
     width: 611px;
     height: 612px;
@@ -438,15 +441,12 @@ input#check_btn:checked + label:before{
   }
   /* & */
   .lgn-img4 {
-    position: relative;
-    top: -1300px;
-    right: -1400px;
     background: url(/public/images/Image-3.png);
     background-position: center;
     width: 400px;
     height: 400px;
-    transform: rotate(0deg);
-    background-size: 200px;
+    transform: rotate(20deg);
+    background-size: 150px;
     background-repeat: no-repeat;
 
   }
@@ -461,16 +461,15 @@ input#check_btn:checked + label:before{
   
     /* 꼬불이 */
   .lgn-img1 {
-    top: 1321px;
+    top: 100px;
     left: 187px;
     background-image: url('/public/images/Image.png');
-    z-index: 1;
   }
   
     /* 물결 */
   .lgn-img2 {
-    top: 1547px;
-    right: -140px;
+    top: 147px;
+    right: 80px;
     background-image: url('/public/images/Image-1.png');
     /* 나머지 스타일 속성들 */
   }
@@ -478,15 +477,15 @@ input#check_btn:checked + label:before{
   /* 도넛 */
   .lgn-img3 {
     top: 500px;
-    left: -175px;
+    left: -85px;
     background-image: url('/public/images/Image-2.png');
     /* 나머지 스타일 속성들 */
   }
   
   /* & */
   .lgn-img4 {
-    top: 500px;
-    right: -140px;
+    top: 550px;
+    right: -100px;
     background-image: url('/public/images/Image-3.png');
     /* 나머지 스타일 속성들 */
   }
