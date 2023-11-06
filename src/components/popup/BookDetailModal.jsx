@@ -28,7 +28,7 @@ const BookDetailModal = (props) => {
             <div className="book-info-obj">
               <img
                 alt="책 이미지"
-                src={process.env.PUBLIC_URL + '/images/testBook.png'}
+                src={process.env.PUBLIC_URL + `/images/${props.bookImgSrc}`}
               />
               <BasicBtn md="true" linestyle="true" round="100px" wid="100%">
                 <i className="icon icon-star" /> 책 찜하기
@@ -50,7 +50,7 @@ const BookDetailModal = (props) => {
                 <span className="tag orange">지은이 / 옮긴이</span>
                 <strong className="book-author">{props.author}</strong>
               </div>
-              <p className="book-content scrollArea">{props.content}</p>
+              <p className="book-content scrollArea">{props.description}</p>
             </div>
           </div>
         </div>
