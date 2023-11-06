@@ -118,7 +118,7 @@ input {
 .input-icon .icon {
   position: absolute;
   left: 20px;
-  top: 60%;
+  top: 100%;
   transform: translateY(-50%);
 }
 

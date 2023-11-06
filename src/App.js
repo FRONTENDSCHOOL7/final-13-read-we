@@ -24,7 +24,7 @@ function App() {
     <>
       <Header />
       <Routes>
-        <Route path="/" element={<LoginPage />} />
+        <Route path="/login" element={<LoginPage />} />
         <Route path="/join" element={<JoinPage />} />
         <Route path="/join-success" element={<LoginFinish />} />
         <Route path="/email-signup" element={<Emailsignup />} />
