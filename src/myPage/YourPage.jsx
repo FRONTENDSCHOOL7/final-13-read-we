@@ -99,6 +99,8 @@ const YourPage = () => {
                           imgSrc={
                             baseUrl + '/' + e.author.image.replace(/^.*\//, '')
                           }
+                          postId={e.id}
+                          accName={e.author.accountname}
                           userName={e.author.username}
                           userEmail="testID.test.com"
                           public="출판사 명"
@@ -107,6 +109,7 @@ const YourPage = () => {
                           author="작가"
                           content={e.content}
                           like={e.heartCount}
+                          isLike={e.hearted}
                           cmt={e.commentCount}
                         />
                       );

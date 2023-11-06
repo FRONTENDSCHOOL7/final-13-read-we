@@ -30,7 +30,7 @@ const IconBtn = styled.a`
 
 const CounterBtn = (props) => {
   return (
-    <CounterBtnStyle>
+    <CounterBtnStyle onClick={props.onClick}>
       <i className={`icon icon-${props.type}`} />
       <strong>{props.count}</strong>
     </CounterBtnStyle>
