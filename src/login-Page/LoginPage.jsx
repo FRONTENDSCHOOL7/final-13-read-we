@@ -60,9 +60,7 @@ export default function LoginPage() {
 
         // 토큰 및 이메일 로컬 스토리지에 저장
         localStorage.setItem('token', token);
-        localStorage.setItem('username', email);
-        // localStorage.setItem('email', email);
-        localStorage.setItem('password', password);
+        localStorage.setItem('email', email);
         console.log('로그인 성공! 토큰 및 이메일 아이디 저장됨:', token);
 
         navigate('/main', { state: { email } });
