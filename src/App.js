@@ -6,6 +6,7 @@ import CmtList from './main-page/CmtList';
 import MyPage from './myPage/MyPage';
 import YourPage from './myPage/YourPage';
 import MyPageAccList from './myPage/MyPageAccList';
+import YourPageAccList from './myPage/YourPageAccList';
 import MyLibrary from './myPage/MyLibrary';
 import JoinPage from './join-Page/JoinPage';
 import Emailsignup from './login-Page/Emailsignup';
@@ -30,6 +31,7 @@ function App() {
         <Route path="/mypage/acclist" element={<MyPageAccList />} />
         <Route path="/mypage/library" element={<MyLibrary />} />
         <Route path="/yourpage" element={<YourPage />} />
+        <Route path="/yourpage/youracclist" element={<YourPageAccList />} />
         <Route path="/profile-edit" element={<ProfileEdit />} />
         <Route path="*" element={<div>404 Page</div>} /> {/*  404page */}
       </Routes>
