@@ -14,6 +14,7 @@ import ProfileEdit from './myPage/ProfileEdit';
 import Header from './components/header/Header';
 import Footer from './components/footer/Footer';
 import PostUpload from './main-page/PostUpload';
+import SearchModal from './main-page/SearchModal';
 
 function App() {
   return (
@@ -34,6 +35,7 @@ function App() {
         <Route path="/yourpage/youracclist" element={<YourPageAccList />} />
         <Route path="/profile-edit" element={<ProfileEdit />} />
         <Route path="*" element={<div>404 Page</div>} /> {/*  404page */}
+        <Route path="/search" element={<SearchModal />} />
       </Routes>
       <Footer />
     </>
