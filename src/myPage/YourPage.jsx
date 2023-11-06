@@ -3,7 +3,6 @@ import ProfileCardOther from '../components/mypage/ProfileCardOther';
 import PostSection from '../components/main/PostSection';
 import styles from './css/myPage.module.css';
 import EmptyList from '../components/mypage/EmptyList';
-import Header from '../components/header/Header';
 
 const YourPage = () => {
   const token = localStorage.getItem('token');
@@ -68,7 +67,7 @@ const YourPage = () => {
                   }
                   userName={myInfo.profile.username}
                   userAccName={myInfo.profile.accountname}
-                  userEmail="YourEmail"
+                  userEmail={myInfo.profile.accountname}
                   follower={myInfo.profile.followerCount}
                   following={myInfo.profile.followingCount}
                   isfollowing={myInfo.profile.isfollow}

@@ -38,7 +38,7 @@ const FollowerList = ({ myInfo }) => {
               imgSrc={baseUrl + '/' + e.image.replace(/^.*\//, '')}
               userName={e.username}
               userAccName={e.accountname}
-              userEmail="email"
+              userEmail={e.accountname}
               type="dot"
               pageEvent={(event) => {
                 localStorage.setItem('otherName', e.accountname);

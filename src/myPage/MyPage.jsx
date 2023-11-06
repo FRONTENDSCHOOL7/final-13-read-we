@@ -6,6 +6,7 @@ import EmptyList from '../components/mypage/EmptyList';
 
 const MyPage = () => {
   const token = localStorage.getItem('token');
+  const email = localStorage.getItem('email');
   const baseUrl = 'https://api.mandarin.weniv.co.kr';
 
   const [myInfo, setMyInfo] = useState(null);
@@ -61,13 +62,13 @@ const MyPage = () => {
         </h3>
         <div className={styles['big-container']}>
           {/* 프로필 정보 */}
-          {isProfileLoading == false ? (
+          {isProfileLoading === false ? (
             <div className={styles['profile-parent']}>
               <ProfileCard
                 imgSrc={baseUrl + '/' + myInfo.user.image.replace(/^.*\//, '')}
                 accName={myInfo.user.accountname}
                 userName={myInfo.user.username}
-                userEmail="myEmail"
+                userEmail={email}
                 follower={myInfo.user.followerCount}
                 following={myInfo.user.followingCount}
               />
@@ -76,7 +77,7 @@ const MyPage = () => {
             <p>now loading</p>
           )}
 
-          {isPostLoading == false ? (
+          {isPostLoading === false ? (
             <div className={styles['list-parent']}>
               {/* 우측 게시물리스트 */}
               <div className={styles['right-list']}>
@@ -89,7 +90,7 @@ const MyPage = () => {
                 </div>
 
                 {/* 마이페이지 > 메인 게시물 리스트 */}
-                {postList?.post?.length == 0 ? (
+                {postList?.post?.length === 0 ? (
                   <EmptyList
                     text1="아직 독서노트가 기록되지 않았어요"
                     text2="책을 읽고 기록을 남겨보세요!"
@@ -110,7 +111,7 @@ const MyPage = () => {
                         //게시물 클릭 시 해당 유저 프로필 페이지 이동용
                         accName={e.author.accountname}
                         userName={e.author.username}
-                        userEmail="testID.test.com"
+                        // userEmail="testID.test.com"
                         public={bookInfo.publisher}
                         title={bookInfo.title}
                         hit="true"

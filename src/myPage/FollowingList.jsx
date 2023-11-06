@@ -38,7 +38,7 @@ const FollowingList = ({ myInfo }) => {
               imgSrc={baseUrl + '/' + e.image.replace(/^.*\//, '')}
               userName={e.username}
               userAccName={e.accountname}
-              userEmail="email"
+              userEmail={e.accountname}
               type="remove"
               pageEvent={(event) => {
                 localStorage.setItem('otherName', e.accountname);
