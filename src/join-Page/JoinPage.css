@@ -89,12 +89,13 @@ input {
 } */
 
 
-.imagePre {
-  /* margin: auto 0; */
-}
-
-input {
-  /* margin: 0; */
+.img-upload {
+  
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  justify-content: center;
+  align-items: center;
 }
 
 /* .input-icon {
@@ -103,10 +104,6 @@ input {
   display: flex; 
   align-items: center; 
 } */
-
-.imagePre {
-  margin: auto; /* 수정: 가운데 정렬 */
-}
 
 
 .input-icon {

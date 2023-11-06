@@ -29,6 +29,11 @@ export default function JoinPage() {
     const json = await res.json();
     console.log(json);
 
+    // const token = json.user.token;
+    // console.log(token);
+
+    // localStorage.setItem('token', token);
+
     if (res.status === 200) {
       // 회원가입 성공 시 알림 메시지 표시
       alert('회원가입이 성공했습니다.');
@@ -55,7 +60,35 @@ export default function JoinPage() {
     setAccountname(e.target.value);
   };
 
-  const onChangeImage = (e) => {};
+  const uploadImage = async (imageFile) => {
+    const baseUrl = 'https://api.mandarin.weniv.co.kr/';
+    const reqUrl = baseUrl + 'image/uploadfile';
+    //폼데이터 만들기
+    const form = new FormData();
+    // 폼 데이터("키","값")
+    //폼 데이터 값추가
+    form.append('image', imageFile);
+    //폼바디에 넣어 요청
+    const res = await fetch(reqUrl, {
+      method: 'POST',
+      body: form,
+    });
+    const json = await res.json();
+    console.log(baseUrl + json.filename);
+    const imageUrl = baseUrl + json.filename;
+    serImgsrc(imageUrl);
+  };
+
+  const onChangeImage = (e) => {
+    //파일 가져오기
+    const imageFile = e.target.files[0];
+    //폼 데이터 만들기
+    // const form = new FormData();
+    // 폼 데이터("키","값")
+    //폼 데이터 값추가
+    // form.append('image', file);
+    uploadImage(imageFile);
+  };
   const submitJoin = (e) => {
     const joinData = {
       user: {
@@ -91,11 +124,17 @@ export default function JoinPage() {
           <h3 className="join-ment">
             아이디와 이메일로 간편하게 리드위를 시작하세요!
           </h3>
-          <div>
+          <div className="img-upload">
             <label>
               <img src={imgSrc} alt="" id="imagePre" />
             </label>
-            <input type="file" id="profileImg" name="image" accept="image/*" />
+            <input
+              type="file"
+              id="profileImg"
+              name="image"
+              accept="image/*"
+              onChange={onChangeImage}
+            />
           </div>
           <div
             className={`input-icon 
