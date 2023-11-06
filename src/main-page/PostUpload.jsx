@@ -3,6 +3,7 @@ import styles from './PostUpload.module.css';
 import { BasicBtn } from '../components/button/BtnStyle';
 import { BasicIpt } from '../components/input/IptStyle';
 import BookSearchDetailModal from './BookSearchDetailModal';
+import { useNavigate } from 'react-router-dom';
 
 const PostUpload = () => {
   const [modal, setModal] = useState(false);
@@ -11,6 +12,7 @@ const PostUpload = () => {
   const [author, setAuthor] = useState('');
   const [publisher, setPublisher] = useState('');
   const [content, setContent] = useState('');
+  const navigate = useNavigate();
 
   const closePopup = () => {
     setModal(false);
@@ -29,8 +31,16 @@ const PostUpload = () => {
     setContent(e.target.value);
   };
 
-  const submitPost = () => {
-    uploadPost(content, selectedBook.img);
+  const submitPost = (e) => {
+    const postDetails = JSON.stringify({
+      title: title,
+      author: author,
+      publisher: publisher,
+      contentText: content,
+      description: selectedBook.description,
+    });
+    e.preventDefault();
+    uploadPost(postDetails, selectedBook.img);
   };
 
   const uploadPost = async (content, image) => {
@@ -55,8 +65,11 @@ const PostUpload = () => {
         },
         body: JSON.stringify(postData),
       });
+
+      alert('게시물을 등록했습니다.');
+      navigate('/main');
     } catch (error) {
-      alert('게시글 작성에 실패했습니다.');
+      alert('게시물 등록에 실패했습니다.');
     }
   };
 
@@ -96,9 +109,20 @@ const PostUpload = () => {
             value={content}
             onChange={handleContentChange}
           ></textarea>
-          <BasicBtn md="true" disabled={!content}>
-            게시물 등록하기
-          </BasicBtn>
+          <div className={styles.buttonWrap}>
+            <BasicBtn
+              md="true"
+              onClick={(e) => {
+                e.stopPropagation();
+                navigate('/main');
+              }}
+            >
+              취소
+            </BasicBtn>
+            <BasicBtn md="true" disabled={!content}>
+              게시물 등록하기
+            </BasicBtn>
+          </div>
         </form>
       </div>
       {modal && (

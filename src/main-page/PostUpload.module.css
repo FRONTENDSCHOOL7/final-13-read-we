@@ -68,3 +68,7 @@
   margin: 0 auto;
   padding: 0 63px;
 }
+
+.postInfo .buttonWrap {
+  display: flex;
+}
