@@ -2,13 +2,15 @@ import React from 'react';
 import '../myPage/css/myPage.module.css';
 import '../main-page/SearchModal.css';
 
-const SearchModal = () => {
+const SearchModal = ({ hideModal }) => {
   return (
     <div className="pageWrap">
       <div className="contentArea">
         <div className="header">
           <h3 className="title">이 책은 어떠세요?</h3>
-          <button className="more-show">더보기</button>
+          <button className="more-show" onClick={hideModal}>
+            취소
+          </button>
         </div>
         <div className="example-books">
           <div>

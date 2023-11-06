@@ -1,7 +1,15 @@
 .pageWrap {
   width: calc(100% - 50px);
-  max-width: 1180px;
+  max-width: 1000px;
   margin: 0 auto;
+  position: fixed;
+  top: 50%;     
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index:1000;
+  background-color: white;
+  padding: 1em;
+  border: 1px solid black;
 }
 
 .contentArea {
@@ -23,13 +31,14 @@
 }
 
 .more-show {
+  width: 70px;
   background-color: #E87C3E;
   color: white;
   border: none;
   border-radius: 40px;
   padding: 10px;
   margin-top: 50px;
-  margin-right: 100px;
+  margin-right: 50px;
 }
 
 .example-books {
@@ -104,3 +113,4 @@
   font-size: 12px;
   margin-left: 100px;
 }
+

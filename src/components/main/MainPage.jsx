@@ -11,14 +11,23 @@ import { BasicIpt } from '../input/IptStyle';
 import Trend from './Trend';
 import EmptyList from '../mypage/EmptyList';
 import HandlePost from '../../util/postUtil';
+import SearchModal from '../../main-page/SearchModal';
 
 const MainPage = () => {
   const [posts, setPosts] = useState([]);
   const [userName, setUserName] = useState('');
+  const [showBookSearchModal, setShowBookSearchModal] = useState(false);
   const [searchUserRes, setSearchUserRes] = useState([]); // 유저검색 결과
   const handlePostBtn = HandlePost(); // postUtil 함수불러오기.
   const token = localStorage.getItem('token');
   const baseUrl = 'https://api.mandarin.weniv.co.kr';
+
+  const showModal = () => {
+    setShowBookSearchModal(true);
+  };
+  const hideModal = () => {
+    setShowBookSearchModal(false);
+  };
 
   useEffect(() => {
     const fetchPosts = async () => {
@@ -71,7 +80,7 @@ const MainPage = () => {
           </div>
           <div className={styles.MainLeftContainer}>
             <MainNavBtn />
-            <BasicBtn
+            {/* <BasicBtn
               md="true"
               bgcolor="#E87C3E"
               round="100px"
@@ -80,7 +89,7 @@ const MainPage = () => {
               onClick={handlePostBtn}
             >
               POST
-            </BasicBtn>
+            </BasicBtn> */}
             <IconIpt>
               <BasicIpt
                 sm="true"
@@ -140,10 +149,10 @@ const MainPage = () => {
           </div>
           <div className={styles.MainRightContainer}>
             <IconIpt>
-              <BasicIpt sm="true" placeholder="책검색" />
+              <BasicIpt sm="true" placeholder="책검색" onClick={showModal} />
               <i class="icon icon-search" />
             </IconIpt>
-            {/* <Recent></Recent> */}
+            {showBookSearchModal && <SearchModal hideModal={hideModal} />}
             <Trend />
           </div>
         </div>
