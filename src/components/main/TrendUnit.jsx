@@ -3,8 +3,16 @@ import styles from './css/Main.module.css';
 import styled from 'styled-components';
 
 const TrendTitle = styled.p`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  padding-right: 27px;
   font-size: 12px;
   font-weight: 600;
+  .icon-dot {
+    filter: opacity(0.5);
+  }
 `;
 const TrendPostCount = styled.p`
   font-size: 10px;
@@ -23,7 +31,10 @@ const StyledShowBtn = styled.button`
 const TrendUnit = (props) => {
   return (
     <>
-      <TrendTitle>{props.textTitle}</TrendTitle>
+      <TrendTitle>
+        {props.textTitle}
+        <i className="icon icon-dot" />
+      </TrendTitle>
       <TrendPostCount>{props.textCnt}</TrendPostCount>
     </>
   );

@@ -3,7 +3,6 @@ import ProfileCard from '../components/mypage/ProfileCard';
 import PostSection from '../components/main/PostSection';
 import styles from './css/myPage.module.css';
 import EmptyList from '../components/mypage/EmptyList';
-import Header from '../components/header/Header';
 
 const MyPage = () => {
   const token = localStorage.getItem('token');
@@ -44,6 +43,8 @@ const MyPage = () => {
         },
       });
       const json = await res.json();
+      //accountname 임시로 로컬에 저장(프로필 이동 시 본인 계정 체크용)
+      localStorage.setItem('accname', json.user.accountname);
       setMyInfo(json);
       setIsProfileLoading(false);
     };
@@ -102,6 +103,8 @@ const MyPage = () => {
                         imgSrc={
                           baseUrl + '/' + e.author.image.replace(/^.*\//, '')
                         }
+                        postId={e.id}
+                        accName={e.author.accountname}
                         userName={e.author.username}
                         userEmail="testID.test.com"
                         public="출판사 명"
@@ -110,6 +113,7 @@ const MyPage = () => {
                         author="작가"
                         content={e.content}
                         like={e.heartCount}
+                        isLike={e.hearted}
                         cmt={e.commentCount}
                       />
                     );

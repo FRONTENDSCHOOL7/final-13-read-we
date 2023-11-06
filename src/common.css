@@ -380,7 +380,8 @@ span.tag.hit {
 }
 
 .home-post li .home-post-list .post-info .img-wrap>img {
-  width: 100%;
+  min-width: 66px;
+  height: 100%;
 }
 
 .home-post li .home-post-list .post-content {
@@ -588,7 +589,8 @@ span.tag.hit {
 }
 
 .acc-info .acc-img>img {
-  width: 100%;
+  min-width: 148px;
+  height: 100%;
 }
 
 .acc-id {

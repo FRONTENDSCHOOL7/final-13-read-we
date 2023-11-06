@@ -5,7 +5,11 @@ import styled from 'styled-components';
 const ProfileInfoSetting = (props) => {
   //상태 변수 추가
   const [selectedFile, setSelectedFile] = useState(null);
-  const [preview, setPreview] = useState(null); // 추가
+  const [preview, setPreview] = useState(
+    'https://api.mandarin.weniv.co.kr/Ellipse.png',
+  ); // 초기값을 beforeImg로 설정
+  const [nickname, setNickname] = useState('mimimimi1'); // beforeNickname 상태 변수 추가
+  const [id, setId] = useState('account_test93'); // id 상태 변수 추가
 
   // 파일 선택 핸들러 추가
   const handleFileChange = (event) => {
@@ -18,6 +22,8 @@ const ProfileInfoSetting = (props) => {
   const handleUpload = () => {
     const formData = new FormData();
     formData.append('file', selectedFile);
+    formData.append('nickname', nickname); // nickname 추가
+    formData.append('id', id); // id 추가
 
     fetch('https://api.mandarin.weniv.co.kr', {
       method: 'POST',
@@ -35,8 +41,8 @@ const ProfileInfoSetting = (props) => {
   // 이미지 스타일 추가
   const ImagePreview = styled.img`
     border-radius: 40%;
-    width: 200px;
-    height: 200px;
+    width: 100%;
+    /* height: 100%; */
   `;
 
   // 사진변경 버튼에 스타일을 입히고 싶은 간절한 코드
@@ -47,7 +53,7 @@ const ProfileInfoSetting = (props) => {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: ${(props) => props.wid || '100px'};
+    width: ${(props) => props.wid || '100%'};
     height: 40px;
     padding: 0 15px;
     background-color: ${(props) => props.bgcolor || `#000`};
