@@ -79,13 +79,16 @@ const BookSearchDetailModal = (props) => {
           <div className={styles.scrollArea}>
             <div className="modal-content row-2">
               {searchResults.map((book, index) => (
-                <div className="row-2" key={index}>
+                <div
+                  className="row-2"
+                  key={index}
+                  onClick={() => selectBook(book)}
+                >
                   {/* 검색 결과 도서 정보 표시 */}
                   <div className="book-info-obj">
                     <img
                       alt="책 이미지"
                       src={process.env.PUBLIC_URL + '/images/' + book.img}
-                      onClick={() => selectBook(book)}
                     />
                   </div>
                   <div className="book-info-text">
