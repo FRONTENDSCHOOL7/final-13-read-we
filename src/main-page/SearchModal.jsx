@@ -1,7 +1,6 @@
 import React from 'react';
 import '../myPage/css/myPage.module.css';
 import '../main-page/SearchModal.css';
-// import '../main-page/icon/icon.png';
 
 const SearchModal = () => {
   return (
@@ -43,13 +42,12 @@ const SearchModal = () => {
         </div>
         <div className="search-result">
           <h3 className="show-result">
-            <span>'멋사 프론트엔드'</span>에 대한 검색 결과
+            <span className="emphasis">'멋사 프론트엔드'</span>에 대한 검색 결과
           </h3>
           <div className="zero">
             <p className="all-zero">전체 0건</p>
           </div>
           <div className="center-container">
-            {/* <img src={icon} alt="icon" /> */}
             <p className="no-result">
               '멋사 프론트엔드'에 대한 검색 결과가 없습니다.
             </p>
