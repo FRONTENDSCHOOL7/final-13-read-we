@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import styles from './css/myPage.module.css';
 import { BasicBtn } from '../components/button/BtnStyle';
-import Header from '../components/header/Header';
 import MyLibraryChart from './MyLibraryChart';
+import MyLibraryRead from './MyLibraryRead';
+import EmptyList from '../components/mypage/EmptyList';
 
 const MyLibrary = () => {
   const token = localStorage.getItem('token');
@@ -23,6 +24,7 @@ const MyLibrary = () => {
     );
     return monthPost?.length;
   };
+
   //사용자 정보 API
   useEffect(() => {
     const getMyInfo = async () => {
@@ -172,116 +174,29 @@ const MyLibrary = () => {
                 </BasicBtn>
               </div>
               <ul className={styles.MybookList}>
-                {tab == 0 ? (
-                  <>
-                    <li className={styles.MybookListObj}>
-                      <div className={styles.MybookListObjImg}>
-                        <img
-                          src={process.env.PUBLIC_URL + '/images/testBook.png'}
+                {tab === 0 ? (
+                  postAllInfo?.length === 0 ? (
+                    <EmptyList
+                      text1="아직 독서노트가 기록되지 않았어요"
+                      text2="책을 읽고 기록을 남겨보세요!"
+                    />
+                  ) : (
+                    postAllInfo?.map((e) => {
+                      const bookInfo = JSON.parse(e.content);
+                      return (
+                        <MyLibraryRead
+                          key={e.id}
+                          bookImgSrc={e.image}
+                          title={bookInfo.title}
                         />
-                      </div>
-                      <p>누구나 쉽게 배우는 자바 스크립트</p>
-                    </li>
-                    <li className={styles.MybookListObj}>
-                      <div className={styles.MybookListObjImg}>
-                        <img
-                          src={
-                            process.env.PUBLIC_URL + '/images/StackUpBooks.png'
-                          }
-                        />
-                      </div>
-                      <p>
-                        누구나 쉽게 배우는 자바 스크립트누구나 쉽게 배우는 자바
-                        스크립트
-                      </p>
-                    </li>
-                    <li className={styles.MybookListObj}>
-                      <div className={styles.MybookListObjImg}>
-                        <img
-                          src={
-                            process.env.PUBLIC_URL + '/images/StackUpBooks.png'
-                          }
-                        />
-                      </div>
-                      <p>
-                        누구나 쉽게 배우는 자바 스크립트누구나 쉽게 배우는 자바
-                        스크립트
-                      </p>
-                    </li>
-                  </>
+                      );
+                    })
+                  )
                 ) : (
-                  <>
-                    <li className={styles.MybookListObj}>
-                      <div className={styles.MybookListObjImg}>
-                        <img
-                          src={
-                            process.env.PUBLIC_URL +
-                            '/images/icon/testProfile.png'
-                          }
-                        />
-                      </div>
-                      <p>
-                        누구나 쉽게 배우는 자바 스크립트누구나 쉽게 배우는 자바
-                        스크립트
-                      </p>
-                    </li>
-                    <li className={styles.MybookListObj}>
-                      <div className={styles.MybookListObjImg}>
-                        <img
-                          src={process.env.PUBLIC_URL + '/images/testBook.png'}
-                        />
-                      </div>
-                      <p>누구나 쉽게 배우는 자바 스크립트</p>
-                    </li>
-                    <li className={styles.MybookListObj}>
-                      <div className={styles.MybookListObjImg}>
-                        <img
-                          src={process.env.PUBLIC_URL + '/images/testBook.png'}
-                        />
-                      </div>
-                      <p>누구나 쉽게 배우는 자바 스크립트</p>
-                    </li>
-                    <li className={styles.MybookListObj}>
-                      <div className={styles.MybookListObjImg}>
-                        <img
-                          src={process.env.PUBLIC_URL + '/images/testBook.png'}
-                        />
-                      </div>
-                      <p>누구나 쉽게 배우는 자바 스크립트</p>
-                    </li>
-                    <li className={styles.MybookListObj}>
-                      <div className={styles.MybookListObjImg}>
-                        <img
-                          src={process.env.PUBLIC_URL + '/images/testBook.png'}
-                        />
-                      </div>
-                      <p>누구나 쉽게 배우는 자바 스크립트</p>
-                    </li>
-                    <li className={styles.MybookListObj}>
-                      <div className={styles.MybookListObjImg}>
-                        <img
-                          src={process.env.PUBLIC_URL + '/images/testBook.png'}
-                        />
-                      </div>
-                      <p>누구나 쉽게 배우는 자바 스크립트</p>
-                    </li>
-                    <li className={styles.MybookListObj}>
-                      <div className={styles.MybookListObjImg}>
-                        <img
-                          src={process.env.PUBLIC_URL + '/images/testBook.png'}
-                        />
-                      </div>
-                      <p>누구나 쉽게 배우는 자바 스크립트</p>
-                    </li>
-                    <li className={styles.MybookListObj}>
-                      <div className={styles.MybookListObjImg}>
-                        <img
-                          src={process.env.PUBLIC_URL + '/images/testBook.png'}
-                        />
-                      </div>
-                      <p>누구나 쉽게 배우는 자바 스크립트</p>
-                    </li>
-                  </>
+                  <EmptyList
+                    text1="찜한 책이 없어요!"
+                    text2="책을 찜하고 나만의 서재를 채워보세요!"
+                  />
                 )}
               </ul>
             </article>
