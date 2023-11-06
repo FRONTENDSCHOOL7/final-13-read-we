@@ -28,7 +28,6 @@ function App() {
         <Route path="/join-success" element={<LoginFinish />} />
         <Route path="/main" element={<MainPage />} />
         <Route path="/postupload" element={<PostUpload />} />
-        {/* <Route path="/comment" element={<CmtList />} /> */}
         <Route path="/chat" element={<Chatting />} />
         <Route path="/mypage" element={<MyPage />} />
         <Route path="/mypage/edit" element={<ProfileEdit />} />
