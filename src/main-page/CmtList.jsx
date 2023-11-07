@@ -3,7 +3,7 @@ import CmtListItem from './CmtListItem';
 
 const CmtList = ({ cmtList }) => {
   let items =
-    cmtList.length === 0
+    cmtList === undefined || cmtList.length === 0
       ? '등록된 댓글이 없습니다.'
       : cmtList.map((item) => {
           return <CmtListItem key={item.id} cmtItem={item} />;
