@@ -1,0 +1,44 @@
+
+.edit-profile {
+  position: absolute;
+  top: 18%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-weight: bold;
+  font-size: 24px;
+}
+
+/* ProfileEdit.css */
+.h1-profile {
+  text-align: center;
+  font-weight: bolder;
+  font-size: 2em;
+}
+
+.parent {
+  display: flex;
+  justify-content: center;
+}
+
+.xsm {
+  position: absolute;
+  top: 55%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  margin-top: 10px;
+}
+
+.gray {
+  margin-top: 40px;
+  margin-bottom: 10px;
+}
+
+.btn-parent {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.wroung-num {
+  color: red;
+}

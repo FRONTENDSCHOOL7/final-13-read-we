@@ -1,0 +1,74 @@
+.container {
+  margin: 0 auto;
+}
+
+.innerContainer {
+  margin: 0 auto;
+  width: calc(50% - 20px);
+  padding: 20px;
+}
+
+.innerContainer h2 {
+  font-size: 36px;
+  font-weight: 700;
+  text-align: center;
+}
+
+.bookInfo {
+  display: flex;
+  gap: 17px;
+  padding: 24px 0 21px 0;
+  margin-bottom: 18px;
+}
+
+.imgWrap {
+  flex-shrink: 0;
+  position: relative;
+  width: 113px;
+  height: 151px;
+  border: 1px solid #d9d9d9;
+  border-radius: 15px;
+  overflow: hidden;
+}
+
+.imgWrap img {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+}
+
+.postInput {
+  width: 60%;
+}
+.postInput input {
+  margin-bottom: 13px;
+}
+
+.bookUpload {
+  display: flex;
+  flex-direction: row-reverse;
+}
+
+.postInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 84px;
+}
+
+.postInfo textarea {
+  padding: 33px 21px;
+  background-color: #fff;
+  box-shadow: 0px 0px 4px 0px rgba(133, 133, 133, 0.25);
+  border-radius: 10px;
+  resize: none;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.postInfo button {
+  margin: 0 auto;
+  padding: 0 63px;
+}
+
+.postInfo .buttonWrap {
+  display: flex;
+}

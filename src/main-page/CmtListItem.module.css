@@ -1,0 +1,52 @@
+.cmtList {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.cmtList .cmtImgText {
+  display: flex;
+  width: calc(100% - 120px);
+  gap: 33px;
+}
+
+.cmtList .cmtImgText .cmtImg {
+  flex-shrink: 0;
+  border: 1px solid #a7a7a7;
+  width: 60px;
+  height: 60px;
+  border-radius: 100%;
+  overflow: hidden;
+}
+
+.cmtList .cmtImgText .cmtImg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.cmtList .cmtImgText .cmtText {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.cmtList .cmtImgText .cmtText strong {
+  font-size: 16px;
+  font-family: "Pretendard-Bold";
+  color: #3d3d3d;
+}
+
+.cmtList .cmtImgText .cmtText p {
+  font-size: 14px;
+}
+.cmtList .dateLike {
+  width: 140px;
+}
+.cmtList .dateLike span {
+  font-size: 14px;
+  color: #a7a7a7;
+  margin-left: 20px;
+  margin-right: 20px;
+}

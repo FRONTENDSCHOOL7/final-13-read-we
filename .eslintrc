@@ -16,10 +16,7 @@
       "react/self-closing-comp": "warn",
       "react/jsx-curly-brace-presence": "warn",
       "prettier/prettier": [
-        "error",
-        {
-          "endOfLine": "auto"
-        }
+        "error", { "endOfLine": "auto" }
       ]
     }
 }

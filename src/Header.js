@@ -1,12 +1,21 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 
 export default function Header() {
+  const navigate = useNavigate();
   return (
     <header>
       <div className="header-Container">
         <div className="logo-Image"></div>
         <div className="container-Link">
-          <a href="http//www.naver.com">HOME</a>
+          <a
+            onClick={(e) => {
+              e.preventDefault();
+              navigate('/main');
+            }}
+          >
+            HOME
+          </a>
           <a>Contact</a>
           <a>Services</a>
           <a>Features</a>

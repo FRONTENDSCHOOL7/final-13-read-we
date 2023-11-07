@@ -1,94 +1,150 @@
+import { BasicBtn } from './components/button/BtnStyle';
+import {
+  CounterBtn,
+  CounterAccBtn,
+  IconBtn,
+} from './components/button/BtnStyleEtc';
+import MainNavBtn from './components/button/MainNavBtn';
+import { BasicIpt } from './components/input/IptStyle';
+import { LabelIpt, IconIpt, BtnIpt } from './components/input/IptStyleEtc';
+import MainProfileCard from './components/main/MainProfileCard';
+import PostSection from './components/main/PostSection';
+import EmptyList from './components/mypage/EmptyList';
+import ProfileCard from './components/mypage/ProfileCard';
+import ProfileCardOther from './components/mypage/ProfileCardOther';
+import ProfileInfoSetting from './components/mypage/ProfileInfoSetting';
+import ModalPopup from './components/popup/ModalPopup';
 function ComponentEx() {
   return (
     <div>
-      <h1>컨포넌트 스타일 예시</h1>
+      {/*================== styled component ver ==================*/}
+      <h1>styled component 변환</h1>
       <div className="ex-wrap">
-        {/*================== 인풋 ==================*/}
-        <div className="ex-content">
-          <h2>input</h2>
-          <p>----basic</p>
-          <input type="text" placeholder="인풋 기본 스타일" className="basic" />
-          <p>----label + basic</p>
-          <label className="input-label">
-            <input
-              type="text"
-              placeholder="인풋 기본 스타일"
-              className="basic"
-            />
-            영문 소문자 또는 영문 소문자, 숫자 조합 6~12 자리
-          </label>
-          <p>----basic:disabled</p>
-          <input
-            type="text"
-            placeholder="기본스타일 disabled 처리"
-            className="basic"
-            disabled
-          />
-          <p>----basic, gray</p>
-          <input
-            type="text"
-            placeholder="gray class-회색변경class"
-            className="basic gray"
-          />
-          <p>----basic, gray, icon</p>
-          <div className="input-icon">
-            <i className="icon icon-lock-w"></i>
-            <input
-              type="text"
-              placeholder="인풋스타일1 + 아이콘 인풋"
-              className="basic gray"
-            />
-          </div>
-          <p>----input size</p>
-          <input type="text" placeholder="md" className="basic md" />
-          <input type="text" placeholder="sm" className="basic sm" />
-          <input type="text" placeholder="xsm" className="basic xsm" />
-        </div>
-
-        {/*================== 버튼 ==================*/}
         <div className="ex-content">
           <h2>button</h2>
-          <p>----basic</p>
-          <button type="button" className="basic">
-            버튼 기본 스타일
-          </button>
-          <p>----basic:disabled</p>
-          <button type="button" className="basic" disabled>
-            버튼 기본 스타일 disabled 처리
-          </button>
-          <p>----basic, orange</p>
-          <button type="button" className="basic orange">
-            "orange" class = 배경색 변경
-          </button>
-          <p>----basic, line</p>
-          <button type="button" className="basic line">
-            "line" class = 스타일 변경
-          </button>
-          <p>----basic, round-full</p>
-          <button type="button" className="basic round-full">
-            "round-full" class = 버튼 full라운드 처리
-          </button>
-          <p>----basic, round-none</p>
-          <button type="button" className="basic round-none">
-            "round-none" class = 버튼 라운드 해제
-          </button>
-          <p>----basic, shadow-none</p>
-          <button type="button" className="basic shadow-none">
-            "shadow-none" class = 버튼 그림자 해제
-          </button>
-          <div>
-            <p>----버튼 사이즈</p>
-            <button type="button" className="basic md">
-              버튼 md
-            </button>
-            <button type="button" className="basic sm">
-              버튼 sm
-            </button>
-            <button type="button" className="basic xsm">
-              버튼 xsm
-            </button>
-          </div>
+          <BasicBtn>기본 버튼</BasicBtn>
+          <p>bgcolor=(값 지정)</p>
+          <BasicBtn bgcolor="#E87C3E">bgcolor-배경색깔 변경</BasicBtn>
+          <p>disabled</p>
+          <BasicBtn disabled>disabled 버튼</BasicBtn>
+          <p>line</p>
+          <BasicBtn linestyle="true">line-라인스타일로 변경</BasicBtn>
+          <p>xsm</p>
+          <BasicBtn xsm="true">xsm-버튼 사이즈</BasicBtn>
+          <p>sm</p>
+          <BasicBtn sm="true">sm-버튼 사이즈</BasicBtn>
+          <p>md</p>
+          <BasicBtn md="true">md-버튼 사이즈</BasicBtn>
+          <p>round=(값 입력)</p>
+          <BasicBtn round="100px">BtnRound-버튼 라운드 설정</BasicBtn>
+          <p>shadow=none</p>
+          <BasicBtn linestyle="true" shadow="none">
+            shadow:none - 버튼 그림자 제거
+          </BasicBtn>
+          <p>wid=값입력</p>
+          <BasicBtn wid="100%">width 100% 버튼</BasicBtn>
         </div>
+        <div className="ex-content">
+          <h2>input</h2>
+          <BasicIpt placeholder="기본 인풋" />
+          <p>gray</p>
+          <BasicIpt gray="true" placeholder="회색 인풋" />
+          <p>xsm</p>
+          <BasicIpt xsm="true" placeholder="버튼 xsm" />
+          <p>sm</p>
+          <BasicIpt sm="true" placeholder="버튼 sm" />
+          <p>md</p>
+          <BasicIpt md="true" placeholder="버튼 md" />
+          <p>LabelIpt</p>
+          <LabelIpt>
+            <BasicIpt placeholder="Label 인풋" />
+            영문 소문자 또는 영문 소문자, 숫자 조합 6~12 자리
+          </LabelIpt>
+          <p>IconlIpt</p>
+          <IconIpt>
+            <BasicIpt gray="true" placeholder="아이콘 인풋" />
+            <i className="icon icon-lock-w" />
+          </IconIpt>
+          <IconIpt>
+            <BasicIpt sm="true" placeholder="검색" />
+            <i className="icon icon-search" />
+          </IconIpt>
+          <BtnIpt>
+            <BasicIpt placeholder="내용을 입력해 주세요" />
+            <BasicBtn>등록</BasicBtn>
+          </BtnIpt>
+        </div>
+        <div className="ex-content full">
+          <h2>obj</h2>
+          <p>type=like or comment</p>
+          <div className="like-comment">
+            <CounterBtn type="like" count="542" />
+            <CounterBtn type="like-active" count="542" />
+            <CounterBtn type="comment" count="20" />
+          </div>
+          <p>type=like or comment</p>
+          <div className="like-comment">
+            <CounterAccBtn type="팔로워" count="123" />
+            <CounterAccBtn type="팔로잉" count="67" />
+          </div>
+          <MainNavBtn />
+          <BasicBtn md="true">사진 변경</BasicBtn>
+          <IconBtn>
+            <i className="icon icon-setting" />
+            <strong>프로필 수정</strong>
+          </IconBtn>
+          <BasicBtn md="true" bgcolor="#E87C3E" round="100px">
+            POST
+          </BasicBtn>
+          <MainProfileCard
+            imgSrc="icon/testProfile.png"
+            userName="mewmew"
+            userEmail="testID.test.com"
+          />
+          <PostSection
+            date="2023.10.26"
+            imgSrc="icon/testProfile.png"
+            userName="mewmew"
+            userEmail="testID.test.com"
+            public="출판사 명"
+            title="책 제목"
+            hit="true"
+            author="작가"
+            content="내요요요요용"
+            like="11"
+            cmt=""
+          />
+          <ProfileCard
+            imgSrc="icon/testProfile.png"
+            userName="mewmew"
+            userEmail="testID.test.com"
+            follower="567"
+            following="123"
+          />
+          <ProfileCardOther
+            imgSrc="icon/testProfile.png"
+            userName="다른사람 계정"
+            userEmail="testID.test.com"
+            follower="567"
+            following="123"
+          />
+          <ProfileInfoSetting
+            imgSrc="icon/testProfile.png"
+            userName="mewmew"
+            userEmail="testID.test.com"
+          />
+        </div>
+        <div className="ex-content full row">
+          <EmptyList
+            text1="아직 독서노트가 기록되지 않았어요"
+            text2="책을 읽고 기록을 남겨보세요!"
+          />
+        </div>
+      </div>
+
+      {/*================== 컴포넌트화 이전 ver ==================*/}
+      <h1>컨포넌트 스타일 예시</h1>
+      <div className="ex-wrap">
         {/*================== 아이콘 ==================*/}
         <div className="ex-content full row">
           <h2>icon</h2>
@@ -121,216 +177,14 @@ function ComponentEx() {
           <span className="tag hit">HIT</span>
         </div>
 
-        {/*================== 기타 요소들 ==================*/}
-        <div className="ex-content full">
-          <h2>obj</h2>
-          <p>----메인 프로필 표시</p>
-          <div className="acc-bar">
-            <div className="acc-img">
-              <img
-                alt="프로필 이미지"
-                src={process.env.PUBLIC_URL + '/images/icon/testProfile.png'}
-              />
-            </div>
-            <div className="acc-text">
-              <strong className="acc-id">mewmew</strong>
-              <span className="acc-email">testID.test.com</span>
-            </div>
-            <button type="button">
-              <i className="icon icon-dot"></i>
-            </button>
-          </div>
-
-          <p>----좋아요/댓글</p>
-          <div className="like-comment">
-            <button className="like-counter">
-              <i className="icon icon-like"></i>
-              <strong>250</strong>
-            </button>
-            <button className="comment-counter">
-              <i className="icon icon-comment"></i>
-              <strong>250</strong>
-            </button>
-          </div>
-
-          <p>----nav</p>
-          <ul className="home-nav">
-            {/* active class 추가 시 활성화 */}
-            <li>
-              <a href="#" className="home-nav-list active">
-                <i className="icon icon-home"></i>
-                <span>Home</span>
-              </a>
-            </li>
-            <li>
-              <a href="#" className="home-nav-list">
-                <i className="icon icon-chat"></i>
-                <span>Chat</span>
-              </a>
-            </li>
-            <li>
-              <a href="#" className="home-nav-list">
-                <i className="icon icon-book"></i>
-                <span>Book</span>
-              </a>
-            </li>
-            <li>
-              <a href="#" className="home-nav-list">
-                <i className="icon icon-my"></i>
-                <span>My Page</span>
-              </a>
-            </li>
-          </ul>
-
-          <p>----검색 바</p>
-          <div className="input-icon">
-            <i className="icon icon-search"></i>
-            <input
-              type="text"
-              placeholder="인풋스타일1 + 아이콘 인풋"
-              className="basic sm"
-            />
-          </div>
-
-          <p>----댓글 등록</p>
-          <form className="input-btn">
-            <input
-              type="text"
-              placeholder="인풋 + 버튼 혼합"
-              className="basic"
-            />
-            <button type="submit" className="basic">
-              등록
-            </button>
-          </form>
-
-          <p>----메인-게시물 리스트</p>
-          <ul className="home-post">
-            <li>
-              <a href="#" className="home-post-list">
-                <div className="post-info">
-                  <div className="user">
-                    <div className="img-wrap">
-                      <img
-                        alt="프로필 이미지"
-                        src={
-                          process.env.PUBLIC_URL +
-                          '/images/icon/testProfile.png'
-                        }
-                      />
-                    </div>
-                    <span>
-                      by
-                      <strong>username</strong>
-                    </span>
-                  </div>
-                  <div className="ect">
-                    <div className="like-comment">
-                      <button className="like-counter">
-                        <i className="icon icon-like"></i>
-                        <strong>250</strong>
-                      </button>
-                      <button className="comment-counter">
-                        <i className="icon icon-comment"></i>
-                        <strong>250</strong>
-                      </button>
-                      <i className="icon icon-share"></i>
-                      <span>Oct.10.2023</span>
-                    </div>
-                  </div>
-                </div>
-                <div className="post-content">
-                  <div className="book-search-bth">
-                    <button type="button">
-                      <img
-                        alt="프로필 이미지"
-                        src={
-                          process.env.PUBLIC_URL +
-                          '/images/icon/testProfile.png'
-                        }
-                      />
-                      <p>
-                        책 정보 보기
-                        <i className="icon icon-search-btn"></i>
-                      </p>
-                    </button>
-                  </div>
-                  <div className="book-info">
-                    <h3 className="book-info-title">
-                      누구나 쉽게 배우는 자바스크립트
-                      <span className="tag hit">HIT</span>
-                    </h3>
-                    <div className="book-score">
-                      <i className="icon icon-star-active"></i>
-                      <i className="icon icon-star-active"></i>
-                      <i className="icon icon-star-active"></i>
-                      <i className="icon icon-star-active"></i>
-                      <i className="icon icon-star"></i>
-                      <span className="book-score-text">4.9점</span>
-                    </div>
-                    <div className="book-author">
-                      <p>
-                        농담곰이
-                        <span>저</span>
-                      </p>
-                      <p>
-                        dalgomi
-                        <span>출판</span>
-                      </p>
-                    </div>
-                    <p className="book-content">
-                      제1항의 탄핵소추는 국회재적의원 3분의 1 이상의 발의가
-                      있어야 하며, 그 의결은 국회재적의원 과반수의 찬성이 있어야
-                      한다. 다만, 대통령에 대한 탄핵소추는 국회재적의원 과반수의
-                      발의와 국회재적의원 3분의 2 이상의 찬성이 있어야 한다.
-                    </p>
-                    <div className="tag-wrap">
-                      <span className="tag gray">에세이</span>
-                      <span className="tag gray">고양이</span>
-                      <span className="tag gray">만화</span>
-                    </div>
-                  </div>
-                </div>
-                <div className="post-footer">
-                  <div className="like-comment">
-                    <button className="like-counter">
-                      <i className="icon icon-like"></i>
-                      <strong>250</strong>
-                    </button>
-                    <button className="comment-counter">
-                      <i className="icon icon-comment"></i>
-                      <strong>250</strong>
-                    </button>
-                  </div>
-                </div>
-              </a>
-            </li>
-          </ul>
-
-          <p>----프로필 수정 버튼</p>
-          <a href="#" className="acc-setting">
-            <i className="icon icon-setting"></i>
-            <strong>프로필 수정</strong>
-          </a>
-          <p>----프로필 정보</p>
-          <div className="acc-info">
-            <div className="acc-img">
-              <img
-                alt="프로필 이미지"
-                src={process.env.PUBLIC_URL + '/images/icon/testProfile.png'}
-              />
-            </div>
-            <strong className="acc-id">mewmew</strong>
-            <span className="acc-email">testID.test.com</span>
-          </div>
-
-          <p>----팔로워 / 팔로잉</p>
-          <a href="#" className="acc-counter">
-            팔로워 | <strong className="num">225</strong>
-          </a>
-          <a href="#" className="acc-counter">
-            팔로잉 | <strong className="num">225</strong>
-          </a>
+        {/*================== 모달 팝업 ==================*/}
+        <div className="ex-content full modal-area">
+          <ModalPopup
+            public="출판사 명"
+            title="책 제목"
+            author="작가"
+            content="내요요요요용"
+          />
         </div>
       </div>
     </div>

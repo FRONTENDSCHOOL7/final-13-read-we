@@ -1,5 +1,6 @@
 /*=================reset css=================*/
 * {
+  font-family: "Pretendard-Regular";
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -55,6 +56,25 @@ ul {
   position: absolute;
 }
 
+/*스크롤 커스텀*/
+.scrollArea {
+  overflow-y: scroll;
+}
+
+.scrollArea::-webkit-scrollbar {
+  width: 8px;
+}
+
+.scrollArea::-webkit-scrollbar-thumb {
+  height: 30%;
+  background: #D9D9D9;
+  border-radius: 20px;
+}
+
+.scrollArea::-webkit-scrollbar-track {
+  background: none;
+}
+
 /*=================컴포넌트 묶음화면용 스타일=================*/
 .ex-wrap {
   padding: 20px;
@@ -79,11 +99,18 @@ ul {
 .ex-content.row {
   flex-direction: row;
   align-items: center;
+  flex-wrap: wrap;
 }
 
 .ex-content>h2 {
   font-size: 28px;
   font-weight: bold;
+}
+
+.ex-content.modal-area {
+  position: relative;
+  height: 800px;
+  padding: 10px 0;
 }
 
 /*=================공통 컴포넌트 스타일=================*/
@@ -174,15 +201,18 @@ input.basic.xsm {
 
 /*button*/
 button.basic {
-  max-width: 100%;
   height: 80px;
-  padding: 0 10px;
+  padding: 0 15px;
   background-color: #000;
   color: #fff;
   text-align: center;
   font-size: 22px;
   border-radius: 10px;
   box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.25);
+}
+
+button.basic.w-100 {
+  width: 100%;
 }
 
 button.basic.line {
@@ -197,6 +227,7 @@ button.basic.orange {
 
 button.basic.md {
   height: 45px;
+  font-size: 14px;
 }
 
 button.basic.sm {
@@ -251,6 +282,7 @@ span.tag.hit {
   background: #F9E9E7;
   color: #DD7663;
   padding: 3px 8px;
+  font-family: "Pretendard-Black";
   font-weight: 700;
 }
 
@@ -258,6 +290,7 @@ span.tag.hit {
 .home-nav {
   width: fit-content;
   font-size: 18px;
+  font-family: "Pretendard-Bold";
   font-weight: 600;
   display: flex;
   flex-direction: column;
@@ -276,8 +309,8 @@ span.tag.hit {
   position: relative;
   color: #000;
 }
-
-.home-nav-list.active::after {
+.home-nav-list.active::after,
+.home-nav-list:hover::after {
   content: '';
   position: absolute;
   left: 25px;
@@ -307,6 +340,7 @@ span.tag.hit {
 }
 
 .home-post li .home-post-list {
+  width: 100%;
   display: block;
   padding: 26px 37px;
   border-radius: 28px;
@@ -335,6 +369,7 @@ span.tag.hit {
 }
 
 .home-post li .home-post-list .post-info .user strong {
+  font-family: "Pretendard-Bold";
   margin-left: 7px;
   color: #333;
   font-weight: 700;
@@ -349,7 +384,8 @@ span.tag.hit {
 }
 
 .home-post li .home-post-list .post-info .img-wrap>img {
-  width: 100%;
+  min-width: 66px;
+  height: 100%;
 }
 
 .home-post li .home-post-list .post-content {
@@ -370,7 +406,8 @@ span.tag.hit {
 }
 
 .book-search-bth img {
-  height: 100%;
+  width: 100%;
+  min-height: 151px;
   position: absolute;
   top: 0;
   left: 50%;
@@ -382,7 +419,7 @@ span.tag.hit {
   width: 100%;
   bottom: 0;
   left: 0;
-  padding: 10px 15px;
+  padding: 10px 0px;
   font-size: 12px;
   background-color: #000;
   color: #fff;
@@ -399,6 +436,7 @@ span.tag.hit {
 }
 
 .home-post li .home-post-list .book-info-title {
+  font-family: "Pretendard-Bold";
   font-size: 18px;
   font-weight: 700;
 }
@@ -439,6 +477,10 @@ span.tag.hit {
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 3;
 }
+.home-post li .home-post-list .book-content-all {
+  font-size: 14px;
+  font-weight: 400;
+}
 
 .home-post li .home-post-list .tag-wrap {
   display: flex;
@@ -476,34 +518,41 @@ span.tag.hit {
   display: flex;
   align-items: center;
   flex-wrap: nowrap;
-  gap: 47px;
+  gap: 30px;
 }
 
 .acc-bar .acc-img {
-  width: 66px;
-  height: 66px;
+  flex-shrink: 0;
+  width: 60px;
+  height: 60px;
   background-color: #A7A7A7;
   border-radius: 100%;
-  border: 1px solid #f1f1f1;
+  border: 1px solid #fff;
   overflow: hidden;
 }
 
 .acc-bar .acc-img>img {
-  width: 100%;
+  min-width: 60px;
+  height: 100%;
 }
 
 .acc-bar .acc-text .acc-id {
+  font-family: "Pretendard-Bold";
   display: block;
   font-size: 12px;
   font-weight: 700;
+  color: #fff;
 }
 
 .acc-bar .acc-text .acc-email {
   display: block;
-  font-size: 12px;
+  font-size: 10px;
   font-weight: 700;
-  color: #A7A7A7;
+  color: #dddddd;
   margin-bottom: 0;
+}
+.acc-bar button .icon-dot {
+  filter: invert(1);
 }
 
 .like-comment {
@@ -547,7 +596,7 @@ span.tag.hit {
 }
 
 .acc-info .acc-img {
-  margin: 0 auto;
+  margin: 12px auto;
   width: 146px;
   height: 146px;
   background-color: #D9D9D9;
@@ -557,10 +606,13 @@ span.tag.hit {
 }
 
 .acc-info .acc-img>img {
-  width: 100%;
+  min-width: 148px;
+  height: 100%;
 }
 
 .acc-id {
+  font-family: "Pretendard-Bold";
+  padding-top: 8px;
   display: block;
   font-size: 24px;
   font-weight: 700;
@@ -574,11 +626,24 @@ span.tag.hit {
   margin-bottom: 21px;
 }
 
+.acc-counter-wrap {
+  display: flex;
+  justify-content: space-around;
+}
+
+.acc-btn-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  width: 100%;
+}
+
 .acc-counter {
   font-size: 18px;
 }
 
 .acc-counter .num {
+  font-family: "Pretendard-Bold";
   font-weight: 700;
 }
 
@@ -586,6 +651,108 @@ span.tag.hit {
   color: #E87C3E;
 }
 
+/*modal*/
+.modal-area {
+  z-index: 500;
+}
+.modal-bg{
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.25);
+  z-index: 99;
+}
+.modal-wrap {
+  width: calc(100% - 50px);
+  max-width: 633px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding-top: 40px;
+  background-color: #fff;
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 4px 4px 20px 0px rgba(0, 0, 0, 0.25);
+  z-index: 100;
+}
+
+.modal-wrap .modal-title {
+  padding-left: 40px;
+  margin-bottom: 30px;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.modal-content {
+  padding: 0 40px;
+  margin-bottom: 30px;
+}
+
+.modal-content .row-2 {
+  display: flex;
+  gap: 20px;
+}
+
+.book-info-obj {
+  width: 150px;
+  flex-shrink: 0;
+}
+
+.book-info-obj>img {
+  width: 100%;
+  border-radius: 10px;
+  border: 1px solid #D9D9D9;
+  margin-bottom: 15px;
+}
+
+.book-info-text .book-public,
+.book-info-text .book-author {
+  display: inline-block;
+  color: #5E5E5E;
+  font-size: 12px;
+  font-weight: 400;
+  margin-bottom: 13px;
+}
+
+.book-info-text .book-title {
+  font-weight: 600;
+  margin-bottom: 18px;
+}
+
+.book-info-text .tag.orange {
+  margin-right: 10px;
+}
+
+.book-info-text .book-content {
+  height: 140px;
+  /*스크롤 영역 여백*/
+  padding-right: 18px;
+  margin-top: 20px;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 150%;
+}
+
+.modal-footer {
+  padding: 0 40px;
+  margin-bottom: 30px;
+}
+
+.modal-footer .row-2 {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+}
+
+.modal-footer .notice-text {
+  color: #8E8E8E;
+  font-size: 12px;
+  font-weight: 400;
+}
 
 /*=================icon css=================*/
 .icon {
@@ -716,4 +883,28 @@ span.tag.hit {
   width: 15px;
   height: 15px;
   background-image: url(/public/images/icon/star-active.svg);
+}
+
+.icon-remove {
+  width: 28px;
+  height: 28px;
+  background-image: url(/public/images/icon/remove.svg);
+}
+
+/*=================font css=================*/
+@font-face {
+  font-family: "Pretendard-Regular";
+  src: url(../public/font/Pretendard-Regular.ttf);
+}
+@font-face {
+  font-family: "Pretendard-Medium";
+  src: url(../public/font/Pretendard-Medium.ttf);
+}
+@font-face {
+  font-family: "Pretendard-Bold";
+  src: url(../public/font/Pretendard-Bold.ttf);
+}
+@font-face {
+  font-family: "Pretendard-Black";
+  src: url(../public/font/Pretendard-Black.ttf);
 }

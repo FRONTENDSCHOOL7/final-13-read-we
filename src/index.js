@@ -1,18 +1,15 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import App from './App';
-import ComponentEx from './ComponentEx';
 import './common.css';
-import Header from './Header';
+import App from './App';
 import './App.css';
-import Footer from './Footer';
+import { BrowserRouter } from 'react-router-dom';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <App />
-    <ComponentEx />
-    <Header></Header>
-    <Footer></Footer>
+    <BrowserRouter>
+      <App />
+    </BrowserRouter>
   </React.StrictMode>,
 );

@@ -1,0 +1,50 @@
+.LoginJoinSelect-container {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  background-color: black;
+}
+
+.video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.content {
+  position: absolute;
+  top: 70%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+.buttons {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.button {
+  font-family: url(/public/font/Gotham-Book.ttf),sans-serif;
+  margin: 10px;
+  padding: 10px 20px;
+  background: #ffffff;
+  color: rgb(78, 78, 78);
+  font-size: 18px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  text-decoration: none;
+  transition: #ffffff 0.3s ease;
+}
+
+.button:hover {
+  background: #05468b; 
+  transition: 0.3s;
+  color: white;
+}
