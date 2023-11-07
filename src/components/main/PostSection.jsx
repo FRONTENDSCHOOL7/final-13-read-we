@@ -85,13 +85,7 @@ const MainCard = (props) => {
     <>
       <ul className="home-post">
         <li>
-          <a
-            href="#"
-            className="home-post-list"
-            onClick={(e) => {
-              handlePostClick(e);
-            }}
-          >
+          <div className="home-post-list">
             <div className="post-info">
               <div className="user" onClick={handleProfileClick}>
                 <div className="img-wrap">
@@ -144,7 +138,13 @@ const MainCard = (props) => {
                     <span>출판</span>
                   </p>
                 </div>
-                <p className="book-content">{props.content}</p>
+                <p
+                  className={
+                    props.hasDetail ? 'book-content-all' : 'book-content'
+                  }
+                >
+                  {props.content}
+                </p>
                 <div className="tag-wrap">
                   <span className="tag gray">에세이</span>
                   <span className="tag gray">고양이</span>
@@ -173,7 +173,7 @@ const MainCard = (props) => {
                 />
               </div>
             </div>
-          </a>
+          </div>
         </li>
       </ul>
       {showPopup && <BookDetailModal closePopup={closePopup} {...props} />}
