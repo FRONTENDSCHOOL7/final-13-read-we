@@ -16,7 +16,7 @@ READWE는독서기록서비스와SNS가결합된서비스로, 혼자즐기는취
 > **🔗 배포 URL:** [READ WE](https://frontendschool7.github.io/final-13-read-we/) <br />
 **🔗 테스트 계정:** book1@test.com / qwer123
 ```jsx
-📕  독서기 록서비스와 SNS가 결합된 서비스를 제공합니다.
+📕  독서기록 서비스와 SNS가 결합된 서비스를 제공합니다.
 
 📗  월 별 독서 기록과 독서 잔디를 통해 객관적인 독서 통계 수치를 제공합니다.
 
