@@ -477,6 +477,10 @@ span.tag.hit {
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 3;
 }
+.home-post li .home-post-list .book-content-all {
+  font-size: 14px;
+  font-weight: 400;
+}
 
 .home-post li .home-post-list .tag-wrap {
   display: flex;
