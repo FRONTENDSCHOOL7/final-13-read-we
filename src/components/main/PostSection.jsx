@@ -87,11 +87,7 @@ const MainCard = (props) => {
             <div className="post-info">
               <div className="user" onClick={handleProfileClick}>
                 <div className="img-wrap">
-                  {/* <img alt="프로필 이미지" src={`${props.imgSrc}`} /> */}
-                  <img
-                    alt="프로필 이미지"
-                    src={process.env.PUBLIC_URL + props.imgSrc}
-                  />
+                  <img alt="프로필 이미지" src={`${props.imgSrc}`} />
                 </div>
                 <span>
                   by
@@ -110,7 +106,10 @@ const MainCard = (props) => {
             <div className="post-content">
               <div className="book-search-bth">
                 <button type="button" onClick={handleImageClick}>
-                  <img alt="책 이미지" src={`/images/${props.bookImgSrc}`} />
+                  <img
+                    alt="책 이미지"
+                    src={process.env.PUBLIC_URL + `/images/${props.bookImgSrc}`}
+                  />
                   <p>
                     책 정보 보기
                     <i className="icon icon-search-btn" />

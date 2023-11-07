@@ -5,8 +5,13 @@ import './LoginJoinSelect.css'; // CSS 파일 import
 const LoginJoinSelect = () => {
   return (
     <div className="LoginJoinSelect-container">
-      <video className="video" src="/images/readwe.mp4" autoPlay loop muted />
-
+      <video
+        className="video"
+        src={process.env.PUBLIC_URL + '/images/readwe.mp4'}
+        autoPlay
+        loop
+        muted
+      />
       <div className="content">
         <div className="buttons">
           <Link to="/login">
