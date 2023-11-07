@@ -12,7 +12,7 @@ const MainPostCard = (props) => {
         <input type="text" placeholder="What are you reading?" />
       </div>
       <div className={styles.PostBoxIconButton}>
-        <img src={process.env.PUBLIC_URL + 'images/icon/postCardIcon.svg'} />
+        <img src={process.env.PUBLIC_URL + '/images/icon/postCardIcon.svg'} />
         <BasicBtn
           md="true"
           bgcolor="#E87C3E"

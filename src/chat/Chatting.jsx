@@ -7,7 +7,7 @@ const Chatting = () => {
   const chatRooms = [
     {
       id: 1,
-      profileImage: '/images/profile-1.jpeg',
+      profileImage: process.env.PUBLIC_URL + '/images/profile-1.jpeg',
       nickname: '개발할 고양',
       messages: [
         { content: '안냥하세요! 🐈', type: 'received' },
@@ -17,7 +17,7 @@ const Chatting = () => {
     },
     {
       id: 2,
-      profileImage: '/images/profile-2.jpeg',
+      profileImage: process.env.PUBLIC_URL + '/images/profile-2.jpeg',
       nickname: '개발할 담곰',
       messages: [
         { content: '안곰하세요! 🐻', type: 'received' },
@@ -27,7 +27,7 @@ const Chatting = () => {
     },
     {
       id: 3,
-      profileImage: '/images/profile-3.jpeg',
+      profileImage: process.env.PUBLIC_URL + '/images/profile-3.jpeg',
       nickname: '개발할 멍멍',
       messages: [
         { content: '안멍하세요! 🐶', type: 'received' },
@@ -92,7 +92,8 @@ const Chatting = () => {
           <div className="chatting-footer">
             <div className="input-container">
               <input type="text" placeholder="메시지를 입력하세요." />
-              <img src="attachment_icon_url" alt="Attachment" />
+              {/* 이미지 찾을수 없어서 임시로 주석 처리 */}
+              {/* <img src="attachment_icon_url" alt="Attachment" /> */}
             </div>
             <button className="send-button">send</button>
           </div>
