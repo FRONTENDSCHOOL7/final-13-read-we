@@ -3,6 +3,7 @@ import ProfileCard from '../components/mypage/ProfileCard';
 import PostSection from '../components/main/PostSection';
 import styles from './css/myPage.module.css';
 import EmptyList from '../components/mypage/EmptyList';
+import { Link } from 'react-router-dom';
 
 const MyPage = () => {
   const token = localStorage.getItem('token');
@@ -99,30 +100,32 @@ const MyPage = () => {
                   postList?.post?.map((e) => {
                     const bookInfo = JSON.parse(e.content);
                     return (
-                      <PostSection
-                        key={e.id}
-                        date={e.createdAt.replace(/T.*/, '')}
-                        imgSrc={
-                          baseUrl + '/' + e.author.image.replace(/^.*\//, '')
-                        }
-                        bookImgSrc={e.image}
-                        //게시물 id
-                        postId={e.id}
-                        //게시물 클릭 시 해당 유저 프로필 페이지 이동용
-                        accName={e.author.accountname}
-                        userName={e.author.username}
-                        // userEmail="testID.test.com"
-                        public={bookInfo.publisher}
-                        title={bookInfo.title}
-                        hit="true"
-                        author={bookInfo.author}
-                        content={bookInfo.contentText}
-                        description={bookInfo.description}
-                        like={e.heartCount}
-                        //좋아요 여부 체크용
-                        isLike={e.hearted}
-                        cmt={e.commentCount}
-                      />
+                      <Link to={`/postdetails/${e.id}`} key={e.id}>
+                        <PostSection
+                          key={e.id}
+                          date={e.createdAt.replace(/T.*/, '')}
+                          imgSrc={
+                            baseUrl + '/' + e.author.image.replace(/^.*\//, '')
+                          }
+                          bookImgSrc={e.image}
+                          //게시물 id
+                          postId={e.id}
+                          //게시물 클릭 시 해당 유저 프로필 페이지 이동용
+                          accName={e.author.accountname}
+                          userName={e.author.username}
+                          // userEmail="testID.test.com"
+                          public={bookInfo.publisher}
+                          title={bookInfo.title}
+                          hit="true"
+                          author={bookInfo.author}
+                          content={bookInfo.contentText}
+                          description={bookInfo.description}
+                          like={e.heartCount}
+                          //좋아요 여부 체크용
+                          isLike={e.hearted}
+                          cmt={e.commentCount}
+                        />
+                      </Link>
                     );
                   })
                 )}
