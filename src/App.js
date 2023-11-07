@@ -1,7 +1,6 @@
-import { useState } from 'react';
 import LoginPage from './login-Page/LoginPage';
 import MainPage from './components/main/MainPage';
-import { Routes, Route, Link } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 import MyPage from './myPage/MyPage';
 import YourPage from './myPage/YourPage';
 import MyPageAccList from './myPage/MyPageAccList';
