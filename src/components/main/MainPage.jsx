@@ -1,9 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import Header from '../../Header';
 import styles from './css/Main.module.css';
 import PostSection from './PostSection';
 import MainNavBtn from '../button/MainNavBtn';
-import { BasicBtn } from '../button/BtnStyle';
 import MainProfileCard from './MainProfileCard';
 import MainPostCard from './MainPostCard';
 import { IconIpt } from '../input/IptStyleEtc';
@@ -12,9 +10,9 @@ import Trend from './Trend';
 import EmptyList from '../mypage/EmptyList';
 import HandlePost from '../../util/postUtil';
 import SearchModal from '../../main-page/SearchModal';
-import { Link, Navigate, useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
-const MainPage = ({ image }) => {
+const MainPage = () => {
   const [posts, setPosts] = useState([]);
   const [userName, setUserName] = useState('');
   const [profile, setProfile] = useState(null);
@@ -29,9 +27,11 @@ const MainPage = ({ image }) => {
   const showModal = () => {
     setShowBookSearchModal(true);
   };
+
   const hideModal = () => {
     setShowBookSearchModal(false);
   };
+
   //유저정보 불러오기
   useEffect(() => {
     const getMyinfo = async () => {
@@ -84,6 +84,7 @@ const MainPage = ({ image }) => {
       setSearchUserRes([]); // 키워드가 비었을 때는 검색 결과를 비웁니다
     }
   }, [userName]);
+
   return (
     <div className={styles.container}>
       <div className={styles.MainContainer}>

@@ -3,7 +3,6 @@ import styles from './css/myPage.module.css';
 import { BasicBtn } from '../components/button/BtnStyle';
 import FollowerList from './FollowerList';
 import FollowingList from './FollowingList';
-import Header from '../components/header/Header';
 
 const YourPageAccList = () => {
   const token = localStorage.getItem('token');

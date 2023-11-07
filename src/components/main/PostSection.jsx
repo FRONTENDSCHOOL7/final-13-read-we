@@ -9,11 +9,11 @@ const MainCard = (props) => {
   const navigate = useNavigate();
   const accName = localStorage.getItem('accname');
   const [showPopup, setShowPopup] = useState(false);
-  const [postDetail, setpostDetail] = useState(false);
   const [likeCount, setLikeCount] = useState(props.like);
   const [islikecheck, setIslikecheck] = useState(props.isLike);
-  //좋아요 모션 표시 여부
+  // 좋아요 모션 표시 여부
   const [showHeart, setShowHeart] = useState(false);
+
   useEffect(() => {
     const timer = setTimeout(() => {
       setShowHeart(false);
@@ -21,7 +21,7 @@ const MainCard = (props) => {
     return () => clearTimeout(timer); // 컴포넌트가 언마운트되면 타이머를 정리합니다.
   }, [showHeart]);
 
-  //좋아요 API
+  // 좋아요 API
   const baseUrl = 'https://api.mandarin.weniv.co.kr';
   const token = localStorage.getItem('token');
   const likeFn = async (postId) => {
@@ -43,11 +43,12 @@ const MainCard = (props) => {
       alert('좋아요 실패:' + error);
     }
   };
-  //좋아요 취소 API
+
+  // 좋아요 취소 API
   const unlikeFn = async (postId) => {
     const reqUrl = baseUrl + `/post/${postId}/unheart`;
     try {
-      const res = await fetch(reqUrl, {
+      await fetch(reqUrl, {
         method: 'DELETE',
         headers: {
           Authorization: `Bearer ${token}`,
@@ -63,18 +64,15 @@ const MainCard = (props) => {
     }
   };
 
-  //도서정보 팝업 핸들러
+  // 도서정보 팝업 핸들러
   const handleImageClick = () => {
     setShowPopup(true);
   };
+
   const closePopup = () => {
     setShowPopup(false);
   };
-  //포스트 클릭 핸들러
-  const handlePostClick = (e) => {
-    setpostDetail(true);
-    e.preventDefault();
-  };
+
   // 프로필 클릭 핸들러
   const handleProfileClick = () => {
     localStorage.setItem('otherName', props.accName);
