@@ -87,7 +87,11 @@ const MainCard = (props) => {
             <div className="post-info">
               <div className="user" onClick={handleProfileClick}>
                 <div className="img-wrap">
-                  <img alt="프로필 이미지" src={`${props.imgSrc}`} />
+                  {/* <img alt="프로필 이미지" src={`${props.imgSrc}`} /> */}
+                  <img
+                    alt="프로필 이미지"
+                    src={process.env.PUBLIC_URL + props.imgSrc}
+                  />
                 </div>
                 <span>
                   by
