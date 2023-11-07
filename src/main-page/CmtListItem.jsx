@@ -6,7 +6,7 @@ const CmtListItem = ({ cmtItem }) => {
     <li className={styles.cmtList}>
       <div className={styles.cmtImgText}>
         <div className={styles.cmtImg}>
-          <img src={cmtItem.image} alt="프로필" />
+          <img src={cmtItem.author.image} alt="프로필" />
         </div>
         <div className={styles.cmtText}>
           <strong>{cmtItem.author.username}</strong>
