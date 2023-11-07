@@ -16,6 +16,7 @@ import LoginJoinSelect from './login-join-select/LoginJoinSelect';
 import LoginFinish from './login-Page/JoinFinish';
 import PostUpload from './main-page/PostUpload';
 import SearchModal from './main-page/SearchModal';
+import PostDetails from './main-page/PostDetails';
 
 function App() {
   return (
@@ -38,6 +39,7 @@ function App() {
         <Route path="/profile-edit" element={<ProfileEdit />} />
         <Route path="*" element={<div>404 Page</div>} /> {/*  404page */}
         <Route path="/search" element={<SearchModal />} />
+        <Route path="/postdetails/:postId" element={<PostDetails />} />
       </Routes>
       <Footer />
       {/* <MainPage /> */}
