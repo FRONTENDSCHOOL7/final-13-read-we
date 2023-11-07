@@ -78,14 +78,12 @@ const MainPage = ({ image }) => {
         });
         const json = await res.json();
         setSearchUserRes(json); // 여기서 검색 결과를 상태에 저장
-        console.log(json); // 검색된 유저를 콘솔에 출력
       };
       fetchUsers();
     } else {
       setSearchUserRes([]); // 키워드가 비었을 때는 검색 결과를 비웁니다
     }
   }, [userName]);
-  console.log(localStorage.getItem('email'));
   return (
     <div className={styles.container}>
       <div className={styles.MainContainer}>
@@ -99,29 +97,60 @@ const MainPage = ({ image }) => {
           </div>
           <div className={styles.MainLeftContainer}>
             <MainNavBtn />
-            <IconIpt>
-              <BasicIpt
-                sm="true"
-                placeholder="유저검색"
-                value={userName}
-                onChange={(e) => setUserName(e.target.value)}
-              />
-              <i class="icon icon-search" />
-            </IconIpt>
-            <div className={styles.searchUser}>
-              {searchUserRes.map((user) => (
-                <div
-                  key={user._id}
-                  onClick={() => {
-                    localStorage.setItem('otherName', user.accountname);
-                    navigate(
-                      user.accountname !== accName ? '/yourpage' : '/mypage',
-                    );
-                  }}
-                >
-                  {user.username} ({user.accountname})
-                </div>
-              ))}
+            <div className={styles.searchUserContainer}>
+              <h3 className={styles.searchUserTitle}>유저검색</h3>
+              <IconIpt>
+                <BasicIpt
+                  sm="true"
+                  placeholder="유저검색"
+                  value={userName}
+                  onChange={(e) => setUserName(e.target.value)}
+                />
+                <i class="icon icon-search" />
+              </IconIpt>
+              <div className={styles.searchUser}>
+                <ul>
+                  {/* 검색어를 입력하지 않았을 경우 */}
+                  {userName === '' && searchUserRes.length === 0 ? (
+                    <li className={styles.searchUserResultNoinput}>
+                      팔로우 하고 싶은 계정을
+                      <br />
+                      검색해 보세요!
+                    </li>
+                  ) : (
+                    ''
+                  )}
+                  {/* 검색 결과가 없는 경우 */}
+                  {userName !== '' && searchUserRes.length === 0 ? (
+                    <li className={styles.searchUserResultNone}>
+                      검색결과가 없습니다.
+                    </li>
+                  ) : (
+                    ''
+                  )}
+                  {searchUserRes.map((user) => (
+                    <li>
+                      <a
+                        href="#"
+                        key={user._id}
+                        onClick={() => {
+                          localStorage.setItem('otherName', user.accountname);
+                          navigate(
+                            user.accountname !== accName
+                              ? '/yourpage'
+                              : '/mypage',
+                          );
+                        }}
+                      >
+                        <div className={styles.searchUserResult}>
+                          <span>{user.username}</span>
+                          <span>{user.accountname}</span>
+                        </div>
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </div>
             </div>
           </div>
           <div className={styles.MainPostContainer}>

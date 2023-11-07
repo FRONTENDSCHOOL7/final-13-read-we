@@ -1,5 +1,6 @@
 /*=================reset css=================*/
 * {
+  font-family: "Pretendard-Regular";
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -281,6 +282,7 @@ span.tag.hit {
   background: #F9E9E7;
   color: #DD7663;
   padding: 3px 8px;
+  font-family: "Pretendard-Black";
   font-weight: 700;
 }
 
@@ -288,6 +290,7 @@ span.tag.hit {
 .home-nav {
   width: fit-content;
   font-size: 18px;
+  font-family: "Pretendard-Bold";
   font-weight: 600;
   display: flex;
   flex-direction: column;
@@ -366,6 +369,7 @@ span.tag.hit {
 }
 
 .home-post li .home-post-list .post-info .user strong {
+  font-family: "Pretendard-Bold";
   margin-left: 7px;
   color: #333;
   font-weight: 700;
@@ -402,7 +406,8 @@ span.tag.hit {
 }
 
 .book-search-bth img {
-  height: 100%;
+  width: 100%;
+  min-height: 151px;
   position: absolute;
   top: 0;
   left: 50%;
@@ -431,6 +436,7 @@ span.tag.hit {
 }
 
 .home-post li .home-post-list .book-info-title {
+  font-family: "Pretendard-Bold";
   font-size: 18px;
   font-weight: 700;
 }
@@ -512,30 +518,37 @@ span.tag.hit {
 }
 
 .acc-bar .acc-img {
-  width: 66px;
-  height: 66px;
+  flex-shrink: 0;
+  width: 60px;
+  height: 60px;
   background-color: #A7A7A7;
   border-radius: 100%;
-  border: 1px solid #f1f1f1;
+  border: 1px solid #fff;
   overflow: hidden;
 }
 
 .acc-bar .acc-img>img {
-  width: 100%;
+  min-width: 60px;
+  height: 100%;
 }
 
 .acc-bar .acc-text .acc-id {
+  font-family: "Pretendard-Bold";
   display: block;
   font-size: 12px;
   font-weight: 700;
+  color: #fff;
 }
 
 .acc-bar .acc-text .acc-email {
   display: block;
-  font-size: 12px;
+  font-size: 10px;
   font-weight: 700;
-  color: #A7A7A7;
+  color: #dddddd;
   margin-bottom: 0;
+}
+.acc-bar button .icon-dot {
+  filter: invert(1);
 }
 
 .like-comment {
@@ -594,6 +607,7 @@ span.tag.hit {
 }
 
 .acc-id {
+  font-family: "Pretendard-Bold";
   padding-top: 8px;
   display: block;
   font-size: 24px;
@@ -625,6 +639,7 @@ span.tag.hit {
 }
 
 .acc-counter .num {
+  font-family: "Pretendard-Bold";
   font-weight: 700;
 }
 
@@ -870,4 +885,22 @@ span.tag.hit {
   width: 28px;
   height: 28px;
   background-image: url(/public/images/icon/remove.svg);
+}
+
+/*=================font css=================*/
+@font-face {
+  font-family: "Pretendard-Regular";
+  src: url(../public/font/Pretendard-Regular.ttf);
+}
+@font-face {
+  font-family: "Pretendard-Medium";
+  src: url(../public/font/Pretendard-Medium.ttf);
+}
+@font-face {
+  font-family: "Pretendard-Bold";
+  src: url(../public/font/Pretendard-Bold.ttf);
+}
+@font-face {
+  font-family: "Pretendard-Black";
+  src: url(../public/font/Pretendard-Black.ttf);
 }

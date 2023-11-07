@@ -1,7 +1,13 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
+import { useNavigate } from 'react-router-dom';
 // 메인 프로필카드섹션
 
 const MainProfileCard = (props) => {
+  const navigate = useNavigate();
+  const handelMypage = (e) => {
+    e.preventDefault();
+    navigate('/mypage');
+  };
   return (
     <div className="acc-bar">
       <div className="acc-img">
@@ -15,7 +21,12 @@ const MainProfileCard = (props) => {
         <strong className="acc-id">{props.userName}</strong>
         <span className="acc-email">{props.userEmail}</span>
       </div>
-      <button type="button">
+      <button
+        type="button"
+        onClick={(e) => {
+          handelMypage(e);
+        }}
+      >
         <i className="icon icon-dot" />
       </button>
     </div>
