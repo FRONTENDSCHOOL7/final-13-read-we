@@ -30,19 +30,82 @@ READ WE는 독서기록 서비스와 SNS가 결합된 서비스로, 혼자 즐�
 ### ⚙️   사용기술 
 | FrontEnd | BackEnd | Design | 협업방식 | 컨벤션 |
 | :----: | :----: | :----: | :----: | :----: |
-| <img src="https://img.shields.io/badge/React-61DAFB?style=flat-square&logo=React&logoColor=black"> <img src="https://img.shields.io/badge/styledcomponents-CC6699?style=flat-square&logo=styledcomponents&logoColor=white"> <img src="https://img.shields.io/badge/JavaScript-F7DF1E.svg?style=flat-square&logo=JavaScript&logoColor=black"> | FES 제공 API | <img src="https://img.shields.io/badge/figma-FBCEB1?style=flat-square&logo=figma&logoColor=white"> | <img src="https://img.shields.io/badge/GitHub-181717?style=flat-square&logo=GitHub&logoColor=white"> <img src="https://img.shields.io/badge/Notion-000000.svg?style=flat-square&logo=Notion&logoColor=white"> <img src="https://img.shields.io/badge/Discord-5865F2?style=flat-square&logo=Discord&logoColor=white"> | <img src="https://img.shields.io/badge/Prettier-F7B93E.svg?style=flat-square&logo=Prettier&logoColor=black"> <img src="https://img.shields.io/badge/ESLint-4B32C3.svg?style=flat-square&logo=ESLint&logoColor=white"> |
+| <img src="https://img.shields.io/badge/React-61DAFB?style=flat-square&logo=React&logoColor=black"> <img src="https://img.shields.io/badge/styledcomponents-CC6699?style=flat-square&logo=styledcomponents&logoColor=white"> <img src="https://img.shields.io/badge/JavaScript-F7DF1E.svg?style=flat-square&logo=JavaScript&logoColor=black"> | <img src="https://img.shields.io/badge/REST API-000000?style=flat-square&logo=logoColor=white"> | <img src="https://img.shields.io/badge/figma-FBCEB1?style=flat-square&logo=figma&logoColor=white"> | <img src="https://img.shields.io/badge/GitHub-181717?style=flat-square&logo=GitHub&logoColor=white"> <img src="https://img.shields.io/badge/Notion-000000.svg?style=flat-square&logo=Notion&logoColor=white"> <img src="https://img.shields.io/badge/Discord-5865F2?style=flat-square&logo=Discord&logoColor=white"> | <img src="https://img.shields.io/badge/Prettier-F7B93E.svg?style=flat-square&logo=Prettier&logoColor=black"> <img src="https://img.shields.io/badge/ESLint-4B32C3.svg?style=flat-square&logo=ESLint&logoColor=white"> |
 
 
 # 2. 팀원 소개
 |백예린|서동현|양혜진|이승미|최강우|
 |---|---|---|---|---|
-|![image](https://github.com/FRONTENDSCHOOL7/final-13-read-we/assets/138555225/6bc1f7bc-303a-4e41-9f59-88791f808d82)|![image](https://github.com/FRONTENDSCHOOL7/final-13-read-we/assets/138555225/8fa9c731-80a0-4dea-afb6-6bef222fd970)|프로필|![image](https://github.com/FRONTENDSCHOOL7/final-13-read-we/assets/138555225/1a3f210b-8dd4-4470-ad3f-3769d21f7663)|프로필|
-|<a href="https://github.com/TheVolunteers"><img src="https://img.shields.io/badge/GitHub-181717?style=flat&logo=GitHub&logoColor=white"/></a>|<a href="https://github.com/dongmay98"><img src="https://img.shields.io/badge/GitHub-181717?style=flat&logo=GitHub&logoColor=white"/></a>|깃주소|<a href="https://github.com/seungmimi"><img src="https://img.shields.io/badge/GitHub-181717?style=flat&logo=GitHub&logoColor=white"/></a>|깃주소|
-|역할|역할|역할|역할|역할|
+|![image](https://github.com/FRONTENDSCHOOL7/final-13-read-we/assets/138555225/6bc1f7bc-303a-4e41-9f59-88791f808d82)|![image](https://github.com/FRONTENDSCHOOL7/final-13-read-we/assets/138555225/8fa9c731-80a0-4dea-afb6-6bef222fd970)|![image](https://github.com/FRONTENDSCHOOL7/final-13-read-we/assets/138555225/cd35ce2a-4692-4a79-98cd-32655d74f953)|![image](https://github.com/FRONTENDSCHOOL7/final-13-read-we/assets/138555225/1a3f210b-8dd4-4470-ad3f-3769d21f7663)|![image](https://github.com/FRONTENDSCHOOL7/final-13-read-we/assets/138555225/2c5435c0-0b77-44bd-899a-ea8eb33ea816)|
+|<a href="https://github.com/TheVolunteers"><img src="https://img.shields.io/badge/GitHub-181717?style=flat&logo=GitHub&logoColor=white"/></a>|<a href="https://github.com/dongmay98"><img src="https://img.shields.io/badge/GitHub-181717?style=flat&logo=GitHub&logoColor=white"/></a>|<a href="https://github.com/yangggiri"><img src="https://img.shields.io/badge/GitHub-181717?style=flat&logo=GitHub&logoColor=white"/></a>|<a href="https://github.com/seungmimi"><img src="https://img.shields.io/badge/GitHub-181717?style=flat&logo=GitHub&logoColor=white"/></a>|<a href="https://github.com/obersee"><img src="https://img.shields.io/badge/GitHub-181717?style=flat&logo=GitHub&logoColor=white"/></a>|
+|<img src="https://img.shields.io/badge/Team members-dddddd?style=flat-square&logo=logoColor=black">|<img src="https://img.shields.io/badge/Team members-dddddd?style=flat-square&logo=logoColor=black">|<img src="https://img.shields.io/badge/Team members-dddddd?style=flat-square&logo=logoColor=black">|<img src="https://img.shields.io/badge/Team members-dddddd?style=flat-square&logo=logoColor=black">|<img src="https://img.shields.io/badge/project leader-000000?style=flat-square&logo=logoColor=black">|
 
 
 # 3. 기능구현 및 역할 분담
+#### 백예린
+**🎨 UI**
+- 공통 header/footer
+- 스플래시
+- 로그인
+- 회원가입
+- 채팅
 
+**⚒️ 기능구현**
+- 로그인
+- 회원가입
+
+<br />
+
+#### 서동현
+**🎨 UI**
+- 메인 페이지
+- 책 상세정보
+
+**⚒️ 기능구현**
+- 메인 피드게시물 리스트업
+- 유저 검색 / 다른 유저 프로필 페이지 이동
+- Trend Book
+- 책 상세정보 모달구현
+
+<br />
+
+#### 양혜진
+**🎨 UI**
+- 프로필 수정
+- 책 검색 모달
+
+**⚒️ 기능구현**
+- 프로필 수정
+
+<br />
+
+#### 이승미
+**🎨 UI**
+- 공통컴포넌트 제작(button, input, modal, 기타 공통 요소)
+- 마이페이지 / 다른사람 프로필
+- 내 서재
+- 팔로워/팔로잉 리스트
+
+**⚒️ 기능구현**
+- 팔로우/언팔로우
+- 게시물 좋아요
+- 로그아웃
+- 게시물 작성 통계 - Nivo chart
+
+<br />
+
+#### 최강우
+**🎨 UI**
+- 게시물 상세
+- 게시물 등록
+- 도서 검색 정보 페이지
+
+**⚒️ 기능구현**
+- 게시물 등록
+- 게시물 등록 시 도서정보 조회 및 선택(JSON 데이터)
+- 댓글 등록
+
+<br />
 
 # 4. 핵심기능 시연
 
