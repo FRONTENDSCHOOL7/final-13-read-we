@@ -36,8 +36,8 @@ READ WE는 독서기록 서비스와 SNS가 결합된 서비스로, 혼자 즐�
 # 2. 팀원 소개
 |백예린|서동현|양혜진|이승미|최강우|
 |---|---|---|---|---|
-|프로필|![image](https://github.com/FRONTENDSCHOOL7/final-13-read-we/assets/138555225/8fa9c731-80a0-4dea-afb6-6bef222fd970)|프로필|![image](https://github.com/FRONTENDSCHOOL7/final-13-read-we/assets/138555225/1a3f210b-8dd4-4470-ad3f-3769d21f7663)|프로필|
-|깃주소|깃주소|깃주소|<a href="https://github.com/seungmimi"><img src="https://img.shields.io/badge/GitHub-181717?style=flat&logo=GitHub&logoColor=white"/></a>|깃주소|
+|![image](https://github.com/FRONTENDSCHOOL7/final-13-read-we/assets/138555225/6bc1f7bc-303a-4e41-9f59-88791f808d82)|![image](https://github.com/FRONTENDSCHOOL7/final-13-read-we/assets/138555225/8fa9c731-80a0-4dea-afb6-6bef222fd970)|프로필|![image](https://github.com/FRONTENDSCHOOL7/final-13-read-we/assets/138555225/1a3f210b-8dd4-4470-ad3f-3769d21f7663)|프로필|
+|<a href="https://github.com/TheVolunteers"><img src="https://img.shields.io/badge/GitHub-181717?style=flat&logo=GitHub&logoColor=white"/></a>|<a href="https://github.com/dongmay98"><img src="https://img.shields.io/badge/GitHub-181717?style=flat&logo=GitHub&logoColor=white"/></a>|깃주소|<a href="https://github.com/seungmimi"><img src="https://img.shields.io/badge/GitHub-181717?style=flat&logo=GitHub&logoColor=white"/></a>|깃주소|
 |역할|역할|역할|역할|역할|
 
 
