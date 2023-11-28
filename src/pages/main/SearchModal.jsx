@@ -1,6 +1,6 @@
 import React from 'react';
 import '../myPage/css/myPage.module.css';
-import '../main-page/SearchModal.css';
+import './css/SearchModal.css';
 
 const SearchModal = ({ hideModal }) => {
   return (

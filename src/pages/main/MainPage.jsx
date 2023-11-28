@@ -1,15 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import styles from './css/Main.module.css';
 import PostSection from './PostSection';
-import MainNavBtn from '../../button/MainNavBtn';
+import MainNavBtn from '../../components/button/MainNavBtn';
 import MainProfileCard from './MainProfileCard';
 import MainPostCard from './MainPostCard';
-import { IconIpt } from '../../input/IptStyleEtc';
-import { BasicIpt } from '../../input/IptStyle';
+import { IconIpt } from '../../components/input/IptStyleEtc';
+import { BasicIpt } from '../../components/input/IptStyle';
 import Trend from './Trend';
-import EmptyList from '../mypage/EmptyList';
+import EmptyList from '../../components/mypage/EmptyList';
 import HandlePost from '../../util/postUtil';
-import SearchModal from '../../main-page/SearchModal';
+import SearchModal from './SearchModal';
 import { Link, useNavigate } from 'react-router-dom';
 
 const MainPage = () => {

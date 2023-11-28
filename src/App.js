@@ -13,9 +13,9 @@ import Footer from './components/footer/Footer';
 import Chatting from './pages/chat/Chatting';
 import LoginJoinSelect from './pages/login-join-select/LoginJoinSelect';
 import LoginFinish from './pages/login-Page/JoinFinish';
-import PostUpload from './pages/main-page/PostUpload';
-import SearchModal from './pages/main-page/SearchModal';
-import PostDetails from './pages/main-page/PostDetails';
+import PostUpload from './pages/main/PostUpload';
+import SearchModal from './pages/main/SearchModal';
+import PostDetails from './pages/main/PostDetails';
 
 function App() {
   return (

@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import { BasicBtn } from '../../components/button/BtnStyle';
 import bookData from './bookdata.json';
 import EmptyList from './EmptyList';
-import styles from './BookSearchDetailModal.module.css';
+import styles from './css/BookSearchDetailModal.module.css';
 
 const BookSearchDetailModal = (props) => {
   const [searchText, setSearchText] = useState('');

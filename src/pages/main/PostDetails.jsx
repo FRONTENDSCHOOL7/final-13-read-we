@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import styles from './PostDetails.module.css';
-import PostSection from '../main/PostSection';
+import styles from './css/PostDetails.module.css';
+import PostSection from './PostSection';
 import CmtList from './CmtList';
 import { useParams } from 'react-router-dom';
 import EmptyList from '../../components/mypage/EmptyList';

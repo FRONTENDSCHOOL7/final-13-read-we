@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from './CmtListItem.module.css';
+import styles from './css/CmtListItem.module.css';
 
 const CmtListItem = ({ cmtItem }) => {
   return (

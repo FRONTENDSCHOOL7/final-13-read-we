@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import styles from './PostUpload.module.css';
+import styles from './css/PostUpload.module.css';
 import { BasicBtn } from '../../components/button/BtnStyle';
 import { BasicIpt } from '../../components/input/IptStyle';
 import BookSearchDetailModal from './BookSearchDetailModal';

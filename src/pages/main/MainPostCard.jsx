@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from './css/Main.module.css';
-import { BasicBtn } from '../button/BtnStyle';
+import { BasicBtn } from '../../components/button/BtnStyle';
 
 const MainPostCard = (props) => {
   return (
