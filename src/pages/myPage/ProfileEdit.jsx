@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import styles from './css/myPage.module.css';
-import '../myPage/ProfileEdit.css';
+import './ProfileEdit.css';
 
 const ProfileEdit = () => {
   const location = useLocation();

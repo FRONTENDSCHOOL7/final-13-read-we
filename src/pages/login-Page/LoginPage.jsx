@@ -1,7 +1,5 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import './Login.css';
-import Header from '../components/header/Header';
-import Footer from '../components/footer/Footer';
 import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 

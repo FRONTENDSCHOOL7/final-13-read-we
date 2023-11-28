@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
-import { CounterBtn } from '../button/BtnStyleEtc';
-import BookDetailModal from '../popup/BookDetailModal';
+import { CounterBtn } from '../../components/button/BtnStyleEtc';
+import BookDetailModal from '../../components/popup/BookDetailModal';
 import { useNavigate } from 'react-router-dom';
-import HeartModal from '../popup/HeartModal';
+import HeartModal from '../../components/popup/HeartModal';
 
 // 게시물 카드섹션
 const MainCard = (props) => {

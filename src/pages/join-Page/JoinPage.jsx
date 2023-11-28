@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import Header from '../components/header/Header';
-import Footer from '../components/footer/Footer';
+import Header from '../../components/header/Header';
+import Footer from '../../components/footer/Footer';
 import SuccessPopup from './SuccessPopup'; // 팝업 컴포넌트
 import './JoinPage.css';
 import { useNavigate } from 'react-router-dom';

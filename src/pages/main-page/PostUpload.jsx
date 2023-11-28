@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import styles from './PostUpload.module.css';
-import { BasicBtn } from '../components/button/BtnStyle';
-import { BasicIpt } from '../components/input/IptStyle';
+import { BasicBtn } from '../../components/button/BtnStyle';
+import { BasicIpt } from '../../components/input/IptStyle';
 import BookSearchDetailModal from './BookSearchDetailModal';
 import { useNavigate } from 'react-router-dom';
 

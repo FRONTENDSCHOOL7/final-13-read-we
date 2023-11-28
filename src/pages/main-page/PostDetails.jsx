@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import styles from './PostDetails.module.css';
-import PostSection from '../components/main/PostSection';
+import PostSection from '../main/PostSection';
 import CmtList from './CmtList';
 import { useParams } from 'react-router-dom';
-import EmptyList from '../components/mypage/EmptyList';
+import EmptyList from '../../components/mypage/EmptyList';
 
 const PostDetails = () => {
   const [post, setPost] = useState(null);

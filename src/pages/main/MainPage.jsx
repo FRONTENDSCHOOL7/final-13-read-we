@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import styles from './css/Main.module.css';
 import PostSection from './PostSection';
-import MainNavBtn from '../button/MainNavBtn';
+import MainNavBtn from '../../button/MainNavBtn';
 import MainProfileCard from './MainProfileCard';
 import MainPostCard from './MainPostCard';
-import { IconIpt } from '../input/IptStyleEtc';
-import { BasicIpt } from '../input/IptStyle';
+import { IconIpt } from '../../input/IptStyleEtc';
+import { BasicIpt } from '../../input/IptStyle';
 import Trend from './Trend';
 import EmptyList from '../mypage/EmptyList';
 import HandlePost from '../../util/postUtil';

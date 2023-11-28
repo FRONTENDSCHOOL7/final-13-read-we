@@ -1,21 +1,21 @@
-import LoginPage from './login-Page/LoginPage';
-import MainPage from './components/main/MainPage';
+import LoginPage from './pages/login-Page/LoginPage'
+import MainPage from './pages/main/MainPage';
 import { Routes, Route } from 'react-router-dom';
-import MyPage from './myPage/MyPage';
-import YourPage from './myPage/YourPage';
-import MyPageAccList from './myPage/MyPageAccList';
-import YourPageAccList from './myPage/YourPageAccList';
-import MyLibrary from './myPage/MyLibrary';
-import JoinPage from './join-Page/JoinPage';
-import ProfileEdit from './myPage/ProfileEdit';
+import MyPage from './pages/myPage/MyPage';
+import YourPage from './pages/myPage/YourPage';
+import MyPageAccList from './pages/myPage/MyPageAccList';
+import YourPageAccList from './pages/myPage/YourPageAccList';
+import MyLibrary from './pages/myPage/MyLibrary';
+import JoinPage from './pages/join-Page/JoinPage';
+import ProfileEdit from './pages/myPage/ProfileEdit';
 import Header from './components/header/Header';
 import Footer from './components/footer/Footer';
-import Chatting from './chat/Chatting';
-import LoginJoinSelect from './login-join-select/LoginJoinSelect';
-import LoginFinish from './login-Page/JoinFinish';
-import PostUpload from './main-page/PostUpload';
-import SearchModal from './main-page/SearchModal';
-import PostDetails from './main-page/PostDetails';
+import Chatting from './pages/chat/Chatting';
+import LoginJoinSelect from './pages/login-join-select/LoginJoinSelect';
+import LoginFinish from './pages/login-Page/JoinFinish';
+import PostUpload from './pages/main-page/PostUpload';
+import SearchModal from './pages/main-page/SearchModal';
+import PostDetails from './pages/main-page/PostDetails';
 
 function App() {
   return (
