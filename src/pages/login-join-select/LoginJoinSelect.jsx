@@ -1,20 +1,26 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import './LoginJoinSelect.css'; // CSS 파일 import
+import styles from './LoginJoinSelect.module.css'; // CSS 파일 import
 
 const LoginJoinSelect = () => {
   return (
-    <div className="LoginJoinSelect-container">
-      <video className="video" src="/images/readwe.mp4" autoPlay loop muted />
+    <div className={styles['LoginJoinSelect-container']}>
+      <video
+        className={styles.video}
+        src="/images/readwe.mp4"
+        autoPlay
+        loop
+        muted
+      />
 
-      <div className="content">
-        <div className="buttons">
+      <div className={styles.content}>
+        <div className={styles.buttons}>
           <Link to="/login">
-            <button className="button">Login</button>
+            <button className={styles.button}>Login</button>
           </Link>
 
           <Link to="/join">
-            <button className="button">Join</button>
+            <button className={styles.button}>Join</button>
           </Link>
         </div>
       </div>
