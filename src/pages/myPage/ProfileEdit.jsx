@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import styles from './css/myPage.module.css';
-import './ProfileEdit.css';
 
 const ProfileEdit = () => {
   const location = useLocation();
@@ -37,46 +36,6 @@ const ProfileEdit = () => {
   useEffect(() => {
     setIsPasswordMatching(password === confirmPassword && password !== '');
   }, [password, confirmPassword]);
-
-  // const handleFileChange = (event) => {
-  //   const file = event.target.files[0];
-  //   setSelectedFile(file);
-  //   console.log(file);
-  //   setPreview(URL.createObjectURL(file));
-  // };
-
-  // const handleUpload = async () => {
-  //   console.log(id);
-  //   const formData = new FormData();
-  //   formData.append('file', selectedFile);
-  //   formData.append('id', id);
-
-  //   const url = 'https://api.mandarin.weniv.co.kr';
-  //   const fileNames = [];
-
-  //   try {
-  //     const response = await fetch(url + '/image/uploadfiles', {
-  //       method: 'POST',
-  //       body: formData,
-  //     });
-
-  //     const data = await response.json();
-
-  //     for (let i of data) {
-  //       fileNames.push(i.filename);
-  //     }
-
-  //     if (fileNames.length > 1) {
-  //       return fileNames.join(',');
-  //     } else {
-  //       return fileNames[0];
-  //     }
-  //   } catch (err) {
-  //     console.error(err);
-  //   }
-
-  //   return true;
-  // };
 
   //이미지 전송 API_수정
   const uploadImage = async (imgFile) => {

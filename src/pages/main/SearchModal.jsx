@@ -1,18 +1,17 @@
 import React from 'react';
-import '../myPage/css/myPage.module.css';
-import './css/SearchModal.css';
+import styles from './css/SearchModal.module.css';
 
 const SearchModal = ({ hideModal }) => {
   return (
-    <div className="pageWrap">
-      <div className="contentArea">
-        <div className="header">
-          <h3 className="title">이 책은 어떠세요?</h3>
-          <button className="more-show" onClick={hideModal}>
+    <div className={styles.pageWrap}>
+      <div className={styles.contentArea}>
+        <div className={styles.header}>
+          <h3 className={styles.title}>이 책은 어떠세요?</h3>
+          <button className={styles['more-show']} onClick={hideModal}>
             취소
           </button>
         </div>
-        <div className="example-books">
+        <div className={styles['example-books']}>
           <div>
             <img
               src={process.env.PUBLIC_URL + '/images/javascript.png'}
@@ -42,18 +41,19 @@ const SearchModal = ({ hideModal }) => {
             <p>도둑맞은 집중력</p>
           </div>
         </div>
-        <div className="search-result">
-          <h3 className="show-result">
-            <span className="emphasis">'멋사 프론트엔드'</span>에 대한 검색 결과
+        <div className={styles['search-result']}>
+          <h3 className={styles['show-result']}>
+            <span className={styles.emphasis}>'멋사 프론트엔드'</span>에 대한
+            검색 결과
           </h3>
-          <div className="zero">
-            <p className="all-zero">전체 0건</p>
+          <div className={styles.zero}>
+            <p className={styles['all-zero']}>전체 0건</p>
           </div>
-          <div className="center-container">
-            <p className="no-result">
+          <div className={styles['center-container']}>
+            <p className={styles['no-result']}>
               '멋사 프론트엔드'에 대한 검색 결과가 없습니다.
             </p>
-            <div className="check">
+            <div className={styles.check}>
               <p>
                 검색어의 철자가 정확한지 다시 한 번 확인해주세요.
                 <br />
