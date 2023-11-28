@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import './chatting.css';
+import styles from './chatting.module.css';
 
 const Chatting = () => {
   const [activeChat, setActiveChat] = useState(1); // 기본으로 Profile 1 선택
@@ -42,60 +42,63 @@ const Chatting = () => {
   };
 
   return (
-    <div className="container-box">
+    <div className={styles['container-box']}>
       <h1>채팅</h1>
-      <div className="container">
-        <div className="chatting-list">
-          <div className="chat-rooms">
+      <div className={styles.container}>
+        <div className={styles['chatting-list']}>
+          <div className={styles['chat-rooms']}>
             {chatRooms.map((chatRoom) => (
               <div
                 key={chatRoom.id}
-                className={`chat-room 
+                className={`${styles['chat-room']}
                 ${activeChat === chatRoom.id ? 'active' : ''}`}
                 onClick={() => handleChatSelect(chatRoom.id)}
               >
-                <div className="profile-image-small">
+                <div className={styles['profile-image-small']}>
                   <img src={chatRoom.profileImage} alt="Profile" />
                 </div>
-                <div className="user-info">
+                <div className={styles['user-info']}>
                   <p>{chatRoom.nickname}</p>
                   <p>{chatRoom.messages[0].content}</p>
                 </div>
-                <p className="last-time">{chatRoom.lastTime}</p>
+                <p className={styles['last-time']}>{chatRoom.lastTime}</p>
               </div>
             ))}
           </div>
         </div>
-        <div className="chatting-container">
-          <div className="chatting-header">
+        <div className={styles['chatting-container']}>
+          <div className={styles['chatting-header']}>
             <img
               src={
                 chatRooms.find((room) => room.id === activeChat)?.profileImage
               }
               alt="Profile"
-              className="profile-image"
+              className={styles['profile-image']}
             />
             <h2>
               {chatRooms.find((room) => room.id === activeChat)?.nickname}
             </h2>
           </div>
-          <div className="chatting-body">
+          <div className={styles['chatting-body']}>
             {chatRooms
               .find((room) => room.id === activeChat)
               ?.messages.map((message, index) => (
-                <div key={index} className={`message ${message.type}`}>
+                <div
+                  key={index}
+                  className={`${styles.message} ${styles[message.type]}`}
+                >
                   <p>{message.content}</p>
-                  <p className="message-time">07:30 AM</p>
+                  <p className={styles['message-time']}>07:30 AM</p>
                 </div>
               ))}
           </div>
-          <div className="chatting-footer">
-            <div className="input-container">
+          <div className={styles['chatting-footer']}>
+            <div className={styles['input-container']}>
               <input type="text" placeholder="메시지를 입력하세요." />
               {/* 이미지 찾을수 없어서 임시로 주석 처리 */}
               {/* <img src="attachment_icon_url" alt="Attachment" /> */}
             </div>
-            <button className="send-button">send</button>
+            <button className={styles['send-button']}>send</button>
           </div>
         </div>
       </div>
