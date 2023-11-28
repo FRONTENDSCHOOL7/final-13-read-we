@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import ProfileList from '../components/mypage/ProfileList';
+import ProfileList from '../../components/mypage/ProfileList';
 import { useNavigate } from 'react-router-dom';
 
 const FollowerList = ({ myInfo }) => {

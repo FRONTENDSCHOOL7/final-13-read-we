@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
-import ProfileCardOther from '../components/mypage/ProfileCardOther';
-import PostSection from '../components/main/PostSection';
+import ProfileCardOther from '../../components/mypage/ProfileCardOther';
+import PostSection from '../main/PostSection';
 import styles from './css/myPage.module.css';
-import EmptyList from '../components/mypage/EmptyList';
+import EmptyList from '../../components/mypage/EmptyList';
 import { Link } from 'react-router-dom';
 
 const YourPage = () => {

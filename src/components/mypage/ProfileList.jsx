@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from '../../myPage/css/myPage.module.css';
+import styles from '../../pages/myPage/css/myPage.module.css';
 
 const ProfileList = (props) => {
   const accName = props.userAccName;

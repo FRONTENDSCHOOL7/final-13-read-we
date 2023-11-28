@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import styles from './css/myPage.module.css';
-import { BasicBtn } from '../components/button/BtnStyle';
+import { BasicBtn } from '../../components/button/BtnStyle';
 import FollowerList from './FollowerList';
 import FollowingList from './FollowingList';
 

@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import styles from './css/myPage.module.css';
-import { BasicBtn } from '../components/button/BtnStyle';
+import { BasicBtn } from '../../components/button/BtnStyle';
 import MyLibraryChart from './MyLibraryChart';
 import MyLibraryRead from './MyLibraryRead';
-import EmptyList from '../components/mypage/EmptyList';
+import EmptyList from '../../components/mypage/EmptyList';
 
 const MyLibrary = () => {
   const token = localStorage.getItem('token');
