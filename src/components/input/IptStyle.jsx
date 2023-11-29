@@ -14,7 +14,6 @@ const BasicIpt = styled.input`
     props.gray &&
     css`
       background-color: rgba(167, 167, 167, 0.5);
-      box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
       border: none;
       &::placeholder {
         color: #ffffff;
