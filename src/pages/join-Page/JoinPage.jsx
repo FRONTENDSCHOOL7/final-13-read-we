@@ -1,22 +1,23 @@
 import React, { useState } from 'react';
-import Header from '../../components/header/Header';
-import Footer from '../../components/footer/Footer';
-import SuccessPopup from './SuccessPopup'; // 팝업 컴포넌트
-import './JoinPage.css';
 import { useNavigate } from 'react-router-dom';
+import { IconIpt } from '../../components/input/IptStyleEtc';
+import { BasicIpt } from '../../components/input/IptStyle';
+import { BasicBtn } from '../../components/button/BtnStyle';
+import styles from './css/JoinPage.module.css';
 
 export default function JoinPage() {
+  const navigate = useNavigate();
+
+  //입력 정보 useState
+  const [imgSrc, serImgsrc] = useState(
+    'http://api.mandarin.weniv.co.kr/Ellipse.png',
+  );
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
   const [accountname, setAccountname] = useState('');
   const [password, setPassword] = useState('');
-  const [imgSrc, serImgsrc] = useState(
-    'http://api.mandarin.weniv.co.kr/Ellipse.png',
-  );
 
-  const navigate = useNavigate();
-
-  // 회원가입 함수
+  // 회원가입 API
   const join = async (joinData) => {
     const reqUrl = 'https://api.mandarin.weniv.co.kr/user';
     const res = await fetch(reqUrl, {
@@ -117,17 +118,20 @@ export default function JoinPage() {
   };
 
   return (
-    <>
-      <section>
-        <div className="join-Box">
-          <h1>리드위 회원가입</h1>
-          <h3 className="join-ment">
+    <section>
+      <h2 className="a11y-hidden">회원 가입</h2>
+      <div className={styles['join-Box']}>
+        <div className={styles['title-box']}>
+          <h3 className={styles['join-title']}>리드위 회원가입</h3>
+          <strong className={styles['join-ment']}>
             아이디와 이메일로 간편하게 리드위를 시작하세요!
-          </h3>
-          <div className="img-upload">
-            <label>
+          </strong>
+        </div>
+        <div className={styles['info-box']}>
+          <label className={styles['img-upload']}>
+            <div className={styles['img-box']}>
               <img src={imgSrc} alt="" id="imagePre" />
-            </label>
+            </div>
             <input
               type="file"
               id="profileImg"
@@ -135,61 +139,49 @@ export default function JoinPage() {
               accept="image/*"
               onChange={onChangeImage}
             />
-          </div>
-          <div
-            className={`input-icon 
-            ${isCompleted('email') ? 'active-input' : ''}`}
-          >
-            <i className="icon icon-email-w"></i>
-            <input
-              type="email"
+          </label>
+          <IconIpt>
+            <BasicIpt
+              gray="true"
               placeholder="이메일"
-              className="basic gray"
               value={email}
               onChange={inputEmail}
             />
-          </div>
-          <div className="input-icon join-PW">
-            <i className="icon icon-lock-w"></i>
-            <input
+            <i className="icon icon-email-w" />
+          </IconIpt>
+          <IconIpt>
+            <BasicIpt
               type="password"
+              gray="true"
               placeholder="비밀번호"
-              className="basic gray"
               value={password}
               onChange={inputPassword}
             />
-          </div>
-          <div
-            className={`input-icon 
-            ${isCompleted('accountname') ? 'active-input' : ''}`}
-          >
-            <i className="icon icon-user-w"></i>
-            <input
-              type="text"
+            <i className="icon icon icon-lock-w" />
+          </IconIpt>
+          <IconIpt>
+            <BasicIpt
+              gray="true"
               placeholder="아이디"
-              className="basic gray"
               value={accountname}
               onChange={inputAccountname}
             />
-          </div>
-          <div
-            className={`input-icon 
-            ${isCompleted('username') ? 'active-input' : ''}`}
-          >
-            <i className="icon icon-user-w"></i>
-            <input
-              type="text"
+            <i className="icon icon-user-w" />
+          </IconIpt>
+          <IconIpt>
+            <BasicIpt
+              gray="true"
               placeholder="사용자 이름"
-              className="basic gray"
               value={username}
               onChange={inputUsername}
             />
-          </div>
-          <button type="submit" className="join-basic" onClick={submitJoin}>
+            <i className="icon icon-user-w" />
+          </IconIpt>
+          <BasicBtn type="submit" onClick={submitJoin}>
             가입하기
-          </button>
+          </BasicBtn>
         </div>
-      </section>
-    </>
+      </div>
+    </section>
   );
 }

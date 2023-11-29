@@ -1,0 +1,57 @@
+/* join */
+.join-Box {
+  width: 100%;
+  max-width: 380px;
+  margin: 0 auto;
+  margin-top: 50px;
+}
+/* 타이틀 영역 */
+.title-box {
+  margin: 20px 0;
+  text-align: center;
+}
+.title-box .join-title {
+  font-family: "Pretendard-Bold";
+  font-size: 24px;
+  margin-bottom: 15px;
+}
+.title-box .join-ment {
+  display: block;
+  color: #ABABAB;
+  font-size: 18px;
+}
+.info-box button {
+  transition: background-color 0.3s;
+}
+.info-box button:active {
+  background-color: #E87C3E; 
+}
+.info-box button:hover {
+  background-color: #E87C3E; 
+}
+
+/* 정보 입력 영역 */
+.info-box {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.img-upload {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: center;
+  margin-bottom: 10px;
+}
+.img-box {
+  border: 1px solid #eee;
+  width: 110px;
+  height: 110px;
+  border-radius: 100%;
+  overflow: hidden;
+}
+.img-box>img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
