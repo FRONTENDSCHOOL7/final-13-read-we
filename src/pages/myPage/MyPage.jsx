@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
+import axios from 'axios';
 import ProfileCard from '../../components/mypage/ProfileCard';
+import EmptyList from '../../components/mypage/EmptyList';
 import PostSection from '../main/PostSection';
 import styles from './css/myPage.module.css';
-import EmptyList from '../../components/mypage/EmptyList';
-import { Link } from 'react-router-dom';
 
 const MyPage = () => {
   const token = localStorage.getItem('token');
@@ -15,113 +16,113 @@ const MyPage = () => {
   const [isProfileLoading, setIsProfileLoading] = useState(true);
   const [isPostLoading, setIsPostLoading] = useState(true);
 
-  const accName = myInfo?.user?.accountname;
-  //게시글 API
-  useEffect(() => {
-    const getPost = async () => {
-      const reqUrl = baseUrl + `/post/${accName}/userpost`;
-      const res = await fetch(reqUrl, {
-        method: 'GET',
+  //유저작성 게시물 정보 API
+  const getPostFn = (accName) => {
+    const reqUrl = baseUrl + `/post/${accName}/userpost`;
+    axios
+      .get(reqUrl, {
         headers: {
           Authorization: `Bearer ${token}`,
-          'Content-type': 'application/json',
         },
+      })
+      .then(function (res) {
+        setPostList(res.data.post);
+        setIsPostLoading(false);
+      })
+      .catch(function (error) {
+        alert('게시글 리스트를 불러오지 못했습니다');
       });
-      const json = await res.json();
-      setPostList(json);
-      setIsPostLoading(false);
-    };
-    getPost();
-  }, [myInfo]);
-
+  };
   //유저정보 API
-  useEffect(() => {
-    const getMyInfo = async () => {
-      const reqUrl = baseUrl + '/user/myinfo';
-      const res = await fetch(reqUrl, {
-        method: 'GET',
+  const getMyInfoFn = () => {
+    const reqUrl = baseUrl + '/user/myinfo';
+    axios
+      .get(reqUrl, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
+      })
+      .then(function (res) {
+        setMyInfo(res.data.user);
+        localStorage.setItem('accname', res.data.user.accountname);
+        setIsProfileLoading(false);
+        //accountname -> 게시물 API함수 매변수로 전달
+        getPostFn(res.data.user.accountname);
+      })
+      .catch(function (error) {
+        alert('유저 정보를 불러오지 못했습니다');
       });
-      const json = await res.json();
-      //accountname 임시로 로컬에 저장(프로필 이동 시 본인 계정 체크용)
-      localStorage.setItem('accname', json.user.accountname);
-      setMyInfo(json);
-      setIsProfileLoading(false);
-    };
-    getMyInfo();
+  };
+
+  //화면이 로드될 때 유저정보 및 게시물 API 실행
+  useEffect(() => {
+    getMyInfoFn();
   }, []);
+
   return (
     <div className={styles.pageWrap}>
       <section className={styles.contentArea}>
         <h2 className={styles.pageTitle}>My Page</h2>
         <h3 className={styles.myPageTopBanner}>
-          <strong>{myInfo?.user?.username}님 안녕하세요🖐</strong>
+          <strong>{myInfo?.username}님 안녕하세요🖐</strong>
           <p>오늘도 책 읽기 좋은 날씨네요!</p>
-          <img src={process.env.PUBLIC_URL + '/images/books.png'} />
+          <img src={process.env.PUBLIC_URL + '/images/books.png'} alt="" />
         </h3>
         <div className={styles['big-container']}>
           {/* 프로필 정보 */}
           {isProfileLoading === false ? (
             <div className={styles['profile-parent']}>
               <ProfileCard
-                imgSrc={baseUrl + '/' + myInfo.user.image.replace(/^.*\//, '')}
-                accName={myInfo.user.accountname}
-                userName={myInfo.user.username}
+                imgSrc={myInfo.image}
+                accName={myInfo.accountname}
+                userName={myInfo.username}
                 userEmail={email}
-                follower={myInfo.user.followerCount}
-                following={myInfo.user.followingCount}
+                follower={myInfo.followerCount}
+                following={myInfo.followingCount}
               />
             </div>
           ) : (
-            <p>now loading</p>
+            <div className={`${styles['profile-parent']} ${styles.loading}`}>
+              <p>프로필 정보를 불러오고 있어요</p>
+            </div>
           )}
-
+          {/* 우측 게시물리스트 */}
           {isPostLoading === false ? (
             <div className={styles['list-parent']}>
-              {/* 우측 게시물리스트 */}
               <div className={styles['right-list']}>
                 <div className={styles['my-note']}>
                   <div className={styles['left-center']}>
                     <p className={styles.left}>지금까지 작성한 기록들</p>
                     <p className={styles.center}>나의 독서 노트</p>
                   </div>
-                  <p className={styles.right}>총 {postList?.post?.length}건</p>
+                  <p className={styles.right}>총 {postList?.length}건</p>
                 </div>
-
                 {/* 마이페이지 > 메인 게시물 리스트 */}
-                {postList?.post?.length === 0 ? (
+                {postList.length === 0 ? (
                   <EmptyList
                     text1="아직 독서노트가 기록되지 않았어요"
                     text2="책을 읽고 기록을 남겨보세요!"
                   />
                 ) : (
-                  postList?.post?.map((e) => {
+                  postList.map((e) => {
                     const bookInfo = JSON.parse(e.content);
                     return (
                       <Link to={`/postdetails/${e.id}`} key={e.id}>
                         <PostSection
                           key={e.id}
                           date={e.createdAt.replace(/T.*/, '')}
-                          imgSrc={
-                            baseUrl + '/' + e.author.image.replace(/^.*\//, '')
-                          }
+                          imgSrc={e.author.image}
                           bookImgSrc={e.image}
-                          //게시물 id
-                          postId={e.id}
-                          //게시물 클릭 시 해당 유저 프로필 페이지 이동용
-                          accName={e.author.accountname}
+                          postId={e.id} //게시물 id
+                          accName={e.author.accountname} //게시물 클릭 시 해당 유저 프로필 페이지 이동용
                           userName={e.author.username}
-                          // userEmail="testID.test.com"
                           public={bookInfo.publisher}
                           title={bookInfo.title}
                           hit="true"
                           author={bookInfo.author}
                           content={bookInfo.contentText}
                           description={bookInfo.description}
-                          like={e.heartCount}
-                          //좋아요 여부 체크용
+                          like={e.heartCount} //좋아요 여부 체크용
                           isLike={e.hearted}
                           cmt={e.commentCount}
                         />
@@ -132,7 +133,9 @@ const MyPage = () => {
               </div>
             </div>
           ) : (
-            <p>now loading</p>
+            <div className={`${styles['list-parent']} ${styles.loading}`}>
+              <p>게시물 정보를 불러오고 있어요</p>
+            </div>
           )}
         </div>
       </section>

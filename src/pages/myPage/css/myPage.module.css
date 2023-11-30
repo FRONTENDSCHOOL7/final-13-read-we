@@ -3,12 +3,83 @@
   max-width: 1180px;
   margin: 0 auto;
 }
-
 .contentArea {
   width: 100%;
   padding: 35px;
 }
+/* 마이페이지*/
+.pageTitle {
+  display: inline-block;
+  position: relative;
+  font-size: 30px;
+  font-weight: 700;
+  margin-bottom: 40px;
+}
+.pageTitle::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -2px;
+  height: 13px;
+  background-color: #8DA3CD80;
+  width: 100%;
+}
+.big-container {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 15px;
+}
+.profile-parent {
+  flex-shrink: 0;
+  width: 100%;
+  max-width: 280px;
+  height: 664px;
+}
+.profile-parent button {
+  transition: background-color 0.3s;
+}
+.profile-parent button:active {
+  background-color: #E87C3E; 
+}
+.profile-parent button:hover {
+  background-color: #E87C3E; 
+}
+.profile-parent.loading {
+  border: 1px solid #D9D9D9;
+  border-radius: 28px;
+  padding: 50px 20px;
+  text-align: center;
+  height: 300px;
+}
+.my-note {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  padding: 10px;
+  gap: 10px;
+  border-bottom: 1px solid #a7a7a7;
+}
+.left {
+  color: #A7A7A7;
+}
+.center {
+  font-weight: bold;
+  font-size: 24px;
+  padding-top: 10px;
+}
+.right {
+  font-weight: bold;
+}
+.list-parent {
+  width: 100%;
+}
+.list-parent.loading {
+  padding: 50px;
+  text-align: center;
+}
 
+/*팔로우,팔로워 리스트*/
 .tabBtn {
   display: flex;
   gap: 20px;
@@ -17,7 +88,6 @@
   padding-bottom: 30px;
   border-bottom: 1px solid #a7a7a7;
 }
-
 .accSum {
   padding: 30px 10px;
   width: 100%;
@@ -27,16 +97,13 @@
 .accSum i {
   margin-right: 10px;
 }
-
 .userList {
   height: calc(100vh - 400px);
   padding-right: 20px;
 }
-
 .userList li {
   margin-bottom: 12px;
 }
-
 .userListObj{
   padding: 15px 50px 15px 30px;
   align-items: center;
@@ -56,7 +123,6 @@
 .userListObj .accImg>img {
   width: 100%;
 }
-
 .userListObj .leftObj {
   width: 100%;
   display: flex;
@@ -65,30 +131,11 @@
   font-size: 12px;
   font-weight: 700;
 }
-
 .userListObj .leftObj span {
   color: #a7a7a7;
-  
 }
 
 /*내 서재*/
-.pageTitle {
-  display: inline-block;
-  position: relative;
-  font-size: 30px;
-  font-weight: 700;
-  margin-bottom: 40px;
-}
-.pageTitle::after {
-  content: '';
-  position: absolute;
-  left: 0;
-  bottom: -2px;
-  height: 13px;
-  background-color: #8DA3CD80;
-  width: 100%;
-
-}
 .myPageTopBanner,
 .myLibraryTopBanner {
   position: relative;
@@ -99,7 +146,6 @@
   color: #fff;
   margin-bottom: 40px;
 }
-
 .myPageTopBanner>img {
   position: absolute;
   right: 0;
@@ -185,16 +231,15 @@
   gap: 12px;
   margin-bottom: 20px;
 }
-
-.MybookList {
+.mybookList {
   display: flex;
   flex-wrap: wrap;
   gap: 18px;
 }
-.MybookList .MybookListObj {
+.mybookList .mybookListObj {
   width: 150px;
 }
-.MybookList .MybookListObj .MybookListObjImg {
+.mybookList .mybookListObj .mybookListObjImg {
   width: 100%;
   height: 196px;
   overflow: hidden;
@@ -203,10 +248,10 @@
   background-color: #a7a7a7;
   margin-bottom: 12px;
 }
-.MybookList .MybookListObj .MybookListObjImg>img {
+.mybookList .mybookListObj .mybookListObjImg>img {
   width: 100%;
 }
-.MybookList .MybookListObj>p {
+.mybookList .mybookListObj>p {
   text-align: center;
   font-size: 14px;
   font-weight: 800;
@@ -215,69 +260,9 @@
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 2;
 }
-
-/* 혜진님 코드 */
-.BL-box {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  position: relative;
-  width: 100%;
-  height: 150px;
-  background-color: #000;
-  border-radius: 25px;
-  margin: 30px 0;
-  padding: 30px 400px 30px 30px;
-}
-.say-hi,
-.good-weather {
-  font-size: 20px;
-  width: 100%;
-  color: aliceblue;
-  padding-top: 10px;
-}
-.MP-Book {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: absolute;
-  right: 0;
-  height: 200px;
-  bottom: 0px;
-}
-.big-container {
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
-  gap: 15px;
-}
-.profile-parent {
-  flex-shrink: 0;
-  width: 100%;
-  max-width: 280px;
-  height: 664px;
-}
-.my-note {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-end;
-  padding: 10px;
-  gap: 10px;
-  border-bottom: 1px solid #a7a7a7;
-}
-.left {
-  color: #A7A7A7;
-}
-.center {
-  font-weight: bold;
-  font-size: 24px;
-  padding-top: 10px;
-}
-.right {
-  font-weight: bold;
-}
-.list-parent {
-  width: 100%;
+.myLibraryLoading {
+  padding: 30px;
+  text-align: center;
 }
 
 /*프로필 수정 추가*/
