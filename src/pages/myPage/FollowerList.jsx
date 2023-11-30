@@ -1,37 +1,43 @@
 import React, { useEffect, useState } from 'react';
 import ProfileList from '../../components/mypage/ProfileList';
 import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
 
-const FollowerList = ({ myInfo }) => {
-  const [followerList, setFollowerList] = useState('');
+const FollowerList = ({ myInfo, activeTab }) => {
+  const [userAccList, setUserAccList] = useState('');
   const [isLoading, setIsLoading] = useState(true);
 
   const baseUrl = 'https://api.mandarin.weniv.co.kr';
-  const accName = myInfo;
   const token = localStorage.getItem('token');
+  const myAccName = localStorage.getItem('accname');
   const navigate = useNavigate();
-
-  useEffect(() => {
-    const getFollower = async () => {
-      const reqUrl = `${baseUrl}/profile/${accName}/follower`;
-      const res = await fetch(reqUrl, {
-        method: 'GET',
+  const getUserAccFn = () => {
+    const reqUrl = `${baseUrl}/profile/${myInfo}/${
+      activeTab === 0 ? 'follower' : 'following'
+    }`;
+    axios
+      .get(reqUrl, {
         headers: {
           Authorization: `Bearer ${token}`,
-          'Content-type': 'application/json',
         },
+      })
+      .then(function (res) {
+        setUserAccList(res.data);
+        setIsLoading(false);
+      })
+      .catch(function (error) {
+        console.log(error);
       });
-      const json = await res.json();
-      setFollowerList(json);
-      setIsLoading(false);
-    };
-    getFollower();
-  }, []);
+  };
+
+  useEffect(() => {
+    getUserAccFn();
+  }, [activeTab]);
 
   return (
-    <>
+    <div>
       {isLoading ||
-        followerList.map((e, index) => {
+        userAccList.map((e, index) => {
           return (
             <ProfileList
               key={index}
@@ -39,15 +45,17 @@ const FollowerList = ({ myInfo }) => {
               userName={e.username}
               userAccName={e.accountname}
               userEmail={e.accountname}
-              type="dot"
+              type={activeTab === 0 ? 'dot' : 'remove'}
               pageEvent={(event) => {
                 localStorage.setItem('otherName', e.accountname);
-                navigate('/yourpage');
+                e.accountname === myAccName
+                  ? navigate('/mypage')
+                  : navigate('/yourpage');
               }}
             />
           );
         })}
-    </>
+    </div>
   );
 };
 

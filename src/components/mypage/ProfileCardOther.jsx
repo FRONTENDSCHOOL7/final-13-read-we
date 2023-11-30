@@ -66,9 +66,7 @@ const ProfileCardOther = (props) => {
         userEmail={props.userEmail}
         follower={props.follower}
         following={props.following}
-        page={() => {
-          navigate('/yourpage/youracclist');
-        }}
+        orderAcc={true}
       />
       <div className="acc-btn-wrap">
         {props.isfollowing ? (

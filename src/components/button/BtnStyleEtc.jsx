@@ -39,7 +39,7 @@ const CounterBtn = (props) => {
 
 const CounterAccBtn = (props) => {
   return (
-    <CounterAccBtnStyle>
+    <CounterAccBtnStyle onClick={props.onClick}>
       {props.type} | <strong>{props.count}</strong>
     </CounterAccBtnStyle>
   );

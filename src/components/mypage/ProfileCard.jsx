@@ -29,9 +29,7 @@ const ProfileCard = (props) => {
         userEmail={props.userEmail}
         follower={props.follower}
         following={props.following}
-        page={() => {
-          navigate('/mypage/acclist');
-        }}
+        orderAcc={false}
       />
       <div className="acc-btn-wrap">
         <BasicBtn>도움말</BasicBtn>
