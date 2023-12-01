@@ -73,7 +73,7 @@ const MyPage = () => {
           {isProfileLoading === false ? (
             <div className={styles['profile-parent']}>
               <ProfileCard
-                imgSrc={myInfo.image}
+                imgSrc={baseUrl + '/' + myInfo.image.replace(/^.*\//, '')}
                 accName={myInfo.accountname}
                 userName={myInfo.username}
                 userEmail={email}
@@ -111,7 +111,9 @@ const MyPage = () => {
                         <PostSection
                           key={e.id}
                           date={e.createdAt.replace(/T.*/, '')}
-                          imgSrc={e.author.image}
+                          imgSrc={
+                            baseUrl + '/' + e.author.image.replace(/^.*\//, '')
+                          }
                           bookImgSrc={e.image}
                           postId={e.id} //게시물 id
                           accName={e.author.accountname} //게시물 클릭 시 해당 유저 프로필 페이지 이동용

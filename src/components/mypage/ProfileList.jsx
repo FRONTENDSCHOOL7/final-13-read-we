@@ -1,31 +1,34 @@
 import React from 'react';
 import styles from '../../pages/myPage/css/myPage.module.css';
+import axios from 'axios';
 
 const ProfileList = (props) => {
-  const accName = props.userAccName;
+  const baseUrl = 'https://api.mandarin.weniv.co.kr';
   const token = localStorage.getItem('token');
 
-  const unfollowingFn = async (accName) => {
-    const reqUrl = `/profile/${accName}/unfollow`;
-    const baseUrl = 'https://api.mandarin.weniv.co.kr';
-    try {
-      const res = await fetch(baseUrl + reqUrl, {
-        method: 'DELETE',
+  //언팔로우 API
+  const unfollowingFn = () => {
+    const reqUrl = baseUrl + `/profile/${props.userAccName}/unfollow`;
+    axios
+      .delete(reqUrl, {
         headers: {
           Authorization: `Bearer ${token}`,
-          'Content-type': 'application/json',
         },
+      })
+      .then(function (res) {
+        alert(`${props.userName}님 팔로우가 해제 되었습니다 🥲`);
+        // eslint-disable-next-line no-restricted-globals
+        location.reload();
+      })
+      .catch(function (error) {
+        console.error(error);
+        alert('팔로우 해제 실패:', error);
       });
-      alert(`${props.userName}님 팔로우가 해제 되었습니다 🥲`);
-      // eslint-disable-next-line no-restricted-globals
-      location.reload();
-    } catch (error) {
-      console.error('팔로우 실패:', error);
-    }
   };
+
   //언팔로우 클릭 이벤트
   const unfollowingEvent = () => {
-    unfollowingFn(accName);
+    unfollowingFn();
   };
   //a 태그 클릭 이벤트 방지
   const aClick = (e) => {

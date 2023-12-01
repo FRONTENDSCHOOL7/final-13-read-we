@@ -283,6 +283,21 @@
 }
 
 /*프로필 수정 추가*/
+.edit-area {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.edit-area button:enabled {
+  transition: background-color 0.3s;
+}
+.edit-area button:enabled:active {
+  background-color: #E87C3E; 
+}
+.edit-area button:enabled:hover {
+  background-color: #E87C3E; 
+}
+
 .imgChange-area {
   margin-top: 20px;
   display: flex;
@@ -301,6 +316,16 @@
 .imgChange-area .img-box>img {
   min-width: 148px;
   height: 100%;
+}
+.input-label {
+  display: block;
+  margin-bottom: 10px;
+  color: #A7A7A7;
+}
+.input-alert {
+  display: block;
+  margin-top: 10px;
+  color: #f15434;
 }
 
 /* 반응형 처리 */
