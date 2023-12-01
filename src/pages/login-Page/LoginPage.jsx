@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import './Login.css';
+import styles from './css/Login.module.css';
 import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 
@@ -50,10 +50,7 @@ export default function LoginPage() {
       if (res.ok) {
         // 로그인 성공 - 로그인해서 토큰 꺼내기
         const json = await res.json();
-        console.log(json);
         const token = json.user.token;
-        console.log(token);
-
         const email = json.user.email;
 
         // 토큰 및 이메일 로컬 스토리지에 저장
@@ -77,12 +74,12 @@ export default function LoginPage() {
 
   return (
     <>
-      <div className="login-container">
-        <div className="login-Image"></div>
+      <div className={styles['login-container']}>
+        <div className={styles['login-Image']} />
         <form onSubmit={submitLogin}>
           <label></label>
           <input
-            className="input-box id"
+            className={`${styles['input-box']}${styles.id}`}
             type="text"
             placeholder="아이디"
             value={email}
@@ -91,9 +88,9 @@ export default function LoginPage() {
           />
           <br />
 
-          <label></label>
+          <label />
           <input
-            className="input-box pw"
+            className={`${styles['input-box']}${styles.pw}`}
             placeholder="비밀번호"
             type="password"
             value={password}
@@ -102,39 +99,41 @@ export default function LoginPage() {
           />
           <br />
 
-          <input type="checkbox" id="check_btn" />
+          <input type="checkbox" id={styles['check_btn']} />
           <label for="check_btn">
             <span> 로그인 상태 유지</span>
           </label>
-          <button className="Loginbutton" type="submit">
+          <button className={styles.Loginbutton} type="submit">
             로그인
           </button>
         </form>
-        <p className="Find-Id">아이디 찾기 | 비밀번호 찾기</p>
-        <div className="joinment-box">
+        <p className={styles['Find-Id']}>아이디 찾기 | 비밀번호 찾기</p>
+        <div className={styles['joinment-box']}>
           아직 계정이 없으신가요?
-          <Link to="/join" className="logintojoin">
+          <Link to="/join" className={styles.logintojoin}>
             회원가입하기
           </Link>
           {/* 회원가입 페이지로 이동 */}
         </div>
-        <div className="line-container">
-          <span className="login-line"></span>
+        <div className={styles['line-container']}>
+          <span className={styles['login-line']} />
         </div>
-        <p className="account-box toemail">또는 다른 서비스 계정으로 로그인</p>
-        <div className="account-box email-login">
-          <Link className="email-image" to="/email-signup"></Link>
-          <Link className="naver-image" to="/email-signup"></Link>
-          <Link className="kakao-image" to="/email-signup"></Link>
-          <Link className="icon1-image" to="/email-signup"></Link>
+        <p className={`${styles['account-box']}${styles.toemail}`}>
+          또는 다른 서비스 계정으로 로그인
+        </p>
+        <div className={`${styles['account-box']}${styles['email-login']}`}>
+          <Link className="email-image" to="/email-signup" />
+          <Link className="naver-image" to="/email-signup" />
+          <Link className="kakao-image" to="/email-signup" />
+          <Link className="icon1-image" to="/email-signup" />
         </div>
-        <div className="line-container">
+        <div className={styles['line-container']}>
           <span className="ment-1">
             * SNS계정으로 간편하게 가입하여 서비스를 이용하실 수 있습니다.
           </span>
         </div>
       </div>
-      <div className="Footer" style={{ marginTop: '50%' }}></div>
+      <div className="Footer" style={{ marginTop: '50%' }} />
     </>
   );
 }

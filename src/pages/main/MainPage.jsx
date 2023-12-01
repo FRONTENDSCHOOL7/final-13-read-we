@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
 import React, { useState, useEffect } from 'react';
 import styles from './css/Main.module.css';
 import PostSection from './PostSection';
@@ -130,6 +131,7 @@ const MainPage = () => {
                     ''
                   )}
                   {searchUserRes.map((user) => (
+                    // eslint-disable-next-line react/jsx-key
                     <li>
                       <a
                         href="#"

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import './Login.css';
+import styles from './css/Login.module.css';
 import Header from '../../components/header/Header';
 import Footer from '../../components/footer/Footer';
 import { useNavigate } from 'react-router-dom';
@@ -47,9 +47,7 @@ export default function Emailsignup() {
       if (res.ok) {
         // 로그인 성공 - 로그인해서 토큰 꺼내기
         const json = await res.json();
-        console.log(json);
         const token = json.user.token;
-        console.log(token);
 
         //유저 네임 가져옴
         const email = json.user.email;
@@ -78,12 +76,12 @@ export default function Emailsignup() {
   return (
     <>
       <Header />
-      <div className="login-container">
-        <div className="login-Image"></div>
+      <div className={styles['login-container']}>
+        <div className={styles['login-Image']} />
         <form onSubmit={submitEmailLogin}>
           <label></label>
           <input
-            className="input-box email" // 이메일 입력란
+            className={`${styles['input-box']}${styles.email}`} // 이메일 입력란
             type="text"
             placeholder="이메일"
             value={email}
@@ -92,9 +90,9 @@ export default function Emailsignup() {
           />
           <br />
 
-          <label></label>
+          <label />
           <input
-            className="input-box pw"
+            className={`${styles['input-box']}${styles.pw}`}
             placeholder="비밀번호"
             type="password"
             value={password}
@@ -103,24 +101,24 @@ export default function Emailsignup() {
           />
           <br />
 
-          <input type="checkbox" id="check_btn" />
+          <input type="checkbox" id={styles['check_btn']} />
           <label htmlFor="check_btn">
             <span> 로그인 상태 유지</span>
           </label>
-          <button className="Loginbutton" type="submit">
+          <button className={styles.Loginbutton} type="submit">
             이메일 로그인
           </button>
         </form>
-        <p className="Find-Id">아이디 찾기 | 비밀번호 찾기</p>
-        <div className="account-box">
+        <p className={styles['Find-Id']}>아이디 찾기 | 비밀번호 찾기</p>
+        <div className={styles['account-box']}>
           아직 계정이 없으신가요?
           <Link to="/join">회원가입하기</Link> {/* 회원가입 페이지로 이동 */}
         </div>
-        <div className="account-box id-login">
+        <div className={`${styles['account-box']}${styles['id-login']}`}>
           <Link to="/login">아이디 로그인</Link> {/* 회원가입 페이지로 이동 */}
         </div>
       </div>
-      <div className="Footer" style={{ marginTop: '50%' }}>
+      <div className={styles.Footer} style={{ marginTop: '50%' }}>
         <Footer />
       </div>
     </>
