@@ -4,6 +4,7 @@ import styles from './css/Login.module.css';
 import Header from '../../components/header/Header';
 import Footer from '../../components/footer/Footer';
 import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
 
 export default function Emailsignup() {
   // input 요소 상태
@@ -35,37 +36,24 @@ export default function Emailsignup() {
       },
     };
     // fetch post 요청
+    // axios post 요청
     try {
-      const res = await fetch(reqUrl + reqPath, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(emailLoginData),
-      });
+      const res = await axios.post(reqUrl + reqPath, emailLoginData);
 
-      if (res.ok) {
-        // 로그인 성공 - 로그인해서 토큰 꺼내기
-        const json = await res.json();
-        const token = json.user.token;
+      // 로그인 성공 - 로그인해서 토큰 꺼내기
+      const token = res.data.user.token;
 
-        //유저 네임 가져옴
-        const email = json.user.email;
+      //유저 네임 가져옴
+      const email = res.data.user.email;
 
-        // 토큰 및 이메일 로컬 스토리지에 저장
-        localStorage.setItem('token', token);
-        // localStorage.setItem('email', email);
-        // localStorage.setItem('password', password);
-        console.log('로그인 성공! 토큰 저장됨:', token);
+      // 토큰 및 이메일 로컬 스토리지에 저장
+      localStorage.setItem('token', token);
+      // localStorage.setItem('email', email);
+      // localStorage.setItem('password', password);
+      console.log('로그인 성공! 토큰 저장됨:', token);
 
-        // 로그인 성공 후 main 페이지로 이동
-        navigate('/main');
-      }
-      // 에러 핸들링
-      else {
-        console.error('로그인 실패:', res.status, res.statusText);
-        alert('로그인 실패했습니다. 이메일 주소 또는 비밀번호를 확인하세요.');
-      }
+      // 로그인 성공 후 main 페이지로 이동
+      navigate('/main');
     } catch (error) {
       // 오류발생
       console.error('로그인 요청 오류:', error);
