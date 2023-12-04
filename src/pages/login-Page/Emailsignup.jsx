@@ -27,8 +27,7 @@ export default function Emailsignup() {
   };
 
   const emailLoginFn = async (email, password) => {
-    const reqUrl = 'https://api.mandarin.weniv.co.kr';
-    const reqPath = '/user/login';
+    const reqUrl = 'https://api.mandarin.weniv.co.kr/user/login';
     const emailLoginData = {
       user: {
         email: email,
@@ -38,7 +37,7 @@ export default function Emailsignup() {
     // fetch post 요청
     // axios post 요청
     try {
-      const res = await axios.post(reqUrl + reqPath, emailLoginData);
+      const res = await axios.post(reqUrl, emailLoginData);
 
       // 로그인 성공 - 로그인해서 토큰 꺼내기
       const token = res.data.user.token;

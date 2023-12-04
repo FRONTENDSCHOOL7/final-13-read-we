@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import styles from './css/Login.module.css';
 import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
 
 export default function LoginPage() {
   // input 요소 상태
@@ -29,29 +30,20 @@ export default function LoginPage() {
   };
 
   const loginFn = async (email, password) => {
-    const reqUrl = 'https://api.mandarin.weniv.co.kr';
-    const reqPath = '/user/login';
+    const reqUrl = 'https://api.mandarin.weniv.co.kr/user/login';
     const loginData = {
       user: {
         email: email,
         password: password,
       },
     };
-    // fetch post 요청
-    try {
-      const res = await fetch(reqUrl + reqPath, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(loginData),
-      });
-
-      if (res.ok) {
+    // axios post 요청
+    axios
+      .post('https://api.mandarin.weniv.co.kr/user/login', loginData)
+      .then((res) => {
         // 로그인 성공 - 로그인해서 토큰 꺼내기
-        const json = await res.json();
-        const token = json.user.token;
-        const email = json.user.email;
+        const token = res.data.user.token;
+        const email = res.data.user.email;
 
         // 토큰 및 이메일 로컬 스토리지에 저장
         localStorage.setItem('token', token);
@@ -59,17 +51,16 @@ export default function LoginPage() {
         console.log('로그인 성공! 토큰 및 이메일 아이디 저장됨:', token);
 
         navigate('/main', { state: { email } });
-      }
-      // 에러 핸들링
-      else {
-        console.error('로그인 실패:', res.status, res.statusText);
+      })
+      .catch((error) => {
+        // 에러 핸들링
+        console.error(
+          '로그인 실패:',
+          error.response.status,
+          error.response.statusText,
+        );
         alert('로그인 실패했습니다. 사용자 이름 또는 비밀번호를 확인하세요.');
-      }
-    } catch (error) {
-      // 오류발생
-      console.error('로그인 요청 오류:', error);
-      alert('로그인 요청에 오류가 발생했습니다.');
-    }
+      });
   };
 
   return (
