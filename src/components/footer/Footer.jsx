@@ -2,8 +2,10 @@ import React from 'react';
 import styles from './footer.module.css';
 
 export default function Footer() {
+  //로그인/회원가입 선택 화면에서 header 숨기기
+  if (window.location.pathname === '/') return null;
   return (
-    <div className={styles['box']}>
+    <div className={styles.box}>
       <div className={styles['footer-content']}>
         <div className={styles['top-container']}>
           <div className={styles['box-1']} />
