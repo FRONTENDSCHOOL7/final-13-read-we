@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import styles from './css/Login.module.css';
 import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
+import { IconIpt } from '../../components/input/IptStyleEtc';
+import { BasicIpt } from '../../components/input/IptStyle';
 import axios from 'axios';
 
 export default function LoginPage() {
@@ -39,7 +41,7 @@ export default function LoginPage() {
     };
     // axios post 요청
     axios
-      .post('https://api.mandarin.weniv.co.kr/user/login', loginData)
+      .post(reqUrl, loginData)
       .then((res) => {
         // 로그인 성공 - 로그인해서 토큰 꺼내기
         const token = res.data.user.token;

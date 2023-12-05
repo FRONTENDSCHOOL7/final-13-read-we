@@ -66,7 +66,6 @@ export default function Emailsignup() {
       <div className={styles['login-container']}>
         <div className={styles['login-Image']} />
         <form onSubmit={submitEmailLogin}>
-          <label></label>
           <input
             className={`${styles['input-box']}${styles.email}`} // 이메일 입력란
             type="text"
@@ -88,8 +87,8 @@ export default function Emailsignup() {
           />
           <br />
 
-          <input type="checkbox" id={styles['check_btn']} />
-          <label htmlFor="check_btn">
+          <label>
+            <input type="checkbox" className={styles.check_btn} />
             <span> 로그인 상태 유지</span>
           </label>
           <button className={styles.Loginbutton} type="submit">

@@ -13,7 +13,7 @@ import EmptyList from './components/mypage/EmptyList';
 import ProfileCard from './components/mypage/ProfileCard';
 import ProfileCardOther from './components/mypage/ProfileCardOther';
 import ProfileInfoSetting from './components/mypage/ProfileInfoSetting';
-import ModalPopup from './components/popup/ModalPopup';
+import ModalPopup from './components/popup/BookDetailModal';
 function ComponentEx() {
   return (
     <div>
