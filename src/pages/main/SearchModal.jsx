@@ -1,16 +1,19 @@
 import React, { useState, useEffect } from 'react';
 import styles from './css/SearchModal.module.css';
 import axios from 'axios';
-import { IconIpt } from '../../components/input/IptStyleEtc';
+import { IconIpt, BtnIpt } from '../../components/input/IptStyleEtc';
 import { BasicIpt } from '../../components/input/IptStyle';
+import { BasicBtn } from '../../components/button/BtnStyle';
 
 const SearchModal = ({ hideModal }) => {
   const [searchBook, setSearchBook] = useState([]); // 책검색 결과
-  const [bookName, setBookName] = useState(''); // 책제목
-  // 알라딘 책검색
+  const [bookName, setBookName] = useState(null); // 책제목
+
   useEffect(() => {
     console.log(searchBook);
   }, [searchBook]);
+
+  // 알라딘 책검색
   const fetchBook = async () => {
     const proxyUrl = 'https://cors-anywhere.herokuapp.com/';
     const aladinUrl = `http://www.aladin.co.kr/ttb/api/ItemSearch.aspx?ttbkey=ttb22pqpq1534001&Query=${bookName}&QueryType=Title&MaxResults=5&start=1&SearchTarget=Book&output=JS&Version=20131101`;
@@ -26,7 +29,8 @@ const SearchModal = ({ hideModal }) => {
       console.error('Error fetching data: ', error);
     }
   };
-  const displayBooks = () => {
+
+  const DisplayBooks = () => {
     return searchBook.map((book, index) => {
       return (
         <div key={index}>
@@ -43,6 +47,10 @@ const SearchModal = ({ hideModal }) => {
   return (
     <div className={styles.pageWrap}>
       <div className={styles.contentArea}>
+        <BtnIpt>
+          <BasicIpt placeholder="내용을 입력해 주세요" />
+          <BasicBtn>등록</BasicBtn>
+        </BtnIpt>
         <IconIpt>
           <BasicIpt
             sm="true"
@@ -52,13 +60,15 @@ const SearchModal = ({ hideModal }) => {
             onChange={(e) => setBookName(e.target.value)}
           />
           <i class="icon icon-search" />
-          <button onClick={fetchBook}>검색</button>
-          {displayBooks()}
+          <button
+            onClick={bookName !== null && bookName !== '' ? fetchBook : null}
+          >
+            검색
+          </button>
         </IconIpt>
-        {searchBook.length === 0 ? (
+        {searchBook === undefined ? (
           <>
             <div className={styles.header}>
-              <h3 className={styles.title}>이 책은 어떠세요?</h3>
               <button className={styles['more-show']} onClick={hideModal}>
                 취소
               </button>
@@ -118,8 +128,11 @@ const SearchModal = ({ hideModal }) => {
           </> // 검색 결과가 있을 때 보여줄 요소들
         ) : (
           <div>
+            <button className={styles['more-show']} onClick={hideModal}>
+              취소
+            </button>
             <h3>검색 결과</h3>
-            {displayBooks()}
+            <DisplayBooks />
           </div>
         )}
       </div>
