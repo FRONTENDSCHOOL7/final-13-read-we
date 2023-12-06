@@ -12,7 +12,7 @@ import Header from './components/header/Header';
 import Footer from './components/footer/Footer';
 import Chatting from './pages/chat/Chatting';
 import LoginJoinSelect from './pages/login-join-select/LoginJoinSelect';
-import LoginFinish from './pages/login-Page/JoinFinish';
+import LoginFinish from './pages/join-Page/JoinFinish';
 import PostUpload from './pages/main/PostUpload';
 import SearchModal from './pages/main/SearchModal';
 import PostDetails from './pages/main/PostDetails';
