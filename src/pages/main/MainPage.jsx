@@ -12,6 +12,7 @@ import EmptyList from '../../components/mypage/EmptyList';
 import HandlePost from '../../util/postUtil';
 import SearchModal from './SearchModal';
 import { Link, useNavigate } from 'react-router-dom';
+import axios from 'axios';
 
 const MainPage = () => {
   const [posts, setPosts] = useState([]);
@@ -201,8 +202,24 @@ const MainPage = () => {
             )}
           </div>
           <div className={styles.MainRightContainer}>
+            {/* <div>
+              <input
+                type="text"
+                value={bookName}
+                onChange={(e) => setBookName(e.target.value)}
+              />
+              <button onClick={fetchBook}>검색</button>
+              {displayBooks()}
+            </div> */}
             <IconIpt>
-              <BasicIpt sm="true" placeholder="책검색" onClick={showModal} />
+              <BasicIpt
+                sm="true"
+                placeholder="검색"
+                type="text"
+                // value={bookName}
+                // onChange={(e) => setBookName(e.target.value)}
+                onClick={showModal}
+              />
               <i class="icon icon-search" />
             </IconIpt>
             {showBookSearchModal && <SearchModal hideModal={hideModal} />}
