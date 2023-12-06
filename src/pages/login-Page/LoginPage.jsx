@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import { IconIpt } from '../../components/input/IptStyleEtc';
 import { BasicIpt } from '../../components/input/IptStyle';
+import { BasicBtn } from '../../components/button/BtnStyle';
 import axios from 'axios';
 
 export default function LoginPage() {
@@ -50,7 +51,7 @@ export default function LoginPage() {
         // 토큰 및 이메일 로컬 스토리지에 저장
         localStorage.setItem('token', token);
         localStorage.setItem('email', email);
-        console.log('로그인 성공! 토큰 및 이메일 아이디 저장됨:', token);
+        console.log('로그인 성공! 토큰 및 이메일 아이디 저장됨');
 
         navigate('/main', { state: { email } });
       })
@@ -66,67 +67,73 @@ export default function LoginPage() {
   };
 
   return (
-    <>
-      <div className={styles['login-container']}>
-        <div className={styles['login-Image']} />
-        <form onSubmit={submitLogin}>
-          <label></label>
-          <input
-            className={`${styles['input-box']}${styles.id}`}
-            type="text"
-            placeholder="아이디"
-            value={email}
-            onChange={inputEmail}
-            required
-          />
-          <br />
-
-          <label />
-          <input
-            className={`${styles['input-box']}${styles.pw}`}
-            placeholder="비밀번호"
-            type="password"
-            value={password}
-            onChange={inputPassword}
-            required
-          />
-          <br />
-
-          <input type="checkbox" id={styles['check_btn']} />
-          <label for="check_btn">
-            <span> 로그인 상태 유지</span>
-          </label>
-          <button className={styles.Loginbutton} type="submit">
-            로그인
-          </button>
-        </form>
-        <p className={styles['Find-Id']}>아이디 찾기 | 비밀번호 찾기</p>
-        <div className={styles['joinment-box']}>
-          아직 계정이 없으신가요?
-          <Link to="/join" className={styles.logintojoin}>
-            회원가입하기
-          </Link>
-          {/* 회원가입 페이지로 이동 */}
-        </div>
-        <div className={styles['line-container']}>
-          <span className={styles['login-line']} />
-        </div>
-        <p className={`${styles['account-box']}${styles.toemail}`}>
-          또는 다른 서비스 계정으로 로그인
-        </p>
-        <div className={`${styles['account-box']}${styles['email-login']}`}>
-          <Link className="email-image" to="/email-signup" />
-          <Link className="naver-image" to="/email-signup" />
-          <Link className="kakao-image" to="/email-signup" />
-          <Link className="icon1-image" to="/email-signup" />
-        </div>
-        <div className={styles['line-container']}>
-          <span className="ment-1">
-            * SNS계정으로 간편하게 가입하여 서비스를 이용하실 수 있습니다.
-          </span>
-        </div>
+    <div className={styles.pageWrap}>
+      <div className={styles.contentArea}>
+        <section className={styles['login-info']}>
+          <h2 className={styles['title-box']}>
+            <img
+              src={process.env.PUBLIC_URL + '/icon/READWE.svg'}
+              alt="READ WE"
+            />
+          </h2>
+          <form className={styles['input-box']} onSubmit={submitLogin}>
+            <IconIpt>
+              <BasicIpt
+                type="text"
+                placeholder="아이디"
+                value={email}
+                onChange={inputEmail}
+              />
+              <i className="icon icon icon-user-g" />
+            </IconIpt>
+            <IconIpt>
+              <BasicIpt
+                placeholder="비밀번호"
+                type="password"
+                value={password}
+                onChange={inputPassword}
+                required
+              />
+              <i className="icon icon icon-lock-g" />
+            </IconIpt>
+            <label className={styles['login-check']}>
+              <input type="checkbox" />
+              <span className={styles['check-icon']} />
+              <span className={styles['check-text']}> 로그인 상태 유지</span>
+            </label>
+            <BasicBtn type="submit">로그인</BasicBtn>
+          </form>
+        </section>
+        <section className={styles['login-etc']}>
+          <h3 className="a11y-hidden">비밀번호 찾기, 간편 로그인</h3>
+          <div className={styles['find-id-join']}>
+            <p>아이디 찾기 | 비밀번호 찾기</p>
+            <div>
+              아직 계정이 없으신가요?
+              <Link to="/join" className={styles.logintojoin}>
+                회원가입하기
+              </Link>
+            </div>
+          </div>
+          <div className={styles['other-acc']}>
+            <h4 className={styles.title}>또는 다른 서비스 계정으로 로그인</h4>
+            <ul className={styles['other-acc-list']}>
+              <li className={styles['list-obj']}>
+                <button className={styles['email-image']} />
+              </li>
+              <li className={styles['list-obj']}>
+                <button className={styles['kakao-image']} />
+              </li>
+              <li className={styles['list-obj']}>
+                <button className={styles['naver-image']} />
+              </li>
+            </ul>
+            <span className={styles['other-acc-info']}>
+              * SNS계정으로 간편하게 가입하여 서비스를 이용하실 수 있습니다.
+            </span>
+          </div>
+        </section>
       </div>
-      <div className="Footer" style={{ marginTop: '50%' }} />
-    </>
+    </div>
   );
 }

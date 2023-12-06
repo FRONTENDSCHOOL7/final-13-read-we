@@ -1,171 +1,54 @@
-body {
-  font-family: url(/public/font/Pretendard-Medium.ttf),sans-serif;
-  /* font-size: 16px; */
-
-}
-.jf-container {
-  height: 900px;
-  
-}
-
-
-* {
-  word-break: break-all;
-  word-wrap: break-word;
-  font-family: url(/public/font/Pretendard-Medium.ttf),sans-serif;
-}
-
-button,
-input {
-  background: none;
-  border: none;
-  color: inherit;
-}
-
-
-button:enabled {
-  cursor: pointer;
-}
-
-
-.login-container {
-  width: 543px;
+/*======페이지 공통 영역=====*/
+.pageWrap {
+  width: calc(100% - 50px);
+  max-width: 1180px;
   margin: 0 auto;
-  padding: 50px 0px;
-  border-radius: 10px;
-  margin-top:5%;
-  overflow: hidden;
-  z-index: 1;
 }
-
-label {
-  display: block;
-  margin-top: 10px;
-}
-
-.input-box {
+.contentArea {
+  margin: 0 auto;
+  padding: 35px;
+  max-width: 580px;
   width: 100%;
-  height: 80px;
-  padding: 10px;
-  margin-top: 5px;
-  border: 1px solid #C7C7C7;
-  border-radius: 10px;
-  background-color: #fcfcfc;
 }
 
-.input-box:focus {
-  outline-color:black;
-  background-color: #ffffff;
-}
-
-.id {
-  background-image: url('/public/images/icon/user.svg');
-  background-position: 24px center;
-  background-size: 15px;
-  background-repeat: no-repeat;
-  padding: 5px 20px;
-  text-indent: 30px;
-}
-
-
-.pw {
-  background-image: url('/public/images/icon/lock-g.svg');
-  background-position: 24px center;
-  background-size: 15px;
-  background-repeat: no-repeat;
-  padding: 5px 20px;
-  text-indent: 30px;
-
-}
-
-.Loginbutton {
-  margin-top: 80px;
-  background-color: #000000;
-  color: #fff;
-  cursor: pointer;
-  width: 543px;
-  height: 80px;
-  box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.25);
-  max-width: 100%;
-  padding: 0 10px;
-  font-size: 22px;
-  border-radius: 10px;
-  text-align: center;
+/*======로그인 css=====*/
+.login-info {
+  padding-top: 30px;
   display: flex;
-  align-items:center;
-  justify-content: center;
-  font-family: 'Pretendard',sans-serif;
-  transition: background-color 0.3s; /* 호버(마우스를 올렸을 때) 효과를 추가합니다 */
-}
-
-.Loginbutton:hover {
-  background-color: #E87C3E; /* 호버 시 배경색을 어두운 색으로 변경합니다 */
-}
-
-
-
-.login-container .Find-Id, .account-box, .joinment-box  {
-  color: var(--disable-gray-2, #A7A7A7);
-  text-align: center;
-  font-family: url(/public/font/Pretendard-Medium.ttf),sans-serif;
-  font-size: 14px;
-  font-weight: 400;
-  line-height: normal;
-  letter-spacing: 0.2px;
-  text-transform: capitalize;
-  margin-bottom: 10px;
-  letter-spacing: 1px;
-
-}
-.Find-Id {
-  display: block;
-  margin-top:40px;
-}
-
-.account-box {
-  display: flex;
+  flex-direction: column;
   gap: 20px;
-  justify-content: center;
+  align-items: center;
 }
-
-.joinment-box {
+.login-info .title-box {
+  margin-bottom: 60px;
+}
+.login-info .input-box {
+  width: 100%;
   display: flex;
-  gap: 10px;
-  justify-content: center;
-
+  flex-direction: column;
+  gap: 20px;
+  align-items: stretch;
 }
-
-.login-Box {
-  width: 543px;
+.login-info .input-box input[type='text'], .login-info .input-box input[type='password'] {
+  background-color: #fcfcfc;
+  border: 1px solid #c7c7c7;
 }
-
-input#check_btn{
-
-  display:none;
-  }
-
-input#check_btn + label{
+.login-info .login-check{
   display: inline-block;
   margin-top: 24px;
   cursor:pointer;
 }
-
-input#check_btn + label > span{
-  vertical-align: middle;
+/*start__로그인 상태 유지: 체크박스 커스텀*/
+.login-info .login-check input[type="checkbox"]{
+  display:none;
+}
+.login-info .login-check .check-text{
   padding-left: 5px;
   color: #777;
   text-align: center;
-  font-family: 'Pretendard',sans-serif;
   font-size: 14px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: normal;
-  letter-spacing: 0.2px;
-  text-transform: capitalize;
 }
-
-/* label:before에 체크하기 전 상태 CSS */
-input#check_btn + label:before{
+.login-info .login-check .check-icon:before{
   content:"";
   display:inline-block;
   width:17px;
@@ -176,148 +59,82 @@ input#check_btn + label:before{
   background-image: url(/public/images/icon/disable-check.svg);
   background-repeat: no-repeat;
   background-position: 50%;
-  }
-  
-/* label:before에 체크 된 상태 CSS */  
-input#check_btn:checked + label:before{
-  content:"";
+}
+.login-info .login-check input[type="checkbox"]:checked + .check-icon:before{
   background-color:black;
-  border-color: black;
   background-image: url(/public/images/icon/checkbox.svg);
-  background-repeat: no-repeat;
-  background-position: 50%;
-  }
+}
+/* end__로그인 상태 유지: 체크박스 커스텀*/
 
-.login-Image {
-  background: no-repeat center url(/public/icon/READWE.svg);
-  width: 133px;
-  height: 22px;
-  margin: auto;
-  margin-bottom: 80px;
+.login-info button{
+  margin-top: 80px;
+  transition: background-color 0.3s; 
+}
+.login-info button:hover {
+  background-color: #E87C3E;
 }
 
-
-.email {
-  background-image: url(/public/images/icon/maiI.svg);
-  background-position: 24px center;
-  background-size: 15px;
-  background-repeat: no-repeat;
-  padding: 5px 20px;
-  text-indent: 30px;
-  
+.login-etc .find-id-join {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  padding: 40px 0;
+  border-bottom: 1px solid #bfbfbf;
+  color: #A7A7A7;
+  text-align: center;
+  font-size: 14px;
 }
-
-
-.email-image {
-  background-image: url(/public/icon/apple.png);
-  width: 50px;
-  height: 50px;
-  background-position: center;
-  background-size: 55px;
-  background-repeat: no-repeat;
-  padding: 5px 20px;
-  border-radius: 50px;
-  background-color: linear-gradient(180deg, rgba(29,87,239,1) 0%, rgba(26,226,255,1) 100%);
+.login-etc .find-id-join .logintojoin {
+  margin-left: 10px;
 }
-
-.kakao-image {
-  background-image: url(/public/icon/kakaotalk_sharing_btn_medium.png);
-  width: 50px;
-  height: 50px;
-  background-position: center;
-  background-size: 35px;
-  background-repeat: no-repeat;
-  padding: 5px 20px;
-  border-radius: 50px;
-  background-color: #ffeb03;
-}
-
-.naver-image {
-  background-image: url(/public/icon/naver.png);
-  width: 50px;
-  height: 50px;
-  background-position: center;
-  background-size: 50px;
-  background-repeat: no-repeat;
-
-}
-
-.toemail, .id-login{
-  display: block;
-  font-weight: 600;
-  color: #535353;
-  margin-top: 40px;
-  font-size: 15px;
-  line-height: 28px;
-}
-
-.email-login {
-  margin-top: 20px;
-}
-
-.logintojoin:hover {
+.login-etc .find-id-join .logintojoin:hover {
   color: #E87C3E; 
 }
 
-.id-login {
-  font-size: 14px;
-  display: block;
-  margin-bottom: 20px;
-  width: 25%;
-  margin: auto;
-  padding: 10px 20px;
-  background-color: #ee9f71; /* 버튼 배경색을 원하는 색상으로 설정 */
-  color: #fff; /* 버튼 텍스트 색상을 밝은 색상으로 설정 */
-  text-decoration: none;
-  border-radius: 5px; /* 버튼 모서리를 둥글게 만듭니다 */
-  transition: background-color 0.3s; /* 호버(마우스를 올렸을 때) 효과를 추가합니다 */
-  margin-top: 40px;
+.other-acc .title {
+  text-align: center;
+  color: #535353;
+  font-size: 15px;
+  margin: 40px 0;
 }
-
-.id-login:hover {
-  background-color: #E87C3E; /* 호버 시 배경색을 어두운 색으로 변경합니다 */
-}
-
-
-
-.Find-Id, .join-ment {
-  font-size: 14px;
-}
-
-
-.login-line {
-  margin-top: 40px;
-  display: inline-block;
-  width: 80%; /* 원하는 길이로 설정 */
-  border-bottom: 1px solid rgb(191, 191, 191); /* 선의 두께와 색상을 설정 */
-}
-
-.line-container{
+.other-acc .other-acc-list {
   display: flex;
-  justify-content: center; 
-  align-items: center;
+  gap: 20px;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+.other-acc .other-acc-list .list-obj>button {
+  width: 50px;
+  height: 50px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 110%;
+  border-radius: 100%;
+}
+.other-acc .other-acc-list .list-obj>button.email-image {
+  background-image: url(/public/icon/apple.png);
 }
 
-
-.toemail {
-  margin-bottom: 30px;
+.other-acc .other-acc-list .list-obj>button.kakao-image {
+  background-image: url(/public/icon/kakaotalk_sharing_btn_medium.png);
+  background-size: 40px;
+  background-color: #ffeb03;
 }
 
-.ment-1 {
+.other-acc .other-acc-list .list-obj>button.naver-image {
+  background-image: url(/public/icon/naver.png);
+}
+
+.other-acc .other-acc-info {
+  text-align: center;
   display: block;
-  position: relative;
-  padding-left: 12px;
-  margin-top: 20px;
   font-size: 12px;
-  line-height: 22px;
   color: #A7A7A7;
 
 }
 
 
 /* finish Page */
-
-
 .loginfinish-container {
     width: 543px;
     margin: 0 auto;
