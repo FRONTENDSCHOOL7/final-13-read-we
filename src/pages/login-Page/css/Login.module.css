@@ -90,7 +90,6 @@
 .login-etc .find-id-join .logintojoin:hover {
   color: #E87C3E; 
 }
-
 .other-acc .title {
   text-align: center;
   color: #535353;
@@ -114,195 +113,17 @@
 .other-acc .other-acc-list .list-obj>button.email-image {
   background-image: url(/public/icon/apple.png);
 }
-
 .other-acc .other-acc-list .list-obj>button.kakao-image {
   background-image: url(/public/icon/kakaotalk_sharing_btn_medium.png);
   background-size: 40px;
   background-color: #ffeb03;
 }
-
 .other-acc .other-acc-list .list-obj>button.naver-image {
   background-image: url(/public/icon/naver.png);
 }
-
 .other-acc .other-acc-info {
   text-align: center;
   display: block;
   font-size: 12px;
   color: #A7A7A7;
-
 }
-
-
-/* finish Page */
-.loginfinish-container {
-    width: 543px;
-    margin: 0 auto;
-    padding: 50px 0px;
-    border-radius: 10px;
-    margin-top:5%;
-    overflow: hidden;
-}
-
-.loginfinish-container h1{
-  color: var(--main-black, #000);
-  text-align: center;
-  font-family: 'Pretendard',sans-serif;
-  font-size: 24px;
-  font-style: normal;
-  font-weight: 600;
-  line-height: normal;
-  letter-spacing: 0.2px;
-  text-transform: capitalize;
-  margin: 10px 0;
-}
-
-.loginfinish-container .lgn-p {
-  color: #ABABAB;
-  text-align: center;
-  font-size: 20px;
-  font-style: normal;
-  font-weight: 600;
-  line-height: normal;
-  letter-spacing: 0.2px;
-  text-transform: capitalize;
-}
-
-.lgn-link {
-  width: 543px;
-  height: 136px;
-  flex-shrink: 0;
-  border-radius: 15px;
-  border: 1px solid var(--main-black, #000);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 16px;
-  margin: 26px 0;
-}
-
-.lgn-link:hover {
-  background: #d7e7fa; 
-}
-
-.lgn-icon,.lgn-icon-1 {
-  background-image: url('/public/icon/3dicons.png');
-  background-position: center;
-  background-size: 70px;
-  background-repeat: no-repeat;
-  width: 67px;
-  height: 67px;
-  }
-
-  .lgn-icon-1 {
-    background-image: url('/public/icon/3dicons-1.png');
-    
-  }
-
-  .lgn-ment p{
-    margin: 10px 0;
-  }
-
-  .lgn-ment :nth-child(1) {
-    color: rgba(0, 0, 0, 0.80);
-    font-size: 20px;
-    font-style: normal;
-    font-weight: 600;
-    line-height: normal;
-    letter-spacing: 0.2px;
-    text-transform: capitalize;
-  }
-
-  .lgn-ment :nth-child(2) {
-    color: #ABABAB;
-    font-size: 18px;
-    font-style: normal;
-    font-weight: 600;
-    line-height: normal;
-    letter-spacing: 0.2px;
-    text-transform: capitalize;
-  }
-
-  /* 꼬불이 */
-  .lgn-img1 {
-    background-position: center;
-    background: url(/public/images/Image.png);
-    background-position: center;
-    background-size: 300px;
-    width: 190px;
-    height: 344px;
-    background-repeat: no-repeat;
-  }
-
-  /* 물결 */
-  .lgn-img2 {
-    background: url(/public/images/Image-1.png);
-    background-position: center;
-    width: 400px;
-    height: 400px;
-    background-size: 150px;
-    background-repeat: no-repeat;
-    transform: rotate(-20deg);
-  }
-
-  /* 도넛 */
-  .lgn-img3 {
-
-    background-size: 250px;
-    /* background: url(/public/images/Image-2.png); */
-    background-position: contain;
-    width: 611px;
-    height: 612px;
-    background-repeat: no-repeat;
-
-  }
-  /* & */
-  .lgn-img4 {
-    background: url(/public/images/Image-3.png);
-    background-position: center;
-    width: 400px;
-    height: 400px;
-    transform: rotate(20deg);
-    background-size: 150px;
-    background-repeat: no-repeat;
-
-  }
-
-
-  .lgn-img1,
-  .lgn-img2,
-  .lgn-img3,
-  .lgn-img4 {
-    position: absolute;
-  }
-  
-    /* 꼬불이 */
-  .lgn-img1 {
-    top: 100px;
-    left: 187px;
-    background-image: url('/public/images/Image.png');
-  }
-  
-    /* 물결 */
-  .lgn-img2 {
-    top: 147px;
-    right: 80px;
-    background-image: url('/public/images/Image-1.png');
-    /* 나머지 스타일 속성들 */
-  }
-  
-  /* 도넛 */
-  .lgn-img3 {
-    top: 500px;
-    left: -85px;
-    background-image: url('/public/images/Image-2.png');
-    /* 나머지 스타일 속성들 */
-  }
-  
-  /* & */
-  .lgn-img4 {
-    top: 550px;
-    right: -100px;
-    background-image: url('/public/images/Image-3.png');
-    /* 나머지 스타일 속성들 */
-  }

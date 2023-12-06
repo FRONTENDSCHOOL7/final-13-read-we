@@ -1,5 +1,6 @@
 import React from 'react';
 import { useLocation, Link } from 'react-router-dom';
+import styles from './css/JoinPage.module.css';
 
 export default function JoinFinish() {
   const location = useLocation();
@@ -22,13 +23,14 @@ export default function JoinFinish() {
               <p>책 후기는 물론 서재기능까지 제공해드려요!</p>
             </div>
           </Link>
-          <div className="lgn-link">
+          {/* 기능 미제공 항목으로 주석 처리 */}
+          {/* <div className="lgn-link">
             <div className="lgn-icon-1" />
             <div className="lgn-ment">
               <p>READWE 작가 신청하기</p>
               <p>지식을 공유하면 expert 뱃지를 드려요!!</p>
             </div>
-          </div>
+          </div> */}
         </div>
       </div>
     );
@@ -37,34 +39,32 @@ export default function JoinFinish() {
   const username = location.state.username;
 
   return (
-    // eslint-disable-next-line react/jsx-no-useless-fragment
-    <>
-      <div id="warp">
-        <div className="lgn-img1" />
-        <div className="lgn-img2" />
-        <div className="lgn-img3" />
-        <div className="lgn-img4" />
-        <div className="loginfinish-container">
-          <h1>회원가입이 완료되었습니다.</h1>
-          <p className="lgn-p">{username}님 반가워요.</p>
+    <div className={styles['page-wrap']}>
+      <div className={styles['lgn-img1']} />
+      <div className={styles['lgn-img2']} />
+      <div className={styles['lgn-img3']} />
+      <div className={styles['lgn-img4']} />
+      <div className={styles['loginfinish-container']}>
+        <h1>회원가입이 완료되었습니다.</h1>
+        <p className={styles['lgn-p']}>{username}님 반가워요.</p>
+        <Link to="/login" className={styles['lgn-link']}>
+          <div className={styles['lgn-icon']} />
+          <div className={styles['lgn-ment']}>
+            <p>READWE 즐기러 가기</p>
+            <p>책 후기는 물론 서재기능까지 제공해드려요!</p>
+          </div>
+        </Link>
+        {/* 기능 미제공 항목으로 주석 처리 */}
+        {/* <div className="lgn-link">
           <Link to="/login" className="lgn-link">
-            <div className="lgn-icon" />
+            <div className="lgn-icon-1" />
             <div className="lgn-ment">
-              <p>READWE 즐기러 가기</p>
-              <p>책 후기는 물론 서재기능까지 제공해드려요!</p>
+              <p>READWE 작가 신청하기</p>
+              <p>지식을 공유하면 expert 뱃지를 드려요!</p>
             </div>
           </Link>
-          <div className="lgn-link">
-            <Link to="/login" className="lgn-link">
-              <div className="lgn-icon-1" />
-              <div className="lgn-ment">
-                <p>READWE 작가 신청하기</p>
-                <p>지식을 공유하면 expert 뱃지를 드려요!</p>
-              </div>
-            </Link>
-          </div>
-        </div>
+        </div> */}
       </div>
-    </>
+    </div>
   );
 }
