@@ -52,7 +52,7 @@ const SearchIpt = styled.form`
     width: 100%;
     ${BasicIpt} {
       font-size: 15px;
-      padding-right: 110px !important;
+      padding: 0 110px 0 50px;
       height: 100%;
       border: 1px solid #000;
     }
