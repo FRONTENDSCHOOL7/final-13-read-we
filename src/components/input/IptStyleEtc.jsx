@@ -42,5 +42,48 @@ const BtnIpt = styled.form`
     height: 100%;
   }
 `;
+const SearchIpt = styled.form`
+  position: relative;
+  width: 100%;
+  height: 50px;
+  ${IconIpt} {
+    position: relative;
+    height: 100%;
+    width: 100%;
+    ${BasicIpt} {
+      font-size: 15px;
+      padding-right: 110px !important;
+      height: 100%;
+      border: 1px solid #000;
+    }
+  }
+  ${BasicBtn} {
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 100px;
+    font-size: 15px;
+    height: 100%;
+    color: #333;
+    background: none;
+    border-radius: 0 10px 10px 0;
+    transition: all 0.3s;
+    box-shadow: none;
+    &::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 1px;
+      height: 30px;
+      background-color: #888;
+    }
+    &:hover {
+      color: #fff;
+      background-color: #000;
+    }
+  }
+`;
 
-export { LabelIpt, IconIpt, BtnIpt };
+export { LabelIpt, IconIpt, BtnIpt, SearchIpt };
