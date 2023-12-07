@@ -40,7 +40,7 @@ const PostUpload = () => {
       description: selectedBook.description,
     });
     e.preventDefault();
-    uploadPost(postDetails, selectedBook.img);
+    uploadPost(postDetails, selectedBook.cover);
   };
 
   const uploadPost = async (content, image) => {
@@ -79,13 +79,7 @@ const PostUpload = () => {
         <h2>게시물 등록</h2>
         <div className={styles.bookInfo}>
           <div className={styles.imgWrap}>
-            <img
-              alt="도서 이미지"
-              src={
-                selectedBook &&
-                process.env.PUBLIC_URL + '/images/' + selectedBook.img
-              }
-            />
+            <img alt="도서 이미지" src={selectedBook && selectedBook.cover} />
           </div>
           <div className={styles.postInput}>
             <BasicIpt xsm="true" placeholder="제목" value={title} />
@@ -108,7 +102,7 @@ const PostUpload = () => {
             placeholder="내용을 입력하세요."
             value={content}
             onChange={handleContentChange}
-          ></textarea>
+          />
           <div className={styles.buttonWrap}>
             <BasicBtn
               md="true"
