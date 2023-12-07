@@ -110,7 +110,15 @@ const MainCard = (props) => {
             <div className="post-content">
               <div className="book-search-bth">
                 <button type="button" onClick={handleImageClick}>
-                  <img alt="책 이미지" src={`/images/${props.bookImgSrc}`} />
+                  <img
+                    alt="책 이미지"
+                    // 알라딘 API로 받아온 이미지와 로컬 이미지 url case구분
+                    src={
+                      /aladin/i.test(props.bookImgSrc)
+                        ? props.bookImgSrc
+                        : `/images/${props.bookImgSrc}`
+                    }
+                  />
                   <p>
                     책 정보 보기
                     <i className="icon icon-search-btn" />

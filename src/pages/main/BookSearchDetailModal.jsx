@@ -48,6 +48,7 @@ const BookSearchDetailModal = (props) => {
       if (response.status === 200) {
         if (response.data.item.length === 0) {
           setNoResults(true);
+          return;
         }
         setSearchResults(response.data.item);
         setNoResults(false);

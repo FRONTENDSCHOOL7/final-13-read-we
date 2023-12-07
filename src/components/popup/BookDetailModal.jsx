@@ -20,7 +20,7 @@ const BookDetailModal = (props) => {
   };
   return (
     <div className="modal-area">
-      <div className="modal-bg"></div>
+      <div className="modal-bg" />
       <div className="modal-wrap">
         <h3 className="modal-title">도서 상세 정보</h3>
         <div className="modal-content row-2">
@@ -28,7 +28,12 @@ const BookDetailModal = (props) => {
             <div className="book-info-obj">
               <img
                 alt="책 이미지"
-                src={process.env.PUBLIC_URL + `/images/${props.bookImgSrc}`}
+                // 알라딘 API로 받아온 이미지와 로컬 이미지 url case구분
+                src={
+                  /aladin/i.test(props.bookImgSrc)
+                    ? props.bookImgSrc
+                    : `/images/${props.bookImgSrc}`
+                }
               />
               <BasicBtn md="true" linestyle="true" round="100px" wid="100%">
                 <i className="icon icon-star" /> 책 찜하기
