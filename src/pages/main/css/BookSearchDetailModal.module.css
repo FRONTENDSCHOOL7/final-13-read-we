@@ -1,8 +1,44 @@
 .searchWrap {
-  margin: 40px;
+  margin: 0 40px;
+  padding: 15px 0 20px 0;
 }
-
+.modal-title {
+  margin: 0 40px;
+  display: flex;
+  gap: 13px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.modal-title>h2 {
+  position: relative;
+  font-family: "Pretendard-Bold";
+  font-size: 20px;
+  margin-bottom: 5px;
+  color: #E87C3E;
+}
+.modal-title>strong {
+  position: relative;
+  font-family: "Pretendard-Medieum";
+  font-size: 14px;
+  margin-bottom: 5px;
+  color: #333;
+}
+.modal-title>strong::before {
+  position: absolute;
+  left: -7px;
+  top: calc(50% - 10px);
+  content: '';
+  width: 1px;
+  height: 20px;
+  background-color: #E87C3E;
+}
 .scrollArea {
-  height: 270px;
+  position: relative;
+  height: 280px;
   overflow-y: scroll;
+}
+.search-alert {
+  padding: 10px;
+  font-size: 14px;
+  color: #b85757;
 }
