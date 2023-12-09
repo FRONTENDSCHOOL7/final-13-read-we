@@ -120,13 +120,16 @@ const MyPage = () => {
                           userName={e.author.username}
                           public={bookInfo.publisher}
                           title={bookInfo.title}
-                          hit="true"
                           author={bookInfo.author}
                           content={bookInfo.contentText}
                           description={bookInfo.description}
                           like={e.heartCount} //좋아요 여부 체크용
                           isLike={e.hearted}
                           cmt={e.commentCount}
+                          //2023.12.09 추가(별점, 구매 링크, hit여부)
+                          score={bookInfo.score}
+                          buyLink={bookInfo.buyLink}
+                          hit={bookInfo.hitScore >= 6}
                         />
                       </Link>
                     );

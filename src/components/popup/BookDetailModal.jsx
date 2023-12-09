@@ -35,9 +35,9 @@ const BookDetailModal = (props) => {
                     : `/images/${props.bookImgSrc}`
                 }
               />
-              <BasicBtn md="true" linestyle="true" round="100px" wid="100%">
+              {/* <BasicBtn md="true" linestyle="true" round="100px" wid="100%">
                 <i className="icon icon-star" /> 책 찜하기
-              </BasicBtn>
+              </BasicBtn> */}
               {/* 이미 찜한 책일 경우 */}
               {/* <button
                 type="button"
@@ -62,9 +62,17 @@ const BookDetailModal = (props) => {
         <div className="modal-footer">
           <div className="row-2">
             <p className="notice-text">
-              찜한 목록은 [마이페이지]에서 볼 수 있어요!
+              [구매하기]버튼 클릭 시 도서를 구매 할 수 있는 사이트로 이동합니다.
             </p>
-            <BasicBtn sm="true" round="100px">
+            <BasicBtn
+              sm="true"
+              round="100px"
+              onClick={() => {
+                props.buyLink
+                  ? window.open(props.buyLink)
+                  : alert('준비중 입니다');
+              }}
+            >
               구매하기
             </BasicBtn>
           </div>

@@ -12,8 +12,11 @@ const PostUpload = () => {
   const [author, setAuthor] = useState('');
   const [publisher, setPublisher] = useState('');
   const [content, setContent] = useState('');
-  const navigate = useNavigate();
-  //별점기능
+  //구매 링크
+  const [buyLink, setBuyLink] = useState('');
+  //도서 평점(HIT 여부 체크용: customerReviewRank항목이 6점이상일 경우)
+  const [hitScore, setIshitScore] = useState('');
+  //별점 아이콘 상태관리용
   const [scoreIcon, setScoreIcon] = useState([
     'icon icon-star',
     'icon icon-star',
@@ -22,6 +25,9 @@ const PostUpload = () => {
     'icon icon-star-active',
   ]);
   const [score, setScore] = useState(1);
+  const navigate = useNavigate();
+
+  //별점기능
   const scoreFn = (e) => {
     setScore(e.target.innerHTML);
     setScoreIcon(
@@ -45,6 +51,8 @@ const PostUpload = () => {
     setTitle(selectedBook.title);
     setAuthor(selectedBook.author);
     setPublisher(selectedBook.publisher);
+    setBuyLink(selectedBook.link);
+    setIshitScore(selectedBook.customerReviewRank);
   };
 
   const handleContentChange = (e) => {
@@ -58,7 +66,9 @@ const PostUpload = () => {
       publisher: publisher,
       contentText: content,
       description: selectedBook.description,
+      buyLink: buyLink,
       score: score,
+      hitScore: hitScore,
     });
     e.preventDefault();
     uploadPost(postDetails, selectedBook.cover);
