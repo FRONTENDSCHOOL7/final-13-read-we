@@ -703,6 +703,10 @@ span.tag.hit {
   flex-shrink: 0;
 }
 
+.book-info-text {
+  width: 100%;
+}
+
 .book-info-obj>img {
   width: 100%;
   border-radius: 10px;
@@ -899,6 +903,12 @@ span.tag.hit {
   width: 28px;
   height: 28px;
   background-image: url(/public/images/icon/remove.svg);
+}
+
+.icon-xbtn {
+  width: 15px;
+  height: 15px;
+  background-image: url(/public/images/icon/xbtn.svg);
 }
 
 /*=================font css=================*/

@@ -8,8 +8,9 @@
   transform: translate(-50%, -50%);
   z-index:1000;
   background-color: white;
-  padding: 1em;
   border: 1px solid black;
+  max-height: 90vh;
+  overflow: auto;
 }
 
 .contentArea {
@@ -37,8 +38,9 @@
   border: none;
   border-radius: 40px;
   padding: 10px;
-  margin-top: 50px;
-  margin-right: 50px;
+  margin-top: 10px;
+  position: sticky;
+  float: right;
 }
 
 .example-books {
@@ -114,3 +116,45 @@
   margin-left: 100px;
 }
 
+.closeBtn{
+  margin: 10px 10px 0 0 ;
+  float: right;
+}
+/* DisplayBooks css */
+p strong {
+  font-weight: bold;
+}
+.disbooks_list{
+  padding-top: 20px;
+}
+.disbooks_wrap{
+  margin-bottom: 20px;
+  border: solid 1px black;
+  border-radius: 5px;
+  padding: 10px 0 10px 0;
+}
+.disbooks_title{
+
+}
+.disbooks_author{
+
+}
+.disbooks_cover{
+
+}
+.disbooks_descrip{
+
+}
+.disbooks_link{
+  color: #E87C3E;
+  padding: 0 5px 8px 0;
+  transition: all 0.2s;
+}
+.disbooks_link:hover{
+  font-family: "Pretendard-Medium";
+}
+.disbooks_flexwrap{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
