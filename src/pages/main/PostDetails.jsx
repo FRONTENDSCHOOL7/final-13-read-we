@@ -124,7 +124,6 @@ const PostDetails = () => {
             userEmail="testID.test.com"
             public={JSON.parse(post.content).publisher}
             title={JSON.parse(post.content).title}
-            hit="true"
             author={JSON.parse(post.content).author}
             hasDetail="true"
             content={JSON.parse(post.content).contentText}
@@ -133,6 +132,10 @@ const PostDetails = () => {
             //좋아요 여부 체크용
             isLike={post.hearted}
             cmt={post.commentCount}
+            //2023.12.09 추가(별점, 구매 링크, hit여부)
+            score={JSON.parse(post.content).score}
+            buyLink={JSON.parse(post.content).buyLink}
+            hit={JSON.parse(post.content).hitScore >= 6}
           />
         ) : (
           <EmptyList />
