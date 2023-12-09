@@ -13,6 +13,26 @@ const PostUpload = () => {
   const [publisher, setPublisher] = useState('');
   const [content, setContent] = useState('');
   const navigate = useNavigate();
+  //별점기능
+  const [scoreIcon, setScoreIcon] = useState([
+    'icon icon-star',
+    'icon icon-star',
+    'icon icon-star',
+    'icon icon-star',
+    'icon icon-star-active',
+  ]);
+  const [score, setScore] = useState(1);
+  const scoreFn = (e) => {
+    setScore(e.target.innerHTML);
+    setScoreIcon(
+      scoreIcon.map((icon, i) => {
+        if (scoreIcon.length - i <= e.target.innerHTML) {
+          return 'icon icon-star-active';
+        }
+        return 'icon icon-star';
+      }),
+    );
+  };
 
   const closePopup = () => {
     setModal(false);
@@ -38,6 +58,7 @@ const PostUpload = () => {
       publisher: publisher,
       contentText: content,
       description: selectedBook.description,
+      score: score,
     });
     e.preventDefault();
     uploadPost(postDetails, selectedBook.cover);
@@ -74,50 +95,102 @@ const PostUpload = () => {
   };
 
   return (
-    <div className={styles.container}>
-      <div className={styles.innerContainer}>
-        <h2>게시물 등록</h2>
-        <div className={styles.bookInfo}>
-          <div className={styles.imgWrap}>
-            <img alt="도서 이미지" src={selectedBook && selectedBook.cover} />
-          </div>
-          <div className={styles.postInput}>
-            <BasicIpt xsm="true" placeholder="제목" value={title} />
-            <BasicIpt xsm="true" placeholder="지은이" value={author} />
-            <BasicIpt xsm="true" placeholder="출판사" value={publisher} />
-            <div className={styles.bookUpload}>
-              <button
-                type="button"
-                class="basic sm"
-                onClick={() => setModal(true)}
-              >
-                <i className="icon icon-search-btn" /> 책 등록하기
-              </button>
+    <div className={styles.pageWrap}>
+      <div className={styles.contentArea}>
+        <h2 className={styles.pageTitle}>게시물 등록</h2>
+        <div className={styles.postInfoBox}>
+          <section className={styles.sectionBookInfo}>
+            <h3 className={styles.sectionTitle}>
+              <strong>STEP 1.</strong> 기록을 작성할 책을 선택해 주세요
+            </h3>
+            <div className={styles.bookInfo}>
+              {!selectedBook ? (
+                <img
+                  className={styles.noImage}
+                  alt="도서 이미지"
+                  src={process.env.PUBLIC_URL + '/images/book1.png'}
+                />
+              ) : (
+                <div className={styles.imgWrap}>
+                  <img alt="도서 이미지" src={selectedBook.cover} />
+                </div>
+              )}
+              <div className={styles.postInput}>
+                <BasicIpt sm="true" placeholder="제목" value={title} disabled />
+                <BasicIpt
+                  sm="true"
+                  placeholder="지은이"
+                  value={author}
+                  disabled
+                />
+                <BasicIpt
+                  sm="true"
+                  placeholder="출판사"
+                  value={publisher}
+                  disabled
+                />
+                <div className={styles.bookUpload}>
+                  <button
+                    type="button"
+                    className="basic sm"
+                    onClick={() => setModal(true)}
+                  >
+                    <i className="icon icon-search-btn" /> 책 등록하기
+                  </button>
+                </div>
+              </div>
             </div>
-          </div>
+          </section>
+          <section className={styles.sectionPostInfo}>
+            <h3 className={styles.sectionTitle}>
+              <strong>STEP 2.</strong> 기록을 작성해 주세요
+            </h3>
+            <div className={styles.starScoreBox}>
+              <strong className={styles.subTitle}>별점</strong>
+              <div className={styles.starScore}>
+                {scoreIcon.map((e, i) => {
+                  return (
+                    <i
+                      key={scoreIcon.length - i}
+                      className={e}
+                      onClick={(e) => {
+                        scoreFn(e);
+                      }}
+                    >
+                      {scoreIcon.length - i}
+                    </i>
+                  );
+                })}
+                <strong className={styles.scoreResult}>
+                  <span>{score}</span>/5 점
+                </strong>
+              </div>
+            </div>
+            <form className={styles.postInfo} onSubmit={submitPost}>
+              <strong className={styles.subTitle}>내용</strong>
+              <textarea
+                rows="20"
+                placeholder="내용을 입력하세요."
+                value={content}
+                onChange={handleContentChange}
+              />
+              <div className={styles.buttonWrap}>
+                <BasicBtn
+                  md="true"
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    navigate('/main');
+                  }}
+                >
+                  취소
+                </BasicBtn>
+                <BasicBtn md="true" disabled={!content || !title}>
+                  게시물 등록하기
+                </BasicBtn>
+              </div>
+            </form>
+          </section>
         </div>
-        <form className={styles.postInfo} onSubmit={submitPost}>
-          <textarea
-            rows="20"
-            placeholder="내용을 입력하세요."
-            value={content}
-            onChange={handleContentChange}
-          />
-          <div className={styles.buttonWrap}>
-            <BasicBtn
-              md="true"
-              onClick={(e) => {
-                e.stopPropagation();
-                navigate('/main');
-              }}
-            >
-              취소
-            </BasicBtn>
-            <BasicBtn md="true" disabled={!content}>
-              게시물 등록하기
-            </BasicBtn>
-          </div>
-        </form>
       </div>
       {modal && (
         <BookSearchDetailModal
