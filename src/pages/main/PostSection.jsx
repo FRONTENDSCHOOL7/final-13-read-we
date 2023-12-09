@@ -79,6 +79,12 @@ const MainCard = (props) => {
     navigate(props.accName !== accName ? '/yourpage' : '/mypage');
   };
 
+  const stars = Array(5)
+    .fill()
+    .map((_, index) =>
+      index < props.score ? 'icon icon-star-active' : 'icon icon-star',
+    );
+
   return (
     <>
       <ul className="home-post">
@@ -131,12 +137,17 @@ const MainCard = (props) => {
                   {props.hit ? <span className="tag hit">HIT</span> : ''}
                 </h3>
                 <div className="book-score">
-                  <i className="icon icon-star-active" />
-                  <i className="icon icon-star-active" />
-                  <i className="icon icon-star-active" />
-                  <i className="icon icon-star-active" />
-                  <i className="icon icon-star" />
-                  <span className="book-score-text">4.9점</span>
+                  {/* 별점 기능 추가 */}
+                  {props.score ? (
+                    <>
+                      {stars.map((star, index) => (
+                        <i key={index} className={star} />
+                      ))}
+                      <span className="book-score-text">{props.score}</span>
+                    </>
+                  ) : (
+                    <p>-</p>
+                  )}
                 </div>
                 <div className="book-author">
                   <p>
@@ -170,11 +181,7 @@ const MainCard = (props) => {
                 />
                 <CounterBtn
                   onClick={() => {
-                    {
-                      islikecheck
-                        ? unlikeFn(props.postId)
-                        : likeFn(props.postId);
-                    }
+                    islikecheck ? unlikeFn(props.postId) : likeFn(props.postId);
                   }}
                   type={islikecheck === true ? 'like-active' : 'like'}
                   count={
