@@ -5,6 +5,7 @@ import { IconIpt, SearchIpt } from '../../components/input/IptStyleEtc';
 import { BasicIpt } from '../../components/input/IptStyle';
 import EmptyList from './EmptyList';
 import styles from './css/BookSearchDetailModal.module.css';
+import LoadingModal from '../../components/popup/LoadingModal';
 
 const BookSearchDetailModal = (props) => {
   const [searchText, setSearchText] = useState('');
@@ -12,6 +13,13 @@ const BookSearchDetailModal = (props) => {
   const [searchResults, setSearchResults] = useState([]);
   const [noResults, setNoResults] = useState(false);
   const searchInputRef = useRef(null);
+
+  //무한 스크롤
+  const [isBottom, setIsBottom] = useState(false);
+  const [pageToFetch, setpageToFetch] = useState(1);
+
+  //로딩 중 상태 체크용
+  const [isLoading, setIsLoading] = useState(false);
 
   // 팝업 열렸을 경우 body스크롤 방지
   useEffect(() => {
@@ -39,21 +47,38 @@ const BookSearchDetailModal = (props) => {
     props.closePopup();
   };
 
+  //도서 선택 시
+  const selectBook = (selectedBook) => {
+    props.onBookSelect(selectedBook);
+    props.closePopup();
+  };
+
   //알라딘 책검색 API
-  const fetchBook = async () => {
+  const fetchBook = async (count, start, eventType) => {
+    if (searchText === '') return;
+    setIsLoading(true);
     const proxyUrl = 'https://cors-anywhere.herokuapp.com/';
-    const aladinUrl = `http://www.aladin.co.kr/ttb/api/ItemSearch.aspx?ttbkey=ttb22pqpq1534001&Query=${searchText}&QueryType=Title&MaxResults=5&start=1&SearchTarget=Book&Cover=Big&output=JS&Version=20131101`;
+    const aladinUrl = `http://www.aladin.co.kr/ttb/api/ItemSearch.aspx?ttbkey=ttb22pqpq1534001&Query=${searchText}&QueryType=Title&MaxResults=${count}&start=${start}&SearchTarget=Book&Cover=Big&output=JS&Version=20131101`;
     try {
       const response = await axios.get(proxyUrl + aladinUrl);
       if (response.status === 200) {
-        if (response.data.item.length === 0) {
-          setNoResults(true);
+        setIsLoading(false);
+        const res = response.data.item;
+        //eventType: 최초 도서검색(search), 검색결과스크롤(scroll)케이스 구분용
+        if (eventType === 'search') {
+          if (response.data.item.length === 0) {
+            setNoResults(true);
+            return;
+          }
+          setSearchResults(res);
+          setNoResults(false);
           return;
         }
-        setSearchResults(response.data.item);
+        setSearchResults(searchResults.concat(res));
         setNoResults(false);
       }
     } catch (error) {
+      setIsLoading(false);
       console.error('Error fetching data: ', error);
     }
   };
@@ -72,7 +97,7 @@ const BookSearchDetailModal = (props) => {
     }
     setSearchAlert('');
     //알라딘 책검색 API 실행
-    fetchBook();
+    fetchBook(30, 1, 'search');
   };
 
   //엔터키 사용시에도 검색기능 동작
@@ -82,15 +107,36 @@ const BookSearchDetailModal = (props) => {
     }
   };
 
-  const selectBook = (selectedBook) => {
-    props.onBookSelect(selectedBook);
-    props.closePopup();
-  };
+  // 무한 스크롤
+  function isBottomFn(e) {
+    if (
+      e.target.scrollTop + e.target.offsetHeight >=
+      e.target.children[0].offsetHeight
+    ) {
+      setIsBottom(true);
+    } else {
+      setIsBottom(false);
+    }
+  }
+  useEffect(() => {
+    if (isBottom) {
+      setpageToFetch((prevPage) => {
+        return prevPage + 1;
+      });
+    }
+  }, [isBottom]);
+
+  useEffect(() => {
+    if (!isLoading) {
+      fetchBook(30, pageToFetch, 'scroll');
+    }
+  }, [pageToFetch]);
 
   return (
     <div className="modal-area">
       <div className="modal-bg" />
       <div className="modal-wrap">
+        {isLoading ? <LoadingModal /> : ''}
         <div className={styles['modal-title']}>
           <h2>도서 검색</h2>
           <strong>독서기록을 남길 책을 찾아요</strong>
@@ -116,15 +162,15 @@ const BookSearchDetailModal = (props) => {
         {noResults ? (
           <EmptyList text="일치하는 도서가 없습니다." />
         ) : (
-          <div className={styles.scrollArea}>
+          <div
+            className={styles.scrollArea}
+            onScroll={(e) => {
+              isBottomFn(e);
+            }}
+          >
             <div className="modal-content row-2">
-              {searchResults.map((book, index) => (
-                <div
-                  className="row-2"
-                  key={index}
-                  onClick={() => selectBook(book)}
-                >
-                  {/* 검색 결과 도서 정보 표시 */}
+              {searchResults.map((book, i) => (
+                <div className="row-2" key={i} onClick={() => selectBook(book)}>
                   <div className="book-info-obj">
                     <img alt="책 이미지" src={book.cover} />
                   </div>
@@ -139,6 +185,7 @@ const BookSearchDetailModal = (props) => {
                     </div>
                     <p className="book-content ellipsis">{book.description}</p>
                   </div>
+                  <p className="end-point" />
                 </div>
               ))}
             </div>
