@@ -2,6 +2,10 @@ import React from 'react';
 import styles from './css/Main.module.css';
 import styled from 'styled-components';
 
+const TrendWrap = styled.div`
+  margin-bottom: 10px;
+`;
+
 const TrendTitle = styled.p`
   display: flex;
   justify-content: space-between;
@@ -14,7 +18,7 @@ const TrendTitle = styled.p`
     filter: opacity(0.5);
   }
 `;
-const TrendPostCount = styled.p`
+const TrendPostLink = styled.a`
   font-size: 10px;
   font-weight: 600;
   color: #a7a7a7;
@@ -30,13 +34,13 @@ const StyledShowBtn = styled.button`
 
 const TrendUnit = (props) => {
   return (
-    <>
+    <TrendWrap>
       <TrendTitle>
-        {props.textTitle}
+        &#60; {props.textTitle} &#62;
         <i className="icon icon-dot" />
       </TrendTitle>
-      <TrendPostCount>{props.textCnt}</TrendPostCount>
-    </>
+      <TrendPostLink href={props.textlink}>Link</TrendPostLink>
+    </TrendWrap>
   );
 };
 

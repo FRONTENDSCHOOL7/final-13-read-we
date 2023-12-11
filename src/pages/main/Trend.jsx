@@ -1,10 +1,14 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import styles from './css/Main.module.css';
 import { TrendUnit, ShowBtn } from './TrendUnit';
+import axios from 'axios';
 
 const Trend = (props) => {
   const [trendCount, setTrendCount] = useState(4);
   const [showClose, setShowClose] = useState(false);
+  const [count, setCount] = useState(10);
+  const [start, setStart] = useState(1);
+  const [trendUnits, setTrendUnits] = useState([]); //알라딘 api 검색결과
 
   const handleShowMore = () => {
     if (showClose) {
@@ -16,22 +20,32 @@ const Trend = (props) => {
     setShowClose(!showClose);
   };
 
-  const trendUnits = [
-    { title: '트렌드 코리아 2024', count: '5,123 Post' },
-    { title: '퓨쳐 셀프', count: '1,915 Post' },
-    { title: '도시와 그 확실한 벽', count: '513 Post' },
-    { title: '아침 그리고 저녁', count: '1,645 Post' },
-    { title: '자바스크립트 딥다이브', count: '7,777 Post' },
-    { title: '코어 자바스크립트', count: '6,458 Post' },
-    { title: '알잘딱깔센 : 자바스크립트 비동기', count: '3,946 Post' },
-  ];
+  const bestSellerFetch = async (count, start) => {
+    const proxyUrl = 'https://cors-anywhere.herokuapp.com/';
+    const aladinBSUrl = `http://www.aladin.co.kr/ttb/api/ItemList.aspx?ttbkey=ttb22pqpq1534001&QueryType=Bestseller&MaxResults=${count}&start=${start}&SearchTarget=Book&output=JS&Version=20131101`;
+    try {
+      const response = await axios.get(proxyUrl + aladinBSUrl);
+      if (response.status === 200) {
+        const res = response.data.item;
+        setTrendUnits(res);
+      }
+    } catch (error) {
+      console.error('Error fetching data: ', error);
+    }
+  };
+
+  useEffect(() => {
+    const randomStart = Math.floor(Math.random() * 100) + 1;
+    bestSellerFetch(7, randomStart);
+  }, []);
+
   return (
     <div className={styles.TrendContainer}>
       <div className={styles.TrendTitle}>ReadWe Trend for you</div>
       <div className={styles.TrendUnits}>
         {/* 현재 상태에 맞게 TrendUnit을 렌더링합니다. */}
         {trendUnits.slice(0, trendCount).map((unit, index) => (
-          <TrendUnit key={index} textTitle={unit.title} textCnt={unit.count} />
+          <TrendUnit key={index} textTitle={unit.title} textlink={unit.link} />
         ))}
         {/* ShowBtn 클릭 시 handleShowMore 함수를 실행합니다. */}
         <ShowBtn onClick={handleShowMore}>

@@ -10,7 +10,7 @@ import LoadingModal from '../../components/popup/LoadingModal';
 const BookSearchDetailModal = (props) => {
   const [searchText, setSearchText] = useState('');
   const [searchAlert, setSearchAlert] = useState('');
-  const [searchResults, setSearchResults] = useState([]);
+  const [searchResults, setSearchResults] = useState([]); //알라딘 api 검색결과
   const [noResults, setNoResults] = useState(false);
   const searchInputRef = useRef(null);
 
