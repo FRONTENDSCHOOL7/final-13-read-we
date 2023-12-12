@@ -14,12 +14,13 @@ import SearchModal from './SearchModal';
 import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
-const MainPage = () => {
+const MainPage = (props) => {
   const [posts, setPosts] = useState([]);
   const [userName, setUserName] = useState('');
   const [profile, setProfile] = useState(null);
   const [showBookSearchModal, setShowBookSearchModal] = useState(false);
   const [searchUserRes, setSearchUserRes] = useState([]); // 유저검색 결과
+  const [trendUnits, setTrendUnits] = useState([]); //알라딘 api 검색결과
   const accName = localStorage.getItem('accname'); // 로컬스토리지에서 accname 받아오기
   const handlePostBtn = HandlePost(); // postUtil 함수불러오기.
   const navigate = useNavigate();
@@ -86,6 +87,25 @@ const MainPage = () => {
       setSearchUserRes([]); // 키워드가 비었을 때는 검색 결과를 비웁니다
     }
   }, [userName]);
+
+  const bestSellerFetch = async (count, start) => {
+    const proxyUrl = 'https://cors-anywhere.herokuapp.com/';
+    const aladinBSUrl = `http://www.aladin.co.kr/ttb/api/ItemList.aspx?ttbkey=ttb22pqpq1534001&QueryType=Bestseller&MaxResults=${count}&start=${start}&SearchTarget=Book&output=JS&Version=20131101`;
+    try {
+      const response = await axios.get(proxyUrl + aladinBSUrl);
+      if (response.status === 200) {
+        const res = response.data.item;
+        setTrendUnits(res);
+      }
+    } catch (error) {
+      console.error('Error fetching data: ', error);
+    }
+  };
+
+  useEffect(() => {
+    const randomStart = Math.floor(Math.random() * 100) + 1;
+    bestSellerFetch(7, randomStart);
+  }, []);
 
   return (
     <div className={styles.container}>
@@ -225,8 +245,10 @@ const MainPage = () => {
               />
               <i class="icon icon-search" />
             </IconIpt>
-            {showBookSearchModal && <SearchModal hideModal={hideModal} />}
-            <Trend />
+            {showBookSearchModal && (
+              <SearchModal hideModal={hideModal} trendUnits={trendUnits} />
+            )}
+            <Trend trendUnits={trendUnits} />
           </div>
         </div>
       </div>

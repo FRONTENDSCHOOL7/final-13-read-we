@@ -6,11 +6,12 @@ import { BasicIpt } from '../../components/input/IptStyle';
 import { BasicBtn } from '../../components/button/BtnStyle';
 import { SearchIpt } from '../../components/input/IptStyleEtc';
 
-const SearchModal = ({ hideModal }) => {
+const SearchModal = ({ hideModal, trendUnits }) => {
   const [searchBook, setSearchBook] = useState([]); // 책검색 결과
   const [bookName, setBookName] = useState(null); // 책제목
   const [searchResult, setSearchResult] = useState(true); // 검색결과 상태
 
+  console.log(trendUnits);
   // 팝업 열렸을 경우 body스크롤 방지
   useEffect(() => {
     document.body.style.cssText = `
@@ -33,7 +34,6 @@ const SearchModal = ({ hideModal }) => {
       alert('검색어를 입력해주세요.');
       return;
     }
-
     console.log('검색버튼누름');
     const proxyUrl = 'https://cors-anywhere.herokuapp.com/';
     const aladinUrl = `http://www.aladin.co.kr/ttb/api/ItemSearch.aspx?ttbkey=ttb22pqpq1534001&Query=${bookName}&QueryType=Title&MaxResults=50&start=1&SearchTarget=Book&Book&Cover=Big&output=JS&Version=20131101`;
@@ -108,34 +108,12 @@ const SearchModal = ({ hideModal }) => {
           <>
             <div className={styles.header} />
             <div className={styles['example-books']}>
-              <div>
-                <img
-                  src={process.env.PUBLIC_URL + '/images/javascript.png'}
-                  alt="Book 1"
-                />
-                <p>누구나 쉽게 배우는 자바 스크립트</p>
-              </div>
-              <div>
-                <img
-                  src={process.env.PUBLIC_URL + '/images/money.png'}
-                  alt="Book 2"
-                />
-                <p>돈의 속성</p>
-              </div>
-              <div>
-                <img
-                  src={process.env.PUBLIC_URL + '/images/world-history.png'}
-                  alt="Book 3"
-                />
-                <p>요즘 어른을 위한 최소한의 세계사</p>
-              </div>
-              <div>
-                <img
-                  src={process.env.PUBLIC_URL + '/images/focus.png'}
-                  alt="Book 4"
-                />
-                <p>도둑맞은 집중력</p>
-              </div>
+              {trendUnits.map((book, index) => (
+                <div key={index}>
+                  <img src={book.cover} alt="책이미지" />
+                  <p>{book.title}</p>
+                </div>
+              ))}
             </div>
             <div className={styles['search-result']}>
               <h3 className={styles['show-result']}>
