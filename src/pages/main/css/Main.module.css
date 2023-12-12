@@ -181,12 +181,15 @@
   color: #E87C3E;
   /* border-bottom: 1px solid #C7C7C7; */
 }
-
-.TrendContainer .TrendUnits {
+.TrendContainer {
+  overflow: hidden;
+}
+.TrendUnits {
   display: flex;
   flex-direction: row;
-  overflow: hidden;
   justify-content: flex-start;
+  left: 0%;
+  position: relative;
 }
 
 /* user검색 */
