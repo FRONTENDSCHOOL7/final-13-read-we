@@ -267,6 +267,7 @@
 }
 .mybookList .mybookListObj .mybookListObjImg>img {
   width: 100%;
+  min-height: 196px 
 }
 .mybookList .mybookListObj>p {
   text-align: center;
