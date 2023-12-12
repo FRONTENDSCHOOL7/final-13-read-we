@@ -10,7 +10,18 @@
   background-color: white;
   border: 1px solid black;
   max-height: 90vh;
-  overflow: auto;
+  overflow-y: scroll;
+}
+.pageWrap::-webkit-scrollbar {
+  width: 18px;
+}
+.pageWrap::-webkit-scrollbar-thumb {
+  height: 30%;
+  border: 6px solid #fff;
+  background: #c7c7c7;
+}
+.pageWrap::-webkit-scrollbar-track {
+  background: #ffffff;
 }
 
 .contentArea {
@@ -44,25 +55,68 @@
 }
 
 .example-books {
+  padding-bottom: 20px;
   display: flex;
   flex-direction: row;
+  gap: 20px;
   margin-bottom: 100px;
-  gap: 100px;
+  overflow-x: scroll;
 }
-
-.example-books img {
-  width: 100px;
-  height: 150px;
+.example-books::-webkit-scrollbar {
+  height: 7px;
 }
-
-.example-books p {
-  width: 150px;
-  overflow-wrap: break-word;
+.example-books::-webkit-scrollbar-thumb {
+  height: 30%;
+  background: #E87C3E;
+  border-radius: 20px;
 }
-
+.example-books::-webkit-scrollbar-track {
+  background: #eee;
+  border: 2px solid #fff
+}
+.example-books-title {
+  margin: 20px 0;
+  font-size: 12px;
+  color: #999;
+}
+.example-books-title>strong {
+  display: block;
+  padding: 5px 0;
+  border-bottom: 1px solid #c7c7c7;
+  font-family: "Pretendard-Bold";
+  font-size: 15px;
+  color: #E87C3E;
+}
 .example-books > div {
-  margin: 0;
-  padding: 0;
+  padding-top: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: center;
+}
+.example-books img {
+  width: 120px;
+  height: 150px;
+  transition: all 0.2s;
+}
+.example-books > div:hover {
+  perspective: 600px;
+}
+.example-books img:hover {
+  box-shadow: 2px 2px 5px 0 rgba(0,0,0,0.1);
+  transform: rotateY(-45deg);
+}
+.example-books p {
+  font-family: "Pretendard-Bold";
+  width: 120px;
+  overflow-wrap: break-word;
+  text-align: center;
+  font-size: 12px;
+  /*2줄 말줄임 처리*/
+  overflow:hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
 }
 
 .show-result {

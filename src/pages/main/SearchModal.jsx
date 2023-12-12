@@ -106,7 +106,9 @@ const SearchModal = ({ hideModal, trendUnits }) => {
 
         {searchBook.length === 0 ? (
           <>
-            <div className={styles.header} />
+            <h4 className={styles['example-books-title']}>
+              이 책은 어떠세요?<strong>ReadWe 추천 베스트 셀러</strong>
+            </h4>
             <div className={styles['example-books']}>
               {trendUnits.map((book, index) => (
                 <div key={index}>
