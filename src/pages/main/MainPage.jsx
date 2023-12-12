@@ -90,7 +90,7 @@ const MainPage = (props) => {
 
   const bestSellerFetch = async (count, start) => {
     const proxyUrl = 'https://cors-anywhere.herokuapp.com/';
-    const aladinBSUrl = `http://www.aladin.co.kr/ttb/api/ItemList.aspx?ttbkey=ttb22pqpq1534001&QueryType=Bestseller&MaxResults=${count}&start=${start}&SearchTarget=Book&output=JS&Version=20131101`;
+    const aladinBSUrl = `http://www.aladin.co.kr/ttb/api/ItemList.aspx?ttbkey=ttb22pqpq1534001&QueryType=Bestseller&MaxResults=${count}&start=${start}&SearchTarget=Book&Cover=Big&output=JS&Version=20131101`;
     try {
       const response = await axios.get(proxyUrl + aladinBSUrl);
       if (response.status === 200) {
@@ -104,7 +104,7 @@ const MainPage = (props) => {
 
   useEffect(() => {
     const randomStart = Math.floor(Math.random() * 100) + 1;
-    bestSellerFetch(7, randomStart);
+    bestSellerFetch(10, randomStart);
   }, []);
 
   return (

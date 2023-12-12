@@ -165,23 +165,28 @@
   /* display: flex;
   justify-content: center;
   flex-direction: column; */
-  border: 1px solid var(--disable-gray-3, #C7C7C7);
+  box-shadow: 0px 0px 4px 0px rgba(133, 133, 133, 0.25);
   border-radius: 10px;
-  background: #FBFBFB;
+  background: #fff;
 }
 
 .TrendTitle {
   display: flex;
+  box-shadow: 0px 1px 0px 0px rgba(133, 133, 133, 0.15);
   justify-content: center;
   font-size: 14px;
   font-weight: 700;
-  padding-top: 25px;
-  padding-bottom: 43px;
+  padding: 25px 0;
+  margin-bottom: 10px;
+  color: #E87C3E;
+  /* border-bottom: 1px solid #C7C7C7; */
 }
 
 .TrendContainer .TrendUnits {
-  padding-left: 27px;
-
+  display: flex;
+  flex-direction: row;
+  overflow: hidden;
+  justify-content: flex-start;
 }
 
 /* user검색 */
