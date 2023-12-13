@@ -16,6 +16,7 @@ import LoginFinish from './pages/join-Page/JoinFinish';
 import PostUpload from './pages/main/PostUpload';
 import SearchModal from './pages/main/SearchModal';
 import PostDetails from './pages/main/PostDetails';
+import MobileFooter from './components/footer/MobileFooter';
 
 function App() {
   return (
@@ -41,6 +42,7 @@ function App() {
         <Route path="/postdetails/:postId" element={<PostDetails />} />
       </Routes>
       <Footer />
+      <MobileFooter />
       {/* <MainPage /> */}
     </>
   );
