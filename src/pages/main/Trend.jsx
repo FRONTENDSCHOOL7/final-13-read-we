@@ -1,14 +1,49 @@
 import React, { useState, useEffect } from 'react';
 import styles from './css/Main.module.css';
-import { TrendUnit, ShowBtn } from './TrendUnit';
+import { TrendUnit } from './TrendUnit';
+import styled from 'styled-components';
 
-const Trend = (props) => {
+const TrendContainer = styled.div`
+  box-shadow: 0px 0px 4px 0px rgba(133, 133, 133, 0.25);
+  border-radius: 10px;
+  background: #fff;
+  overflow: hidden;
+`;
+const TrendTitle = styled.div`
+  display: flex;
+  box-shadow: 0px 1px 0px 0px rgba(133, 133, 133, 0.15);
+  justify-content: center;
+  font-size: 14px;
+  font-weight: 700;
+  padding: 25px 0;
+  margin-bottom: 10px;
+  color: #e87c3e;
+`;
+const TrendUnits = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  left: ${(props) => props.left}%;
+  position: relative;
+  transition: left 0.3s ease-in-out;
+`;
+
+const Trend = ({ trendUnits }) => {
+  const [slideIndex, setSlideIndex] = useState(0); // 베스트셀러 슬라이드
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setSlideIndex((prevIndex) => (prevIndex + 1) % trendUnits.length);
+    }, 2000);
+
+    return () => clearInterval(interval);
+  }, [trendUnits.length]);
   return (
-    <div className={styles.TrendContainer}>
-      <div className={styles.TrendTitle}>ReadWe 베스트셀러</div>
-      <div className={styles.TrendUnits}>
+    <TrendContainer>
+      <TrendTitle>ReadWe 베스트셀러</TrendTitle>
+      <TrendUnits left={-slideIndex * 100}>
         {/* 현재 상태에 맞게 TrendUnit을 렌더링합니다. */}
-        {props.trendUnits.slice(0, 10).map((unit, index) => (
+        {trendUnits.slice(0, 10).map((unit, index) => (
           <TrendUnit
             key={index}
             textTitle={unit.title}
@@ -17,8 +52,8 @@ const Trend = (props) => {
             description={unit.description}
           />
         ))}
-      </div>
-    </div>
+      </TrendUnits>
+    </TrendContainer>
   );
 };
 
