@@ -360,6 +360,12 @@ span.tag.hit {
   align-items: center;
   gap: 25px;
 }
+.home-post li .home-post-list .post-info .ect {
+  margin-left: auto;
+}
+.home-post li .home-post-list .post-info .ect span {
+  font-size: 12px;
+}
 
 .home-post li .home-post-list .post-info span {
   color: #999;
@@ -441,7 +447,7 @@ span.tag.hit {
 }
 
 .home-post li .home-post-list .book-info-title .tag {
-  margin-left: 10px;
+  margin-right: 10px;
 }
 
 .home-post li .home-post-list .book-score {
@@ -927,4 +933,68 @@ span.tag.hit {
 @font-face {
   font-family: "Pretendard-Black";
   src: url(../public/font/Pretendard-Black.ttf);
+}
+
+/*postsection 반응형*/
+@media (max-width: 640px){
+  .home-post li {
+    padding: 20px 0;
+    border-bottom: 0;
+  }
+  .home-post li .home-post-list .post-content {
+    flex-direction: column;
+    align-items: center;
+    gap: 25px;
+  }
+  .book-search-bth {
+    border-radius: 10px;
+    border: 1px solid #c7c7c7;
+  }
+  .home-post li .home-post-list .book-info {
+    width: 100%;
+  }
+  .home-post li .home-post-list .book-info-title {
+    font-size: 16px;
+    overflow:hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+  }
+  .home-post li .home-post-list .book-author p {
+    font-size: 12px;
+  }
+  .like-comment {
+    flex-wrap: wrap;
+  }
+  .like-comment button {
+    font-size: 12px;
+  }
+}
+@media (max-width: 480px){
+  .home-post li .home-post-list .post-info {
+    padding: 15px;
+    border-top: 1px solid #D9D9D9;
+  }
+  .home-post li .home-post-list .book-info {
+    padding: 0 15px;
+  }
+  .home-post li .home-post-list .post-info .img-wrap {
+    width: 36px;
+    height: 36px;
+  }
+  .home-post li .home-post-list .post-info .img-wrap>img {
+    min-width: 36px;
+    height: 100%;
+  }
+  .post-footer {
+    padding: 0 15px;
+  }
+  .home-post li {
+    border-bottom: 1px solid #d9d9d9;
+  }
+  .home-post li .home-post-list {
+    border: none;
+    border-radius: 0;
+    padding: 0;
+  }
 }

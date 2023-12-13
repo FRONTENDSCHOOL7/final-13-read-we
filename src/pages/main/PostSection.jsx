@@ -133,8 +133,8 @@ const MainCard = (props) => {
               </div>
               <div className="book-info">
                 <h3 className="book-info-title">
-                  {props.title}
                   {props.hit ? <span className="tag hit">HIT</span> : ''}
+                  {props.title}
                 </h3>
                 <div className="book-score">
                   {/* 별점 기능 추가 */}
@@ -166,11 +166,12 @@ const MainCard = (props) => {
                 >
                   {props.content}
                 </p>
-                <div className="tag-wrap">
+                {/* 기능 미사용으로 주석 처리 */}
+                {/* <div className="tag-wrap">
                   <span className="tag gray">에세이</span>
                   <span className="tag gray">고양이</span>
                   <span className="tag gray">만화</span>
-                </div>
+                </div> */}
               </div>
             </div>
             <div className="post-footer">
