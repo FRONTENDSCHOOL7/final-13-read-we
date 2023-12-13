@@ -24,23 +24,8 @@
   z-index: 80;
   box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.20);
 }
-.MProFloat div {
+.MProFloat>div {
   gap: 10px;
-}
-
-@media (max-width: 1244px) {
-  .MProFloat {
-    width: 180px;
-    left: 60px;
-  }
-  .MProFloat div {
-    width: 100%;
-    flex-direction: column;
-    gap: 10px;
-    align-items: center;
-    text-align: center;
-    gap: 10px;
-  }
 }
 
 .outerContainer {
@@ -253,4 +238,128 @@
   text-align: center;
   color: #C7C7C7;
   font-size: 12px;
+}
+
+/*Main 반응형 처리*/
+@media (max-width: 1244px) {
+  .MProFloat {
+    width: 180px;
+    left: 60px;
+  }
+  .MProFloat>div {
+    width: 100%;
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+    text-align: center;
+  }
+}
+@media (max-width: 830px) {
+  /*우측 nav*/
+  .MainLeftContainer>ul {
+    display: none;
+  }
+  .outerContainer {
+    display: flex;
+    flex-direction: column;
+  }
+  .MainPostContainer {
+    width: 100%;
+  }
+  .MProFloat {
+    width: auto;
+    right: 20px;
+    left: unset;
+    bottom: unset;
+    top: 5px;
+    z-index: 90;
+    padding: 15px 10px;
+    position: fixed;
+    background-color: #fff;
+    border-radius: 0;
+    box-shadow: none;
+  }
+  .MProFloat>div {
+    width: 100%;
+    flex-direction: row;
+    text-align: start;
+  }
+  .MProFloat div strong {
+    color: #333 !important;
+  }
+  .MProFloat div i {
+    filter: none !important;
+  }
+  .MProFloat div>div:first-child {
+    width: 40px;
+    height: 40px;
+  }
+  .MProFloat div>div:first-child>img{
+    min-width: 40px;
+    height: 100%;
+  }
+
+  /*유저검색*/
+  .MainLeftContainer {
+    width: 100%;
+    padding: 10px 0 30px;
+  }
+  .searchUserContainer {
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    border-radius: 0;
+    border: none;
+    background: none;;
+    box-shadow: none
+  }
+  .searchUserTitle {
+    display: none;
+  }
+  .searchUserContainer input {
+    height: 60px;
+    background: #F8F8F8;
+    box-shadow: none;
+  }
+  .searchUser {
+    border-top: none;
+  }
+  .searchUserResultNoinput {
+    display: none;
+  }
+  /*게시물 리스트*/
+  .PostCardBox {
+    display: none;
+  }
+}
+
+@media (max-width: 640px) {
+  .MainPostContainer {
+    border: none;
+  }
+  .MainPostContainer>a>ul>li {
+    padding: 20px 0;
+    border-bottom: none;
+  }
+}
+@media (max-width: 480px){
+  .HomeButton {
+    height: auto;
+    border-bottom: 0;
+  }
+  .searchUserContainer {
+    padding: 0 12px;
+  }
+  .container {
+    width: calc(100% - 5px);
+  }
+  .MainContainer {
+    margin-top: 12px;
+    width: 100%;
+    padding: 0;
+  }
+  .MProFloat>div *:nth-child(2) {
+    display: none;
+  }
 }
