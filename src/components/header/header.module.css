@@ -7,7 +7,6 @@ header {
   background-color: white;
   top: 0;
   z-index: 90;
-  box-shadow: #000;
   box-shadow: 0px 1px 20px 0px #0000000d;
 }
 
@@ -186,27 +185,6 @@ header {
   filter: brightness(100);
 }
 
-
-
-/* 미디어 쿼리 추가 */
-@media screen and (max-width: 768px) {
-  header {
-    padding: 10px; /* 헤더 패딩을 줄임 */
-  }
-
-  .container-Link {
-    left: 25%;
-    top: 40px;
-    flex-direction: column; /* 링크를 세로로 배치 */
-    gap: 10px; /* 간격 조정 */
-  }
-
-  .btn-allmenu {
-    display: block; /* 버튼을 블록 요소로 변경 */
-    left: 50%;
-  }
-}
-
 /* 메뉴 에니메이션 추가 */
 @keyframes showMonre {
   0% {
@@ -219,3 +197,28 @@ header {
     top: calc(100% + 30px);
   } 
 }
+
+/* 미디어 쿼리 추가 */
+@media (max-width: 830px){
+  header {
+    padding: 30px 0;
+  }
+  .header-container>h1>a {
+    display: block;
+    width: 100%;
+    max-width: 120px;
+  }
+  .header-container>h1>a>img {
+    width: 100%
+  }
+  .container-Link, .container-moremenu {
+    display: none;
+  }
+}
+@media (max-width: 480px){
+  .header-container {
+    width: calc(100% - 40px);
+  }
+}
+
+
