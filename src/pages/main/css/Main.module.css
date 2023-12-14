@@ -301,6 +301,7 @@
 
   /*유저검색*/
   .MainLeftContainer {
+    order: -1;
     width: 100%;
     padding: 10px 0 30px;
   }
@@ -324,13 +325,31 @@
   }
   .searchUser {
     border-top: none;
+    padding: 0;
   }
   .searchUserResultNoinput {
     display: none;
   }
-  /*게시물 리스트*/
+  /*게시물 리스트 상단*/
   .PostCardBox {
     display: none;
+  }
+  /*도서검색(footer에 기능 추가되어 반응형 처리시 display: none처리*/
+  .MainRightContainer {
+    order: -1;
+    width: 100%;
+    margin-left: 0;
+    padding: 0 12px 30px;
+  }
+  .MainRightContainer>div:first-child {
+    display: none;
+  }
+  /*베스트셀러*/
+  .MainRightContainer>div:nth-child(2){
+    width: 100%;
+  }
+  .MainRightContainer>div:nth-child(2) img {
+    width: 30%;
   }
 }
 
