@@ -5,15 +5,14 @@
   bottom: 0;
   width: 100%;
   background-color: #fff;
-  box-shadow: 0px 1px 20px 0px #0000000d;
+  box-shadow: 0px 1px 20px 0px #00000021;
 }
 
 .mobile-footer-wrap ul {
   margin: 0 auto;
   width: 100%;
   max-width: 480px;
-  padding-top: 15px;
-  padding-bottom: 20px;
+  padding: 15px 10px 20px 10px;
   height: 85px;
   display: flex;
   justify-content: space-between;
@@ -49,8 +48,9 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  font-size: 12px;
+  font-size: 11px;
   gap: 6px;
+  color: #666;
 }
 .mobile-footer-wrap ul .obj-link i {
   width: 20px;
@@ -65,6 +65,30 @@
   width: 20px;
   height: 20px;
 }
+.mobile-footer-wrap ul .obj-link.active {
+  position: relative;
+  color: #000;
+  font-family: "Pretendard-Bold";
+}
+.mobile-footer-wrap ul .obj-link.active i{
+  position: relative;
+  filter: brightness(0);
+}
+.mobile-footer-wrap ul .obj-link.active::after {
+  content: '';
+  position: absolute;
+  left: 15px;
+  top: 0;
+  width: 3px;
+  height: 3px;
+  border-radius: 100px;
+  background-color: #E87C3E;
+  filter: none;
+}
+.mobile-footer-wrap ul .obj.post-btn .obj-link.active::after {
+  display: none;
+}
+
 
 @keyframes postBtnAni {
   0%   { scale: 60% }

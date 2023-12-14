@@ -75,7 +75,11 @@
   padding: 20px;
 }
 
-@media screen and (max-width: 767px) {
+@media (max-width: 830px) {
+  .footer-content {
+    justify-content: flex-start;
+    gap: 70px;
+  }
   .box {
     padding: 20px;
   }
