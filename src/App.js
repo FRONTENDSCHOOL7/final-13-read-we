@@ -1,6 +1,6 @@
 import LoginPage from './pages/login-Page/LoginPage';
 import MainPage from './pages/main/MainPage';
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, useLocation } from 'react-router-dom';
 import MyPage from './pages/myPage/MyPage';
 import YourPage from './pages/myPage/YourPage';
 import MyPageAccList from './pages/myPage/MyPageAccList';
@@ -19,9 +19,12 @@ import PostDetails from './pages/main/PostDetails';
 import MobileFooter from './components/footer/MobileFooter';
 
 function App() {
+  const location = useLocation();
+  const hideUrls = ['/'];
+  const isHideUrl = hideUrls.includes(location.pathname);
   return (
     <>
-      <Header />
+      {!isHideUrl && <Header />}
       <Routes>
         <Route path="/" element={<LoginJoinSelect />} />
         <Route path="/login" element={<LoginPage />} />
@@ -41,9 +44,12 @@ function App() {
         <Route path="/search" element={<SearchModal />} />
         <Route path="/postdetails/:postId" element={<PostDetails />} />
       </Routes>
-      <Footer />
-      <MobileFooter />
-      {/* <MainPage /> */}
+      {!isHideUrl && (
+        <>
+          <Footer />
+          <MobileFooter />
+        </>
+      )}
     </>
   );
 }

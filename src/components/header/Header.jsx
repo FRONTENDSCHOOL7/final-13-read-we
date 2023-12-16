@@ -8,9 +8,6 @@ export default function Header() {
   const navigate = useNavigate();
   const [showMore, setShowmore] = useState(false);
 
-  //로그인/회원가입 선택 화면에서 header 숨기기
-  if (window.location.pathname === '/') return null;
-
   //페이지 이동 핸들러
   const handlePageLink = (e, url) => {
     const urlPath = url + e.target.innerText.toLowerCase();
@@ -124,7 +121,9 @@ export default function Header() {
                 />
               </a>
             </h1>
-            <nav className={styles['container-Link']}>
+            <nav
+              className={`${styles['container-Link']} ${styles['login-menu']}`}
+            >
               {heaerNavListNotLogin.map((item, i) => {
                 return (
                   <a
