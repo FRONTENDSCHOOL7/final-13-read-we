@@ -10,7 +10,6 @@ const MyLibrary = () => {
   const token = localStorage.getItem('token');
   const baseUrl = 'https://api.mandarin.weniv.co.kr';
 
-  const [tab, setTab] = useState(0);
   const [myInfo, setMyInfo] = useState();
   const [postInfo, setPostInfo] = useState();
   const [isProfileLoading, setIsProfileLoading] = useState(true);
@@ -100,7 +99,10 @@ const MyLibrary = () => {
         <h3 className={styles.myLibraryTopBanner}>
           <strong>{myInfo?.username}님의 서재에요</strong>
           <p>지금까지 읽은 책과 내 독서 현황을 알수 있는 공간입니다!</p>
-          <img src={process.env.PUBLIC_URL + '/images/StackUpBooks_2.png'} />
+          <img
+            src={process.env.PUBLIC_URL + '/images/StackUpBooks_2.png'}
+            alt=""
+          />
         </h3>
         {isProfileLoading === false ? (
           <>
@@ -148,53 +150,24 @@ const MyLibrary = () => {
             </div>
 
             <article className={styles.myLibraryBox}>
-              <h4>읽은 책 / 찜한 책</h4>
-              <div className={styles.btnWrap}>
-                <BasicBtn
-                  md="true"
-                  bgcolor={tab == 0 ? '#000000' : '#a7a7a7'}
-                  wid="120px"
-                  onClick={() => {
-                    setTab(0);
-                  }}
-                >
-                  읽은 책
-                </BasicBtn>
-                <BasicBtn
-                  md="true"
-                  bgcolor={tab == 0 ? '#a7a7a7' : '#000000'}
-                  wid="120px"
-                  onClick={() => {
-                    setTab(1);
-                  }}
-                >
-                  찜한 책
-                </BasicBtn>
-              </div>
+              <h4>읽은 책</h4>
               <ul className={styles.mybookList}>
-                {tab === 0 ? (
-                  postInfo?.length === 0 ? (
-                    <EmptyList
-                      text1="아직 독서노트가 기록되지 않았어요"
-                      text2="책을 읽고 기록을 남겨보세요!"
-                    />
-                  ) : (
-                    postInfo?.map((e) => {
-                      const bookInfo = JSON.parse(e.content);
-                      return (
-                        <MyLibraryRead
-                          key={e.id}
-                          bookImgSrc={e.image}
-                          title={bookInfo.title}
-                        />
-                      );
-                    })
-                  )
-                ) : (
+                {postInfo?.length === 0 ? (
                   <EmptyList
-                    text1="찜한 책이 없어요!"
-                    text2="책을 찜하고 나만의 서재를 채워보세요!"
+                    text1="아직 독서노트가 기록되지 않았어요"
+                    text2="책을 읽고 기록을 남겨보세요!"
                   />
+                ) : (
+                  postInfo?.map((e) => {
+                    const bookInfo = JSON.parse(e.content);
+                    return (
+                      <MyLibraryRead
+                        key={e.id}
+                        bookImgSrc={e.image}
+                        title={bookInfo.title}
+                      />
+                    );
+                  })
                 )}
               </ul>
             </article>

@@ -23,6 +23,7 @@
   height: 13px;
   background-color: #8DA3CD80;
   width: 100%;
+  z-index: -1;
 }
 .big-container {
   display: flex;
@@ -36,13 +37,13 @@
   max-width: 280px;
   height: 664px;
 }
-.profile-parent button {
+.profile-parent>article div>button {
   transition: background-color 0.3s;
 }
-.profile-parent button:active {
+.profile-parent>article div>button:active {
   background-color: #E87C3E; 
 }
-.profile-parent button:hover {
+.profile-parent>article div>button:hover {
   background-color: #E87C3E; 
 }
 .profile-parent.loading {
@@ -64,12 +65,12 @@
   color: #A7A7A7;
 }
 .center {
-  font-weight: bold;
+  font-family: "Pretendard-Bold";
   font-size: 24px;
   padding-top: 10px;
 }
 .right {
-  font-weight: bold;
+  font-family: "Pretendard-Bold";
 }
 .list-parent {
   width: 100%;
@@ -77,6 +78,14 @@
 .list-parent.loading {
   padding: 50px;
   text-align: center;
+}
+.logout-btn {
+  margin: 20px auto;
+  display: block;
+  text-align: center;
+  padding: 5px 10px;
+  border-bottom: 1px solid #d35454;
+  color: #d35454;
 }
 
 /*팔로우,팔로워 리스트*/
@@ -252,6 +261,7 @@
   display: flex;
   flex-wrap: wrap;
   gap: 18px;
+  justify-content: space-evenly;
 }
 .mybookList .mybookListObj {
   width: 150px;
@@ -330,12 +340,105 @@
 }
 
 /* 반응형 처리 */
-@media (max-width: 770px) {
+@media (max-width: 780px) {
+  .profile-parent {
+    height: auto;
+  }
+  .profile-parent>article {
+    padding: 20px 20px 10px;
+    border: none;
+    border-radius: 0;
+  }
   .big-container {
     flex-direction: column;
   }
   .profile-parent  {
     max-width: 100%;
+  }
+  .userList {
+    padding-left: 20px;
+    height: 100%;
+  }
+}
+@media (max-width: 630px){
+  .pageWrap {
+    width: 100%;
+  }
+  .contentArea {
+    padding: 20px;
+  }
+  .mybookList .mybookListObj {
+    width: 100px;
+  }
+  .mybookList .mybookListObj .mybookListObjImg {
+    height: 126px;
+  }
+  .mybookList .mybookListObj .mybookListObjImg>img {
+    min-height: 126px 
+  }
+}
+@media (max-width: 530px){
+  .myLibraryTopBanner,
+  .myPageTopBanner{
+    padding: 30px 120px 30px 30px;
+  }
+  .myLibraryTopBanner>img{
+    width: 160px;
+  }
+  .myPageTopBanner>img {
+    width: 220px;
+  }
+}
+@media (max-width: 480px){
+  .pageWrap {
+    width: 100%;
+  }
+  .contentArea {
+    padding: 20px 0;
+  }
+  .pageTitle {
+    margin-left: 20px;
+  }
+  .myLibraryTopBanner,
+  .myPageTopBanner{
+    padding: 30px;
+    border-radius: 0;
+    margin-bottom: 20px;
+  }
+  .myLibraryTopBanner>img,
+  .myPageTopBanner>img {
+    display: none;
+  }
+  .profile-parent>article div>button {
+    font-size: 18px;
+    height: 60px;
+  }
+  .my-note {
+    padding: 10px 20px;
+    border-bottom: 0;
+    font-size: 14px;
+  }
+  .center {
+    font-size: 18px;
+    padding-top: 5px;
+  }
+  .edit-area  {
+    padding: 0 20px;
+  }
+  .topArea {
+    padding: 0 20px;
+  }
+  .myLibraryMonth>li {
+    padding: 10px;
+    font-size: 12px;
+  }
+  .topArea .myLibraryBox {
+    max-width: 100%;
+  }
+  .myLibraryBox {
+    padding: 10px;
+    max-width: calc(100% - 40px);
+    margin: 0 auto;
   }
 }
 

@@ -90,7 +90,7 @@ const YourPage = () => {
                   <div className={styles['left-center']}>
                     <p className={styles.left}>지금까지 작성한 기록들</p>
                     <p className={styles.center}>
-                      {otherInfo.username}님의 독서 노트
+                      {otherInfo?.username}님의 독서 노트
                     </p>
                   </div>
                   <p className={styles.right}>총 {postList.length}건</p>

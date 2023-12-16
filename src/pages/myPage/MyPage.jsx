@@ -80,6 +80,9 @@ const MyPage = () => {
                 follower={myInfo.followerCount}
                 following={myInfo.followingCount}
               />
+              <button type="button" className={styles['logout-btn']}>
+                로그아웃
+              </button>
             </div>
           ) : (
             <div className={`${styles['profile-parent']} ${styles.loading}`}>
