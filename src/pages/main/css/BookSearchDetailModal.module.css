@@ -42,3 +42,11 @@
   font-size: 14px;
   color: #b85757;
 }
+@media (max-width: 440px){
+  .searchWrap {
+    margin: 0 20px;
+  }
+  .searchWrap input {
+    font-size: 12px !important;
+  }
+}

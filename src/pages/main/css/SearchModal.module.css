@@ -144,12 +144,13 @@
 
 .all-zero {
   font-size: 20px;
-  font-weight: bold;
+  font-family: "Pretendard-Bold";
   margin-bottom: 20px;
   margin-left: 30px;
 }
 
 .center-container {
+  width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -160,16 +161,10 @@
   margin-bottom: 50px;
   font-weight: bold;
 }
-
 .check {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
   color: #ccc;
-  font-size: 12px;
-  margin-left: 100px;
+  font-size: 14px;
 }
-
 .closeBtn{
   margin: 10px 10px 0 0 ;
   float: right;
@@ -187,22 +182,11 @@ p strong {
   border-radius: 5px;
   padding: 10px 0 10px 0;
 }
-.disbooks_title{
-
-}
-.disbooks_author{
-
-}
-.disbooks_cover{
-
-}
-.disbooks_descrip{
-
-}
 .disbooks_link{
   color: #E87C3E;
   padding: 0 5px 8px 0;
   transition: all 0.2s;
+  flex-shrink: 0;
 }
 .disbooks_link:hover{
   font-family: "Pretendard-Medium";
@@ -211,4 +195,27 @@ p strong {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  flex-wrap: wrap;
+}
+
+@media (max-width: 450px){
+  .example-books p {
+    width: 100px;
+  }
+  .example-books img {
+    width: 100px;
+    height: 130px;
+  }
+  .show-result {
+    margin-left: 0;
+  }
+  .all-zero {
+    margin-left: 0;
+  }
+  .contentArea {
+    padding: 35px 10px;
+  }
+  .contentArea form input{
+    font-size: 12px !important;
+  }
 }

@@ -719,10 +719,11 @@ span.tag.hit {
   border: 1px solid #D9D9D9;
   margin-bottom: 15px;
 }
-
+.book-info-text .book-public {
+  display: inline-block;
+}
 .book-info-text .book-public,
 .book-info-text .book-author {
-  display: inline-block;
   color: #5E5E5E;
   font-size: 12px;
   font-weight: 400;
@@ -935,7 +936,7 @@ span.tag.hit {
   src: url(../public/font/Pretendard-Black.ttf);
 }
 
-/*postsection 반응형*/
+
 @media (max-width: 640px){
   .home-post li {
     padding: 20px 0;
@@ -968,6 +969,40 @@ span.tag.hit {
   }
   .like-comment button {
     font-size: 12px;
+  }
+}
+@media (max-width: 530px){
+  .modal-wrap {
+    max-height: calc(100% - 30px);
+    padding-top: 20px;
+    overflow: scroll;
+  }
+  .modal-content {
+    padding: 0 25px;
+    margin-bottom: 0;
+  }
+  .modal-content .row-2 {
+    gap: 10px;
+    margin-bottom: 15px;
+    padding-bottom: 15px;
+  }
+  .book-info-obj {
+    width: 60px;
+  }
+  .book-info-text .book-author {
+    display: inline;
+  }
+  .modal-footer {
+    padding: 0 25px;
+  }
+  .modal-footer .row-2 {
+    padding-top: 10px;
+  }
+  .modal-footer .row-2>button {
+    flex-shrink: 0;
+  }
+  .modal-footer .notice-text {
+    font-size: 10px;
   }
 }
 @media (max-width: 480px){

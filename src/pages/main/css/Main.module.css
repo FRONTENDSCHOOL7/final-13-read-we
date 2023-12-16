@@ -348,7 +348,7 @@
   .MainRightContainer>div:nth-child(2){
     width: 100%;
   }
-  .MainRightContainer>div:nth-child(2) img {
+  .MainRightContainer>div:nth-child(2) a>img {
     width: 30%;
   }
 }

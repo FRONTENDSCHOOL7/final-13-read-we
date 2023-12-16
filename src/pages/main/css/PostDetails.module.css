@@ -4,7 +4,8 @@
 
 .innerContainer {
   margin: 0 auto;
-  width: calc(70% - 20px);
+  width: 100%;
+  max-width: 780px;
   padding: 20px;
 }
 
@@ -14,8 +15,12 @@
   text-align: center;
 }
 
+.innerContainer>ul li {
+  border-bottom: 0;
+}
+
 .cmtContainer {
-  padding: 65px 33px;
+  padding: 30px 20px;
   margin: 47px 0;
   border-top: 1px solid #a7a7a7;
   border-bottom: 1px solid #a7a7a7;
@@ -25,4 +30,12 @@
   display: flex;
   flex-direction: column;
   gap: 38px;
+}
+@media (max-width: 480px){
+  .innerContainer {
+    padding: 0;
+  }
+  .innerContainer>form {
+    padding: 0 15px;
+  }
 }

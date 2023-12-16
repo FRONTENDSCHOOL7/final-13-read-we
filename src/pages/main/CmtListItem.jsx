@@ -21,9 +21,6 @@ const CmtListItem = ({ cmtItem }) => {
       </div>
       <div className={styles.dateLike}>
         <span>{new Date(cmtItem.createdAt).toLocaleDateString('ko-KR')}</span>
-        <button className="like-counter">
-          <i className="icon icon-like" />
-        </button>
       </div>
     </li>
   );

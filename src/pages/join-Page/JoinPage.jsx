@@ -74,7 +74,7 @@ export default function JoinPage() {
   };
 
   return (
-    <section>
+    <section className={styles.pageWrap}>
       <h2 className="a11y-hidden">회원 가입</h2>
       <div className={styles['join-Box']}>
         <div className={styles['title-box']}>
