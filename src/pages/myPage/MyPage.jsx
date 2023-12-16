@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import ProfileCard from '../../components/mypage/ProfileCard';
 import EmptyList from '../../components/mypage/EmptyList';
@@ -7,6 +7,7 @@ import PostSection from '../main/PostSection';
 import styles from './css/myPage.module.css';
 
 const MyPage = () => {
+  const navigate = useNavigate();
   const token = localStorage.getItem('token');
   const email = localStorage.getItem('email');
   const baseUrl = 'https://api.mandarin.weniv.co.kr';
@@ -54,6 +55,14 @@ const MyPage = () => {
       });
   };
 
+  //로그아웃 핸들러
+  const handleLogout = () => {
+    localStorage.setItem('token', '');
+    localStorage.setItem('accname', '');
+    localStorage.setItem('otherName', '');
+    navigate('/login');
+  };
+
   //화면이 로드될 때 유저정보 및 게시물 API 실행
   useEffect(() => {
     getMyInfoFn();
@@ -80,7 +89,11 @@ const MyPage = () => {
                 follower={myInfo.followerCount}
                 following={myInfo.followingCount}
               />
-              <button type="button" className={styles['logout-btn']}>
+              <button
+                type="button"
+                className={styles['logout-btn']}
+                onClick={handleLogout}
+              >
                 로그아웃
               </button>
             </div>

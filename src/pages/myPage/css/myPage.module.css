@@ -80,8 +80,8 @@
   text-align: center;
 }
 .logout-btn {
+  display: none;
   margin: 20px auto;
-  display: block;
   text-align: center;
   padding: 5px 10px;
   border-bottom: 1px solid #d35454;
@@ -340,6 +340,11 @@
 }
 
 /* 반응형 처리 */
+@media (max-width: 830px) {
+  .logout-btn {
+    display: block;
+  }
+}
 @media (max-width: 780px) {
   .profile-parent {
     height: auto;
