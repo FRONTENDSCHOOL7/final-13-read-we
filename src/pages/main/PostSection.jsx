@@ -94,10 +94,7 @@ const MainCard = (props) => {
               <div className="user" onClick={handleProfileClick}>
                 <div className="img-wrap">
                   {/* <img alt="프로필 이미지" src={`${props.imgSrc}`} /> */}
-                  <img
-                    alt="프로필 이미지"
-                    src={process.env.PUBLIC_URL + props.imgSrc}
-                  />
+                  <img alt="프로필 이미지" src={props.imgSrc} />
                 </div>
                 <span>
                   by
@@ -122,7 +119,7 @@ const MainCard = (props) => {
                     src={
                       /aladin/i.test(props.bookImgSrc)
                         ? props.bookImgSrc
-                        : `/images/${props.bookImgSrc}`
+                        : process.env.PUBLIC_URL + `/images/${props.bookImgSrc}`
                     }
                   />
                   <p>
