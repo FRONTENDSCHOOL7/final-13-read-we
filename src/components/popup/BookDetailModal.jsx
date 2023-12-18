@@ -32,7 +32,7 @@ const BookDetailModal = (props) => {
                 src={
                   /aladin/i.test(props.bookImgSrc)
                     ? props.bookImgSrc
-                    : `/images/${props.bookImgSrc}`
+                    : process.env.PUBLIC_URL + `/images/${props.bookImgSrc}`
                 }
               />
               {/* <BasicBtn md="true" linestyle="true" round="100px" wid="100%">
