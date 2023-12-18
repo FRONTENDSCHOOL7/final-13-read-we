@@ -35,11 +35,10 @@ const SearchModal = ({ hideModal, trendUnits }) => {
       return;
     }
     console.log('검색버튼누름');
-    const proxyUrl = 'https://cors-anywhere.herokuapp.com/';
     const aladinUrl = `http://www.aladin.co.kr/ttb/api/ItemSearch.aspx?ttbkey=ttb22pqpq1534001&Query=${bookName}&QueryType=Title&MaxResults=50&start=1&SearchTarget=Book&Book&Cover=Big&output=JS&Version=20131101`;
 
     try {
-      const response = await axios.get(proxyUrl + aladinUrl);
+      const response = await axios.get(aladinUrl);
       if (response.status === 200) {
         setSearchBook(response.data.item); // API 호출 결과를 searchBook state에 저장
         setSearchResult(bookName);

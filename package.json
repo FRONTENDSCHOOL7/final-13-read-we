@@ -2,6 +2,7 @@
   "name": "final-project",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://frontendschool7.github.io/final-13-read-we",
   "dependencies": {
     "@nivo/calendar": "^0.83.0",
     "@nivo/core": "^0.83.0",
@@ -20,7 +21,9 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "eslintConfig": {
     "extends": [
@@ -43,6 +46,7 @@
   "devDependencies": {
     "eslint-config-prettier": "^9.0.0",
     "eslint-plugin-prettier": "^5.0.1",
+    "gh-pages": "^6.1.0",
     "prettier": "^3.0.3"
   }
 }
