@@ -1,6 +1,6 @@
+import { Routes, Route, useLocation } from 'react-router-dom';
 import LoginPage from './pages/login-Page/LoginPage';
 import MainPage from './pages/main/MainPage';
-import { Routes, Route, useLocation } from 'react-router-dom';
 import MyPage from './pages/myPage/MyPage';
 import YourPage from './pages/myPage/YourPage';
 import MyPageAccList from './pages/myPage/MyPageAccList';
@@ -17,6 +17,7 @@ import PostUpload from './pages/main/PostUpload';
 import SearchModal from './pages/main/SearchModal';
 import PostDetails from './pages/main/PostDetails';
 import MobileFooter from './components/footer/MobileFooter';
+import ScrollTop from './components/ScrollTop';
 
 function App() {
   const location = useLocation();
@@ -25,6 +26,7 @@ function App() {
   return (
     <>
       {!isHideUrl && <Header />}
+      <ScrollTop />
       <Routes>
         <Route path="/" element={<LoginJoinSelect />} />
         <Route path="/login" element={<LoginPage />} />
