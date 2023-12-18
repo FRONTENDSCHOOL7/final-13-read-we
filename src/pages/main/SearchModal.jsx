@@ -35,7 +35,7 @@ const SearchModal = ({ hideModal, trendUnits }) => {
       return;
     }
     console.log('검색버튼누름');
-    const aladinUrl = `http://www.aladin.co.kr/ttb/api/ItemSearch.aspx?ttbkey=ttb22pqpq1534001&Query=${bookName}&QueryType=Title&MaxResults=50&start=1&SearchTarget=Book&Book&Cover=Big&output=JS&Version=20131101`;
+    const aladinUrl = `https://www.aladin.co.kr/ttb/api/ItemSearch.aspx?ttbkey=ttb22pqpq1534001&Query=${bookName}&QueryType=Title&MaxResults=50&start=1&SearchTarget=Book&Book&Cover=Big&output=JS&Version=20131101`;
 
     try {
       const response = await axios.get(aladinUrl);

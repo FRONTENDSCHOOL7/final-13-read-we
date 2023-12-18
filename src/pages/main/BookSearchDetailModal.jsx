@@ -57,7 +57,7 @@ const BookSearchDetailModal = (props) => {
   const fetchBook = async (count, start, eventType) => {
     if (searchText === '') return;
     setIsLoading(true);
-    const aladinUrl = `http://www.aladin.co.kr/ttb/api/ItemSearch.aspx?ttbkey=ttb22pqpq1534001&Query=${searchText}&QueryType=Title&MaxResults=${count}&start=${start}&SearchTarget=Book&Cover=Big&output=JS&Version=20131101`;
+    const aladinUrl = `https://www.aladin.co.kr/ttb/api/ItemSearch.aspx?ttbkey=ttb22pqpq1534001&Query=${searchText}&QueryType=Title&MaxResults=${count}&start=${start}&SearchTarget=Book&Cover=Big&output=JS&Version=20131101`;
     try {
       const response = await axios.get(aladinUrl);
       if (response.status === 200) {
