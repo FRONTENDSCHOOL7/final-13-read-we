@@ -7,7 +7,7 @@ const LoginJoinSelect = () => {
     <div className={styles['LoginJoinSelect-container']}>
       <video
         className={styles.video}
-        src="/images/readwe.mp4"
+        src={process.env.PUBLIC_URL + '/images/readwe.mp4'}
         autoPlay
         loop
         muted
