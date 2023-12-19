@@ -40,7 +40,7 @@ const MobileFooter = () => {
   const bestSellerFetch = async (count, start) => {
     const aladinBSUrl = `https://www.aladin.co.kr/ttb/api/ItemList.aspx?ttbkey=ttb22pqpq1534001&QueryType=Bestseller&MaxResults=${count}&start=${start}&SearchTarget=Book&Cover=Big&output=JS&Version=20131101`;
     try {
-      const response = await axios.get(aladinBSUrl);
+      const response = await axios.get('http://localhost:8080/bestseller');
       if (response.status === 200) {
         const res = response.data.item;
         setTrendUnits(res);
