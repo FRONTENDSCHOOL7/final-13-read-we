@@ -8,7 +8,7 @@ import styles from './css/BookSearchDetailModal.module.css';
 import LoadingModal from '../../components/popup/LoadingModal';
 
 const BookSearchDetailModal = (props) => {
-  const [searchText, setSearchText] = useState('');
+  const [bookName, setbookName] = useState('');
   const [searchAlert, setSearchAlert] = useState('');
   const [searchResults, setSearchResults] = useState([]); //알라딘 api 검색결과
   const [noResults, setNoResults] = useState(false);
@@ -20,7 +20,6 @@ const BookSearchDetailModal = (props) => {
 
   //로딩 중 상태 체크용
   const [isLoading, setIsLoading] = useState(false);
-
   // 팝업 열렸을 경우 body스크롤 방지
   useEffect(() => {
     document.body.style.cssText = `
@@ -55,11 +54,11 @@ const BookSearchDetailModal = (props) => {
 
   //알라딘 책검색 API
   const fetchBook = async (count, start, eventType) => {
-    if (searchText === '') return;
+    if (bookName === '') return;
     setIsLoading(true);
-    const aladinUrl = `https://www.aladin.co.kr/ttb/api/ItemSearch.aspx?ttbkey=ttb22pqpq1534001&Query=${searchText}&QueryType=Title&MaxResults=${count}&start=${start}&SearchTarget=Book&Cover=Big&output=JS&Version=20131101`;
+    const aladinUrl = `https://www.aladin.co.kr/ttb/api/ItemSearch.aspx?ttbkey=ttb22pqpq1534001&Query=${bookName}&QueryType=Title&MaxResults=${count}&start=${start}&SearchTarget=Book&Cover=Big&output=JS&Version=20131101`;
     try {
-      const response = await axios.get(aladinUrl);
+      const response = await axios.get('http://localhost:8080/search');
       if (response.status === 200) {
         setIsLoading(false);
         const res = response.data.item;
@@ -85,7 +84,7 @@ const BookSearchDetailModal = (props) => {
   const handleSearch = (e) => {
     e.preventDefault();
     //검색어 입력 없이 검색 버튼 클릭 시 아래 if절만 실행(알라딘 책검색 API 사용 X)
-    if (searchText === '') {
+    if (bookName === '') {
       searchInputRef.current.focus();
       setSearchAlert(
         <p className={styles['search-alert']}>
@@ -146,8 +145,8 @@ const BookSearchDetailModal = (props) => {
               <BasicIpt
                 type="text"
                 placeholder="도서 이름을 입력하세요."
-                value={searchText}
-                onChange={(e) => setSearchText(e.target.value)}
+                value={bookName}
+                onChange={(e) => setbookName(e.target.value)}
                 onKeyUp={handleSearchKeyUp}
                 ref={searchInputRef}
               />

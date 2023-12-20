@@ -11,7 +11,6 @@ const SearchModal = ({ hideModal, trendUnits }) => {
   const [bookName, setBookName] = useState(null); // 책제목
   const [searchResult, setSearchResult] = useState(true); // 검색결과 상태
 
-  console.log(trendUnits);
   // 팝업 열렸을 경우 body스크롤 방지
   useEffect(() => {
     document.body.style.cssText = `
@@ -35,10 +34,10 @@ const SearchModal = ({ hideModal, trendUnits }) => {
       return;
     }
     console.log('검색버튼누름');
-    const aladinUrl = `https://www.aladin.co.kr/ttb/api/ItemSearch.aspx?ttbkey=ttb22pqpq1534001&Query=${bookName}&QueryType=Title&MaxResults=50&start=1&SearchTarget=Book&Book&Cover=Big&output=JS&Version=20131101`;
+    // const aladinUrl = `https://www.aladin.co.kr/ttb/api/ItemSearch.aspx?ttbkey=ttb22pqpq1534001&Query=${bookName}&QueryType=Title&MaxResults=50&start=1&SearchTarget=Book&Book&Cover=Big&output=JS&Version=20131101`;
 
     try {
-      const response = await axios.get(aladinUrl);
+      const response = await axios.get('http://localhost:8080/search');
       if (response.status === 200) {
         setSearchBook(response.data.item); // API 호출 결과를 searchBook state에 저장
         setSearchResult(bookName);

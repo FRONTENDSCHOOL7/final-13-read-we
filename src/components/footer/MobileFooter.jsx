@@ -44,6 +44,7 @@ const MobileFooter = () => {
       if (response.status === 200) {
         const res = response.data.item;
         setTrendUnits(res);
+        console.log(response);
       }
     } catch (error) {
       console.error('Error fetching data: ', error);

@@ -38,39 +38,16 @@ app.get('/bestseller', async (req, res) => {
   }
 });
 
-app.get('/newbooks', async (req, res) => {
-  const queryType = 'ItemNewAll';
-  const aladinApiUrl = `${aladinApiBaseUrl}?ttbkey=${aladinApiKey}&QueryType=${queryType}&MaxResults=100&start=1&SearchTarget=Book&output=js&Cover=Big&CategoryId&Version=20131101`;
-
-  try {
-    const data = await fetchData(aladinApiUrl);
-    res.json(data);
-  } catch (error) {
-    res.status(500).json({ error: error.message });
-  }
-});
-
-app.get('/special', async (req, res) => {
-  const queryType = 'ItemNewSpecial';
-  const aladinApiUrl = `${aladinApiBaseUrl}?ttbkey=${aladinApiKey}&QueryType=${queryType}&MaxResults=100&start=1&SearchTarget=Book&output=js&Cover=Big&Version=20131101`;
-
-  try {
-    const data = await fetchData(aladinApiUrl);
-    res.json(data);
-  } catch (error) {
-    res.status(500).json({ error: error.message });
-  }
-});
-
 app.get('/search', async (req, res) => {
-  const { searchQuery, count, start } = req.query;
+  const { bookName, count, start } = req.query;
   const aladinApiUrl = `${aladinApiSearchUrl}?ttbkey=${aladinApiKey}&Query=${encodeURIComponent(
-    searchQuery,
-  )}&MaxResults=${count}&start=${start}&SearchTarget=Book&output=js&Cover=Big&Version=20131101&CategoryId`;
+    bookName,
+  )}&QueryType=Title&MaxResults=${count}&start=${start}&SearchTarget=Book&output=js&Cover=Big&Version=20131101`;
 
   try {
     const data = await fetchData(aladinApiUrl);
     res.json(data);
+    app.log(aladinApiUrl);
   } catch (error) {
     res.status(500).json({ error: error.message });
   }
