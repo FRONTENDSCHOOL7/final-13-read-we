@@ -26,7 +26,7 @@ const SearchModal = ({ hideModal, trendUnits }) => {
   }, []);
 
   // 알라딘 책검색
-  const fetchBook = async (e) => {
+  const fetchBook = async (e, count, start) => {
     e.preventDefault();
     //검색어가 비어있을 경우
     if (bookName === null || bookName === '') {
@@ -37,7 +37,9 @@ const SearchModal = ({ hideModal, trendUnits }) => {
     // const aladinUrl = `https://www.aladin.co.kr/ttb/api/ItemSearch.aspx?ttbkey=ttb22pqpq1534001&Query=${bookName}&QueryType=Title&MaxResults=50&start=1&SearchTarget=Book&Book&Cover=Big&output=JS&Version=20131101`;
 
     try {
-      const response = await axios.get('http://localhost:8080/search');
+      const response = await axios.get(
+        `http://localhost:8080/search?bookName=${bookName}&count=${count}&start=${start}`,
+      );
       if (response.status === 200) {
         setSearchBook(response.data.item); // API 호출 결과를 searchBook state에 저장
         setSearchResult(bookName);
