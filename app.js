@@ -34,7 +34,10 @@ app.get('/bestseller', async (req, res) => {
     const data = await fetchData(aladinApiUrl);
     res.json(data);
   } catch (error) {
-    res.status(500).json({ error: error.message });
+    console.error(error);
+    if (!res.headersSent) {
+      res.status(500).json({ error: error.message });
+    }
   }
 });
 
@@ -47,9 +50,11 @@ app.get('/search', async (req, res) => {
   try {
     const data = await fetchData(aladinApiUrl);
     res.json(data);
-    app.log(aladinApiUrl);
   } catch (error) {
-    res.status(500).json({ error: error.message });
+    console.error(error);
+    if (!res.headersSent) {
+      res.status(500).json({ error: error.message });
+    }
   }
 });
 
