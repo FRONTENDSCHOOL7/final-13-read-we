@@ -38,7 +38,7 @@ const SearchModal = ({ hideModal, trendUnits }) => {
 
     try {
       const response = await axios.get(
-        `http://localhost:8080/search?bookName=${bookName}&count=${count}&start=${start}`,
+        `https://port-0-node-express-aladinapi-hkty2alqbuns76.sel4.cloudtype.app/search?bookName=${bookName}&count=${count}&start=${start}`,
       );
       if (response.status === 200) {
         setSearchBook(response.data.item); // API 호출 결과를 searchBook state에 저장

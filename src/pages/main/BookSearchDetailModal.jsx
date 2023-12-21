@@ -59,7 +59,7 @@ const BookSearchDetailModal = (props) => {
     // const aladinUrl = `https://www.aladin.co.kr/ttb/api/ItemSearch.aspx?ttbkey=ttb22pqpq1534001&Query=${bookName}&QueryType=Title&MaxResults=${count}&start=${start}&SearchTarget=Book&Cover=Big&output=JS&Version=20131101`;
     try {
       const response = await axios.get(
-        `http://localhost:8080/search?bookName=${bookName}&count=${count}&start=${start}`,
+        `https://port-0-node-express-aladinapi-hkty2alqbuns76.sel4.cloudtype.app/search?bookName=${bookName}&count=${count}&start=${start}`,
       );
       if (response.status === 200) {
         setIsLoading(false);
