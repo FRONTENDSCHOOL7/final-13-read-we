@@ -44,82 +44,15 @@ READ WE는 독서기록 서비스와 SNS가 결합된 서비스로, 혼자 즐�
 |<img src="https://img.shields.io/badge/Team member-dddddd?style=flat-square&logo=logoColor=black">|<img src="https://img.shields.io/badge/Team member-dddddd?style=flat-square&logo=logoColor=black">|<img src="https://img.shields.io/badge/Team member-dddddd?style=flat-square&logo=logoColor=black">|<img src="https://img.shields.io/badge/Team member-dddddd?style=flat-square&logo=logoColor=black">|<img src="https://img.shields.io/badge/Project Leader-000000?style=flat-square&logo=logoColor=black">
 
 ## 2-1. 기능구현 및 역할 분담
-#### 백예린
-**🎨 UI**
-- 공통 header/footer
-- 스플래시
-- 로그인
-- 회원가입
-- 채팅
 
-**⚒️ 기능구현**
-- 로그인
-- 회원가입
+| <img src="https://img.shields.io/badge/담당자-ffffff?style=for-the-badge&logo=logoColor=black"> | 🎨 UI | ⚒️ 기능구현 | ♻️ 리펙토링 |
+|---|---|---|---|
+| 백예린 | - 공통 header/footer<br>- 스플래시<br>- 로그인<br>- 회원가입<br>- 채팅 | - 로그인<br>- 회원가입 |  |
+| 서동현    | - 메인 페이지<br>- 책 상세정보 | - 메인 피드게시물 리스트업<br>- 유저 검색/다른 유저 프로필 페이지 이동<br>- Trend Book<br>- 책 상세정보 모달구현 | - 코드 정리<br>- fetch -> axios 비동기 통신 라이브러리 교체<br>- 외부 API추가 도입<br> :알라딘 API<br>- CORS 이슈: middleware구축<br>- 반응형 처리 |
+| 양혜진 | - 프로필 수정<br>- 책 검색 모달 | - 프로필 수정 |  |
+| 이승미 | - 공통컴포넌트 제작<br> :button, input, modal, 기타 공통 요소<br>- 마이페이지 / 다른사람 프로필<br>- 내 서재<br>- 팔로워/팔로잉 리스트 | - 팔로우/언팔로우<br>- 게시물 좋아요<br>- 로그아웃<br>- 게시물 작성 통계<br> :Nivo chart | - 코드 정리<br>- fetch -> axios 비동기 통신 라이브러리 교체<br>- 외부 API추가 도입<br> :알라딘 API<br>- 반응형 처리 |
+| 최강우 | - 게시물 상세<br>- 게시물 등록<br>- 도서 검색 정보 페이지 | - 게시물 등록<br>- 게시물 등록 시 도서정보 조회 및 선택<br> :JSON 데이터<br>- 댓글 등록 |  |
 
-<br />
-
-#### 서동현
-**🎨 UI**
-- 메인 페이지
-- 책 상세정보
-
-**⚒️ 기능구현**
-- 메인 피드게시물 리스트업
-- 유저 검색 / 다른 유저 프로필 페이지 이동
-- Trend Book
-- 책 상세정보 모달구현
-
-**♻️ 리펙토링**
-- 코드 정리(미사용 코드 정리, 중복 컴포넌트 제거 등)
-- fetch -> axios 비동기 통신 라이브러리 교체
-- 외부 API추가 도입(알라딘 API)
-- CORS 이슈해결 middleware구축
-- 반응형 처리
-  
-<br />
-
-#### 양혜진
-**🎨 UI**
-- 프로필 수정
-- 책 검색 모달
-
-**⚒️ 기능구현**
-- 프로필 수정
-
-<br />
-
-#### 이승미
-**🎨 UI**
-- 공통컴포넌트 제작(button, input, modal, 기타 공통 요소)
-- 마이페이지 / 다른사람 프로필
-- 내 서재
-- 팔로워/팔로잉 리스트
-
-**⚒️ 기능구현**
-- 팔로우/언팔로우
-- 게시물 좋아요
-- 로그아웃
-- 게시물 작성 통계 - Nivo chart
-
-**♻️ 리펙토링**
-- 코드 정리(미사용 코드 정리, 중복 컴포넌트 제거 등)
-- fetch -> axios 비동기 통신 라이브러리 교체
-- 외부 API추가 도입(알라딘 API)
-- 반응형 처리
-
-
-<br />
-
-#### 최강우
-**🎨 UI**
-- 게시물 상세
-- 게시물 등록
-- 도서 검색 정보 페이지
-
-**⚒️ 기능구현**
-- 게시물 등록
-- 게시물 등록 시 도서정보 조회 및 선택(JSON 데이터)
-- 댓글 등록
 
 <br />
 
@@ -285,33 +218,33 @@ READ WE는 독서기록 서비스와 SNS가 결합된 서비스로, 혼자 즐�
   ```
 
 - **코드 로직 개선: 마이페이지>포스트 정보 호출**
-  - 문제: 마이페이지 접속 시 회원정보와, 회원의 게시물 정보는 문제없이 표시되지만, 포스트 정보를 찾을 수 없다는 오류 메시지가 표시
-  - 원인: 함수의 실행 순서가 의존 배열이 없는 useEffect에 유저정보를 불러오는 함수 실행 -> 유저정보가 담기는 변수를 의존배열로 하는 useEffect에 유저의 포스트 정보를 불러오는 함수를 실행 하는 구조로 작성 되었으나, 화면이 랜더링 될 때 최초로 실행 하는 useEffect특성으로 유저 정보가 불러와 지기 전, 포스트 정보를 불러오는 함수가 실행 되어 오류메시지가 표시된 것으로 확인
+  - 문제: 마이페이지 접속 시 회원정보와, 게시물 정보는 문제없이 표시되지만, console에 게시물 정보를 찾을 수 없다는 오류 메시지가 표시
+  - 원인: 함수의 실행 순서가 의존 배열이 없는 useEffect에서 유저정보를 불러오는 함수가 실행 -> 유저정보가 담기는 변수를 의존배열로 하는 useEffect에 유저의 포스트 정보를 불러오는 함수가 실행 하는 구조로 작성 되었으나, 화면이 랜더링 될 때 최초로 실행 하는 useEffect특성으로 유저 정보가 불러와 지기 전, 게시물 정보를 불러오는 함수가 실행 되어 오류메시지가 표시된 것으로 확인
     <p align="center">
     <img width="645" alt="image" src="https://github.com/FRONTENDSCHOOL7/final-13-read-we/assets/138555225/8dbe9a29-c133-4f01-b111-fb54a6c3b6cf">
     </p>
     
     ```jsx
-      //유저작성 게시물 정보 API
-      useEffect(()=>{
-        const getPostFn = (accName) => {
-        const reqUrl = baseUrl + `/post/${accName}/userpost`;
-        axios
-          .get(reqUrl, {
-            headers: {
-              Authorization: `Bearer ${token}`,
-            },
-          })
-          .then(function (res) {
-            setPostList(res.data.post);
-            setIsPostLoading(false);
-          })
-          .catch(function (error) {
-            alert('게시글 리스트를 불러오지 못했습니다');
-          });
-      };
-      getPost();
-      }, [myInfo]);
+    //유저작성 게시물 정보 API
+    useEffect(()=>{
+      const getPostFn = (accName) => {
+      const reqUrl = baseUrl + `/post/${accName}/userpost`;
+      axios
+        .get(reqUrl, {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        })
+        .then(function (res) {
+          setPostList(res.data.post);
+          setIsPostLoading(false);
+        })
+        .catch(function (error) {
+          alert('게시글 리스트를 불러오지 못했습니다');
+        });
+    };
+    getPost();
+    }, [myInfo]);
   
     //유저정보 API
     useEffect(()=>{
@@ -337,7 +270,7 @@ READ WE는 독서기록 서비스와 SNS가 결합된 서비스로, 혼자 즐�
     },[])    
     ```
     
-  - 해결: 의존 배열이 없는 useEffect에 유저정보를 불러오는 함수 작성 후 유저 정보를 불러오는 API통신이 성공 시 유저의  포스트 정보를 불러오는 함수가 실행되도록 로직 변경
+  - 해결: 의존 배열이 없는 useEffect에 유저정보를 불러오는 함수 실행 후 API통신이 성공 시 유저의 포스트 정보를 불러오는 함수가 실행되도록 로직 변경
   <p align="center">
   <img width="645" alt="image" src="https://github.com/FRONTENDSCHOOL7/final-13-read-we/assets/138555225/3ae0ad71-3402-4396-9c0d-35333fe34b24">
   </p>
@@ -451,11 +384,11 @@ READ WE는 독서기록 서비스와 SNS가 결합된 서비스로, 혼자 즐�
 >이런한 의미에서 책 정보를 제공받을 수 있는 API를 추가하는 것은 리펙토링 항목 중 가장 필수적으로 진행되어야 하는 파트였습니다. 다양한 책관련 API를 비교해본 후 알라딘 API를 선정 후 서비스에 도입을 하였습니다.
 
 <details>
-<summary>JSON데이터 -> API 교체</summary>
+<summary>JSON데이터 -> 알라딘API 교체</summary>
 <div markdown="1">
   내용내용내용
 
-  [CORS이슈 해결 상세보기](###-CORS이슈)
+  [CORS이슈 해결 상세보기](#cors이슈)
   
 </div>
 </details>
