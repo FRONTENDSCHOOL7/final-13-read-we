@@ -33,7 +33,6 @@ const SearchModal = ({ hideModal, trendUnits }) => {
       alert('검색어를 입력해주세요.');
       return;
     }
-    console.log('검색버튼누름');
     // const aladinUrl = `https://www.aladin.co.kr/ttb/api/ItemSearch.aspx?ttbkey=ttb22pqpq1534001&Query=${bookName}&QueryType=Title&MaxResults=50&start=1&SearchTarget=Book&Book&Cover=Big&output=JS&Version=20131101`;
 
     try {
