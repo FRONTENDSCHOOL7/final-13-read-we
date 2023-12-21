@@ -130,7 +130,7 @@ const MainPage = (props) => {
                   value={userName}
                   onChange={(e) => setUserName(e.target.value)}
                 />
-                <i class="icon icon-search" />
+                <i className="icon icon-search" />
               </IconIpt>
               <div className={styles.searchUser}>
                 <ul>
@@ -226,25 +226,14 @@ const MainPage = (props) => {
             )}
           </div>
           <div className={styles.MainRightContainer}>
-            {/* <div>
-              <input
-                type="text"
-                value={bookName}
-                onChange={(e) => setBookName(e.target.value)}
-              />
-              <button onClick={fetchBook}>검색</button>
-              {displayBooks()}
-            </div> */}
             <IconIpt>
               <BasicIpt
                 sm="true"
                 placeholder="검색"
                 type="text"
-                // value={bookName}
-                // onChange={(e) => setBookName(e.target.value)}
                 onClick={showModal}
               />
-              <i class="icon icon-search" />
+              <i className="icon icon-search" />
             </IconIpt>
             {showBookSearchModal && (
               <SearchModal hideModal={hideModal} trendUnits={trendUnits} />
