@@ -1,4 +1,6 @@
 # READ WE
+1. [1차 개발(10/18 ~ 11/10)](#1.-프로젝트-소개)
+2. [리펙토링(11/28 ~ 12/21)](#4.리펙토링)
 
 ## 1. 프로젝트 소개
 
@@ -25,7 +27,7 @@ READ WE는 독서기록 서비스와 SNS가 결합된 서비스로, 혼자 즐�
 📙  독서기록뿐만 아니라, 출판사, 저자 등 책의 기본 정보를 볼 수 있는 기능이 있습니다.
 ```
 
-## 1.2 개발 환경
+# 1.2 개발 환경
 
 ### ⚙️   사용기술 
 | FrontEnd | BackEnd | Design | 협업방식 | 컨벤션 |
@@ -42,7 +44,7 @@ READ WE는 독서기록 서비스와 SNS가 결합된 서비스로, 혼자 즐�
 |<img src="https://img.shields.io/badge/Team member-dddddd?style=flat-square&logo=logoColor=black">|<img src="https://img.shields.io/badge/Team member-dddddd?style=flat-square&logo=logoColor=black">|<img src="https://img.shields.io/badge/Team member-dddddd?style=flat-square&logo=logoColor=black">|<img src="https://img.shields.io/badge/Team member-dddddd?style=flat-square&logo=logoColor=black">|<img src="https://img.shields.io/badge/Project Leader-000000?style=flat-square&logo=logoColor=black">|
 
 
-# 3. 기능구현 및 역할 분담
+## 2-1. 기능구현 및 역할 분담
 #### 백예린
 **🎨 UI**
 - 공통 header/footer
@@ -68,6 +70,13 @@ READ WE는 독서기록 서비스와 SNS가 결합된 서비스로, 혼자 즐�
 - Trend Book
 - 책 상세정보 모달구현
 
+**♻️ 리펙토링**
+- 코드 정리(미사용 코드 정리, 중복 컴포넌트 제거)
+- fetch -> axios 비동기 통신 라이브러리 교체
+- 외부 API추가 도입(알라딘 API)
+- CORS 이슈해결 middleware구축
+- 반응형 처리
+  
 <br />
 
 #### 양혜진
@@ -93,6 +102,13 @@ READ WE는 독서기록 서비스와 SNS가 결합된 서비스로, 혼자 즐�
 - 로그아웃
 - 게시물 작성 통계 - Nivo chart
 
+**♻️ 리펙토링**
+- 코드 정리(미사용 코드 정리, 중복 컴포넌트 제거)
+- fetch -> axios 비동기 통신 라이브러리 교체
+- 외부 API추가 도입(알라딘 API)
+- 반응형 처리
+
+
 <br />
 
 #### 최강우
@@ -108,7 +124,7 @@ READ WE는 독서기록 서비스와 SNS가 결합된 서비스로, 혼자 즐�
 
 <br />
 
-# 4. 핵심기능 시연
+# 3. 핵심기능 시연
 
 | splash                                                 | 회원가입                                                             |
 | ------------------------------------------------------ | -------------------------------------------------------------------- |
@@ -123,4 +139,23 @@ READ WE는 독서기록 서비스와 SNS가 결합된 서비스로, 혼자 즐�
 | ![Nov-07-2023 17-47-04](https://github.com/FRONTENDSCHOOL7/final-13-read-we/assets/138555225/64927e54-84aa-4b76-a577-df4da18717ed) | ![Nov-07-2023 17-48-11](https://github.com/FRONTENDSCHOOL7/final-13-read-we/assets/138555225/68c5e87c-b124-4333-bc53-7b307f2adef7) |
 | 유저검색                                               | 팔로우                                                               |
 | ![Nov-08-2023 10-17-54](https://github.com/FRONTENDSCHOOL7/final-13-read-we/assets/138555225/a9d21cff-fb10-4042-9c6b-ec1cb4d7b388) | ![Nov-07-2023 17-50-22](https://github.com/FRONTENDSCHOOL7/final-13-read-we/assets/138555225/507d917c-1bd1-476f-bf04-9f49925026a3) |
+
+<br />
+
+# 4. 리팩토링
+
+## 4-1. 일정 및 리팩토링 리스트
+![image](https://github.com/FRONTENDSCHOOL7/final-13-read-we/assets/138555225/81c55afb-f561-4da7-8bec-5f82279de197)
+**- 코드정리**
+```
+코드 정기 기간 동안에는 기본적인 폴더구조 정리부터 나아가 기존 코드를 고도화 시키는 것을 목표로 진행 하였습니다.
+```
+<img width="445" alt="image" src="https://github.com/FRONTENDSCHOOL7/final-13-read-we/assets/138555225/8dc0c6c1-8b26-421f-8e1b-7815d464631c">
+
+- 폴더구조 정리
+- 코드 단축 / 고도화
+- axios 도입
+
+**- 알라딘 API 도입**
+
 
