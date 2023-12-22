@@ -32,9 +32,10 @@ READ WE는 독서기록 서비스와 SNS가 결합된 서비스로, 혼자 즐�
 ### ⚙️   사용기술 
 | FrontEnd | BackEnd | Design | 협업방식 | 컨벤션 |
 | :----: | :----: | :----: | :----: | :----: |
-| <img src="https://img.shields.io/badge/React-61DAFB?style=flat-square&logo=React&logoColor=black"> <img src="https://img.shields.io/badge/styledcomponents-CC6699?style=flat-square&logo=styledcomponents&logoColor=white"> <img src="https://img.shields.io/badge/JavaScript-F7DF1E.svg?style=flat-square&logo=JavaScript&logoColor=black"> | <img src="https://img.shields.io/badge/REST API-000000?style=flat-square&logo=logoColor=white"> | <img src="https://img.shields.io/badge/figma-F24E1E?style=flat-square&logo=figma&logoColor=white"> | <img src="https://img.shields.io/badge/GitHub-181717?style=flat-square&logo=GitHub&logoColor=white"> <img src="https://img.shields.io/badge/Notion-000000.svg?style=flat-square&logo=Notion&logoColor=white"> <img src="https://img.shields.io/badge/googledrive-000000.svg?style=flat-square&logo=googledrive&logoColor=white"> <img src="https://img.shields.io/badge/Discord-5865F2?style=flat-square&logo=Discord&logoColor=white"> | <img src="https://img.shields.io/badge/Prettier-F7B93E.svg?style=flat-square&logo=Prettier&logoColor=black"> <img src="https://img.shields.io/badge/ESLint-4B32C3.svg?style=flat-square&logo=ESLint&logoColor=white"> |
+| <img src="https://img.shields.io/badge/React-61DAFB?style=flat-square&logo=React&logoColor=black"> <img src="https://img.shields.io/badge/styledcomponents-CC6699?style=flat-square&logo=styledcomponents&logoColor=white"> <img src="https://img.shields.io/badge/JavaScript-F7DF1E.svg?style=flat-square&logo=JavaScript&logoColor=black"> | <img src="https://img.shields.io/badge/REST API-000000?style=flat-square&logo=logoColor=white"> <img src="https://img.shields.io/badge/nodedotjs-green.svg?style=flat-square&logo=nodedotjs&logoColor=black"> <img src="https://img.shields.io/badge/express-red.svg?style=flat-square&logo=express&logoColor=black"> | <img src="https://img.shields.io/badge/figma-F24E1E?style=flat-square&logo=figma&logoColor=white"> | <img src="https://img.shields.io/badge/GitHub-181717?style=flat-square&logo=GitHub&logoColor=white"> <img src="https://img.shields.io/badge/Notion-000000.svg?style=flat-square&logo=Notion&logoColor=white"> <img src="https://img.shields.io/badge/googledrive-000000.svg?style=flat-square&logo=googledrive&logoColor=white"> <img src="https://img.shields.io/badge/Discord-5865F2?style=flat-square&logo=Discord&logoColor=white"> | <img src="https://img.shields.io/badge/Prettier-F7B93E.svg?style=flat-square&logo=Prettier&logoColor=black"> <img src="https://img.shields.io/badge/ESLint-4B32C3.svg?style=flat-square&logo=ESLint&logoColor=white"> |
 > **🔗 피그마 URL:** [READ WE Design](https://www.figma.com/file/szHcU1ud0o35WHNtJPZdC2/READ-WE!?type=design&node-id=254-5566&mode=design&t=SmAtqLMejSphHR5t-0) <br />
-**🔗 구글 드라이브 URL:** [READ WE 화면 설계서](https://drive.google.com/drive/folders/1-MSgxznbuoESLSEB7Y0fgYQ0-DX0mVlZ)
+**🔗 구글 드라이브 URL:** [READ WE 화면 설계서](https://drive.google.com/drive/folders/1-MSgxznbuoESLSEB7Y0fgYQ0-DX0mVlZ)<br />
+**🔗 express 서버(클라우드타입배포):** [Node Express Server](https://github.com/dongmay98/node-express-AladinAPI)
 
 # 2. 팀원 소개
 |백예린|서동현|양혜진|이승미|최강우|
@@ -48,7 +49,7 @@ READ WE는 독서기록 서비스와 SNS가 결합된 서비스로, 혼자 즐�
 | <img src="https://img.shields.io/badge/담당자-ffffff?style=for-the-badge&logo=logoColor=black"> | 🎨 UI | ⚒️ 기능구현 | ♻️ 리펙토링 |
 |---|---|---|---|
 | 백예린 | - 공통 header/footer<br>- 스플래시<br>- 로그인<br>- 회원가입<br>- 채팅 | - 로그인<br>- 회원가입 |  |
-| 서동현    | - 메인 페이지<br>- 책 상세정보 | - 메인 피드게시물 리스트업<br>- 유저 검색/다른 유저 프로필 페이지 이동<br>- Trend Book<br>- 책 상세정보 모달구현 | - 코드 정리<br>- fetch -> axios 비동기 통신 라이브러리 교체<br>- 외부 API추가 도입<br> :알라딘 API<br>- CORS 이슈: middleware구축<br>- 반응형 처리 |
+| 서동현    | - 메인 페이지<br>- 책 상세정보 | - 메인 피드게시물 리스트업<br>- 유저 검색/다른 유저 프로필 페이지 이동<br>- BestSeller 구현<br>- 책 상세정보 모달구현 | - 코드 정리<br>- fetch -> axios 비동기 통신 라이브러리 교체<br>- 외부 API추가 도입<br> :알라딘 API(검색기능,베스트셀러 랜덤노출)<br>- CORS 이슈: middleware구축<br>- 반응형 처리 |
 | 양혜진 | - 프로필 수정<br>- 책 검색 모달 | - 프로필 수정 |  |
 | 이승미 | - 공통컴포넌트 제작<br> :button, input, modal, 기타 공통 요소<br>- 마이페이지 / 다른사람 프로필<br>- 내 서재<br>- 팔로워/팔로잉 리스트 | - 팔로우/언팔로우<br>- 게시물 좋아요<br>- 로그아웃<br>- 게시물 작성 통계<br> :Nivo chart | - 코드 정리<br>- fetch -> axios 비동기 통신 라이브러리 교체<br>- 외부 API추가 도입<br> :알라딘 API<br>- 반응형 처리 |
 | 최강우 | - 게시물 상세<br>- 게시물 등록<br>- 도서 검색 정보 페이지 | - 게시물 등록<br>- 게시물 등록 시 도서정보 조회 및 선택<br> :JSON 데이터<br>- 댓글 등록 |  |
@@ -386,8 +387,80 @@ READ WE는 독서기록 서비스와 SNS가 결합된 서비스로, 혼자 즐�
 <details>
 <summary>JSON데이터 -> 알라딘API 교체</summary>
 <div markdown="1">
-  내용내용내용
-
+  
+  - before) 책 데이터 불러오는 코드/더미데이터
+    - 아래 코드는 리팩토링 전 책 데이터를 불러오는 json 더미데이터 입니다. 서비스의 실행을 위해서 사용했었지만 정상적인 서비스 구동을 위해 리팩토링중 알라딘 api를 사용하여서 책 데이터를 받아왔습니다.
+    ```js
+    {
+      "bookdata": [
+        {
+          "title": "누구나 쉽게 배우는 자바스크립트",
+          "author": "닉 모건",
+          "publisher": "비제이퍼블릭",
+          "description": "이 책은 단계별 예제와 재미있는 그림들을 느긋하게 보면서 프로그래밍의 필수 요소를 가벼운 마음으로 배울 수 있는 책이다. 처음에는 문자열, 배열, 반복문과 같은 기초에서 시작해서 jQuery를 사용한 인터랙션 구현, 캔버스를 사용한 그래픽 그리기 등과 같은 고급 주제도 살펴본다.",
+          "img": "javascript.png"
+        },
+        {
+          "title": "돈의 속성",
+          "author": "김승호",
+          "publisher": "스노우폭스북스",
+          "description": "어떤 횡재나 일명 대박주식 없이 말 그대로 맨손에서 만들어낸 종잣돈으로 돈 버는 방법을 알려준다. 종잣돈 천만 원을 만들고 그 돈을 1억 원, 10억 원, 100억 원, 수천억 원이 될 때까지 돈을 관리하며 터득한 ‘돈’이 가진 속성을 정리한 안내서다. ‘진짜 부자’가 된 실제 인물이 말해주는 ‘진짜 돈’만들기에 대한 책이다.",
+          "img": "money.png"
+        },
+        {
+          "title": "요즘 어른을 위한 최소한의 세계사",
+          "author": "임소미",
+          "publisher": "빅피시",
+          "description": "《요즘 어른을 위한 최소한의 세계사》는 오늘날 꼭 알아야 할 세계사의 주요 사건을 핵심만 쏙쏙 정리했다. 고대 문명의 탄생부터 강대국의 발전 과정을 시간순으로 빠짐없이 정리해 현재의 세계정세가 어떻게 구축되었는지 머릿속에 세계사의 뼈대를 확실하게 잡기 충분하다.",
+          "img": "world-history.png"
+        }, ...중략...
+      ]
+    }
+    ```
+  - after) 알라딘 API 사용
+    - 아래 json데이터는 알라딘api에서 쿼리를 입력하여 받아온 책 데이터입니다. json 더미데이터에서 필요한 알라딘 데이터를 서비스에 가져와서 사용하게 리팩토링하였습니다.
+    ```js
+    "item": [
+      {
+      "title": "마흔에 읽는 쇼펜하우어 - 마음의 위기를 다스리는 철학 수업",
+      "link": "http://www.aladin.co.kr/shop/wproduct.aspx?ItemId=323615985&amp;partner=openAPI&amp;start=api",
+      "author": "강용수 (지은이)",
+      "pubDate": "2023-09-07",
+      "description": "인생의 의미를 끊임없이 고민한 철학자, 아르투어 쇼펜하우어의 깨달음과 철학적 사유 중 현시대 우리가 고통을 해소하고 마음의 위기를 극복하는 데 도움이 될 내용을 30가지로 정리했다.",
+      "isbn": "K592935565",
+      "isbn13": "9791192300818",
+      "itemId": 323615985,
+      "priceSales": 15300,
+      "priceStandard": 17000,
+      "mallType": "BOOK",
+      "stockStatus": "",
+      "mileage": 850,
+      "cover": "https://image.aladin.co.kr/product/32361/59/cover/k592935565_2.jpg",
+      "categoryId": 51473,
+      "categoryName": "국내도서>인문학>서양철학>근대철학>쇼펜하우어",
+      "publisher": "유노북스",
+      "salesPoint": 273870,
+      "adult": false,
+      "fixedPrice": true,
+      "customerReviewRank": 9,
+      "bestDuration": "종합 1위 3주",
+      "bestRank": 1,
+      "seriesInfo": {
+      "seriesId": 1107275,
+      "seriesLink": "http://www.aladin.co.kr/shop/common/wseriesitem.aspx?SRID=1107275&amp;partner=openAPI",
+      "seriesName": "마흔에 읽는 서양 고전 "
+      },
+      "subInfo": {}
+    },
+    ```
+    
+    - CORS이슈
+      ```
+        알라딘 API를 로컬에서 사용할때는 URL이 달라 CORS이슈를 대수롭지 않게 생각하고 Proxy Server를 통해서 우회하여 작업하였으나,
+        배포단계에서 Proxy Server를 제거해도 CORS이슈가 해결이 불가했습니다.
+        최종적으로 사용한 해결방법은 Middleway 서버를 구축해 node express서버에서 api를 받아왔습니다.
+        CORS 트러블슈팅은 아래에서 자세히 설명해두었습니다.
+      ```
   [CORS이슈 해결 상세보기](#cors이슈)
   
 </div>
@@ -517,4 +590,14 @@ READ WE는 독서기록 서비스와 SNS가 결합된 서비스로, 혼자 즐�
 
 ## 4-2. 트러블슈팅
 ### CORS이슈
+- 로컬(localhost)단계에서의 CORS이슈
+  - 알라딘에 제출한 URL을 통해서 READ WE서비스의 고유 쿼리키를 받았는데 배포전 localhost로 접근하여서 보안관련 에러가 발생한다고 생각하고 Proxy Server를 통해 api 요청을 중계하여 작업을 진행하였습니다.
+- 배포단계에서의 CORS이슈
+  - 배포를 하면 알라딘에 요청한 URL이기 때문에 가능하다고 생각했지만 CORS이슈가 지속되어 브라우저에서 직접적인 api요청이 불가했습니다.
+- 해결방법
+  - 문제해결을 위해 node Express 서버를 도입하였습니다.
+    클라이언트가 Express 서버를 통해 알라딘 API의 정보를 받아오기 때문에 CORS이슈를 피할수있다고 생각했습니다.
+    서버구축과 CORS 미들웨어를 활용하여 모든 도메인에서의 요청을 허용하도록 설정했습니다.
+  - 배포플렛폼은 CloudType을 사용하였습니다.
+  - 위 과정을 통해서 블라우저는 직접적인 api요청이 아닌 express서버를 통해 배포한 서버에서 받아오는 것이기 때문에 CORS이슈를 해결할 수 있었습니다.
 
